@@ -1,77 +1,4098 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <title></title>
-        <meta charset="utf-8" />
-        <script src="cordova.js"></script>
-        <script src="kendo/js/jquery.min.js"></script>
-        <script src="kendo/js/kendo.mobile.min.js"></script>
-        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        <script src="scripts/hello-world.js"></script>
+	<head>
+		<title>Vascular</title>
+		<meta charset="utf-8" />
+		<script src="cordova.js"></script>
+        <script src="scripts/quo.js"></script>
+		<script src="kendo/js/jquery.min.js"></script>
+		<script src="kendo/js/kendo.mobile.min.js"></script>
 
-        <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
-        <link href="styles/main.css" rel="stylesheet" />
-    </head>
-    <body>
-        <div data-role="view" id="tabstrip-home" data-title="Hello World!">
-            <h1>Welcome!</h1>
-            <p>
-                Icenium&trade; enables you to build cross-platform device applications regardless of your 
-                development platform by combining the convenience of a local development toolset with the 
-                power and flexibility of the cloud.
-            </p>
-        </div>
+		<script type="text/javascript" src="scripts/rengy.js"></script>       
+		
+		<script type="text/javascript" src="scripts/jquery.treeview.js"></script>
 
-        <div data-role="view" id="tabstrip-uiinteraction" data-title="UI Interaction">
-            <h1>Say Hello!</h1>
-            <div id='helloWorldInput'>
-                <label for="txtName" style="display: inline-block;">Enter your name:</label>
-                <input type="text" id="txtName" value="" />
-            </div>
-            <div id='helloWorldText' style="display:block;"></div>
-            <div class="buttonArea">
-                <a id="resetButton" data-role="button" data-click="sayHelloReset" data-icon="refresh">Reset</a>
-                <a id="submitButton" data-role="button" data-click="sayHello" data-icon="compose">Submit</a>
-            </div>
-        </div>
+		<script src="scripts/hello-world.js"></script>
 
-        <div data-role="view" id="tabstrip-geolocation" data-title="Geolocation">
-            <h1>My Location</h1>
-            <div id="geoLocationContainer">
-                <div id="myLocation">Unable to get location information. Please check your network connection and try again.</div>
-                <a id="refreshMap" data-role="button" data-click="getLocation" data-icon="refresh">Refresh Location</a>
-                <div id="map_canvas"></div>
-            </div>
-        </div>
+		<link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+		<link href="styles/main.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div data-role="view" id="tabstrip-home" data-title="">
+			<br><br>
+			<h2 style="color:#FFF;">
+				Guies mèdiques<br> oficials de diagnòstic <br> i tractament.
+			</h2>
+			<h1 style="color:#FFF;">
+				<b> Malalties Vasculars <br>
+					Cerebrals </b>
+			</h1>
+			<h3 style="color:#FFF;">
+				2ª Edició
+			</h3>
+			<img id="bk-image" src="styles/images/wallpaper.png">
+			<div id="logos">
+				<img src="styles/images/ferrer.png" style="width: 20%"><img src="styles/images/somazina.png" style="width:30%"><img src="styles/images/logo_sociedad.jpg" style="width:20%">
+			</div>
+		</div>
 
-        <div data-role="layout" data-id="mobile-tabstrip">
-            <header data-role="header">
-                <div data-role="navbar">
-                    <span data-role="view-title"></span>
-                </div>
-            </header>
+		<div data-role="view" id="indice" data-title="ÍNDEX" data-layout="layout" data-transition="fade" data-show="layoutShow">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="button" data-click="Exit" data-align="left">SORTIR</a>
+                        <a data-role="button" href="#creditos" data-align="right">INFO</a>
+					</span>
+				</div>
+			</header>
+			<ul id="red" class="treeview" data-role="listview" data-style="inset">
+				<li>
+					<span data-style="detaildisclose">PRÓLOGO</span>
+					<ul>
+						<li>
+							<span>Item 1.0</span>
+							<ul>
+								<li>
+									<span>Item 1.0.0</span>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span>Item 1.1</span>
+						</li>
+						<li>
+							<span>Item 1.2</span>
+							<ul>
+								<li>
+									<span>Item 1.2.0</span>
+									<ul>
+										<li>
+											<span>Item 1.2.0.0</span>
+										</li>
+										<li>
+											<span>Item 1.2.0.1</span>
+										</li>
+										<li>
+											<a>Item 1.2.0.2</a>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<span>Item 1.2.1</span>
+									<ul>
+										<li>
+											<span>Item 1.2.1.0</span>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<span>Item 1.2.2</span>
+									<ul>
+										<li>
+											<span>Item 1.2.2.0</span>
+										</li>
+										<li>
+											<span>Item 1.2.2.1</span>
+										</li>
+										<li>
+											<span>Item 1.2.2.2</span>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span>1. Ictus isquèmic</span>
+					<ul>
+						<li onclick="enact(this);" id="m11">
+							<span >1.1. Introducció. Dades epidemiològiques</span>
+						</li>
+						<li>
+							<span>1.2. Definicions<span>
+								<a class="arrow" href="#1-2"><img src="styles/images/ar.png"></a>
+								</span></span>
+							<ul>
+								<li>
+									<span>1.2.1. Classificacions de l’ictus isquèmic<span>
+										<a class="arrow" href="#1-2-1"><img src="styles/images/ar.png"></a>
+										</span></span>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span>1.3. Etiologia</span>
+							<ul>
+								<li>
+									<span>1.3.1. Patofisiologia<span>
+										<a href="#1-3-1" style="color:#2B83E2;">-></a>
+										</span></span>
+								</li>
+								<li>
+									<span>1.3.2. Factors de risc<span>
+										<a href="#1-3-2" style="color:#2B83E2;">-></a>
+										</span></span>
+								</li>
+								<li>
+									<span>1.3.3. Classificació etiològica de l’ictus<span>
+										<a href="#1-3-3" style="color:#2B83E2;">-></a>
+										</span></span>
+								</li>
 
-            <div data-role="footer">
-                <div data-role="tabstrip">
-                    <a href="#tabstrip-home" data-icon="home">Home</a>
-                    <a href="#tabstrip-uiinteraction" data-icon="share">UI Interaction</a>
-                    <a href="#tabstrip-geolocation" data-icon="globe">Geolocation</a>
-                </div>
-            </div>
-        </div>
+							</ul>
+						</li>
+						<li>
+							<span>1.4. Diagnòstic<span>
+								<a href="#1-4" style="color:#2B83E2;">-></a>
+								</span></span>
+							<ul>
+								<li>
+									<span>1.4.1. Diagnòstic clínic<span>
+										<a href="#1-4-1" style="color:#2B83E2;">-></a>
+										</span></span>
+								</li>
+								<li>
+									<span>1.4.2. Criteris diagnòstics<span>
+										<a href="#1-4-2" style="color:#2B83E2;">-></a>
+										</span></span>
+								</li>
+								<li>
+									<span>1.4.3. Diagnòstic diferencial<span>
+										<a href="#1-4-3" style="color:#2B83E2;">-></a>
+										</span></span>
+								</li>
 
-         <div data-role="layout" data-id="mobile-tabstrip" data-platform="android">
-            <div data-role="footer">
-                <div data-role="tabstrip">
-                    <a href="#tabstrip-home" data-icon="home">Home</a>
-                    <a href="#tabstrip-uiinteraction" data-icon="share">UI Interaction</a>
-                    <a href="#tabstrip-geolocation" data-icon="globe">Geolocation</a>
-                </div>
-            </div>
-        </div> 
+							</ul>
+						</li>
+						<li>
+							<span>1.5. Exploracions complementàries<span>
+								<a href="#1-5" style="color:#2B83E2;">-></a>
+								</span></span>
+							<ul>
+								<li>
+									<span>1.5.1. Exàmens de laboratori<span>
+										<a href="#1-5-1" style="color:#2B83E2;">-></a>
+										</span></span>
+								</li>
+								<li>
+									<span>1.5.2. Estudis histològics<span>
+										<a href="#1-5-2" style="color:#2B83E2;">-></a>
+										</span></span>
+								</li>
+								<li>
+									<span>1.5.3. Estudi genètic<span>
+										<a href="#1-5-3" style="color:#2B83E2;">-></a>
+										</span></span>
+								</li>
+								<li>
+									<span>1.5.4. Anàlisis del líquid cefalorraquidi<span>
+										<a href="#1-5-4" style="color:#2B83E2;">-></a>
+										</span></span>
+								</li>
+								<li>
+									<span>1.5.5. Radiografia de tòrax<span>
+										<a href="#1-5-5" style="color:#2B83E2;">-></a>
+										</span></span>
+								</li>
+								<li>
+									<span>1.5.6. Estudi d’imatge cranial<span>
+										<a href="#1-5-6" style="color:#2B83E2;">-></a>
+										</span></span>
+								</li>
+								<li>
+									<span>1.5.7. Estudis angiogràfics craniocervicals en l’ictus<span>
+										<a href="#1-5-7" style="color:#2B83E2;">-></a>
+										</span></span>
+								</li>
+								<li>
+									<span>1.5.8. Avaluació cardíaca<span>
+										<a href="#1-5-8" style="color:#2B83E2;">-></a>
+										</span></span>
+								</li>
+								<li>
+									<span>1.5.9. Altres<span>
+										<a href="#1-5-9" style="color:#2B83E2;">-></a>
+										</span></span>
+								</li>
+								<li>
+									<span>1.5.10. Exploracions complementàries segons diagnòstic etiològic<span>
+										<a href="#1-5-10" style="color:#2B83E2;">-></a>
+										</span></span>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span>1.6. Tractament</span>
+							<ul>
+								<li>
+									<span>1.6.1. Criteris d’ingrés. ingrés a unitat d’ictus<span>
+										<a href="#1-6-1" style="color:#2B83E2;">-></a>
+										</span></span>
+								</li>
 
-        <script>
-            var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "mobile-tabstrip" });
-        </script>
-    </body>
+								<li>
+									<span>1.6.2. Centres terciaris d’ictus<span>
+										<a href="#1-6-2" style="color:#2B83E2;">-></a>
+										</span></span>
+								</li>
+
+								<li>
+									<span>1.6.3. Tractament de la fase hiperaguda<span>
+										<a href="#1-6-3" style="color:#2B83E2;">-></a>
+										</span></span>
+								</li>
+
+								<li>
+									<span>1.6.4. Tractament de la fase aguda<span>
+										<a href="#1-6-4" style="color:#2B83E2;">-></a>
+										</span></span>
+								</li>
+
+								<li>
+									<span>1.6.5. Prevenció secundària<span>
+										<a href="#1-6-5" style="color:#2B83E2;">-></a>
+										</span></span>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span>2. Atac isquèmic transitori</span>
+					<ul>
+						<li>
+							<span>2.1. Definició, conceptes bàsics i diagnòstic<span>
+								<a href="#2-1" style="color:#2B83E2;">-></a>
+								</span></span>
+						</li>
+						<li>
+							<span>2.2. Mecanismes patogènics i tractament<span>
+								<a href="#2-2" style="color:#2B83E2;">-></a>
+								</span></span>
+						</li>
+					</ul>
+				</li>
+			</ul>
+            
+		</div>
+
+		<div data-role="view" id="creditos" class="contenido" data-title="CREDITOS" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+						<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+					</span>
+				</div>
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<span>Proyecto esponsorizado por:</span>
+				<h3>
+					Ferrer Internacional, S.A.
+				</h3>
+				<p>
+					<b>&copy; 2012 MEDERIC EDICIONES, S.L.</b><br>
+					<span>(PARA TODAS LOS IDIOMAS)</span><br>
+					<span>CARRER DE MUNT, 41</span><br>
+					<span>08392 SANT ANDREU DE LLAVANERES (ESPAÑA)</span><br>
+					<span>www.medericediciones.com</span><br>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span><b>Reservados todos los derechos.</b></span><br>
+					El contenido de esta publicación no puede ser reproducido, ni transmitido por nigún procedimiento electrónico o mecánico, incluyendo fotocopia o grabación magnética, ni registrado por ningún medio, sin la previa autorización por escrito del titular de los derechos de explotación.
+				</p>
+				<p>
+					Méderic Ediciones, S.L. y sus asociados no asumen responsabilidad alguna por cualquier lesión y/o daño sufridos por personas o bienes en cuestiones de responsabilidad de productos, negligencias o cualquier otra, ni por uso o aplicación de métodos, productos, instrucciones o ideas contenidos en el presente material. Dados los rápidos avances que se producen en las ciencias médicas en particular, debe realizarse una verificación independiente de los diagnosticos y las posologías de.
+				</p>
+				<span>&nbsp;</span>
+			</div>
+		</div>
+
+		<div data-role="view" id="anexos" class="contenido" data-title="ANNEXOS" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+					</span>
+				</div>
+			</header>
+			<div ontouchstart="" data-role="touch" id="wrap">
+				<div id="headeranexos">
+
+				</div>
+				<ul id="list" data-role="listview" data-style="inset">
+					<li>
+						<a href="#taula1">Taule I</a>
+					</li>
+					<li>
+						<a href="#/austria/">Austria</a>
+					</li>
+					<li>
+						<a href="#/belgium/">Belgium</a>
+					</li>
+					<li>
+						<a href="#/brazil/">Brazil</a>
+					</li>
+					<li>
+						<a href="#/canada/">Canada</a>
+					</li>
+					<li>
+						<a href="#/denmark/">Denmark</a>
+					</li>
+					<li>
+						<a href="#/finland/">Finland</a>
+					</li>
+					<li>
+						<a href="#/france/">France</a>
+					</li>
+					<li>
+						<a href="#/germany/">Germany</a>
+					</li>
+					<li>
+						<a href="#/greece/">Greece</a>
+					</li>
+					<li>
+						<a href="#/ireland/">Ireland</a>
+					</li>
+					<li>
+						<a href="#/israel/">Israel</a>
+					</li>
+					<li>
+						<a href="#/italy/">Italy</a>
+					</li>
+					<li>
+						<a href="#/japan/">Japan</a>
+					</li>
+					<li>
+						<a href="#/luxembourg/">Luxembourg</a>
+					</li>
+					<li>
+						<a href="#/mexico/">Mexico</a>
+					</li>
+					<li>
+						<a href="#/netherlands/">Netherlands</a>
+					</li>
+					<li>
+						<a href="#/norway/">Norway</a>
+					</li>
+					<li>
+						<a href="#/united-kingdom/">United Kingdom</a>
+					</li>
+					<li>
+						<a href="#/united-states/">United States</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div data-role="view" id="favoritos" class="contenido" data-init="mobileListViewDataBindInitFlat" data-title="FAVORITS" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-click="btnEliminar" data-align="right">ELIMINAR</a>
+					</span>
+				</div>
+			</header>
+			<ul data-role="listview" data-style="inset">
+				<li>
+					<label>
+						<input type="checkbox" checked="checked" />
+						Lettuce
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="checkbox" />
+						<span>
+							<a href="#1-5-3" style="color:#2B83E2;">1.5.3. Estudi genètic</a>
+						</span>
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="checkbox" />
+						Peas
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="checkbox" />
+						Bread
+					</label>
+				</li>
+				<li>
+					<label>
+						<input type="checkbox" />
+						Unicorns
+					</label>
+				</li>
+			</ul>
+		</div>
+
+		<div data-role="modalview" id="modalview-anexos" style="width: 95%; height: auto;">
+			<div data-role="header">
+				<div data-role="navbar">
+					<span>Annexos</span>
+					<a data-click="closeModalViewAnexos" data-role="button" data-align="right">Tancar</a>
+				</div>
+			</div>
+			<div ontouchstart="" data-role="touch" id="wrap">
+				<div id="headeranexos">
+
+				</div>
+				<ul id="list" data-role="listview" data-style="inset">
+					<li>
+						<a href="#taula1">Taule I</a>
+					</li>
+					<li>
+						<a href="#/austria/">Austria</a>
+					</li>
+					<li>
+						<a href="#/belgium/">Belgium</a>
+					</li>
+					<li>
+						<a href="#/brazil/">Brazil</a>
+					</li>
+					<li>
+						<a href="#/canada/">Canada</a>
+					</li>
+					<li>
+						<a href="#/denmark/">Denmark</a>
+					</li>
+					<li>
+						<a href="#/finland/">Finland</a>
+					</li>
+					<li>
+						<a href="#/france/">France</a>
+					</li>
+					<li>
+						<a href="#/germany/">Germany</a>
+					</li>
+					<li>
+						<a href="#/greece/">Greece</a>
+					</li>
+					<li>
+						<a href="#/ireland/">Ireland</a>
+					</li>
+					<li>
+						<a href="#/israel/">Israel</a>
+					</li>
+					<li>
+						<a href="#/italy/">Italy</a>
+					</li>
+					<li>
+						<a href="#/japan/">Japan</a>
+					</li>
+					<li>
+						<a href="#/luxembourg/">Luxembourg</a>
+					</li>
+					<li>
+						<a href="#/mexico/">Mexico</a>
+					</li>
+					<li>
+						<a href="#/netherlands/">Netherlands</a>
+					</li>
+					<li>
+						<a href="#/norway/">Norway</a>
+					</li>
+					<li>
+						<a href="#/united-kingdom/">United Kingdom</a>
+					</li>
+					<li>
+						<a href="#/united-states/">United States</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div data-role="modalview" id="modalview-search" style="width: 95%; height: 80px;">
+			<div data-role="header">
+				<div data-role="navbar">
+					<span>Buscar</span>
+					<a data-click="closeModalViewSearch" data-role="button" data-align="right">Tancar</a>
+				</div>
+			</div>
+
+			<input id="cajaTexto" type="search" value="search" />
+			<a data-click="resaltarTexto" id="modalview-login-button" data-role="button">Cercar</a>
+		</div>
+
+		<div data-role="layout" data-id="layout">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">ÍNDEX</span>
+					<a data-role="button" href="#creditos" data-align="right">INFO</a>
+
+				</div>
+			</header>
+
+			<footer data-role="footer">
+				<div data-role="tabstrip">
+					<a data-icon="bookmarks" href="#indice">Puntos de libro</a>
+					<a data-icon="favorites"href="#scrollview-home">Favorits</a>
+					<a data-icon="camera" href="#anexos">Annexos</a>
+				</div>
+			</footer>
+		</div>
+
+		<!--  ----------------ANEXOS------------ -->
+		<div data-role="view" id="taula1" data-title="Taula I" data-role="touch" data-zoom="true">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title"></span>
+					<a data-role="backbutton" data-align="left">Enrere</a>
+				</div>
+			</header>
+
+			<div data-role="content">
+				<img src="styles/images/tables/01.png" style="display: block" />
+			</div>
+		</div>
+
+		
+		<!--   --------------------------  LIBRO ---------------  -->
+        
+		<div data-role="view" id="1-1" class="contenido" data-title="Ictus isquèmic" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" href="#indice" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexos">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.1. Introducció. Dades epidemiològiques</h4>
+						<div id="tools">
+							<a data-role="button" data-icon="favorites" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+
+			<div class="lectura" id="l11" data-role="touch">
+				<p>
+					<span>Les malalties vasculars cerebrals (MVC)
+						conegudes també com a <i>feridures o ictus</i> representen la tercera causa de
+						mort en el món occidental, ocasionen un 9.2% de la mortalitat global i són la
+						primera causa de mort en dones de més de 65 anys i en homes de més de 75 anys.
+						A Catalunya representen també la primera causa de discapacitat física en les
+						persones adultes. Més de 300.000 persones tenen seqüeles neurològiques que
+						impliquen assistència sanitària primària i especialitzada. Cal destacar, a més
+						a més, que els canvis demogràfics derivaran en un augment tant de la seva
+						incidència com de la seva prevalença, tenint en compte, també, que al llarg
+						dels anys s’observa una reducció de la mortalitat tant en homes com en dones.
+						Representen també la segona causa més freqüent de demència, la causa més
+						freqüent d’epilèpsia en l’ancià i una causa freqüent de depressió. Tot i que a
+						Catalunya no hi ha registres específics sobre la MVC, la informació
+						epidemiològica disponible permet una aproximació a la seva magnitud i evolució
+						(Document marc del Pla d’Atenció a la Malaltia Vascular Cerebral, 2003.
+						Enquesta de Salut de Catalunya (ESCA), Registre del Conjunt Mínim Bàsic de
+						Dades d’Alta Hospitalària).</span>
+				</p>
+
+				<p>
+					<span>Dades epidemiològiques estimades per a catalunyaIncidència: </span>
+				</p>
+
+				<p>
+					<span>2 - 2’5 per cada 1.000 individus.Prevalença: 5 / 1.000. Catalunya: 10.000 nous casos a
+						l’any.Prevalença Total: 500-600 per cada 10.000 individus. (TAULA)</span>
+				</p>
+			</div>
+			<footer>
+				<div data-role="navbar">
+					<span> 1/88 </span>
+				</div>
+			</footer>
+		</div>
+
+		<div data-role="view" id="1-2" class="contenido" data-title="Ictus isquèmic" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.2. Definicions</h4>
+						<div id="tools">
+							<a data-role="button" data-icon="favorites" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+				</div>
+			</header>
+			<div class="lectura"  id="l12" data-role="touch">
+				<p>
+					<b><span>Ictus:</span></b><span> L’Organització Mundial de la Salut (OMS) defineix <i>l’ictus o feridura</i> com
+						una síndrome clínica, presumiblement d’origen vascular, que es caracteritza pel
+						desenvolupament ràpid de signes d’afectació neurològica focal (algunes vegades
+						global) i que duren més de 24 hores o porten a la mort. </span>
+				</p>
+
+				<p>
+					<span>L’infart cerebral o ictus isquèmic està
+						ocasionat per l’alteració qualitativa o quantitativa de l’aportació
+						circulatòria a un territori encefàlic, el qual produeix un dèficit neurològic
+						durant més de 24 hores o bé existeix evidència per neuroimatge de l’aparició
+						d’una lesió isquèmica aguda i, conseqüentment, implica la presència d’una
+						necrosi tissular.</span>
+				</p>
+			</div>
+		</div>
+
+		<div data-role="view" id="1-2-1" class="contenido" data-title="Deﬁnitions" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.2.1. Classificacions de l’ictus isquèmic</h4>
+						<div id="tools">
+							<a data-role="button" data-icon="favorites" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<b><span style='color:gray; font-size: 120%;'>Segons l’etiologia</span></b><span> (es desenvolupa més endavant)</span>
+				</p>
+
+				<p>
+					<span>—Infart aterotrombòtic. Aterosclerosi de
+						grans vasos. </span>
+				</p>
+
+				<p>
+					<span>—Infart cardioembòlic. </span>
+				</p>
+
+				<p>
+					<span>—Malaltia oclusiva de petit vas arterial.
+						Infart llacunar. </span>
+				</p>
+
+				<p>
+					<span>—Infart cerebral de causa infreqüent. </span>
+				</p>
+
+				<p>
+					<span >—Infart cerebral d’origen indeterminat.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size: 120%;'>Segons les
+						característiques de la neuroimatge </span></b>
+				</p>
+
+				<p>
+					<span>—<i>Infart cerebral</i> (isquèmic,
+						pàl·lid o blanc): ge-neralment s’aprecia una imatge hipodensa en la tomografia
+						computeritzada (TC).  </span>
+				</p>
+
+				<p>
+					<span>—<i>Infart cerebral hemorràgic:</i> en
+						l’àrea de l’infart s’observa presència de contingut hemàtic. Es produeix per
+						sang extravassada com a con-seqüència de la lisi de l’èmbol, per l’aportació
+						sanguínia de les anastomosis veïnes o en els infarts d’origen venós.  </span>
+				</p>
+
+				<p>
+					<span>—<i>Infart cerebral silent:</i> es
+						manifesta en els pacients asimptomàtics i sense història coneguda d’ictus que
+						tenen lesions isquèmiques en la neuroimatge. Així mateix, un 25% de les
+						persones amb ictus isquèmic simptomàtic presenten isquèmia cerebral silent en
+						la TC, i es dobla aquest porcentatge amb la ressonància magnètica (RM).  </span>
+				</p>
+
+				<p>
+					<span>—<i>Leucoaraiosi: </i>significa
+						rarefacció de la substància blanca cerebral. S’aprecia una hipodensitat en la
+						TC cranial i una hiperintensitat en les seqüències potenciades en T2 de la RM
+						cranial amb lesions periventriculars i lesions subcorticals (incloent les
+						pròpiament subcorticals i les de substància blanca profunda no
+						periventricular). </span>
+				</p>
+
+				<p>
+					<span>—<i>Penombra isquèmica:</i> el patró de
+						neuroimatge que objetiva la presència d’una lesió isquèmi-ca en la RM per
+						difusió rodejada d’una àrea major d’hipoperfusió (almenys &gt;20%) es coneix
+						com a <i>mismatch </i>perfusiódifusió i indica isquèmia, però també teixit
+						cerebral potencialment recuperable. </span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size: 120%;'>Segons la
+						topografia vascular </span></b>
+				</p>
+
+				<p>
+					<span>—Infart de <i>territori carotidi</i> </span>
+				</p>
+
+				<p>
+					<span>—Infart de <i>territori vertebrobasilar</i></span>
+				</p>
+
+				<p>
+					<span>—Infart de <i>territori frontera:</i> la
+						lesió isquèmica se situa en zones frontera entre dues artèries principals o
+						entre el territori superficial i profund d’una mateixa artèria. Solen
+						produir-se per mecanismes hemodinàmics.  </span>
+				</p>
+
+				<p>
+					<span>—Infart per <i>trombosi venosa cerebral:</i>
+						l’infart està ocasionat i se situa en el territori venós cerebral.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size: 130%;'>Segons la
+						topografia parenquimatosa.</span></b><span> Segons la classificació
+							de la Oxfordshire Commu-nity Stroke.</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size: 120%;'>&nbsp;</span></b>
+				</p>
+
+				<p>
+					<b><span>Infart total de la circulació anterior
+						o TACI (<i>total anterior circulation infarction</i>).</span></b><span> Quan el dèficit neurològic compleix els tres criteris se-güents: </span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>—Disfunció cerebral superior o cortical
+						(afàsia, discalcúlia o alteracions visuoespaials). </span>
+				</p>
+
+				<p>
+					<span>—Dèficit motor i/o sensitiu en almenys
+						dues de las tres àrees següents: cara, extremitats superiors i inferiors. </span>
+				</p>
+
+				<p>
+					<span>—Hemianòpsia homònima.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:black'>Infart parcial de
+						la circulació anterior o PACI (<i>partial anterior circulation infarction</i>).</span></b><span> Quan es compleix algun dels criteris següents: </span>
+				</p>
+
+				<p>
+					<span>—Disfunció cerebral superior o cortical
+						(afàsia, discalcúlia o alteracions visuoespaials). </span>
+				</p>
+
+				<p>
+					<span>—Dos dels tres criteris de TACI. </span>
+				</p>
+
+				<p>
+					<span>—Dèficit motor i/o sensitiu més
+						restringit que el classificat com LACI (dèficit limitat a una sola extremitat).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span>Infart lacunar o LACI (<i>lacunar
+						infarction</i>). </span></b><span>Quan no existeix disfunció
+							cerebral superior ni he-mianòpsia i es compleix un dels següents criteris:<b> </b></span>
+				</p>
+
+				<p>
+					<b><span>&nbsp;</span></b>
+				</p>
+
+				<p>
+					<span>—<i>Síndrome motora pura</i> que afecta
+						almenys dues de les tres parts del cos (cara, extremi-tats superior, inferior). </span>
+				</p>
+
+				<p>
+					<span>—Síndrome sensitiva pura que afecta
+						almenys dues de les tres parts del cos. </span>
+				</p>
+
+				<p>
+					<span>—<i>Síndrome sensitivomotora</i> que
+						afecta almenys dues de les tres parts del cos. </span>
+				</p>
+
+				<p>
+					<span>—<i>Hemiparèsia-atàxia</i> ipsilateral. </span>
+				</p>
+
+				<p>
+					<span>—<i>Disàrtria-mà feixuga</i>. </span>
+				</p>
+
+				<p>
+					<span>—<i>Moviments anormals focals i aguts.</i></span>
+				</p>
+
+				<p>
+					<i><span>&nbsp;</span></i>
+				</p>
+
+				<p>
+					<b><span>Infart en la circulació posterior o
+						POCI (<i>posterior circulation infarction</i>).</span></b><span> Quan es compleix algun dels criteris següents: </span>
+				</p>
+
+				<p>
+					<span>—Afectació ipsilateral de parells
+						cranials amb dèficit motor i/o sensitiu contralateral. </span>
+				</p>
+
+				<p>
+					<span>—Dèficit motor i/o sensitiu bilateral. </span>
+				</p>
+
+				<p>
+					<span>—Alteracions oculomotores. </span>
+				</p>
+
+				<p>
+					<span>—Disfunció cerbel·losa sense dèficit de
+						vies llargues ipsilaterals (hemiparèsia-atàxia). </span>
+				</p>
+
+				<p>
+					<span>—Hemianòpsia homònima aïllada.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size: 120%;'>Segons l’evolució
+						de les manifestacions clíniques </span></b>
+				</p>
+
+				<p>
+					<span>—Infart cerebral <i>estable</i>. </span>
+				</p>
+
+				<p>
+					<span>—Infart cerebral <i>progressiu</i>: per
+						empitjorament o per addició de nous símptomes o signes. </span>
+				</p>
+
+				<p>
+					<span>—<i>Dèficit neurològic isquèmic
+						reversible:</i> es pro-dueix una recuperació completa de la funció neurològica en
+						el curs de les 3 setmanes següents a l’inici del quadre.</span>
+				</p>
+			</div>
+		</div>
+
+		<div data-role="view" id="1-3-1" class="contenido" data-title="Etiologia" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.3.1.	Patofisiologia</h4>
+						<div id="tools">
+							<a data-role="button" data-icon="favorites" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<span>El mecanisme fisiopatològic de l’infart
+						cerebral pot ser , fonamentalment, trombòtic, embòlic i hemodinàmic. El primer
+						d’aquests mecanismes obeeix a la superposició d’un <i>trombe</i> sobre una
+						placa d’ateroma o a una anomalia de la coagulació. El <i>mecanisme</i> <i>embòlic</i>
+						es deu a una oclusió arterial causada per un fragment embòlic que s’ha desprès
+						d’un territori arterial proximal o del cor. Més rarament l’embolisme és
+						paradoxal i prové d’un llit venós a través d’una comunicació anòmala. El <i>mecanisme
+							hemodinàmic</i> s’associa a una estenosi severa o a una oclusió arterial d’un
+						pacient amb circulació colateral inadequada. Altres mecanismes menys freqüents
+						són la hiperviscositat i el vasoespasme.</span>
+				</p>
+			</div>
+		</div>
+
+		<div data-role="view" id="1-3-2" class="contenido" data-title="Etiologia" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.3.2. Factors de risc</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<span>L’etiologia de l’ictus, així com l’infart
+						de miocardi i la malaltia arterial perifèrica són multifactorials. Les
+						actuacions sobre els factors de risc, principalment en prevenció secundària,
+						disminueixen no només el risc de patir un ictus, sinó la resta d’episodis vasculars.
+						El factor de risc més important de l’ictus és la hipertensió arterial (HTA)
+						(risc relatiu [RR]&gt;4), i és aquest l’únic factor associat d’una manera consistent
+						amb tots els tipus d’ictus. La resta de fac-tors, com també en la malaltia
+						coronària, presen-ten associacions més moderades (RR=2 a 4).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>Factors de risc no modificables: </span>
+				</p>
+
+				<p>
+					<span>—Edat </span>
+				</p>
+
+				<p>
+					<span>—Sexe </span>
+				</p>
+
+				<p>
+					<span>—Factors genètics </span>
+				</p>
+
+				<p>
+					<span>—Ètnia i raça</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>Factors de risc modificables: </span>
+				</p>
+
+				<p>
+					<span>—Hipertensió arterial </span>
+				</p>
+
+				<p>
+					<span>—Cardiopaties: fibril.lació auricular,
+						infart de miocardi recent, miocardiopatia congestiva, valvulopatia, pròtesi
+						valvular, endocarditis. </span>
+				</p>
+
+				<p>
+					<span>—Diabetis mellitus. </span>
+				</p>
+
+				<p>
+					<span>—Hipercolesterolèmia,
+						hipertrigliceridèmia. </span>
+				</p>
+
+				<p>
+					<span>—Estenosi carotídia asimptomàtica. </span>
+				</p>
+
+				<p>
+					<span>—Tabaquisme. </span>
+				</p>
+
+				<p>
+					<span>—Alcohol (consum elevat). </span>
+				</p>
+
+				<p>
+					<span>—Hiperfibrinogenèmia. </span>
+				</p>
+
+				<p>
+					<span>—Hiperhomocisteinèmia. </span>
+				</p>
+
+				<p>
+					<span>—Antecedents de malaltia vascular prèvia
+						(ictus, malaltia coronària, vasculopatia perifèrica).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>Possibles factors de risc modificables: </span>
+				</p>
+
+				<p>
+					<span>—Inactivitat física. </span>
+				</p>
+
+				<p>
+					<span>—Estrès.</span>
+				</p>
+
+				<p>
+					<span>—Obesitat.</span>
+				</p>
+
+				<p >
+					<span>—Dieta rica en greixos. </span>
+				</p>
+
+				<p>
+					<span>—Cardiopaties: prolapse vàlvula mitral,
+						foramen oval permeable, hipocinèsia ventricu-lar, aneurisme del septe atrial,
+						calcificació de l’anell valvular mitral, filaments valvulars. </span>
+				</p>
+
+				<p>
+					<span>—Anticonceptius orals. </span>
+				</p>
+
+				<p>
+					<span>—Consum de drogues. </span>
+				</p>
+
+				<p>
+					<span>—Migranya. </span>
+				</p>
+
+				<p>
+					<span>—Policitèmia.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>Recentment s’han descrit numerosos
+						marcadors de risc vascular (marcadors bioquímics, índex tur-mellbraç, gruix de
+						l’íntimamitja, etc.) tot i que la seva utilitat en el moment actual encara és
+						incerta.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>A causa de l’etiologia multifactorial de
+						la malaltia vascular, quan s’estima l’efecte d’un determi-nat factor de risc en
+						un individu, s’han de tenir en compte la resta de factors. La mesura del risc
+						vascular d’un individu es calcula a partir de les <i>equacions de risc vascular</i>
+						que estableixen l’excés de risc en relació a la mitjana de la població. Les
+						taules més àmpliament utilitzades són: <i>la taula de Framingham, la taula de
+							REGICOR</i> (Registre Gironí del Cor) <i>i la taula de SCORE</i> (Systematic
+						Coronary Risk Evaluation). Totes aquestes pro-porcionen però, estimacions poc
+						precises.</span>
+				</p>
+			</div>
+		</div>
+
+		<div data-role="view" id="1-3-3" class="contenido" data-title="Etiologia" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.3.3.	Classificació etiològica de l’ictus</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<span>Classificació adaptada del Laussane
+						Stroke Registry (Bogousslavsky, 1997) i de la guia de diag-nòstic i tractament
+						de les malalties vasculars ce-rebrals de la SCN (any 1999).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Infart
+						aterotrombòtic. Aterosclerosi de grans vasos</span></b>
+				</p>
+
+				<p>
+					<span>Infart generalment de mida mitjana o
+						gran, de topografia cortical o subcortical, carotídia o ver-tebrobasilar, en un
+						pacient amb un o diversos factors de risc vascular cerebral. És imprescindible
+						la presència d’arteriosclerosi clínicament generalitzada (coexistència de
+						cardiopatia isquè-mica i/o malaltia vascular perifèrica) o la demos-tració
+						d’oclusió o estenosis en las artèries cerebrals (&gt;50% o &lt;50% amb més de
+						dos factors de risc), correlacionable amb la clínica del pacient.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Infart
+						cardioembòlic</span></b>
+				</p>
+
+				<p>
+					<span>Infart generalment de mida mitjana o
+						gran, de topografia habitualment cortical, en el qual s’evi-dencia, en absència
+						d’altres etiologies, alguna de les següents cardiopaties embolígenes: un trombe
+						o tumor intracardíac, estenosi mitral reumàtica, pròtesi aòrtica o mitral,
+						endocarditis, fibril.lació auricular, malaltia del node sinusal, aneu-risme
+						ventricular esquerre o acinèsia després d’un infart agut de miocardi (menys de
+						tres me-sos) o hipocinèsia cardíaca global o discinèsia.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p >
+					<b><span style='color:gray; font-size:120%;'>Malaltia oclusiva
+						de petit vas arterial. Infart lacunar</span></b>
+				</p>
+
+				<p>
+					<span>Infart de mida petita (&lt;2 cm de
+						diàmetre) en el territori d’una artèria perforant cerebral, que habitualment
+						ocasiona clínicament una síndrome lacunar (hemiparèsia motora pura, síndrome
+						sensitiva pura, síndrome sensitivomotora, hemiparèsia-atàxia i disàrtriamà
+						feixuga) en un pacient amb antecedents personals d’hipertensió arterial o
+						altres factors de risc vascular cerebral, en absència d’altres etiologies. Tot
+						i que la microateromatosi i la lipohialinosi de les artèries perforants
+						cerebrals constitueixen el substrat patològic més freqüent dels infarts
+						lacunars, altres possibles causes, tot i que rares, inclouen l’embolisme,
+						l’arteritis infecciosa o l’estat protrombòtic. L’absència d’alteracions en la
+						TC cranial no n’exclou el diagnòstic.</span>
+				</p>
+
+				<p >
+					<b><span style='color:gray; font-size:120%;'>Infart cerebral de
+						causa infreqüent</span></b>
+				</p>
+
+				<p>
+					<span>Infart de mida petita, mitjana o gran, de
+						localització cortical o subcortical, en el territori carotidi o vertebrobasilar
+						en un pacient a qui s’ha descartat l’origen aterotrombòtic, cardioembòlic o
+						lacunar. Se sol produir per malalties que ocasionen una arteriopatia diferent
+						de l’arterioscleròtica (dissecció arterial, displàsia fibromuscular, aneurisme
+						sacular, malformació arteriovenosa, trombosi venosa cerebral, Moya-Moya,
+						síndrome de Sneddon) o per trastorns sistèmics (connectivopatia, neoplàsia,
+						infecció, metabolopatia, trastorn de la coagulació). Poden ser el símptoma
+						inicial de la malaltia o aparèixer durant el seu curs evolutiu.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Infart cerebral
+						d’origen indeterminat</span></b>
+				</p>
+
+				<p>
+					<span>Infart en el qual després d’un estudi
+						exhaustiu, s’ha descartat l’origen aterotrombòtic, embòlic, lacunar o per causa
+						rara; o bé coexistiexen més d’una possible etiologia o bé l’estudi és
+						incomplet.</span>
+				</p>
+			</div>
+		</div>
+
+		<div data-role="view" id="1-4" class="contenido" data-title="Ictus isquèmic" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.4. Diagnòstic</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<span>El diagnòstic de l’infart cerebral ha de
+						ser precís i ràpid. És necessari reconèixer immediatament la gravetat de la
+						situació clínica i traslladar el pacient urgentment a l’hospital. Si els
+						símptomes han començat fa menys de 6 hores, la urgència és similar a la d’un
+						infart de miocardi o d’un politraumatitzat. Si la clínica supera les 6 hores
+						d’evolució, el diagnòstic i l’inici del tractament es farà tan aviat com sigui
+						possible.</span>
+				</p>
+			</div>
+		</div>
+
+		<div data-role="view" id="1-4-1" class="contenido" data-title="Diagnòstic" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.4.1	Diagnòstic clínic</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<span>Cal sospitar l’existència d’un infart
+						cerebral sempre que el pacient presenti de manera brusca signes de focalitat
+						neurològica. La cefalea intensa i els vòmits són inusuals a l’inici de l’infart
+						cerebral. La síndrome clínica pot orientar la topografia anatòmica i vascular
+						de la lesió i la fisiopatologia dels seus símptomes.</span>
+				</p>
+			</div>
+		</div>
+
+		<div data-role="view" id="1-4-2" class="contenido" data-title="Diagnòstic" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.4.2	Criteris diagnòstics </h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<span>El procés diagnòstic en pacients amb
+						sospita d’infart cerebral ha d’incloure els següents apartats:</span>
+				</p>
+
+				<p>
+					<span> —Història clínica. </span>
+				</p>
+
+				<p >
+					<span>—Exploració neurològica i general. </span>
+				</p>
+
+				<p>
+					<span>—Exploracions complementàries.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>En la història clínica s’ha de parar
+						especial atenció als antecedents vasculars, tant familiars com personals i a la
+						detecció de factors de risc vascular. S’ha de realitzar una exploració
+						neurològica completa de totes les funcions encefàliques i una exploració física
+						general que inclogui examen oftalmoscòpic, inspecció, palpació i auscultació
+						d’artèries accessibles i auscultació cardíaca. Les exploracions complementàries
+						ens permetran confirmar el diagnòstic.</span>
+				</p>
+			</div>
+		</div>
+
+		<div data-role="view" id="1-4-3" class="contenido" data-title="Diagnòstic" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.4.3 Diagnòstic diferencial</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<span>La semiologia clínica detallada i les
+						exploracions complementàries ens permeten diferenciar l’infart cerebral
+						d’altres entitats cerebrals vasculars i no vasculars o d’altres processos
+						sistèmics.</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Lesions estructurals</span></b>
+				</p>
+
+				<p>
+					<span>—Hemorràgia subdural, intracerebral o subaracnoïdal. </span>
+				</p>
+
+				<p>
+					<span>—Malformacions arteriovenoses,aneurismes. </span>
+				</p>
+
+				<p>
+					<span>—Tumors cerebrals. </span>
+				</p>
+
+				<p>
+					<span>—Trombosi venosa cerebral. </span>
+				</p>
+
+				<p>
+					<span>—Infeccions del sistema nerviós central. Abcés cerebral.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Altres entitas no estructurals que poden simular un infart cerebral </span></b>
+				</p>
+
+				<p>
+					<span>—Hipoglucèmia o hiperglucèmia. </span>
+				</p>
+
+				<p>
+					<span>—Hiponatrèmia. </span>
+				</p>
+
+				<p >
+					<span>—Hipercalcèmia. </span>
+				</p>
+
+				<p >
+					<span>—Insuficiència hepàtica o renal.</span>
+				</p>
+
+				<p>
+					<span>—Crisis epilèptiques parcials. Focalitat
+						postcrítica. </span>
+				</p>
+
+				<p>
+					<span>—Vertigen perifèric. </span>
+				</p>
+
+				<p>
+					<span>—Aura migranyosa. </span>
+				</p>
+
+				<p>
+					<span>—Brots d’esclerosi múltiple. </span>
+				</p>
+
+				<p>
+					<span>—Cataplèxia. </span>
+				</p>
+
+				<p>
+					<span>—Paràlisi periòdica. </span>
+				</p>
+
+				<p>
+					<span>—Infeccions. </span>
+				</p>
+
+				<p>
+					<span>—Intoxicacions farmacològiques. </span>
+				</p>
+
+				<p>
+					<span>—Encefalopatia hipertensiva. </span>
+				</p>
+
+				<p>
+					<span>—Trastorns psiquiàtrics.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+			</div>
+		</div>
+
+		<div data-role="view" id="1-5-1" class="contenido" data-title="Exploracions complementàries" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.5.1	Exàmens de laboratori</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Analítica urgent</span></b>
+				</p>
+
+				<p>
+					<span>En la fase aguda de l’ictus s’han de
+						realitzar, tan aviat com sigui possible, una sèrie de determinacions
+						analítiques per identificar processos que poden simular o causar un ictus, així
+						com factors que poden influir en l’elecció del tractament. Les determinacions
+						inclouen: glucèmia, electròlits, recompte cel·lular i fórmula, hemograma, plaquetes,
+						temps de protrombina, temps de tromboplastina, estudis de funció renal i
+						hepàtica, així com, segons la història clínica, investigació de tòxics,
+						alcoholèmia i test d’embaràs. La gasometria arterial es realitzarà només si se
+						sospita hipòxia.</span>
+				</p>
+
+				<p>
+					<span >&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Proves hematològiques</span></b>
+				</p>
+
+				<p>
+					<span>En tots els pacients amb ictus. </span><span>Ha d’incloure: hemograma complet, VSG, plaquetes, temps de
+						protrombina, temps de tromboplastina, fibrinogen i homocisteïna plasmàtica.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>En determinats casos que es detallen a
+						continuació està indicat un estudi de trombofília.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>—ictus d’etiologia indeterminada en
+						menors de 50 anys. </span>
+				</p>
+
+				<p>
+					<span>—infarts múltiples d’etiologia
+						indeterminada. </span>
+				</p>
+
+				<p>
+					<span>—trombosi venosa prèvia, especialment de
+						localització inusual. </span>
+				</p>
+
+				<p>
+					<span>—història familiar de trombosis. </span>
+				</p>
+
+				<p>
+					<span>—alteracions de la coagulació en
+						l’analítica ordinària. </span>
+				</p>
+
+				<p>
+					<span>—sospita de síndrome antifosfolípid. </span>
+				</p>
+
+				<p>
+					<span>—necrosi cutània induïda per warfarina
+						(dèficit de proteïna C o S). </span>
+				</p>
+
+				<p>
+					<span>—resistència a l’heparina (dèficit
+						d’AT-III).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>Es realitzaran les següents
+						determinacions. En un primer estudi: antitrombina III, proteïna C, proteïna S
+						lliure i total, APC-r (factor V Leyden), mutació del gen de la protrombina,
+						anticossos (Acs) anticardiolipina, anticoagulant lúpic (APTT allargat), glucoproteina
+						b2. Si els paràmetres anteriors són normals, es completarà l’estudi amb
+						l’anàlisi de: cofactor II heparina, plasminogen, sistema fibrinolític (t-PA,
+						PAI). Aquestes determinacions s’han de realitzar quan el pacient ja no es trobi
+						en un estat trombòtic actiu i els fac-tors de coagulació i fibrinolítics
+						s’hagin estabilitzat, normalment a partir de les 6-8 setmanes de l’episodi
+						trombòtic. El pacient no pot estar prenent anticoagulants orals almenys 2
+						setmanes abans de l’estudi. Si l’estudi és patològic o persisteix la sospita,
+						cal repetir i confirmar-les troballes del primer estudi. </span>
+				</p>
+
+				<p>
+					<b><span>&nbsp;</span></b>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Proves bioquímiques</span></b>
+				</p>
+
+				<p>
+					<span>S’han de realitzar de forma sistemàtica a
+						tots els pacients amb ictus. Han d’incloure: funció renal, calcèmia, funció
+						hepàtica, glucèmia i hemoglobina glicosilada, perfil lipídic, àcid úric,
+						proteïna C reativa i proteïnograma.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>En els casos indicats també es
+						determinaran els nivells de vitamina B12, àcid fòlic i homocisteinèmia,
+						creatinincinasa o fosforèmia. Segons l’edat i sospita diagnòstica poden estar
+						indicats estudis endocrinològics, immunològics i serològics (lues, VIH).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+			</div>
+		</div>
+
+		<div data-role="view" id="1-5-2" class="contenido" data-title="Exploracions complementàries" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.5.2	Estudis histològics</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<span>Estan indicats en cas de sospita
+						d’arteritis/vasculitis, malaltia metabòlica o hereditària i algunes malalties
+						hematològiques. </span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>—Biòpsia de pell: síndrome de Sneddon
+						(biòpsia de vasos digitals), malaltia de Fa-bry, CADASIL. En el cas de la
+						malaltia de Fabry se sol preferir estudi en plasma o leu-còcits de l’activitat
+						de l’alfa-galactosidasa A en el cas dels homes i estudi genètic en el cas de
+						les dones (són portadores, habitualment amb activitat normal de l’enzim). En la
+						malaltia de CADASIL és d’elecció l’estudi genètic. </span>
+				</p>
+
+				<p>
+					<span>—Biòpsia de múscul i nervi: vasculitis
+						sistèmica, citopatia mitocondrial. </span>
+				</p>
+
+				<p >
+					<span >—Biòpsia leptomeníngia i parenquimatosa:
+						vasculitis primària del SNC o malalties neo-plàsiques d’estirp limfocítica, com
+						l’angioendoteliosi maligna. </span>
+				</p>
+
+				<p >
+					<span >—Biòpsia de l’artèria temporal: sospita
+						d’arteritis de cèl·lules gegants. </span>
+				</p>
+
+				<p>
+					<span >—Biòpsia de moll d’os: malalties hematològiques.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+			</div>
+		</div>
+
+		<div data-role="view" id="1-5-3" class="contenido" data-title="Exploracions complementàries" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.5.3	Estudi genètic</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<span>Està indicat en casos d’història familiar
+						molt suggerent, com per exemple: cavernomatosi familiar, CADASIL, malaltia de
+						Fabry, polimorfismes del factor de Von Willebrand,etc. </span>
+				</p>
+
+				<p >
+					<span>&nbsp;</span>
+				</p>
+
+				<p >
+					<span >Els estudis genètics que es realitzen amb
+						més freqüència actualment són: </span>
+				</p>
+
+				<p >
+					<span >&nbsp;</span>
+				</p>
+
+				<p >
+					<span>—Mutació notch cromosoma 19p13, sospita de CADASIL. </span>
+				</p>
+
+				<p >
+					<span>—Anàlisis de polimorfismes del Fc V. </span>
+				</p>
+
+				<p>
+					<span>—Anàlisis de polimorfismes de la protrombina. </span>
+				</p>
+
+				<p >
+					<span>—Mutació cromosoma Xq22.1, sospita de malaltia de Fabry.</span>
+				</p>
+
+				<p >
+					<span>&nbsp;</span>
+				</p>
+			</div>
+		</div>
+
+		<div data-role="view" id="1-5-4" class="contenido" data-title="Exploracions complementàries" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.5.4	Anàlisis del líquid cefalorraquidi </h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<span>L’estudi del líquid cefaloraquidi (LCR)
+						obtingut mitjançant punció lumbar té en l’ictus dues indicacions fonamentals:
+						la sospita d’arteritis o vasculitis, infecciosa o no, i la sospita d’una hemorràgia
+						subaracnoïdal en pacients amb TC cranial normal. La presència d’hipertensió
+						intracranial o alteracions de l’hemostàsia contraindica la punció lumbar. En
+						pacients que estiguin rebent tractament anticoagulant s’ha d’haver normalitzat
+						la coagulació o esperar almenys 12 hores en el cas de les heparines de baix pes
+						molecular (HBPM) abans de realitzar la punció. El tractament es pot reiniciar 1
+						hora després de la punció. Les determinacions inclouen bioquímica (proteïnes,
+						glucosa, pigment xantocròmic), citologia, serologies i cultius.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+			</div>
+		</div>
+
+		<div data-role="view" id="1-5-5" class="contenido" data-title="Exploracions complementàries" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.5.5. Radiografia de tòrax</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<span>S’ha de realitzar a tots els pacients,
+						tot i que no cal que sigui de forma urgent. És útil per a la valoració de la
+						silueta cardíaca i de l’aorta toràcica. També ofereix informació sobre
+						possibles complicacions de l’ictus. </span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+			</div>
+		</div>
+
+		<div data-role="view" id="1-5-6" class="contenido" data-title="Estudi d’imatge cranial" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.5.6. Estudi d’imatge cranial</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<span>S’ha de realitzar a tots els pacients amb
+						ictus i de forma urgent. És de vital importància per excloure lesions d’origen
+						no vascular i diferenciar els ictus isquèmics dels hemorràgics. </span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Tomografia computaritzada cranial</span></b>
+				</p>
+
+				<p>
+					<span>Per la seva àmplia disponibilitat, rapidesa
+						d’execució i provada eficàcia, la TC cranial simple segueix essent en la
+						majoria dels hospitals l’examen neuroradiològic de primera elecció en tot
+						pacient que presenta un dèficit neurològic focal d’instauració aguda. Aquesta
+						exploració s’ha de realitzar tan aviat com sigui possible en tots els pacients
+						després del seu ingrés a urgències, i sempre durant les primeres 24 hores. La
+						TC permet diferenciar un ictus isquèmic d’un hemorràgic i descartar la
+						presència de lesions intracranials d’origen no vascular que causin el quadre
+						ictal. A més, la TC cranial permet identificar infarts crònics i avaluar la
+						presència i extensió de leucoaraiosi. </span>
+				</p>
+
+				<p>
+					<span >&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span>Signes precoços d’infart cerebral:</span></b><span> poden identificar-se durant les primeres sis hores en
+						aproxi-madament el 50% dels ictus isquèmics:  </span>
+				</p>
+
+				<p>
+					<span>—Hipodensitat del nucli lenticular,
+						primer el pàl·lid, després el putamen. </span>
+				</p>
+
+				<p>
+					<span>—Desaparició del ribet insular.  </span>
+				</p>
+
+				<p>
+					<span>—Absència dels solcs de la convexitat. </span>
+				</p>
+
+				<p>
+					<span>—Hipodensitat del parènquima cerebral,
+						que afecta tant la substància gris com la blanca.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>D’aquests signes precoços, únicament la <i>hipodensitat
+						extensa del parènquima cerebral</i> (afectació de més del 33% del territori
+						silvià), pot utilitzar-se com a contraindicació al tractament amb fibrinòlisi
+						intravenosa, ja que s’associa a un ele-vat risc de transformació hemorràgica i
+						a una alta mortalitat. El signe de <i>l’artèria cerebral mitja</i> hiperdensa
+						en la TC, que no és estrictament un signe precoç d’infart, representa la
+						presència d’un trombe o èmbol intraarterial. La seva localització més freqüent
+						és el primer segment (M1) de l’artèria cerebral mitja. La seva presència no
+						indica per si mateixa un mal pronòstic i no exclou la possibilitat de resposta
+						favorable al tractament amb trombolítics endovenosos.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Tomografia
+						computeritzada de perfusió i tomografia computeritzada angiogràfica</span></b>
+				</p>
+
+				<p>
+					<span>Actualment, amb la progressiva
+						implantació de TC helicoïdal o multitall, és possible obtenir es-tudis de TC
+						angiogràfica i TC de perfusió que permeten obtenir respectivament informació
+						sobre la presència de lesions estenoticooclusives arterials i sobre l’estat
+						hemodinàmic del parènquima cerebral. La utilització d’aquestes tècniques en els
+						estudis de TC realitzats en la fase molt pre-coç d’un ictus, ajuda a millorar la
+						correcta selecció dels pacients candidats a tractaments de reperfusió i permet
+						ampliar la finestra terapèutica en alguns casos; però incrementa els temps
+						d’exploració i de l’anàlisi de les imatges i requereix l’administració de
+						contrast intravenós. S’aconsella aquest estudi d’inici només en casos
+						seleccionats. </span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Ressonància
+						magnètica cranial</span></b>
+				</p>
+
+				<p>
+					<b><span>Ressonància magnètica en l’ictus
+						isquèmic</span></b>
+				</p>
+
+				<p>
+					<span>La RM convencional no ha demostrat major
+						sensibilitat que la TC en la detecció precoç de la isquèmia cerebral. Tot i
+						això, la RM convencional és més sensible i específica que la TC en la
+						identificació precisa de la presència, topografia i extensió d’alguns infarts i
+						en determinar el seu mecanisme causant, motiu pel qual la seva utilització és
+						recomanable en els ictus isquèmics de tipus lacunar i en els que afectin el
+						territori vertebrobasilar i d’elecció en la sospita de trombosi venosa o
+						dissecció arterial o quan, després d’un estudi inicial de TC, el diagnòstic
+						sigui incert. Es recomana que la RM inclogui seqüències potenciades de difusió
+						i T2-gradient eco.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span>Difusió per ressonància magnètica
+						(dRM) en l’ ictus isquèmic</span></b>
+				</p>
+
+				<p>
+					<span>La major utilitat clínica de la dRM és la
+						seva capacitat per detectar lesions isquèmiques en fase precoç. En estudis
+						clínics, la dRM ha posat de manifest una sensibilitat del 88%-100% i una
+						especificitat del 95%-100% en el diagnòstic de l’ictus isquèmic agut. La
+						restricció de la difusió tissular de les molècules d’aigua que caracteritza les
+						lesions isquèmiques agudes presenta importants variacions temporals, de tal
+						forma que és molt marcada en les primeres hores de la instauració del quadre
+						clínic, per mantenir-se estable durant diversos dies; posteriorment pot mostrar
+						una pseudonormalització als 10-15 dies i, finalment, disminuir de forma
+						progressiva coincidint amb el desenvolupament de l’edema vasogènic i necrosi
+						tissular.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span>Perfusió per ressonància magnètica i
+						estudis combinats de difusió i perfusió per ressonància magnètica en l’ictus
+						isquèmic</span></b>
+				</p>
+
+				<p>
+					<span>La combinació en un mateix pacient
+						d’estudis de dRM i pRM ofereix informació hemodinàmica útil per determinar el
+						tractament més adequat en cada cas. Existeix, en general, una diferència en
+						l’àrea d’isquèmia detectada per pRM i dRM: la primera detecta un àrea més
+						extensa, mentre que la segona infravalora la mida final de l’infart. La diferència
+						o discordància entre aquestes dues àrees és una aproximació a l’extensió de la
+						penombra isquèmica i es correlaciona amb el progressiu augment en el volum de
+						l’infart. L’existència en una lesió d’una àrea d’hipoperfusió més extensa que
+						la de restricció en la difusió apuntaria a una possible reversibilitat
+						d’aquesta i, per tant, indicació per al tractament de reperfusió amb
+						fibrinolítics. </span>
+				</p>
+
+				<p>
+					<span >&nbsp;</span>
+				</p>
+
+				<p>
+					<span>La utilització de la RM, combinant
+						seqüències de dRM, pRM i RM angiogràfica té un gran potencial en la
+						individualització del tractament més adequat en la fase hiperaguda de l’ictus i
+						en l’ampliació de la finestra terapèutica així com la TC de perfusió i angiogràfica.
+						Tot i això, la disponibilitat de la RM és limitada, requereix temps
+						d’exploració més llargs que la TC i hi ha la dificultat o impossibilitat
+						d’efectuar una RM en pacients amb disminució del nivell de conciència, agitats
+						i hemodinàmicament inestables, o que presentin contraindicacions per a la seva
+						obtenció (per exemple: portadors de marcapassos).</span>
+				</p>
+
+				<p >
+					<span>&nbsp;</span>
+				</p>
+			</div>
+		</div>
+
+		<div data-role="view" id="1-5-7" class="contenido" data-title="Estudi d’imatge cranial" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.5.7. Estudis angiogràfics craniocervicals en l’ictus</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<span>En l’actualitat, la tècnica angiogràfica
+						de referència segueix essent l’angiografia per sostracció digital. Però amb la
+						progressiva utilització de tècniques no invasives, com les angiografies per TC
+						i RM, que aconsegueixen acceptables nivells de precisió diagnòstica, s’han reduït
+						significativament els procediments angiogràfics invasius amb finalitats
+						purament diagnòstiques.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Angiografia per
+						tomografia computeritzada</span></b>
+				</p>
+
+				<p>
+					<span>L’angiografia per TC permet l’estudi no
+						invasiu de les artèries i venes intracranials i cervicals. Requereix l’administració
+						intravenosa de contrast iodat. La TC angiogràfica ha demostrat una acceptable
+						sensibilitat en la caracterització d’estenosis dels troncs supraaòrtics, si bé
+						té limitacions en la diferenciació entre estenosis moderades i greus. La
+						sensibilitat i especificitat d’aquesta tècnica en el reconeixement d’oclusions
+						arterials intracranials proximals és del 83%-100% i del 99%-100%, respectivament,i
+						és menor en el reconeixement d’oclusions distals.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Angiografia per
+						ressonància magnètica</span></b>
+				</p>
+
+				<p>
+					<span>L’angiografia per RM permet l’estudi no
+						invasiu de les artèries i venes intracranials i cervicals. En els estudis intracranials
+						habitualment s’utilitzen tècniques denominades en temps de vol, que no
+						requereixen l’administració de contrast intravenós. La RM angiogràfica
+						obtinguda amb aquesta tècnica té el desavantatge de sobrevalorar les estenosis
+						i no valorar correctament zones amb fluxos turbulents o artèries distals, de
+						manera que està pràcticament en desús en l’estudi de la patologia dels troncs
+						supraaòrtics. En aquest cas s’han d’utilitzar tècniques de RM angiogràfica amb
+						contrast intravenós amb gadolini (ARM-Gad). L’angioTC i l’ARM-Gad poden considerar-se
+						una opció, generalment complementària a l’ecografia doppler, en la
+						identificació d’estenosis carotídies candida-tes a tractament recanalitzador, i
+						reduir així el nombre de procediments diagnòstics invasius necessaris. </span>
+				</p>
+
+				<p>
+					<b><span>&nbsp;</span></b>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Angiografia per
+						sostracció digital</span></b>
+				</p>
+
+				<p>
+					<span>L’angiografia per sostracció digital és
+						la tècnica de referència en l’estudi vascular intracranial i cervical. S’obté
+						injectant de forma directa contrast iodat en la llum arterial, per la qual cosa
+						es requereix la cateterització prèvia de l’artèria d’interès. Els avantatges
+						d’aquesta tècnica són la seva elevada resolució espaial i temporal, que permet
+						valorar fins i tot l’existència dels diferents tipus de circulació colateral,
+						l’òptima delineació de la llum arterial i, sobretot, la possibilitat de
+						realitzar procediments terapèutics oclusius o recanalitzadors. Tot i això, és
+						una exploració invasiva amb una morbimortalitat no menyspreable, i que es veu
+						significativament influïda per l’experiència del neuroradiòleg.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Estudi
+						neurovascular per ultrasons</span></b>
+				</p>
+
+				<p >
+					<span>Inclou el Dúplex o ecografiadoppler de
+						troncs supraaòrtics (TSA), o doppler de TSA i dúplex o doppler transcranial.
+						Pel seu costefectivitat i com que no requereix contrasts ni té
+						contraindicacions, és una prova excel.lent per al despistament inicial de les
+						estenosis carotídies i intracranials. També hi ha estudis que assenyalen el <i>potencial
+							trombotrícic dels ultrasons</i> com a tractament en la fase hiperaguda de
+						l’ictus. L’ecodoppler de TSA permet quantificar el grau d’estenosis carotídies,
+						així com caracteritzar les plaques ateromatoses. Permet també la valoració del <i>gruix
+							íntima-mitja</i> descrit com a marcador de risc vascular global. El dúplex i
+						doppler transcranial permeten valorar estenosis intracranials i circuits de
+						suplència. A més tenen indicacions de les quals no diposen les altres tècniques
+						de neuroimatge com són la valoració de la <i>reserva vascular cerebral, la
+							detecció de microembòlies i comunicació dreta-esquerra en el foramen oval permeable
+							i monitoritzar procediments diagnòstics i terapèutics </i>com en el stenting
+						carotidi.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+			</div>
+		</div>
+
+		<div data-role="view" id="1-5-8" class="contenido" data-title="Estudi d’imatge cranial" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.5.8. Avaluació cardíaca</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Electrocardiograma</span></b>
+				</p>
+
+				<p>
+					<span>L’electrocardiograma (ECG) s’ha de
+						realitzar de forma sistemàtica a tots els pacients que pateixin un ictus. És
+						útil per a la detecció i/o avaluació d’arítmies cardíaques, per valorar la
+						coexistència d’una cardiopatia isquèmica, que pot complicar l’evolució en fase
+						aguda de l’ictus fins en un 10% dels pacients, o per avaluar l’aparició de
+						trastorns del ritme cardíac secundaris a la lesió isquèmica, especialment en
+						infarts del còrtex insular. S’ha de realitzar a l’ingrés i repetir-se a les 24
+						hores. En casos seleccionats és aconsellable la monitorització ECG contínua
+						durant 48-72 hores.</span>
+				</p>
+
+				<p>
+					<span >&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Electrocardiograma–Holter-Telemetria</span></b>
+				</p>
+
+				<p>
+					<span>Existeix bastanta controvèrsia sobre la
+						utilitat de l’estudi Holter ambulatori, per la seva baixa rendibilitat. S’aconsella
+						la seva realització davant una sospita alta d’arítmia cardíaca i que l’ECG
+						habitual no hagi permès el diagnòstic. Probablement, en pacients ingressats i
+						monitoritzats en unitats d’ictus no té sentit realitzar-lo. </span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Ecocardiografia</span></b>
+				</p>
+
+				<p>
+					<span >La prevalença d’ictus isquèmic de
+						mecanisme embòlic d’origen cardíac s’estima en un 15%-20%, percentatge que és
+						clarament superior en pacients menors de 45 anys (25%-50%). Les alteracions cardíaques
+						més freqüentment associades amb ictus són: fibril·lació auricular no valvular
+						(45%), infart agut de miocardi (15%), disfunció ventricular esquerra (10%),
+						malaltia valvular reumàtica (10%) i pròtesis valvulars cardíaques (10%). No hi
+						ha recomanacions ben establertes referents a la indicació de l’estudi
+						ecocardiogràfic. </span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span >L’ecocardiografia transtoràcica</span></b><span> <i>(ETT) està indicada</i> en pacients <i>menors de 45 anys</i>, <i>ictus
+						cripto-gènic</i> amb estudi normal de qualsevol edat, <i>fibril.lació</i> <i>auricular</i> <i>no coneguda</i> prèviament o <i>sospita de cardiopatia embolígena</i>. En
+						algunes ocasions (sospita d’endocarditis, sospita de patologia de cros-sa
+						aòrtica, valoració de patologia valvular, shunt dret-esquerre) pot ser
+						necessària la realització d’un <b><i>ecocardiograma transesofàgic.</i></b></span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p >
+					<b><span style='color:gray; font-size:120%;'>Detecció de
+						miocardiopatia silent: estudis de perfusió miocàrdica (Tali 201) i funció
+						ventricular (Gated-Spect)</span></b>
+				</p>
+
+				<p>
+					<span>En pacients seleccionats, amb sospita
+						d’ictus cardioembòlic i isquèmia miocàrdica silent, pot avaluar-se la perfusió
+						miocàrdica realitzant una prova d’esforç amb Tali-201. L’estudi GATED-SPECT
+						permet avaluar simultàniament la perfusió miocàrdica i la funció ventricular,
+						sense necessitat de realitzar una prova d’esforç. Recentment, l’eco-cardiograma
+						amb contrast armònic està permetent estudiar la perfusió miocàrdica de forma incruenta,
+						senzilla, econòmica i fiable. </span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+			</div>
+		</div>
+		<div data-role="view" id="1-5-9" class="contenido" data-title="Estudi d’imatge cranial" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.5.9. Altres</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<span>Tècniques com la RM espectroscòpica, la
+						tomografia per emissió de fotó únic (SPECT) i la tomografia per emissió de
+						positrons (PET), també han demostrat la seva utilitat en l’estudi de la placa
+						d’ateroma i l’ictus isquèmic. Són tècniques que s’utilitzen habitualment amb
+						finalitats investigadores. </span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+			</div>
+		</div>
+		<div data-role="view" id="1-5-10" class="contenido" data-title="Estudi d’imatge cranial" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.5.10. Exploracions complementàries segons diagnòstic etiològic</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<span>Amb l’objectiu d’aconseguir un adequat
+						diagnòs-tic etiològic a tots els pacients amb MVC s’han de realitzar aquests
+						estudis: </span>
+				</p>
+
+				<p>
+					<span>—analítica ordinària (estudis classe I,
+						recomanació nivell A). </span>
+				</p>
+
+				<p>
+					<span>—electrocardiograma (estudis classe I,
+						recomanació nivell A).</span>
+				</p>
+
+				<p>
+					<span>—radiografia de tòrax. </span>
+				</p>
+
+				<p>
+					<span>—neuroimatge: TC cranial (<b>estudis
+						classe I, recomanació nivell A</b>) o alternativament RM cranial (<b>estudis
+							classe II, recomanació nivell A</b>). Si s’utilitza la RM es recomana que
+						inclogui seqüències potenciades de difusió i T2-ecogradient. En ictus de menys
+						de 6 hores d’evolució, si és possible s’aconsella realitzar TC/RM de perfusió,
+						i s´aconsella que no suposin una demora en l’inici del tractament. </span>
+				</p>
+
+				<p>
+					<span>—estudi de l’arbre arterial: mitjançant
+						ecodoppler de troncs supraaòrtics, angiografia per RM o angiografia per TC.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>En pacients seleccionats es pot completar
+						l’estu-di amb:  </span>
+				</p>
+
+				<p>
+					<span>—estudi de trombofília. </span>
+				</p>
+
+				<p>
+					<span>—ecocardiograma transtoràcic. Ecocardiogra-ma
+						transesofàgic en casos seleccionats (estudis classe III, recomanació nivell C). </span>
+				</p>
+
+				<p>
+					<span>—Holter 24h. </span>
+				</p>
+
+				<p>
+					<span>—estudi histològic. </span>
+				</p>
+
+				<p>
+					<span >—estudi de LCR. </span>
+				</p>
+
+				<p>
+					<span>—angiografia per sostracció digital.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+			</div>
+		</div>
+		<div data-role="view" id="1-6-1" class="contenido" data-title="Tractament" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.6.1. Criteris d’ingrés. ingrés a unitat d’ictus</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<span>Els pacients amb simptomatologia
+						suggestiva d’ictus agut, permanent o transitòria, han de ser adreçats
+						immediatament a un hospital d’aguts (ambulància medicalitzada, helicòpter) o
+						contactar via telemedicina (en àrees remotes), si les se-ves condicions
+						físiques o psíquiques no indiquen el contrari (<b>estudis classe III,
+							recomanació nivell C</b>). En determinats casos (candidats a trombòlisi, ictus
+						joves, o els que requereixin actuacions endovasculars o neuroquirúrgiques), es
+						recoma-na remetre els pacients a hospitals de referència amb l’expertesa i
+						casuística suficient en l’aplicació de determinats tractaments i/o tecnologies,
+						amb retorn al seu lloc d’origen quan sigui possible (<b>estudis classe III,
+							recomanació nivell B</b>).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>En línies generals, els pacients amb
+						sospita o evidència de MVC aguda són candidats a ingrés hospitalari. És
+						recomanable que tots els pacients amb ictus agut ingressin en una unitat
+						d’ictus (<b>estudis classe I, recomanació nivell A</b>). L’ única raó per a
+						excloure pacients de la unitat d’ictus és que el seu estat no sigui tributari
+						d’un tractament actiu. Una revisió sistemàtica actual ha confirmat reduccions
+						significatives per a tots el grups de pacients en la mort (reducció absoluta
+						del 3%), dependència (augment del 5% en supervivents funcionalment
+						independents) i en la ne-cessitat d’atenció institucionalitzada (reducció del
+						2%) per als pacients tractats en unitats d’ictus, comparats amb aquells
+						tractats en sales generals. A més a més, s’ha demostrat que el tractament en
+						unitats d’ictus és efectiu pel que fa a la despesa.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>En la majoria dels casos, els criteris
+						que orienten la necessitat d’ingrés hospitalari són els se-güents:  </span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>—Realitzar el<i> diagnòstic nosològic </i>de
+						MVC. El 10% de pacients amb sospita de MVC presenten un procés diferent.</span>
+				</p>
+
+				<p>
+					<span>—Iniciar el <i>tractament específic</i>:
+						trombolític, neuroprotector, anticoagulant, antiagregant, quirúrgic,
+						endovascular, fisioterapèutic o logopèdic. </span>
+				</p>
+
+				<p>
+					<span>—<i>Prevenir i tractar les complicacions</i>,
+						neurològiques o no, que durant la fase aguda es poden presentar en el 48% de
+						pacients. </span>
+				</p>
+
+				<p>
+					<span>—Realitzar <i>l’estudi etiològic</i>:
+						arterial, cardiològic o hematològic. Malgrat l’estudi exhaustiu del pacient
+						vascular cerebral, la seva etiologia encara roman sense determinar en el 20-40%
+						de casos d’infart cerebral.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+			</div>
+		</div>
+		<div data-role="view" id="1-6-2" class="contenido" data-title="Tractament" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.6.2. Centres terciaris d’ictus</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<span>Segons el comitè d’experts del <b>Pla
+						Director de la Malaltia Vascular Cerebral</b>, <i>un centre terciari d’ictus </i>és
+						aquell amb capacitat per a realitzar una sèrie de tractaments que no es poden
+						oferir les 24 hores del dia en d’altres centres com són: <i>trombòlisi intraarterial
+							o trombectomia mecànica, trombòlisi de sins venosos intracranials, embolització
+							d’aneurismes intracranials i tractament del vasoespasme</i>. D’altres hopitals,
+						centres primaris d’ictus, poden derivar els pacients a un centre terciari
+						d’ictus en cas que aquests ho requereixin.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>Els recursos necessaris perquè un centre
+						pugui ser considerat com a centre terciari d’ictus estan marcats pel <b>Pla
+							Director de la Malaltia Vascular Cerebral </b>i inclouen: la presència de <i>neuròlegs
+								i neurocirurgians amb experiència en patologia vas-cular cerebral acreditada
+								les 24 hores del dia, 7 dies a la setmana, metges d’UCI especialitzats en
+								neurocrítics, neuroradiòlegs intervencionistes localitzables les 24 hores del
+								dia, 7 dies a la setmana i equip d’ictus multidisciplinar</i>. Els centres
+						terciaris han de disposar també d’una sèrie de recursos físics com són:
+						ultrasonografia, angiografia digital, TC i angioTC, RM multimodal, llits de
+						semiintensius i llits de crítics. Són imprescindibles, també, protocols
+						consensuats d’actuació en els diferents àmbits i protocols de cures
+						estandarditzades.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>Sovint és el metge del <i>centre primari
+						d’ictus</i> el que sol·licitarà el trasllat d’un pacient a un centre terciari
+						d’ictus. Des del centre primari es contactarà amb el neuròleg vascular de
+						guàrdia que s’encarregarà de coordinar tot l’operatiu, obtenir el con-sentiment
+						informat del pacient o els familiars i tenir cura del pacient abans, durant i
+						després del procediment.</span>
+				</p>
+
+				<p >
+					<b><span style='color:gray; font-size:120%;'>Criteris
+						d’activació del Codi Ictus-Tractament endovascular</span></b>
+				</p>
+
+				<p>
+					<span>—Edat &lt; 85. </span>
+				</p>
+
+				<p>
+					<span>—Rankin &#8804;2 previ a l’ictus. </span>
+				</p>
+
+				<p>
+					<span>—Temps d’evolució de l’ictus carotidi
+						&lt; 6 hores. </span>
+				</p>
+
+				<p>
+					<span>—Temps d’evolució de l’ictus basilar &lt;
+						12 hores o fins a 48 hores si el curs clínic ésprogressiu, fluctuant o precedit
+						d’AIT. </span>
+				</p>
+
+				<p>
+					<span>—Desconeixement de l’hora d’inici dels
+						símptomes. </span>
+				</p>
+
+				<p>
+					<span>— NIHSS &#8805;10 i &lt;22 + oclusió
+						arterial proximal en DTC als 30 minuts del tractament endo-venós. </span>
+				</p>
+
+				<p>
+					<span>—NIHSS &#8805;14 i &lt;22 + estat de
+						permeabilitat vascular no conegut. </span>
+				</p>
+
+				<p>
+					<span>—NIHSS &#8805;6 i contraindicació per a
+						la trombòlisi farmacològica.</span>
+				</p>
+
+				<p>
+					<span>•&#8201;Anticoagulació (si INR &gt;1.7 o
+						APTT allargat).</span>
+				</p>
+
+				<p>
+					<span>•&#8201;Plaquetes &lt; 100.000.</span>
+				</p>
+
+				<p>
+					<span>•&#8201;HBPM (no es permet HBPM a dosi
+						anticoagulant en les últimes 12 hores).</span>
+				</p>
+
+				<p>
+					<span>•&#8201;Cirurgia prèvia recent.</span>
+				</p>
+
+				<p>
+					<span>•&#8201;Revascularització carotídia o
+						coronària prèvia recent.</span>
+				</p>
+
+				<p>
+					<span>•&#8201;Malaltia o condició que comporti
+						risc d’hemorràgia.</span>
+				</p>
+
+				<p>
+					<span>•&#8201;Ictus en les últimes 6 setmanes. </span>
+				</p>
+
+				<p>
+					<span>—Hemorràgia subaracnoïdal no traumática.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Criteris de NO
+						activació del Codi Ictus</span></b>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>-Tractament
+						endovascular</span></b>
+				</p>
+
+				<p>
+					<span>—TC cranial amb signes d’hipodensitat en
+						més d’un terç de territori d’ACM o ASPECTS &lt;7). </span>
+				</p>
+
+				<p>
+					<span>—Comorbilitat greu i/o esperança de vida
+						re-duïda.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+			</div>
+		</div>
+		<div data-role="view" id="1-6-3" class="contenido" data-title="Tractament" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.6.3. Tractament de la fase hiperaguda</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Mesures generals  </span></b>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—S’ha de preservar la via aèria. S’ha de
+						valorar la indicació de ventilació assistida en els pacients amb un ictus agut
+						que tenen un nivell de conciència deprimit o un compromís de la via aèria. </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—S’ha de corregir la hipoxèmia (&lt;95%)
+						mitjançant l’administració d’oxigen (<b>estudis classe IV, recomanació Nivell U</b>).
+						L’administració d’oxigen no es recomana de manera rutinària en malalts no
+						hipoxèmics. </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana el monitoratge cardíac en
+						l’avaluació del malalt amb ictus agut per confirmar/descartar la presència de
+						fibril&#8729;lació auricular, arítmies potencialment perilloses i l’infart agut
+						de miocardi. El monitoratge cardíac ha de ser continuat durant les primeres 24
+						hores en els pacients que ho requereixin pels seus an-tecedents de cardiopatia,
+						història d’arítmies, pressió arterial inestable, signes/símptomes
+						d’insuficiència cardíaca, ECG basal anormal i/o infarts que afectin el còrtex
+						insular. </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana que el diagnòstic d’ictus
+						estigui fet per un neuròleg expert en ictus (<b><i>recoma-nació nivell B</i></b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—És important avaluar la gravetat de
+						l’ictus amb escales específiques (NIHSS) i monito-ritzar intermitentment
+						l’estat neurològic. </span>
+				</p>
+
+				<p>
+					<span>—La glucèmia, la saturació arterial
+						d’oxigen, la hidratació i la temperatura s’han de man-tenir dins dels límits de
+						la normalitat (<b>estudis classe III, recomanació nivell C</b>). Com a
+						seroteràpia, durant les primeres 24 hores de l’ictus es recomana <i>sèrum
+							fisiològic. </i></span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Les infeccions s’han de tractar
+						agressiva-ment, si no és que el malalt estigui en situa-ció terminal (<b>estudis
+							classe IV, recomanació nivell U</b>). No es recomana la profilaxi antibiòtica
+						en pacients immunocompetents (<b><i>estudis classe II, recomanació nivell B</i></b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—La hipertensió en la fase aguda de
+						l’ictus només s’ha de tractar quan hi hagi condicions asso-ciades que així ho
+						indiquin (<i>encefalopatia hiper-tensiva, aneurisma de l’aorta amb afectació
+							renal</i>) (<b>estudis classe IV, recomanació nivell U</b>). Es recomana la reducció
+						amb cura de la pressió arterial en pacients amb xifres tensionals molt elevades
+						(generalment &gt;220/120 mmHg) tenint en compte que cal evitar-ne descensos
+						bruscs (<b>estudis classe IV, recomanació nivell U</b>).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Tractament mèdic</span></b>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—En les primeres 4.5 hores de l’ictus
+						isquèmic es recomana el rtPA intravenós (0,9 mg/kg de pes corporal, màxim 90
+						mg) administrant el 10% de la dosi en forma de bolus seguida d’una infusió de
+						60 minuts (<b>estudis classe I, recomanació nivell A</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—La utilització de criteris de
+						neuroimatge multimodal pot ser útil en la selecció de pa-cients per a la
+						trombòlisi, però no es recomana d’inici en la pràctica clínica habitual (<b>estu-dis
+							classe III, recomanació nivell C</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana que abans de la trombòlisi
+						es redueixi la pressió arterial si les xifres són de 185/110 o més altes (<b>estudis
+							classe IV, recomanació nivell U</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana utilitzar rtPA intravenós en
+						pacients amb crisis epilèptiques a l’inici de l’ictus si el dèficit neurològic
+						està causat per isquèmia cerebral aguda (<b>estudis classe IV, recomanació
+							nivell U</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana l’administració de rtPA
+						també en pacients seleccionats de menys de 18 anys i de més de 80 anys, encara
+						que en aquests casos s’actua fora de la indicació aprovada a Europa (<b>estudis
+							classe III, recomanació nivell C</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana com a opció terapèutica el
+						tractament intraarterial d’oclusions agu-des de l’ACM dins de les 6 primeres
+						hores (<b>Classe II, nivell B</b>). En pacients joves amb trombosi aguda del
+						tronc de la basilar, i atès el seu mal pronòstic, es pot considerar la
+						trombòlisi intraarterial en les primeres 12 hores d’evolució (<b>estudis classe
+							III, recomanació nivell B</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana l’inici de tractament amb
+						aspirina (dosi de càrrega de 160–325 mg) en les primeres 48 hores de l’ictus
+						isquèmic (<b>estudis classe I, recomanació nivell A</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana evitar aspirina i altres
+						tractaments antitrombòtics en les primeres 24 ho-res si es realitza tractament
+						trombolític (<b>estudis classe IV, recomanació nivell BPC</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—No es recomana la utilització d’altres
+						fàrmacs antiagregants (sols o combinats) du-rant la fase aguda de l’ictus
+						isquèmic (<b>estudis classe III, recomanació nivell C</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—No es recomana
+						l’administració d’inhibidors de la glicoproteïna IIb-IIIa (<b>estudis classe I,
+							recomanació nivell A</b>).</span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—No es recomana en pacients amb ictus
+						l’administració precoç d’heparina no fraccionada, heparina de baix pes
+						molecular o heparinoids (<b>estudis classe I, recomanació nivell A</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Actualment, no hi ha cap recomanació per
+						a tractar pacients amb ictus isquèmic amb fàr-macs neuroprotectors (<b>estudis
+							classe I, recomanació nivell A</b>). </span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+			</div>
+		</div>
+		<div data-role="view" id="1-6-4" class="contenido" data-title="Tractament" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.6.4. Tractament de la fase aguda</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p class=MsoNormal>
+					<b><span lang=ES-TRAD style='color:gray; font-size:120%;'>Mesures generals </span></b>
+				</p>
+
+				<p>
+					<b><span>Pressió arterial </span></b>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Tot i la prevalença d’hipertensió
+						arterial (HTA) en la fase aguda de l’ictus isquèmic, actualment no hi ha
+						assaigs clínics comparatius que indiquin quin n’és el maneig òptim. En general,
+						es recomana ser prudent en el maneig de l’HTA en la fase aguda de l’ictus
+						isquèmic.  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Els antihipertensius s’han d’evitar si
+						no és que la pressió arterial sistòlica (PAS) &gt; 220 mm Hg o la pressió
+						arterial diastòlica (PAD) &gt; 120 mmHg (<b>estudis classe IV, recomanació
+							nivell U</b>). En cas que es requereixin antihiper-tensius, s’han de fer servir
+						els que tenen una acció de curta durada i amb pocs efectes sobre la circulació
+						cerebral. Atès el risc d’empitjorament neurològic, no s’ha d’usar ni la
+						nifedi-pina sublingual ni altres antihipertensius que puguin causar una
+						reducció ràpida i imprevisible de la pressió arterial (<b>recomanació nivell C</b>).
+						Es recomana l’ús de labetalol intravenós (<b>estudis classe IV, recomanació
+							nivell U</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Els pacients hipertensos i candidats a
+						trombòlisi requereixen una reducció lenta de la pressió arterial fins a una PAS
+						&#8804; 185 mm Hg i una PAD &#8804; 110 mm Hg abans de l’inici del tractament.
+						La hipotensió arterial en el marc d’un ictus agut pot donar lloc a l’increment
+						de la superfície de l’infart (<b>recomanació nivell D</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Tot i que no es coneix quan és el moment
+						idoni per començar el tractament antihipertensiu de base després d’un ictus, en
+						general s’aconsella no iniciar-lo abans de la primera setmana després de
+						l’ictus.</span>
+				</p>
+
+				<p >
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span>Glucèmia </span></b>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—La hipoglucèmia pot cursar amb símptomes
+						idèntics als d’un ictus isquèmic. A més, la hi-poglucèmia mantinguda pot
+						originar dany cerebral. Per tant, l’avaluació de la glucèmia i la seva
+						correcció en cas d’hipoglucèmia és bàsica. La hipoglucèmia s’ha de corregir
+						im-mediatament. </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—D’altra banda, la hiperglucèmia
+						s’observa molt freqüentment en la fase aguda de l’ic-tus, bé perquè el malalt
+						és diabètic, bé com a resposta fisiològica a l’estrès, i s’associa a un pitjor
+						pronòstic funcional i a mortalitat més elevada. S’han de corregir els nivells
+						de glu-cèmia &gt;140 mg/dl (<b>recomanació nivell C</b>).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span>Temperatura </span></b>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—La febre en el si d’un infart cerebral
+						agut s’as-socia a una major morbiditat i mortalitat a causa d’un increment dels
+						requeriments metabòlics, alliberació de neurotransmissors i producció de
+						radicals lliures.  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—La hipertèrmia (&gt;37,5ºC) ha de ser
+						tractada amb antipirètics com el paracetamol i se n’han d’investigar les causes
+						subjacents (<b>recomanació nivell B</b>).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span>Trombosi venosa profunda (TVP) </span></b>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Les TVP apareixen freqüentment durant la
+						primera setmana després de l’ictus, sobretot en pacients enllitats i immòbils.
+						Hi ha evidència que fins a un 50% dels pacients hemiplègics en poden
+						desenvolupar, tot i que és clínicament aparent només en el 5%. De forma similar,
+						tot i que les sèries d’autòpsies han mostrat freqüentment la presència<b> </b>de
+						tromboembolismes pulmonars (TEP), aquests són clínicament aparents només en un
+						1-2% dels ictus aguts. </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—L’ús preventiu d’anticoagulants
+						(heparina, heparina de baix pes molecular o heparinoides) es recomana en
+						pacients immobilitzats (e<b>studis classe I, recomanació nivell A</b>). L’ús
+						rutinari de mitges o altres mesures físiques de compressió no s’associa a una
+						reducció significativa de les TVP en els pacients amb cames parètiques o
+						plègiques. </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—S’ha de mobilitzar el pacient tan aviat
+						com sigui possible (<b>recomanació nivell B</b>).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span>Maneig de la disfàgia</span></b>
+				</p>
+
+				<p>
+					<span>La disfàgia pot aparèixer en persones que
+						han sofert ictus amb lesió unilateral o bilateral de tronc cerebral, ictus
+						cortical o subcortical. La <i>disfàgia orofaríngia</i> és el tipus de disfàgia
+						predominant. Pot haver-hi predomini d’afectació en la fase pre-paratòria oral,
+						fase oral o fase faríngia. La Guia de l’Ictus de l’any 2007 ens parla d’un 45%
+						de pacients ingressats en l’hospital per ictus agut que presenten disfàgia i trastorns
+						de la deglució. Es calcula que entre el 22 i el 42% de les aspiracions són
+						silents i es detecten només amb videofluoroscòpia. La recuperació més ràpida es
+						produeix durant les tres primeres setmanes després de la lesió. Globalment,
+						entre el 90-95% de les persones amb ictus podran seguir una alimentació per via
+						oral als tres mesos d’evolució, tanmateix l’atenció que requereix el pacient
+						amb disfàgia en els primers dies mereix una atenció especial. Qualsevol pacient
+						amb ictus i dificultats deglutò-ries requereix atenció logopèdica. En cas de
+						disfàgia es recomana valoració de la deglució duta a terme per un professional
+						especialitzat, control de la deglució i de l’evolució de la millora i inici de
+						rehabilitació logopèdica independentment de si pot alimentar-se per via oral o
+						no. En cas que estigui indicat provar tolerància per via oral cal tenir
+						especial cura amb el control postural (esquena recta i flexió de mentó) i
+						iniciar sempre amb consistència semisòlida (púding) i amb volum petit (cullera
+						de postre). La valoració de la disfunció deglutòria s’observa en la <b><span
+							style='background:purple'>Taula I</span></b>. </span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span>Símptomes que cal controlar:</span></b><span> </span>
+				</p>
+
+				<p  style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Absència deglutòria, lentitud o retard
+						en ini-ciar deglució.  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Trànsit oral lent.  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Tos durant o després de l’alimentació.  </span>
+				</p>
+
+				<p  style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Presència de restes a la boca.  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Canvis en la qualitat de la veu
+						(ronquera, veu gargallosa).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Canvis en el patró respiratori,
+						dessaturació superior al 2% (només indicatiu).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Augment de secrecions.  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Aparició de febre sense focus clar. </span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>En cas d’observar-se algun d’aquests símptomes
+						es recomana aturar l’alimentació via oral i revalo-rar en 24 hores. </span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span>Es recomana</span></b><span> l’inici precoç de l’alimentació enteral per sonda nasogàstrica
+						(en les primeres 48 hores) en pacients amb disfàgia (<b>estudis classe II,
+							recomanació nivell B</b>). </span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span>No es recomana</span></b><span> l’alimentació per gastrostomia enteral percutània (PEG) en les
+						primeres 2 setmanes de l’ictus (<b>estudis classe II, recoma-nació nivell B</b>). </span>
+				</p>
+
+				<p >
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span>Esfínters</span></b>
+				</p>
+
+				<p>
+					<span>No es recomana la col.locació sistemàtica
+						d’un catèter urinari.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span>Rehabilitació </span></b>
+				</p>
+
+				<p>
+					<span>La mobilització precoz del pacient
+						redueix la indicència de pneumònia, trombosi venosa profunda, embòlia pulmonar,
+						úlceres de decúbit, contractures, espatlla dolorosa i compressió de nervis
+						perifèrics (<b>estudis classe IV, recomanació nivell BPC</b>). </span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—<b>Es recomana</b> l’ingrés dels
+						pacients amb ictus agut en una <i>unitat d’ictus</i> per tal de rebre <i>rehabilitació
+							multidisciplinar coordinada</i> (<b>estudis classe I, recomanació nivell A</b>).</span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana l’inici precoç de la
+						rehabilitació (<b>estudis classe III, recomanació nivell C</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—És possible l’alta precoç de pacients
+						mèdicament estables amb discapacitat lleu o mode-rada si se’ls ofereix
+						rehabilitació ambulatòria (<b>estudis classe I, recomanació nivell A</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana continuar la rehabilitació
+						durant el primer any després de l’ictus (<b>estudis classe II, recomanació
+							nivell A</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—El mètode òptim de realitzar-la no està
+						clar (<b>estudis classe I, recomanació nivell A</b>). Es recomana la <i>teràpia
+							ocupacional</i> (<b>estudis classe I, recomanació nivell A</b>), avaluació dels
+						dèficits de comunicació (<b>estudis classe III, recomanació nivell C</b>),
+						monitorització de simptomatologia depressiva (<b>estudis classe IV, recomanació
+							nivell B</b>) i avaluació del dolor neuropàtic i de l’espasticitat (<b>estudis
+								classe III, recomanació nivell B</b>).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Tractament mèdic</span></b>
+				</p>
+
+				<p >
+					<b><span>Antitrombòtics </span></b>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—S’han d’administrar <i>300 mg. d’àcid
+						acetil-salicílic</i> (AAS) tan aviat com es pugui després de l’inici de
+						l’ictus. En els pacients disfàgics s’ha d’administrar per via enteral. En
+						alguns casos, es podrà administrar AAS per via parenteral (<b>estudis classe I,
+							recomanació nivell A</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—No es pot administrar AAS en les 24
+						hores següents a l’administració de trombolítics (<b>estudis classe I,
+							recomanació nivell A</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—L’administració precoç d’anticoagulants
+						no està recomanada de manera rutinària en la fase aguda de l’ictus isquèmic (<b>estudis
+							clas-se I, recomanació nivell A</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—En pacients seleccionats (<i>trombosi
+						aguda de l’artèria basilar, ictus associat amb dissecció de l’artèria caròtida,
+						trombosi venosa cerebral</i>) es pot considerar l’ús <i>d’heparina intravenosa</i>,
+						tot i que no hi ha evidència científica de la seva efectivitat.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span>Altres fàrmacs </span></b>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—En general, els resultats dels assaigs
+						clínics de fàrmacs neuroprotectors i fàrmacs per al control de l’edema cerebral
+						han estat negatius o han proporcionat una evidència científica de baixa qualitat
+						per recomanar-ne l’ús de manera rutinària (<b>estudis classe I, recomanació
+							nivell A</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—S’han d’evitar els fàrmacs depressors
+						del sistema nerviós central (<b>estudis classe II, recomanació nivell B</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—La citicolina, un fàrmac neuroprotector,
+						ha demostrat un discret efecte beneficiós sobre la recuperació neurològica als
+						tres mesos quan s’administra en les primeres 24 hores i durant 6 mesos després
+						de l’inici en pacients amb ictus de moderat a greu. S’han iniciat nous estudis
+						per comprovar aquestes dades.</span>
+				</p>
+
+				<p >
+					<span >&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span>Endarterectomia carotídia (EC) i
+						angioplàstia en fase aguda</span></b>
+				</p>
+
+				<p>
+					<span>En general no es recomana l’EC urgent ni
+						l’ús de tècniques endovasculars per al tractament de pacients amb ictus agut
+						secundari a estenosi de caròtida extracranial de forma aguda.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><i><span>Cirurgia descompressiva i
+						hipotèrmia en l’infart maligne de l’artèria cerebral mitja </span></i></b>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—La <i>descompressió </i>quirúrgica en
+						les primeres 48 hores des de l’inici dels símptomes en pacients seleccionats de
+						menys de 60 anys i amb infart maligne de l’artèria cerebral mitja pot reduir la
+						mortalitat associada amb aquesta patologia (<b>estudis classe I, recomanació
+							nivell A</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—La<i> hipotèrmia</i> com a tractament de
+						l’infart maligne de l’artèria cerebral mitja ha estat objecte d’estudi en
+						sèries petites. L’evidència científica actual no permet establir cap recomanació
+						en ferm (<b>estudis classe IV, recomanació nivell U</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana la ventriculostomia o
+						descom-pressió quirúrgica pel tractament d’infarts cerebrals extensos que
+						comprimeixen el tronc cerebral (<b>estudis classe III, recoma-nació nivell C</b>).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+			</div>
+		</div>
+		<div data-role="view" id="1-6-5" class="contenido" data-title="Tractament" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.6.5. Prevenció secundària</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Mesures generals  </span></b>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana que la <i>pressió arterial</i>
+						sigui avaluada regularment. Es recomana la reducció de la pressió arterial
+						després de la fase aguda, també en pacients amb pressió arterial normal (<b>estudis
+							classe I, recomanació nivell A</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana que la <i>glucèmia</i> sigui
+						avaluada regularment. Es recomana que la diabetis es tracti mitjançant la
+						modificació de l’estil de vida i tractament farmacològic individualitzat (<b>estudis
+							classe IV, recomanació nivell U</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana tractament amb <i>estatines</i>
+						en pacients amb ictus no cardioembòlic (<b>estu-dis classe I, recomanació
+							nivell A</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana l’abandó de l’<i>hàbit
+						tabàquic </i>(<b>es-tudis classe IV, recomanació nivell C</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana desaconsellar el <i>consum
+						elevat d’alcohol</i> (<b>estudis classe IV, recomanació nivell U</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana l’ <i>activitat física
+						regular</i> (<b>estudis classe IV, recomanació nivell U</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana una <i>dieta baixa en sal i
+						en greixos saturats, alta en fruita i vegetals i rica en fibra </i>(<b>estudis
+							classe IV, recomanació nivell U</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana que els pacients amb un
+						índex de massa corporal elevat adoptin mesures dietètiques per tal de <i>reduir
+							pes</i> (<b>estudis classe IV, recomanació nivell C</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Els suplements amb vitamines
+						antioxidants no es recomanen (<b>estudis classe I, recoma-nació nivell A</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—El tractament hormonal substitutiu no es
+						recomana per la prevenció secundària de l’ictus (<b>estudis classe I,
+							recomanació nivell A</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana que els <i>trastorns de
+						respiració durant el son</i>, com les apnees obstructives del son greus, siguin
+						tractats amb pressió aèria positiva contínua (<b>estudis classe IV, recomanació
+							nivell C</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana l’ús d’aspirina a dosis
+						baixes en pacients amb estenosis asimptomàtica de l’artèria caròtida interna de
+						més del 50% per reduir el risc d’events vasculars (estudis classe I,
+						recomanació nivell A).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Tractament mèdic</span></b>
+				</p>
+
+				<p>
+					<b><span>Antitrombòtics  </span></b>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana que els pacients rebin
+						tractament <i>antitrombòtic</i> (<b>Classe I, Nivell A</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana que els pacients que no
+						reque-reixin anticoagulació rebin tractament antiagregant. Si és possible,
+						s’hauria d’administrar <i>aspirina més dipiridamol, o clopidogrel </i>sol.
+						Al-ternativament, <i>l’aspirina sola</i> o <i>el trifusal sol</i>, poden ser
+						d’utilitat (<b>estudis classe I, recomanació nivell A</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—La combinació d’aspirina i clopidogrel
+						no es recomana en pacients amb isquèmia cerebral recent, excepte en aquells amb
+						indicacions específiques (<i>angina inestable, infart de miocardi no-Q o
+							stenting recent</i>); el tractament s’ha d’administrar durant almenys 9 mesos
+						després de l’event (<b>estudis classe I, recomanació nivell A</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana que els pacients que
+						pateixin un ictus estant en tractament antiagregant siguin reavaluats en
+						relació a la fisiopatologia i als factors de risc (<b>estudis classe I, recomanació
+							nivell U</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span  style='color:green'>—</span><i><span
+						lang=ES-TRAD style='font-size:15.0pt;font-family:"Calibri","sans-serif";
+						color:green'> </span></i><i><span lang=ES style='color:green'>L´anticoagulació
+							oral</span></i><span lang=ES style='color:green'> amb nou anticoagulant
+								Dabigatran es recomana en l´infart isquèmic associat a fibril.lació auricular
+								(FA) (<b>estudis clase I, recomanació nivel A</b>). Com alternativa o en casos
+								de contraindicació es pot utilizar rivaroxaban&nbsp; o acenocumarol/warfarina ,
+								INR (2.0-3.0).</span><span lang=ES> </span><span lang=ES-TRAD>L’<i>anticoagulació
+									oral</i> (INR 2.0-3.0) es recomana en l’infart isquèmic associat a
+									fibril·lació  auricular (FA) (<b>estudis classe I, recomanació nivell A</b>).
+									L’anticoagulació oral no es recomana en pacients amb comorbilitat com caigudes,
+									mal compliment, epilèpsia no controlada o sagnat gastrointestinal (<b>estudis
+										classe III, recomanació nivell C</b>). L’ <i>edat avançada</i> per si sola no
+									és una contraindicació a l’anticoagulació oral (<b>estudis classe I,
+										recomanació nivell A</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana que els pacients amb ictus
+						cardioembòlic no secundari a FA rebin anticoagulants (INR 2.0-3.0) si el risc
+						de recurrència és alt (<b>estudis classe III, recomanació nivell C</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana que la combinació d’una dosi
+						baixa d’aspirina i dipiridamol s’utilitzi si l’anticoagulació oral està
+						contraindicada (<b>estudis classe IV, recomanació nivell U</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—L’anticoagulació no es recomana en
+						l’ictus no cardioembòlic excepte en situacions es-pecífiques (<b>estudis classe
+							IV, recomanació nivell U</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span style='background:red'>—En pacients amb
+						FA i ictus, en els casos d’hipersensibilitat, resistència o intolerància a
+						dicumarínics, en les casos d’INRs molt inestables, impossibilitat per a
+						realitzar controls o aparició d’ictus tot i bona anticoagulació es pot
+						plantejar l’ús d’inhibidors directes de la trombina (cal consentiment informat,
+						de moment).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span>Estatines</span></b>
+				</p>
+
+				<p>
+					<span>La teràpia amb estatines es recomana en
+						pacients amb ictus no cardioembòlic (<b>Classe I, Nivell A</b>). Diferents
+						estudis han demostrat l’eficàcia de l’atorvastatina, la simvastatina i la
+						rosuvastatina.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Cirurgia i
+						angioplàstia  </span></b>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana l’endarterectomia carotídia
+						(EC) en pacients amb estenosi del 70-99% (<b>estu-dis classe I, recomanació
+							nivell A</b>). S’hauria de realitzar només en centres amb un risc de
+						complicacions (ictus o mort) menor del 6% (<b>estudis classe I, recomanació nivell
+							A</b>). Es recomana realitzar l’EC tan aviat com sigui possible després de
+						l’últim event isquèmic, idealment en les primeres 2 setmanes (<b>estudis classe
+							II, recomanació nivell B</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es pot recomanar l’EC en determinats pacients
+						amb estenosi del 50-69%. Els pacients que més es beneficien són homes amb símptomes
+						hemisfèrics recents (<b>estudis classe III, recomanació nivell nivell C</b>).
+						L’EC en estenosi del 50-69% només s’hauria de realitzar en centres amb un risc
+						perioperatori de complicacions de menys del 3% (<b>estudis classe I,
+							recomanació nivell A</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—No es recomana l’EC en pacients amb estenosi
+						de menys del 50% (<b>estudis classe I, recomanació nivell A</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—Es recomana mantenir el tractament
+						antiagregant abans i després de la cirurgia (<b>estudis classe I, recomanació
+							nivell A</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—<i>L’angioplàstia transluminal
+						percutània de la caròtida o l’stenting de l’artèria caròtida</i> només es
+						recomana en pacients amb contraindicació per a EC, en estenosis inaccessibles
+						per a la cirurgia, en restenosi després d’EC i en estenosi postradiació (<b>estudis
+							classe I, recomanació nivell A</b>). Els pacients s’han de tractar amb la
+						combinació de clopidogrel i aspirina immediatament abans de l’stenting i durant
+						almenys 1 mes després (<b>estudis classe IV, recomanació nivell BPC</b>).  </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span style='background:red'>—Es recomana considerar
+						la possibilitat de tractament endovascular en pacients amb estenosi
+						intracranial simptomàtica (<b>estudis classe IV, recomanació nivell BPC</b>).
+						Els pacients amb estenosis intracranials o de l’origen de l’artèria vertebral
+						de &#8805; 50 %, sobretot per sobre del 70%, tenen un elevat risc de recurrència,
+						tant en la circulació anterior com en la posterior (12% a 1 any i 15% als 2
+						anys en el territori de l’artèria estenosada). Tot i això l’angioplàstia i l’stenting
+						tenen un elevat risc de restenosi i complicacions postoperatòries, després d’un
+						stenting s’han descrit ictus recurrents en el 5-7% dels pacients a l’any i en
+						el 8% als 2 anys. No hi ha estudis aleatoritzats que hagin avaluat correctament
+						aquest tractament.</span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span style='color:green'>—En pacients amb
+						estenosi intracranial el tractament mèdic agressiu és superior al tractament
+						endovascular utilizant el sistema Wingspan stent (<b>estudis clase I,
+							recomanació nivel A.</b></span>
+				</p>
+
+				<p class=MsoNormal>
+					<span lang=ES-TRAD style='color:green'>&nbsp;</span>
+				</p>
+
+				<p class=MsoNormal>
+					<span lang=ES-TRAD style='background:purple'>Figura</span>
+				</p>
+
+				<p class=MsoNormal>
+					<span lang=ES-TRAD>&nbsp;</span>
+				</p>
+			</div>
+		</div>
+		<div data-role="view" id="1-6-6" class="contenido" data-title="Tractament" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.6.6. Tractament en situacions especials</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p class=MsoNormal>
+					<b><span lang=ES-TRAD style='color:gray; font-size:120%;'>Trombofílies</span></b>
+				</p>
+
+				<p>
+					<span>En pacients amb trombofília hereditària i
+						an-tecedents d’episodis trombòtics es recomana el tractament a llarg termini
+						amb anticoagulants (<b>recomanació nivell B</b>).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Hiperhomocisteinèmia</span></b>
+				</p>
+
+				<p>
+					<span>En pacients amb ictus previ i
+						hiperhomocisteinèmia s’ha de considerar la suplementació amb àcid fòlic i
+						vitamines del complex B amb l’objetiu de reduir els nivells elevats
+						d’homocisteïna en plasma (<b>recomanació nivell B</b>).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Pròtesis valvulars</span></b>
+				</p>
+
+				<p>
+					<span>En pacients amb una o més vàlvules
+						cardíaques protèsiques de tipus mecànic que pateixen un ictus isquèmic, tot i
+						rebre un tractament anticoagulant correcte, s’aconsella afegir aspirina a dosis
+						baixes (100mg) o dipiridamol (<b>recomanaió nivell A</b>). En pacients amb
+						contraindicació a l’aspirina, l’administració conjunta de clopidogrel o
+						triflusal i un anticoagulant és una estratègia correcta (<b>estudis classe IV,
+							recomanació nivell U</b>).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Altres cardiopaties </span></b>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—En pacients que presenten una <i>estenosi
+						mitral </i>s’aconsella el tractament anticoagulant <span style='background:
+																				 red'>(INR de 2 a 3)</span>, independentement de si presenten o no FA (<b>recomanació
+																					 nivell B</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—En pacients que presenten un <i>prolapse
+						de la vàlvula mitral</i> es recomana el tractament amb antiagregants (100-300
+						mg/d d’aspirina) (<b>recomanació nivell B</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—En pacients que presentin com a única
+						causa un <i>prolapse de la vàlvula mitral</i> es pot plantejar el tractament
+						anticoagulant <span style='background:red'>(INR de 2 a 3)</span> en aquells
+						casos amb un alt risc de presentar fenòmens cardioembòlics (<b>recomanació
+							nivell C</b>). </span>
+				</p>
+
+				<p style='margin-left:14.2pt;text-indent:-14.2pt'>
+					<span>—En pacients que presentin un <i>foramen
+						oval permeable</i> es recomana el tractament amb antiagregants (100-300 mg/d
+						d’aspirina). Es pot plantejar el tractament amb anti-coagulants si presenten un
+						risc augmentat d’episodis cardioembòlics (aneurisma del septe associat o
+						comunicació interauricular de gran mida). La intervenció quirúrgica amb
+						tancament percutani del foramen oval permeable només s’ha de plantejar en el
+						context d’un assaig clínic i en els casos d’ic-tus de repetició (<b>recomanació
+							nivell C</b>).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Trombosis de venes
+						cerebrals</span></b>
+				</p>
+
+				<p>
+					<span>En pacients que han patit una trombosi de
+						venes cerebrals s’aconsella el tractament inicial amb <i>heparina </i>i
+						posteriorment amb <i>anticoagulants</i> orals durant 3 a 6 mesos (<b>recomanació
+							nivell D</b>). En pacients afectes de trombofílies congènites o ad-quirides i
+						en pacients majors de 65 anys o amb altres factors que afavoreixin els fenòmens
+						trom-bòtics se suggereix el tractament amb anticoagulants orals un mínim de 12
+						mesos (<b>recomanació nivell D</b>).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+			</div>
+		</div>
+
+		<div data-role="view" id="1-6-7" class="contenido" data-title="Tractament"  data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.6.7. Maneig de les complicacions neurològiques</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<span>Per identificar de manera precoç
+						l’aparició de complicacions neurològiques es recomana monitoritzar clínicament
+						els malalts amb l’ús <i>d’escales neurològiques validades</i> (escala canadenca
+						i escala de la NIHSS).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Edema cerebral i
+						hipertensió intracranial</span></b>
+				</p>
+
+				<p>
+					<span>Aquestes complicacions neurològiques
+						acostumen a succeir per l’oclusió de grans artèries intracerebrals que
+						ocasionen infarts multilobars. L’edema cerebral sol ser màxim entre el tercer i
+						el cinquè dia després de l’ictus, tot i que pot ocórrer en les primeres 24
+						hores en grans infarts cerebel&#8729;losos.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p >
+					<span>El maneig bàsic de la hipertensió
+						intracranial en pacients amb ictus inclou elevar el capçal del llit a 30º,
+						evitar el dolor, mantenir una oxigenació adecuada i normalitzar la temperatura
+						corporal. Els esteroides no estan recomanats per al tractament de l’edema
+						cerebral i la hipertensió intracranial secundàries a l’ictus isquèmic. L’osmoteràpia
+						i la hiperventilació estan recomanades en pacients amb empitjorament neurològic
+						per cau-sa de la hipertensió intracraneal. </span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p >
+					<b><span style='color:gray; font-size:120%;'>Crisis comicials</span></b>
+				</p>
+
+				<p>
+					<span>No es recomana la profilaxi primària amb
+						fàrmacs antiepilèptics (<b>estudis classe IV, recomanació nivell U</b>). La
+						prevenció secundària, un cop ja han aparegut crisis, sí que està recomanada (<b>estudis
+							classe I, recomanació nivell A</b>).</span>
+				</p>
+
+				<p>
+					<span D>&nbsp;</span>
+				</p>
+
+				<p >
+					<b><span style='color:gray; font-size:120%;'>Transformació
+						hemorràgica</span></b>
+				</p>
+
+				<p>
+					<span>L’aparició de sang en el si d’un infart
+						cerebral ocorre molt freqüentment, tot i que en general és asimptomàtica.
+						Malgrat tot, fins a un 5% de pacients desenvolupen transformacions hemorràgiques
+						simptomàtiques. L’ús de qualsevol fàrmac antitrombòtic, i en particular d’anticoagulants
+						i trombolítics, augmenta el risc de patir una transformació hemorràgica greu.
+						L’àcid acetilsalicílic també s’ha relacionat amb un increment, tot i que menor,
+						del risc de transformació hemorràgica.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><span style='color:gray; font-size:120%;'>Ictus en progressió</span></b>
+				</p>
+
+				<p>
+					<span>L’ictus en evolució és una situació
+						relativament freqüent. Es defineix com la disminució d’un punt en l’escala
+						canadenca o l’augment de &gt;3 punts en la NIHSS, i pot ser conseqüència de
+						di-ferents causes neurològiques i no neurològiques. En el cas que
+						l’empitjorament sigui per progressió de la trombosi es pot considerar el
+						tractament amb heparina sòdica intravenosa.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>Un resum en el maneig diagnòstic i
+						terapèutic del pacient amb infart cerebral es pot veure en els <span
+							style='background:purple'>algoritmes I i II</span>.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+			</div>
+		</div>
+		<div data-role="view" id="2-1" class="contenido" data-title="Tractament" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">2.1. Definició, conceptes bàsics i diagnòstic</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p>
+					<span>L’atac isquèmic transitori (AIT)
+						consisteix en un breu episodi de disfunció neurològica causada per una isquèmia
+						focal cerebral o retiniana, que produeix símptomes clínics típicament de menys
+						d’1 hora de duració i sense evidència d’in-fart cerebral en seqüències de
+						difusió a la ressonància magnètica (dRM). </span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>Existeix una <b>definició clàssica</b>,
+						que s’utilitza des de 1965 i que es basa exclusivament en el perfil temporal
+						dels símptomes (&lt; 24h). Avui en dia se sap que la majoria dels AITs tenen
+						una duració inferior a 1 hora i en el 90% dels casos no excedeixen les 4 hores.
+						Els “AITs de més d’1 hora” de duració es relacionen amb l’existència de lesions
+						isquèmiques en les tècniques de neuroimatge i amb fonts embolígenes cardíaques
+						o arterials. <i>L’“American Herat Association/American Stroke Association
+							Stroke Council (AHA)</i>” l’any 2009 va revisar la definició dels AIT,
+						remarcant la necessitat de confirmar l’absència de teixit isquèmic afectat i
+						posant en dubte el temps d’instauració d’una hora de la focalitat neurològica,
+						tenint en compte que en aquest període de temps també pot haver-hi infart
+						cerebral evidenciat mitjançant les modernes tècniques d’imatge. <i>Per tant,
+							els AIT s’han de considerar com episodis transitoris de disfunció neurològica
+							focal cerebral, espinal o retiniana de naturalesa isquèmica però sense
+							evidència d’infart agut, sense tenir en compte el requeriment arbitra-ri de la
+							duració de la simptomatologia</i>. En contra-posició, l’infart del sistema
+						nerviós central requereix la presència d’infart cerebral. Per tant, aquesta <b>nova
+							definició de l’AIT</b> es basa en l’absència de teixit cerebral infartat, de
+						manera similar a la diferenciació a cardiologia entre angina i infart de
+						miocardi. Així mateix, serà en la <b>definició actual de l’AHA on per primera
+							vegada la duració dels AIT no serà un criteri definitiu, ja que solament serà
+							vàlida l’ab-sència d’infart tissular encefàlic objectivat en les tècniques de
+							neuroimatge</b>.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>L’interès fonamental de l’AIT és el fet
+						de ser un marcador de malaltia aterotrombòtica que amb freqüència <b>prediu
+							l’aparició d’events vasculars cerebrals o miocàrdics greus</b>. Després d’un
+						AIT el període de major risc d’ictus és el primer any (12-13%), sobretot el
+						primer mes (4.4-8%) i les primeres 48h (5-6 %). En estudis dels últims anys
+						s’ha observat que les úniques variables clíniques associades a major
+						recurrèn-cia precoç (&lt;90 dies) són el dèficit motor i els episodis
+						recurrents. El principal factor predictiu és l’etiologia ateromatosa
+						intracranial o extra-cranial. Novament, altres treballs demostren la pitjor
+						evolució dels pacients estudiats amb dRM positiva i també en els pacients amb
+						existència de noves lesions, clínicament silents, en la RM de control
+						realitzada als 30 dies de seguiment. </span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>El <b>diagnòstic de l’AIT</b> es realitza
+						fonamentalment a través de la història clínica. És important realitzar una anamnesi
+						dirigida a recollir dades clau: duració de l’event, relació de símptomes en un
+						territori vascular, existència d’episodis previs, presència de factors de risc
+						vascular o documentació de símptomes que orientin a altres patologies
+						(migranya, equivalents migranyosos, crisis convulsives) (<b>estudis classe III,
+							recomanació nivell B</b>).</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<span>L’AIT és una urgència mèdica que
+						requereix un estudi etiològic complet i l’inici de tractaments preventius adequats
+						de forma precoç amb l’objectiu de preveure possibles ictus en un grup de
+						pacients d’alt risc. Els símptomes habituals de l’AIT s’observen a la <span
+							style='background:purple'>taula II</span>. El símptomes no suggestius d’AIT
+						s’oberven a la <span style='background:purple'>taula III</span>.</span>
+				</p>
+
+				<p>
+					<span>&nbsp;</span>
+				</p>
+			</div>
+		</div>
+
+		<div data-role="view" id="1-6-1" class="contenido" data-title="Tractament" data-layout="layout" data-show="layoutShow" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-icon="search" data-align="right" data-rel="modalview" href="#modalview-search"> </a>
+						<a data-role="button" data-align="right" data-rel="modalview" href="#modalview-anexo">anexo</a>
+					</span>
+				</div>
+				<div >
+					<div id="titulo">
+						<h4 style="margin-left: 2%;">1.6.1. Criteris d’ingrés. ingrés a unitat d’ictus</h4>
+						<div id="tools">
+							<a data-icon="favorites" data-role="button" data-align="right"></a>
+							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
+							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+						</div>
+					</div>
+
+				</div>
+
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+
+			</div>
+		</div>
+		<!--   -------------------------- FIN LIBRO -------------  -->
+
+		<script>
+            var app = new kendo.mobile.Application(document.body, { transition: "fade", platform: "ios"});
+            
+			$("#red").treeview({
+				animated: "fast",
+				collapsed: true,
+				unique: true
+			});
+            
+            $$('#l11').swipeLeft(function() {app.navigate("#1-2");});
+            $$('#l12').swipeRight(function() {app.navigate("#1-1");});
+            $$('#m11').doubleTap(function(){app.navigate('#1-1');});
+		</script>
+          <div id="somiza-fixed" style="text-align: center;"><img src="styles/images/somazina.png"></div>
+	</body>
 </html>
