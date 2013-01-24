@@ -1,60 +1,149 @@
-﻿// JavaScript Document
-
 // Wait for PhoneGap to load
 document.addEventListener("deviceready", onDeviceReady, false);
 
 // PhoneGap is ready
 function onDeviceReady() {
-    getLocation();
+	startConfirm();
 }
 
-function getLocation() {
-    navigator.geolocation.getCurrentPosition(onGeolocationSuccess, onGeolocationError);
+function onConfirm(button) {
+	if (button == true) {
+		setTimeout(function() {
+			app.navigate("#indice"); // Do something after 2 seconds
+		}, 2000);
+	}else{
+        navigator.app.exitApp();
+    }
 }
 
-//=======================Say Hello (Page 1) Operations=======================//
-function sayHello() {
-    var sayHelloInputElem = document.getElementById('helloWorldInput');
-    var sayHelloTextElem = document.getElementById('helloWorldText');
-    var inputText = document.getElementById('txtName');
-
-    sayHelloTextElem.innerHTML = 'Hello, ' + inputText.value + '!';
-    sayHelloTextElem.style.display = 'block';
-    sayHelloInputElem.style.display = 'none';
+function startConfirm() {
+	navigator.notification.confirm(
+		'Aqui según respùesta de si o no.', // message
+		onConfirm, // callback to invoke with index of button pressed
+		'¿Es usted profesional satnitario?', // title
+		'Si, No'          // buttonLabels
+		);
 }
 
-function sayHelloReset() {
-    var sayHelloInputElem = document.getElementById('helloWorldInput');
-    var sayHelloTextElem = document.getElementById('helloWorldText');
-    var inputText = document.getElementById('txtName');
 
-    inputText.value = '';
-    sayHelloTextElem.style.display = 'none';
-    sayHelloInputElem.style.display = 'block';
+// JavaScript Document
+$('#cajaTexto').click(function() {
+	$(this).select();
+});
+
+function btnEliminar() {
+	$(".contenido").each(function() {
+		if ($(this).hasClass('km-state-active')) {
+			alert('Si');
+		}
+		else {
+			alert('Mo');   
+		}
+	});
+
 }
 
-//=======================Geolocation Operations=======================//
-// onGeolocationSuccess Geolocation
-function onGeolocationSuccess(position) {
-    // Use Google API to get the location data for the current coordinates
-    var geocoder = new google.maps.Geocoder();
-    var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    geocoder.geocode({ "latLng": latlng }, function (results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-            if ((results.length > 1) && results[1]) {
-                $("#myLocation").html(results[1].formatted_address);
-            }
-        }
-    });
+//ListView Filter Anexo
+(function ($) {
+	jQuery.expr[':'].Contains = function(a, i, m) {
+		return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
+	};
+  
+	function filterList(header, list) {
+		var form = $("<form>").attr({"class":"filterform","action":"#"}),
+		input = $("<input>").attr({"class":"filterinput","type":"text"});
+		$(form).append(input).appendTo(header);
+  
+		$(input)
+		.change(function () {
+			var filter = $(this).val();
+			if (filter) {
+       
+				$matches = $(list).find('a:Contains(' + filter + ')').parent();
+				$('li', list).not($matches).slideUp();
+				$matches.slideDown();
+             
+			}
+			else {
+				$(list).find("li").slideDown();
+			}
+			return false;
+		})
+		.keyup(function () {
+			$(this).change();
+		});
+	}
+  
+	$(function () {
+		filterList($("#headeranexos"), $("#list"));
+	});
+}(jQuery));
 
-    // Use Google API to get a map of the current location
-    // http://maps.googleapis.com/maps/api/staticmap?size=280x300&maptype=hybrid&zoom=16&markers=size:mid%7Ccolor:red%7C42.375022,-71.273729&sensor=true
-    var googleApis_map_Url = 'http://maps.googleapis.com/maps/api/staticmap?size=300x300&maptype=hybrid&zoom=16&sensor=true&markers=size:mid%7Ccolor:red%7C' + latlng;
-    var mapImg = '<img src="' + googleApis_map_Url + '" />';
-    $("#map_canvas").html(mapImg);
+//Cerrar app
+function Exit() {
+	navigator.app.exitApp();
 }
 
-// onGeolocationError Callback receives a PositionError object
-function onGeolocationError(error) {
-    $("#myLocation").html("<span class='err'>" + error.message + "</span>");
+//Ocultar cuadro de busqueda
+function closeModalViewSearch() {
+	$("#modalview-search").kendoMobileModalView("close");
 }
+function closeModalViewAnexos() {
+	$("#modalview-anexos").kendoMobileModalView("close");
+}
+
+//Resaltar texto buscado
+function borrarBusqueda() {
+	$('span').removeClass('resaltarTexto');
+}
+
+function resaltarTexto() {
+	$(".resaltarTexto").each(function() {
+		$(this).removeClass('resaltarTexto');
+	});
+	$(".lectura").each(function() {
+		$(this).resaltar(cajaTexto.value, "resaltarTexto");
+	});
+}
+
+jQuery.fn.extend({
+	resaltar: function(busqueda, claseCSSbusqueda) {
+		var regex = new RegExp("(<[^>]*>)|(" + busqueda.replace(/([-.*+?^${}()|[\]\/\\])/g, "\\$1") + ')', 'ig');
+		var nuevoHtml = this.html(this.html().replace(regex, function(a, b, c) {
+			return (a.charAt(0) == "<") ? a : "<span class=\"" + claseCSSbusqueda + "\">" + c + "</span>";
+		}));
+		return nuevoHtml;
+	}
+})
+
+// Resetear al tamaño original
+var originalFontSize = $('html').css('font-size');
+
+$(".resetFont").click(function() {
+	$('.lectura').css('font-size', originalFontSize);
+});
+
+// Disminuir tamaño fuente
+function disminuirText(e) {
+	var currentFontSize = $('.lectura').css('font-size');
+	var currentFontSizeNum = parseFloat(currentFontSize, 10);
+	var newFontSize = currentFontSizeNum * 0.8;
+	$('.lectura').css('font-size', newFontSize);
+	return false;
+}
+
+// Aumentar tamaño fuente
+function aumentarText(e) {
+	var currentFontSize = $('.lectura').css('font-size');
+	var currentFontSizeNum = parseFloat(currentFontSize, 10);
+	var newFontSize = currentFontSizeNum * 1.2;
+	$('.lectura').css('font-size', newFontSize);
+	return false;
+}
+
+// Evento click en listas
+function enact(what)
+{
+    what.style('background-color', 'red');
+}
+

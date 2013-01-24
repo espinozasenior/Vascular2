@@ -3,13 +3,16 @@
   <PropertyGroup>
     <ProjectGuid>f1bdc6ca-d461-4629-8893-ff7f27317bf8</ProjectGuid>
     <ProjectTypeGuids>{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}</ProjectTypeGuids>
-    <AppIdentifier>com.telerik.Vascular</AppIdentifier>
+    <AppIdentifier>com.hostienda.vascular</AppIdentifier>
     <ProjectName>Vascular</ProjectName>
     <IsRunnable>true</IsRunnable>
-    <TemplateAppName>Cordova200</TemplateAppName>
-    <AndroidPermissions>android.permission.CAMERA;android.permission.VIBRATE;android.permission.ACCESS_COARSE_LOCATION;android.permission.ACCESS_FINE_LOCATION;android.permission.ACCESS_LOCATION_EXTRA_COMMANDS;android.permission.READ_PHONE_STATE;android.permission.INTERNET;android.permission.RECEIVE_SMS;android.permission.RECORD_AUDIO;android.permission.MODIFY_AUDIO_SETTINGS;android.permission.READ_CONTACTS;android.permission.WRITE_CONTACTS;android.permission.WRITE_EXTERNAL_STORAGE;android.permission.ACCESS_NETWORK_STATE</AndroidPermissions>
-    <DeviceOrientations>Portrait;Landscape</DeviceOrientations>
+    <TemplateAppName>Cordova220</TemplateAppName>
+    <AndroidPermissions>android.permission.READ_PHONE_STATE;android.permission.INTERNET;android.permission.READ_CONTACTS;android.permission.WRITE_EXTERNAL_STORAGE;android.permission.ACCESS_NETWORK_STATE</AndroidPermissions>
+    <DeviceOrientations>Portrait</DeviceOrientations>
     <iOSStatusBarStyle>Default</iOSStatusBarStyle>
+    <AndroidHardwareAcceleration>True</AndroidHardwareAcceleration>
+    <BundleVersion>1.0</BundleVersion>
+    <AndroidVersionCode>2</AndroidVersionCode>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="App_Resources" />
@@ -51,6 +54,30 @@
     <Resource Include="App_Resources\Android\drawable-ldpi\icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="scripts\core.js" />
+    <Content Include="scripts\jquery.treeview.js" />
+    <Content Include="scripts\quo.js" />
+    <Content Include="scripts\rengy.js" />
+    <Content Include="styles\images\ar.png" />
+    <Content Include="styles\images\ferrer.png" />
+    <Content Include="styles\images\icons.png" />
+    <Content Include="styles\images\logo_sociedad.jpg" />
+    <Content Include="styles\images\somazina.png" />
+    <Content Include="styles\images\tables\01.png" />
+    <Content Include="styles\images\tables\02.png" />
+    <Content Include="styles\images\tables\03.png" />
+    <Content Include="styles\images\tables\04.png" />
+    <Content Include="styles\images\tables\05.png" />
+    <Content Include="styles\images\tables\06.png" />
+    <Content Include="styles\images\tables\07.png" />
+    <Content Include="styles\images\tables\08.png" />
+    <Content Include="styles\images\tables\09.png" />
+    <Content Include="styles\images\tables\10.png" />
+    <Content Include="styles\images\tables\11.png" />
+    <Content Include="styles\images\tables\12.png" />
+    <Content Include="styles\images\tables\13.png" />
+    <Content Include="styles\images\tables\14.png" />
+    <Content Include="styles\images\wallpaper.png" />
     <Content Include="index.html" />
     <Content Include="kendo\js\jquery.min.js" />
     <Content Include="kendo\js\kendo.mobile.min.js" />

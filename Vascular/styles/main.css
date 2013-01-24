@@ -1,26 +1,529 @@
-body
+/*----Ipadd----*/
+@media only screen and (min-width: 700px) and (max-width: 949px)
 {
-    font: Arial, sans-serif;
+	#tabstrip-home
+	{
+		font-size: 200%;
+	} 
+    
+	#logos
+	{
+		position: absolute; 
+		z-index: 3;
+		top: 185%;
+		text-align: center;
+		width: 100%;
+	}
+
+	#logos img
+	{
+		margin-left: 5%;
+		margin-right: 5%;
+	}
 }
 
-.buttonArea,
-.footerText,
-#geoLocationContainer,
-#helloWorldInput,
-#helloWorldText
+/*----Tablets----*/
+@media only screen and (min-width: 500px) and (max-width: 699px)
 {
-    text-align: center;
+	#tabstrip-home
+	{
+		font-size: 200%;
+	}
+	#bk-image
+	{
+		top: 130%;
+	}
+    
+	#logos
+	{
+		position: absolute; 
+		z-index: 3;
+		top: 195%;
+		text-align: center;
+		width: 100%;
+	}
+
+	#logos img
+	{
+		margin-left: 5%;
+		margin-right: 5%;
+	}
 }
+
+/*----Androids----*/
+@media only screen and (min-height: 480px) and (max-width: 500px)
+{
+   
+	#bk-image
+	{
+		top: 130%;
+	}
+    
+	#logos
+	{
+		position: absolute; 
+		z-index: 3;
+		top: 210%;
+		text-align: center;
+		width: 100%;
+	}
+
+	#logos img
+	{
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+    
+	    
+}
+
+/*----iPhone5----*/
+@media only screen and (min-device-width: 640px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2)
+{
+   
+	#bk-image
+	{
+		top: 130%;
+	}
+    
+	#logos
+	{
+		position: absolute; 
+		z-index: 3;
+		top: 170%;
+		text-align: center;
+		width: 100%;
+	}
+
+	#logos img
+	{
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+    
+	    
+}
+/*--- Iphone4---*/
+@media only screen and (max-height: 480px)
+{
+	#logos
+	{
+		position: absolute; 
+		z-index: 3;
+		top: 175%;
+		text-align: center;
+		width: 100%;
+	}
+    
+    #somiza-fixed{
+        text-align: center;
+        margin-top: 80%;
+        position: fixed;
+        right: 25%;
+    }
+
+	#logos img
+	{
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+    
+	.expandable, .collapsable
+	{
+		margin-right: 20%;
+	}
+}
+
+li{
+    cursor:pointer;
+}
+
+.clicked{
+   background-color: #FFBABA; 
+}
+
+#red{
+    font-size: 130%;
+}
+
+.arrow{
+    float: right;
+    margin-right: 5%;
+}
+
+.resaltarTexto
+{
+	background-color: yellow;
+}
+.highlight
+{
+	background-color: yellow;
+}
+
+#tools
+{
+	float: right;
+}
+
+#titulo
+{
+	color: #7C031E;
+    font-family: "Helvetica";
+    font-weight: bold;
+    font-stretch: condensed;
+}
+
+#titulo h4
+{
+	float: left;
+}
+
+.treeview, .treeview ul
+{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.treeview ul
+{
+	background-color: transparent;
+	margin-top: 4px;
+}
+
+.treeview .hitarea
+{
+	background: url(images/treeview-default.gif) -64px -25px no-repeat;
+	height: 16px;
+	width: 16px;
+	margin-left: -16px;
+	float: left;
+	cursor: pointer;
+}
+
+.treeview li
+{
+	margin: 0;
+	padding: 3px 0pt 3px 16px;
+}
+
+.treeview a.selected
+{
+	background-color: #eee;
+}
+
+#treecontrol { margin: 1em 0; display: none; }
+
+.treeview .hover { color: #3F99D2; cursor: pointer; }
+
+.treeview li { background: url(images/treeview-default-line.gif) 0 0 no-repeat; }
+.treeview li.collapsable, .treeview li.expandable { background-position: 0 -176px; }
+
+.treeview .expandable-hitarea { background-position: -80px -3px; }
+
+.treeview li.last { background-position: 0 -1766px }
+.treeview li.lastCollapsable, .treeview li.lastExpandable { background-image: url(images/treeview-default.gif); }
+.treeview li.lastCollapsable { background-position: 0 -111px }
+.treeview li.lastExpandable { background-position: -32px -67px }
+
+.treeview div.lastCollapsable-hitarea, .treeview div.lastExpandable-hitarea { background-position: 0; }
+
+.treeview-red li { background-image: url(images/treeview-red-line.gif); }
+.treeview-red .hitarea, .treeview-red li.lastCollapsable, .treeview-red li.lastExpandable { background-image: url(images/treeview-red.gif); }
+
+.treeview-black li { background-image: url(images/treeview-black-line.gif); }
+.treeview-black .hitarea, .treeview-black li.lastCollapsable, .treeview-black li.lastExpandable { background-image: url(images/treeview-black.gif); }
+
+.treeview-gray li { background-image: url(images/treeview-gray-line.gif); }
+.treeview-gray .hitarea, .treeview-gray li.lastCollapsable, .treeview-gray li.lastExpandable { background-image: url(images/treeview-gray.gif); }
+
+.treeview-famfamfam li { background-image: url(images/treeview-famfamfam-line.gif); }
+.treeview-famfamfam .hitarea, .treeview-famfamfam li.lastCollapsable, .treeview-famfamfam li.lastExpandable { background-image: url(images/treeview-famfamfam.gif); }
+
+.treeview .placeholder
+{
+	background: url(images/ajax-loader.gif) 0 0 no-repeat;
+	height: 16px;
+	width: 16px;
+	display: block;
+}
+
+.filetree li { padding: 3px 0 2px 16px; }
+.filetree span.folder, .filetree span.file { padding: 1px 0 1px 16px; display: block; }
+.filetree span.folder { background: url(images/folder.gif) 0 0 no-repeat; }
+.filetree li.expandable span.folder { background: url(images/folder-closed.gif) 0 0 no-repeat; }
+.filetree span.file { background: url(images/file.gif) 0 0 no-repeat; }
+
+/*-----------------------*/
+
+.css-treeview input + label + ul
+{
+	display: none;
+}
+
+.css-treeview input:checked + label + ul
+{
+	display: block;
+}
+
+.css-treeview input
+{
+	position: absolute;
+	opacity: 0;
+}
+
+.css-treeview input:checked:not(:disabled) + label + ul
+{
+	display: block;
+}
+
+.css-treeview input:disabled + label
+{
+	cursor: default; /* or no-drop */
+	opacity: .6;
+}
+
+.css-treeview label,
+.css-treeview label::before
+{
+	background: url("styles/images/icons.png") no-repeat;
+}
+
+.css-treeview label::before
+{
+	content: "";
+	width: 16px;
+	margin: 0 22px 0 0;
+	vertical-align: middle;
+	background-position: 0 -32px;
+}
+
+.css-treeview input:checked + label::before
+{
+	background-position: 0 -16px;
+}
+
+/* ---------------------------------*/
 
 #txtName
 {
-    border: 1px solid #AAA;
-    border-radius: 15px;
-    position:static;
-    margin-left: 1em;
-    margin-top: 0.3em;
-    margin-bottom: 0.3em;
-    background:white;
-    color: black;
-    padding: 7px;
+	border: 1px solid #AAA;
+	border-radius: 15px;
+	position: static;
+	margin-left: 1em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	background: white;
+	color: black;
+	padding: 7px;
+}
+
+#bk-image
+{
+	width: 100%;
+	position: absolute;
+	z-index: 0;
+}
+
+#bk-logos
+{
+	z-index: 2;
+	position: absolute;
+	top: 185%;
+	left: 3%;
+}
+
+#bk-logos img
+{
+	width: 25%;
+	padding-right: 10%;
+}    
+
+.km-ios .km-view .km-content
+{
+	background-color: #BD072F;
+	font-family: Helvetica;
+	font-size: 90%;
+	font-weight: 300;
+	font-style: normal;
+	line-height: normal;
+}
+
+.km-ios .km-view .km-content .km-listgroupinset .km-group-title .km-text
+{
+	color: rgb(255, 255, 255);
+}
+.km-ios .km-view .km-navbar
+{
+	background-color: rgb(219, 0, 47);
+	/*
+    background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0, rgba(0, 0, 0, .2)), color-stop(.5, rgba(0, 0, 0, .35)), color-stop(.5, rgba(0, 0, 0, .45)), color-stop(1, rgba(0, 0, 0, .4)));
+	*/
+    background-image: -moz-linear-gradient(50% 0, 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, .35) 50%, rgba(0, 0, 0, .45) 50%, rgba(0, 0, 0, .4));
+	background-repeat-x: repeat;
+	background-repeat-y: repeat;
+	background-position-x: 0px;
+	background-position-y: 0px;
+}
+.km-ios .km-view .km-navbar .km-button
+{
+	background-color: rgb(236, 12, 60);
+}
+.km-ios .km-view .km-tabstrip
+{
+	background-color: rgb(254, 100, 133);
+	background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0, rgba(0, 0, 0, .2)), color-stop(.5, rgba(0, 0, 0, .4)), color-stop(.5, rgba(0, 0, 0, .45)), color-stop(1, rgba(0, 0, 0, .4)));
+	background-image: -moz-linear-gradient(50% 0, 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, .4) 50%, rgba(0, 0, 0, .45) 50%, rgba(0, 0, 0, .4));
+	background-repeat-x: repeat;
+	background-repeat-y: repeat;
+	background-position-x: 0px;
+	background-position-y: 0px;
+}
+.km-ios .km-view .km-tabstrip .km-button .km-icon
+{
+	color: rgb(255, 177, 194);
+}
+.km-ios .km-view .km-tabstrip .km-button .km-text
+{
+	color: rgb(204, 204, 204);
+}
+.km-ios .km-view .km-content .km-list .km-state-active .km-listview-link
+{
+	background-color: rgb(249, 35, 81);
+}
+.km-ios .km-view .km-tabstrip .km-state-active span.km-icon
+{
+	color: rgb(249, 35, 81);
+}
+.km-android .km-view .km-content
+{
+	background-color: rgb(219, 0, 47);
+	font-family: Helvetica;
+	font-size: 100%;
+	font-weight: normal;
+	font-style: normal;
+	line-height: normal;
+	text-shadow: none;
+}
+
+.lectura
+{
+	background-color: rgb(255, 255, 255);
+	font-family: Helvetica;
+    font-weight: bold;
+    font-stretch: condensed;
+	color: black;
+	padding-top: 3%;
+	padding-left: 2%;
+	padding-right: 2%;
+	height: 100%;
+	text-align: justify;
+        
+}
+.km-android .km-view .km-content .km-listgroupinset .km-group-title .km-text
+{
+	color: rgb(255, 255, 255);
+}
+.km-android .km-view .km-navbar
+{
+	background-color: rgb(219, 0, 47);
+	background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0, rgba(0, 0, 0, .2)), color-stop(.5, rgba(0, 0, 0, .35)), color-stop(.5, rgba(0, 0, 0, .45)), color-stop(1, rgba(0, 0, 0, .4)));
+	background-image: -moz-linear-gradient(50% 0, 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, .35) 50%, rgba(0, 0, 0, .45) 50%, rgba(0, 0, 0, .4));
+	background-repeat-x: repeat;
+	background-repeat-y: repeat;
+	background-position-x: 0px;
+	background-position-y: 0px;
+}
+.km-android .km-view .km-navbar .km-button
+{
+	background-color: rgb(254, 100, 133);
+	background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0, rgba(0, 0, 0, .2)), color-stop(.5, rgba(0, 0, 0, .4)), color-stop(.5, rgba(0, 0, 0, .45)), color-stop(1, rgba(0, 0, 0, .4)));
+	background-image: -moz-linear-gradient(50% 0, 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, .4) 50%, rgba(0, 0, 0, .45) 50%, rgba(0, 0, 0, .4));
+	background-repeat-x: repeat;
+	background-repeat-y: repeat;
+	background-position-x: 0px;
+	background-position-y: 0px;
+}
+.km-android .km-view .km-tabstrip
+{
+	background-color: rgb(254, 99, 132);
+}
+.km-android .km-view .km-tabstrip .km-button .km-icon
+{
+	color: rgb(255, 177, 194);
+}
+.km-android .km-view .km-tabstrip .km-state-active span.km-icon
+{
+	color: rgb(249, 35, 81);
+}
+.km-android .km-view .km-navbar .km-button.km-state-active
+{
+	background-color: rgb(249, 35, 81);
+	background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0, rgba(0, 0, 0, .2)), color-stop(.5, rgba(0, 0, 0, .4)), color-stop(.5, rgba(0, 0, 0, .45)), color-stop(1, rgba(0, 0, 0, .4)));
+	background-image: -moz-linear-gradient(50% 0, 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, .4) 50%, rgba(0, 0, 0, .45) 50%, rgba(0, 0, 0, .4));
+	background-repeat-x: repeat;
+	background-repeat-y: repeat;
+	background-position-x: 0px;
+	background-position-y: 0px;
+}
+.km-android .km-view .km-content .km-listgroup .km-group-title .km-text
+{
+	color: rgb(255, 255, 255);
+}
+.km-blackberry .km-view .km-content
+{
+	background-color: rgb(219, 0, 47);
+	background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0, rgba(0, 0, 0, 0)), color-stop(1, rgba(255, 255, 255, .2)));
+	background-image: -moz-linear-gradient(50% 0, 50% 100%, rgba(0, 0, 0, 0), rgba(255, 255, 255, .2));
+	background-repeat-x: repeat, repeat;
+	background-repeat-y: repeat, repeat;
+	background-position-x: 0px, 0%;
+	background-position-y: 0px, 0%;
+	font-family: Helvetica;
+	font-size: 9px;
+	font-weight: normal;
+	font-style: normal;
+	line-height: normal;
+	text-shadow: none;
+}
+.km-blackberry .km-view .km-content .km-listgroupinset .km-group-title .km-text
+{
+	color: rgb(255, 255, 255);
+}
+.km-blackberry .km-view .km-navbar
+{
+	background-color: rgb(219, 0, 47);
+	background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0, rgba(0, 0, 0, .2)), color-stop(.5, rgba(0, 0, 0, .35)), color-stop(.5, rgba(0, 0, 0, .45)), color-stop(1, rgba(0, 0, 0, .4)));
+	background-image: -moz-linear-gradient(50% 0, 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, .35) 50%, rgba(0, 0, 0, .45) 50%, rgba(0, 0, 0, .4));
+	background-repeat-x: repeat;
+	background-repeat-y: repeat;
+	background-position-x: 0px;
+	background-position-y: 0px;
+}
+.km-blackberry .km-view .km-navbar .km-button
+{
+	background-color: rgb(236, 12, 60);
+}
+.km-blackberry .km-view .km-tabstrip
+{
+	background-color: rgb(254, 99, 132);
+}
+.km-blackberry .km-view .km-tabstrip .km-button .km-icon
+{
+	color: rgb(255, 177, 194);
+}
+.km-blackberry .km-view .km-tabstrip .km-state-active span.km-icon
+{
+	color: rgb(249, 35, 81);
+	background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0, rgba(255, 255, 255, .5)), color-stop(.5, rgba(255, 255, 255, .2)), color-stop(1, rgba(255, 255, 255, .5)));
+	background-image: -moz-linear-gradient(50% 0, 50% 100%, rgba(255, 255, 255, .5), rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .5));
+	background-repeat-x: repeat;
+	background-repeat-y: repeat;
+	background-position-x: 0px;
+	background-position-y: 0px;
+	background-color: rgba(0, 0, 0, 0);
+}
+.km-blackberry .km-view .km-navbar .km-view-title > *
+{
+	color: rgb(255, 255, 255);
 }
