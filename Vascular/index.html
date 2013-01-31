@@ -4,20 +4,23 @@
 		<title>Vascular</title>
 		<meta charset="utf-8" />
 		<script src="cordova.js"></script>
-        <script src="scripts/quo.js"></script>
+		<script src="scripts/quo.js"></script>
 		<script src="kendo/js/jquery.min.js"></script>
 		<script src="kendo/js/kendo.mobile.min.js"></script>
+		<script src="scripts/jquery.atooltip.js"></script>
+		<script type="text/javascript" src="scripts/rengy.js"></script>
 
-		<script type="text/javascript" src="scripts/rengy.js"></script>       
-		
 		<script type="text/javascript" src="scripts/jquery.treeview.js"></script>
 
 		<script src="scripts/hello-world.js"></script>
-
+		<link href="styles/atooltip.css" rel="stylesheet" />
 		<link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
 		<link href="styles/main.css" rel="stylesheet" />
 	</head>
 	<body>
+        <div id="somiza-fixed"class="bottom" style="text-align: center;">
+			<img src="styles/images/somazina.png">
+		</div>
 		<div data-role="view" id="tabstrip-home" data-title="">
 			<br><br>
 			<h2 style="color:#FFF;">
@@ -31,17 +34,17 @@
 				2ª Edició
 			</h3>
 			<img id="bk-image" src="styles/images/wallpaper.png">
-			<div id="logos">
+			<div id="logos" class="bottom">
 				<img src="styles/images/ferrer.png" style="width: 20%"><img src="styles/images/somazina.png" style="width:30%"><img src="styles/images/logo_sociedad.jpg" style="width:20%">
 			</div>
 		</div>
 
-		<div data-role="view" id="indice" data-title="ÍNDEX" data-layout="layout" data-transition="fade" data-show="layoutShow">
+		<div data-role="view" id="indice" data-title="ÍNDEX" data-layout="layout" data-init="initial" data-transition="fade" data-show="layoutShow">
 			<header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">
 						<a data-role="button" data-click="Exit" data-align="left">SORTIR</a>
-                        <a data-role="button" href="#creditos" data-align="right">INFO</a>
+						<a data-role="button" href="#creditos" data-align="right">INFO</a>
 					</span>
 				</div>
 			</header>
@@ -106,18 +109,14 @@
 				<li>
 					<span>1. Ictus isquèmic</span>
 					<ul>
-						<li onclick="enact(this);" id="m11">
-							<span >1.1. Introducció. Dades epidemiològiques</span>
+						<li onclick="enact(this);" >
+							<span id="m11">1.1. Introducció. Dades epidemiològiques</span>
 						</li>
 						<li>
-							<span>1.2. Definicions<span>
-								<a class="arrow" href="#1-2"><img src="styles/images/ar.png"></a>
-								</span></span>
+							<span  id="m12">1.2. Definicions</span>
 							<ul>
-								<li>
-									<span>1.2.1. Classificacions de l’ictus isquèmic<span>
-										<a class="arrow" href="#1-2-1"><img src="styles/images/ar.png"></a>
-										</span></span>
+								<li >
+									<span id="m121">1.2.1. Classificacions de l’ictus isquèmic</span>
 								</li>
 							</ul>
 						</li>
@@ -125,50 +124,34 @@
 							<span>1.3. Etiologia</span>
 							<ul>
 								<li>
-									<span>1.3.1. Patofisiologia<span>
-										<a href="#1-3-1" style="color:#2B83E2;">-></a>
-										</span></span>
+									<span id="m131">1.3.1. Patofisiologia</span>
 								</li>
 								<li>
-									<span>1.3.2. Factors de risc<span>
-										<a href="#1-3-2" style="color:#2B83E2;">-></a>
-										</span></span>
+									<span id="m132">1.3.2. Factors de risc</span>
 								</li>
 								<li>
-									<span>1.3.3. Classificació etiològica de l’ictus<span>
-										<a href="#1-3-3" style="color:#2B83E2;">-></a>
-										</span></span>
+									<span id="m133">1.3.3. Classificació etiològica de l’ictus</span>
 								</li>
 
 							</ul>
 						</li>
-						<li>
-							<span>1.4. Diagnòstic<span>
-								<a href="#1-4" style="color:#2B83E2;">-></a>
-								</span></span>
+						<li >
+							<span id="m14">1.4. Diagnòstic</span>
 							<ul>
 								<li>
-									<span>1.4.1. Diagnòstic clínic<span>
-										<a href="#1-4-1" style="color:#2B83E2;">-></a>
-										</span></span>
+									<span  id="m141">1.4.1. Diagnòstic clínic</span>
 								</li>
-								<li>
-									<span>1.4.2. Criteris diagnòstics<span>
-										<a href="#1-4-2" style="color:#2B83E2;">-></a>
-										</span></span>
+								<li >
+									<span id="m142">1.4.2. Criteris diagnòstics</span>
 								</li>
-								<li>
-									<span>1.4.3. Diagnòstic diferencial<span>
-										<a href="#1-4-3" style="color:#2B83E2;">-></a>
-										</span></span>
+								<li >
+									<span id="m143">1.4.3. Diagnòstic diferencial</span>
 								</li>
 
 							</ul>
 						</li>
-						<li>
-							<span>1.5. Exploracions complementàries<span>
-								<a href="#1-5" style="color:#2B83E2;">-></a>
-								</span></span>
+						<li >
+							<span id="m15">1.5. Exploracions complementàries</span>
 							<ul>
 								<li>
 									<span>1.5.1. Exàmens de laboratori<span>
@@ -262,12 +245,10 @@
 					<span>2. Atac isquèmic transitori</span>
 					<ul>
 						<li>
-							<span>2.1. Definició, conceptes bàsics i diagnòstic<span>
-								<a href="#2-1" style="color:#2B83E2;">-></a>
-								</span></span>
+							<span id="m21">2.1. Definició, conceptes bàsics i diagnòstic</span>
 						</li>
 						<li>
-							<span>2.2. Mecanismes patogènics i tractament<span>
+							<span id="m22">2.2. Mecanismes patogènics i tractament<span>
 								<a href="#2-2" style="color:#2B83E2;">-></a>
 								</span></span>
 						</li>
@@ -321,7 +302,7 @@
 				</div>
 			</header>
 			<div ontouchstart="" data-role="touch" id="wrap">
-				<div id="headeranexos">
+				<div id="headeranexos" style="background-color: white; text-align: center;">
 
 				</div>
 				<ul id="list" data-role="listview" data-style="inset">
@@ -329,31 +310,16 @@
 						<a href="#taula1">Taule I</a>
 					</li>
 					<li>
-						<a href="#/austria/">Austria</a>
+						<a href="#taula2/">Taule II</a>
 					</li>
 					<li>
-						<a href="#/belgium/">Belgium</a>
+						<a href="#taula3/">Taule III</a>
 					</li>
 					<li>
 						<a href="#/brazil/">Brazil</a>
 					</li>
 					<li>
 						<a href="#/canada/">Canada</a>
-					</li>
-					<li>
-						<a href="#/denmark/">Denmark</a>
-					</li>
-					<li>
-						<a href="#/finland/">Finland</a>
-					</li>
-					<li>
-						<a href="#/france/">France</a>
-					</li>
-					<li>
-						<a href="#/germany/">Germany</a>
-					</li>
-					<li>
-						<a href="#/greece/">Greece</a>
 					</li>
 					<li>
 						<a href="#/ireland/">Ireland</a>
@@ -389,48 +355,17 @@
 			</div>
 		</div>
 
-		<div data-role="view" id="favoritos" class="contenido" data-init="mobileListViewDataBindInitFlat" data-title="FAVORITS" data-layout="layout" data-show="layoutShow" data-transition="slide">
+		<div data-role="view" id="favoritos" data-init="restarFavorito" class="contenido" data-title="FAVORITS" data-layout="layout" data-show="layoutShow" data-transition="slide">
 			<header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">
 						<a data-role="backbutton" data-align="left">Enrere</a>
-						<a data-role="button" data-click="btnEliminar" data-align="right">ELIMINAR</a>
+						<a data-role="button" data-click="btnEliminar" data-align="right" id="dltbtnfv" >ELIMINAR</a>
 					</span>
 				</div>
 			</header>
-			<ul data-role="listview" data-style="inset">
-				<li>
-					<label>
-						<input type="checkbox" checked="checked" />
-						Lettuce
-					</label>
-				</li>
-				<li>
-					<label>
-						<input type="checkbox" />
-						<span>
-							<a href="#1-5-3" style="color:#2B83E2;">1.5.3. Estudi genètic</a>
-						</span>
-					</label>
-				</li>
-				<li>
-					<label>
-						<input type="checkbox" />
-						Peas
-					</label>
-				</li>
-				<li>
-					<label>
-						<input type="checkbox" />
-						Bread
-					</label>
-				</li>
-				<li>
-					<label>
-						<input type="checkbox" />
-						Unicorns
-					</label>
-				</li>
+			<ul data-role="listview" id="div-list-favoritos" style="color: #333333;font-family: HelveticaNeue; text-align: center;">
+
 			</ul>
 		</div>
 
@@ -442,7 +377,7 @@
 				</div>
 			</div>
 			<div ontouchstart="" data-role="touch" id="wrap">
-				<div id="headeranexos">
+				<div id="headeranexos" style="background-color: white; text-align: center;">
 
 				</div>
 				<ul id="list" data-role="listview" data-style="inset">
@@ -450,10 +385,10 @@
 						<a href="#taula1">Taule I</a>
 					</li>
 					<li>
-						<a href="#/austria/">Austria</a>
+						<a href="#taula2/">Taule II</a>
 					</li>
 					<li>
-						<a href="#/belgium/">Belgium</a>
+						<a href="#taula3/">Taule III</a>
 					</li>
 					<li>
 						<a href="#/brazil/">Brazil</a>
@@ -477,24 +412,6 @@
 						<a href="#/greece/">Greece</a>
 					</li>
 					<li>
-						<a href="#/ireland/">Ireland</a>
-					</li>
-					<li>
-						<a href="#/israel/">Israel</a>
-					</li>
-					<li>
-						<a href="#/italy/">Italy</a>
-					</li>
-					<li>
-						<a href="#/japan/">Japan</a>
-					</li>
-					<li>
-						<a href="#/luxembourg/">Luxembourg</a>
-					</li>
-					<li>
-						<a href="#/mexico/">Mexico</a>
-					</li>
-					<li>
 						<a href="#/netherlands/">Netherlands</a>
 					</li>
 					<li>
@@ -510,7 +427,7 @@
 			</div>
 		</div>
 
-		<div data-role="modalview" id="modalview-search" style="width: 95%; height: 80px;">
+		<div data-role="modalview" id="modalview-search" style="width: 95%; height: 80px; text-align: center;">
 			<div data-role="header">
 				<div data-role="navbar">
 					<span>Buscar</span>
@@ -533,9 +450,9 @@
 
 			<footer data-role="footer">
 				<div data-role="tabstrip">
-					<a data-icon="bookmarks" href="#indice">Puntos de libro</a>
-					<a data-icon="favorites"href="#scrollview-home">Favorits</a>
-					<a data-icon="camera" href="#anexos">Annexos</a>
+					<a data-icon="" href="#indice"><img src="kendo/styles/images/icon-indice-2.png" style="width: 60%;"></a>
+					<a data-icon="" href="#favoritos"><img src="kendo/styles/images/icon-favorito-1.png" style="width: 60%;"></a>
+					<a data-icon="" href="#anexos"><img src="kendo/styles/images/icon-anexo-1.png" style="width: 60%;"></a>
 				</div>
 			</footer>
 		</div>
@@ -553,10 +470,33 @@
 				<img src="styles/images/tables/01.png" style="display: block" />
 			</div>
 		</div>
+		<div data-role="view" id="taula2" data-title="Taula II" data-role="touch" data-zoom="true">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title"></span>
+					<a data-role="backbutton" data-align="left">Enrere</a>
+				</div>
+			</header>
 
-		
+			<div data-role="content">
+				<img src="styles/images/tables/02.png" style="display: block" />
+			</div>
+		</div>
+		<div data-role="view" id="taula3" data-title="Taula III" data-role="touch" data-zoom="true">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title"></span>
+					<a data-role="backbutton" data-align="left">Enrere</a>
+				</div>
+			</header>
+
+			<div data-role="content">
+				<img src="styles/images/tables/03.png" style="display: block" />
+			</div>
+		</div>
+
 		<!--   --------------------------  LIBRO ---------------  -->
-        
+
 		<div data-role="view" id="1-1" class="contenido" data-title="Ictus isquèmic" data-transition="slide">
 			<header data-role="header">
 				<div data-role="navbar">
@@ -570,7 +510,7 @@
 					<div id="titulo">
 						<h4 style="margin-left: 2%;">1.1. Introducció. Dades epidemiològiques</h4>
 						<div id="tools">
-							<a data-role="button" data-icon="favorites" data-align="right"></a>
+							<a data-role="button" onclick="addFavorito('#1-1', 'Introducció. Dades epidemiològiques');" data-icon="favorites" data-align="right"></a>
 							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
 							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
 							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
@@ -631,7 +571,7 @@
 					<div id="titulo">
 						<h4 style="margin-left: 2%;">1.2. Definicions</h4>
 						<div id="tools">
-							<a data-role="button" data-icon="favorites" data-align="right"></a>
+							<a data-role="button"  onclick="addFavorito('#1-2', 'Definicions');" data-icon="favorites" data-align="right"></a>
 							<a data-role="button" data-click="highlightSelectedText" data-align="right">T</a>
 							<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
 							<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
@@ -4081,18 +4021,154 @@
 		<!--   -------------------------- FIN LIBRO -------------  -->
 
 		<script>
-            var app = new kendo.mobile.Application(document.body, { transition: "fade", platform: "ios"});
+			var app = new kendo.mobile.Application(document.body, { transition: "fade", platform: "ios"});
+			var db;
+			function initial() {
+				db = openDatabase("favoritos", "0.1", "Base de datos de apartados favoritos", 200000);
+				if (db) {
+					// Database opened
+					db.transaction(function(tx) {
+						tx.executeSql("CREATE TABLE IF NOT EXISTS favoritos(indice text primary key , nombre text)")
+					});
+				}
+				listfavoritos();
+			}
+			
+			function showUsers(users) {
+				$("#div-list-favoritos").html("");
+				for (var i = 0; i < users.length; i++) {
+                    
+					$("#div-list-favoritos").append("<li id=" + "\'" + users[i][0] + "\'" + " onclick=" + "go(\'" + users[i][0] + "\'" + ");>" + users[i][1] + "</li>");
+										
+				}
+			}
+
+			function listfavoritos() {
+				db.transaction(function(tx) {
+					tx.executeSql("SELECT * FROM favoritos", [],
+								  function(tx, result) {
+									  var output = [];
+									  for (var i = 0; i < result.rows.length; i++) {
+										  output.push([
+											  result.rows.item(i)['indice'],
+											  result.rows.item(i)['nombre']
+										  ]);
+									  }
+
+									  showUsers(output);
+									  console.log(output);
+								  });
+				});
+			}
+			
+			function addFavorito(indice, nombre) {
+				db.transaction(function(tx) {
+					tx.executeSql("INSERT INTO favoritos(indice, nombre) VALUES(?,?)", [indice, nombre]);
+				});
+                alert("Es va afegir a favorits!");
+				listfavoritos();
+			}
             
+			function removeFavorito(userId) {
+				db.transaction(function(tx) {
+					tx.executeSql("DELETE FROM favoritos WHERE indice='" + [userId] + "'");
+				})
+				listfavoritos();
+			} 
+              
+			$(".eliminables").live("click", function(e) {
+				var elem = $(this).attr("id");
+				removeFavorito(elem);
+			});
+                
+            function restarFavorito(){
+                $("#dltbtnfv").css({ background: "#EC0C3C" });
+				$("#dltbtnfv").removeClass("ocupado");
+				$("#div-list-favoritos > li").removeClass("eliminables");
+            }
+            
+			function btnEliminar() {
+				if ($("#dltbtnfv").hasClass("ocupado")) {
+                    listfavoritos();
+                    $("#dltbtnfv").css({ background: "#EC0C3C" });
+					$("#dltbtnfv").removeClass("ocupado");
+					/* $("#div-list-favoritos > li").removeClass("eliminables");  */
+				}
+				else {
+                    $("#dltbtnfv").css({ background: "#570618" });   
+					$("#dltbtnfv").addClass("ocupado");
+					$("#div-list-favoritos > li").addClass("eliminables");  
+                    
+                    $("#div-list-favoritos > li").attr("onclick", " ");
+				}
+			}
+			// JavaScript Document
+			$('#cajaTexto').click(function() {
+				$(this).select();
+			});
+
 			$("#red").treeview({
 				animated: "fast",
 				collapsed: true,
 				unique: true
 			});
-            
-            $$('#l11').swipeLeft(function() {app.navigate("#1-2");});
-            $$('#l12').swipeRight(function() {app.navigate("#1-1");});
-            $$('#m11').doubleTap(function(){app.navigate('#1-1');});
+			
+			//tooltip
+			function toolir(i) {
+				$('#' + i).aToolTip({
+					clickIt: true,
+					tipContent: '<a href="#' + i + '">Ir</a>'
+				});
+			} 
+			
+			$$('#l11').swipeRight(function() {
+				app.navigate("#indice");
+			});
+			$$('#l11').swipeLeft(function() {
+				app.navigate("#1-2");
+			});
+			$$('#l12').swipeRight(function() {
+				app.navigate("#1-1");
+			});
+			
+			
+			$$('#m11').doubleTap(function() {
+				app.navigate('#1-1');
+			});
+			$$('#m12').doubleTap(function() {
+				app.navigate('#1-2');
+			});
+			$$('#m121').doubleTap(function() {
+				app.navigate('#1-2-1');
+			});
+			$$('#m131').doubleTap(function() {
+				app.navigate('#1-3-1');
+			});
+			$$('#m132').doubleTap(function() {
+				app.navigate('#1-3-2');
+			});
+			$$('#m133').doubleTap(function() {
+				app.navigate('#1-3-3');
+			});
+			$$('#m14').doubleTap(function() {
+				app.navigate('#1-4');
+			});
+			$$('#m141').doubleTap(function() {
+				app.navigate('#1-4-1');
+			});
+			$$('#m143').doubleTap(function() {
+				app.navigate('#1-4-3');
+			});
+			$$('#m15').doubleTap(function() {
+				app.navigate('#1-5');
+			});
+			$$('#m21').doubleTap(function() {
+				app.navigate('#2-1');
+			});
+			$$('#m22').doubleTap(function() {
+				app.navigate('#2-2');
+			});
 		</script>
-          <div id="somiza-fixed" style="text-align: center;"><img src="styles/images/somazina.png"></div>
+		
 	</body>
 </html>

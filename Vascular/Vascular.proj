@@ -31,6 +31,7 @@
     <Folder Include="App_Resources\Android\drawable-ldpi">
       <Platform>Android</Platform>
     </Folder>
+    <Folder Include="images" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="App_Resources\iOS\icon.png" />
@@ -54,10 +55,19 @@
     <Resource Include="App_Resources\Android\drawable-ldpi\icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="idioma.json" />
+    <Content Include="images\bg.png" />
+    <Content Include="images\closeBtn.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="kendo\styles\images\icon-anexo-1.png" />
+    <Content Include="kendo\styles\images\icon-favorito-2.png" />
+    <Content Include="kendo\styles\images\icon-indice-2.png" />
     <Content Include="scripts\core.js" />
+    <Content Include="scripts\jquery.atooltip.js" />
     <Content Include="scripts\jquery.treeview.js" />
     <Content Include="scripts\quo.js" />
     <Content Include="scripts\rengy.js" />
+    <Content Include="styles\atooltip.css" />
     <Content Include="styles\images\ar.png" />
     <Content Include="styles\images\ferrer.png" />
     <Content Include="styles\images\icons.png" />
@@ -96,6 +106,7 @@
       <Platform>Android</Platform>
       <TargetName>cordova.js</TargetName>
     </Content>
+    <Content Include="styles\style.css" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Telerik\ICE\Tools\Mobile\MobileTools.targets" />
 </Project>

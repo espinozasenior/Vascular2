@@ -11,9 +11,14 @@ function onConfirm(button) {
 		setTimeout(function() {
 			app.navigate("#indice"); // Do something after 2 seconds
 		}, 2000);
-	}else{
-        navigator.app.exitApp();
-    }
+	}
+	else {
+		navigator.app.exitApp();
+	}
+}
+
+function go(id) {
+	app.navigate(id);
 }
 
 function startConfirm() {
@@ -25,22 +30,8 @@ function startConfirm() {
 		);
 }
 
-
-// JavaScript Document
-$('#cajaTexto').click(function() {
-	$(this).select();
-});
-
-function btnEliminar() {
-	$(".contenido").each(function() {
-		if ($(this).hasClass('km-state-active')) {
-			alert('Si');
-		}
-		else {
-			alert('Mo');   
-		}
-	});
-
+function fail(error) {
+	console.log(error.code);
 }
 
 //ListView Filter Anexo
@@ -48,10 +39,10 @@ function btnEliminar() {
 	jQuery.expr[':'].Contains = function(a, i, m) {
 		return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
 	};
-  
+            
 	function filterList(header, list) {
 		var form = $("<form>").attr({"class":"filterform","action":"#"}),
-		input = $("<input>").attr({"class":"filterinput","type":"text"});
+		input = $("<input>").attr({"class":"filterinput","type":"text", "placeholder":"FILTER"});
 		$(form).append(input).appendTo(header);
   
 		$(input)
@@ -78,6 +69,10 @@ function btnEliminar() {
 		filterList($("#headeranexos"), $("#list"));
 	});
 }(jQuery));
+
+function mostrar_somiza_fixed() {
+	$("#somiza-fixed").attr({"display":"block"});
+}
 
 //Cerrar app
 function Exit() {
@@ -142,8 +137,6 @@ function aumentarText(e) {
 }
 
 // Evento click en listas
-function enact(what)
-{
-    what.style('background-color', 'red');
+function enact(what) {
+	what.attr({"background-color":"red"});
 }
-
