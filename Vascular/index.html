@@ -9,33 +9,33 @@
 		<script src="kendo/js/kendo.mobile.min.js"></script>
 		<script src="scripts/jquery.atooltip.js"></script>
 		<script type="text/javascript" src="scripts/rengy.js"></script>
-
+		<script src="scripts/hello-world.js"></script>
 		<script type="text/javascript" src="scripts/jquery.treeview.js"></script>
 
-		<script src="scripts/hello-world.js"></script>
 		<link href="styles/atooltip.css" rel="stylesheet" />
 		<link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
 		<link href="styles/main.css" rel="stylesheet" />
 	</head>
 	<body>
-        <div id="somiza-fixed"class="bottom" style="text-align: center;">
+		<div id="somiza-fixed"class="bottom" style="text-align: center;">
 			<img src="styles/images/somazina.png">
 		</div>
 		<div data-role="view" id="tabstrip-home" data-title="">
-			<br><br>
+			<br>
 			<h2 style="color:#FFF;">
-				Guies mèdiques<br> oficials de diagnòstic <br> i tractament.
+				<b> Guia oficial de diagnòstic i<br>
+					tractament de les malalties <br>
+					vasculars cerebrals de la <br>
+					Societat Catalana de <br>
+					Neurologia </b><br><br>
+
 			</h2>
-			<h1 style="color:#FFF;">
-				<b> Malalties Vasculars <br>
-					Cerebrals </b>
-			</h1>
 			<h3 style="color:#FFF;">
-				2ª Edició
-			</h3>
-			<img id="bk-image" src="styles/images/wallpaper.png">
+				1ª edició interactiva
+			</h3><br><br>
+			<img id="bk-image" src="styles/images/wallpaper.png"><br>
 			<div id="logos" class="bottom">
-				<img src="styles/images/ferrer.png" style="width: 20%"><img src="styles/images/somazina.png" style="width:30%"><img src="styles/images/logo_sociedad.jpg" style="width:20%">
+				<img src="styles/images/ferrer.png" style="width: 20%"><img src="styles/images/somazina.png" style="width:30%"><img src="styles/images/logo_sociedad.png" style="width:20%">
 			</div>
 		</div>
 
@@ -50,66 +50,14 @@
 			</header>
 			<ul id="red" class="treeview" data-role="listview" data-style="inset">
 				<li>
-					<span data-style="detaildisclose">PRÓLOGO</span>
-					<ul>
-						<li>
-							<span>Item 1.0</span>
-							<ul>
-								<li>
-									<span>Item 1.0.0</span>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<span>Item 1.1</span>
-						</li>
-						<li>
-							<span>Item 1.2</span>
-							<ul>
-								<li>
-									<span>Item 1.2.0</span>
-									<ul>
-										<li>
-											<span>Item 1.2.0.0</span>
-										</li>
-										<li>
-											<span>Item 1.2.0.1</span>
-										</li>
-										<li>
-											<a>Item 1.2.0.2</a>
-										</li>
-									</ul>
-								</li>
-								<li>
-									<span>Item 1.2.1</span>
-									<ul>
-										<li>
-											<span>Item 1.2.1.0</span>
-										</li>
-									</ul>
-								</li>
-								<li>
-									<span>Item 1.2.2</span>
-									<ul>
-										<li>
-											<span>Item 1.2.2.0</span>
-										</li>
-										<li>
-											<span>Item 1.2.2.1</span>
-										</li>
-										<li>
-											<span>Item 1.2.2.2</span>
-										</li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-					</ul>
+					<span data-style="detaildisclose">
+						<a href="#presentacion" style="text-decoration:none;">Presentació</a>
+					</span>
 				</li>
 				<li>
 					<span>1. Ictus isquèmic</span>
 					<ul>
-						<li onclick="enact(this);" >
+						<li>
 							<span id="m11">1.1. Introducció. Dades epidemiològiques</span>
 						</li>
 						<li>
@@ -255,7 +203,83 @@
 					</ul>
 				</li>
 			</ul>
-            
+		</div>
+
+		<div data-role="view" id="presentacion" class="contenido" data-title="PRESENTACIÓ" data-transition="slide">
+			<header data-role="header">
+				<div data-role="navbar">
+					<span data-role="view-title">
+						<a data-role="backbutton" data-align="left">Enrere</a>
+						<a data-role="button" data-click="disminuirText"data-align="right">-a</a>
+						<a data-role="button" data-click="aumentarText" data-align="right">+A</a>
+					</span>
+				</div>
+			</header>
+			<div class="lectura"  ontouchstart="" data-role="touch">
+				<p >
+					<span>Amb
+						molta satisfacció presentem aquesta tercera edició de les <i>Guies Mèdiques de
+							Diagnòstic i Tractament de les Malalties Vasculars Cerebrals</i> de la Societat
+						Catalana de Neurologia.</span>
+				</p>
+
+				<p>
+					<span>Ens
+						ha calgut fer una actualització recent d’aquestes Guies per dos motius
+						primordials. En primer lloc, perquè encara que només hagin passat dos anys de
+						la seva segona edició -on s’hi reflectia el treball metòdic dels seus quatre
+						coordinadors i la feina de 26 assessors experts en aquesta temàtica- han entrat
+						de ple, durant aquest temps, nous fàrmacs anticoagulants,  novedosos aspectes
+						en el tractament de la fase aguda, i han sortit publicats els resultats d’assajos
+						clínics multicèntrics de prestigi molt esperats, que ens obliguen a actualitzar
+						amb cura i eficiència les recomanacions i les noves suggerències de diagnòstic
+						i de tractament.</span>
+				</p>
+
+				<p >
+					<span>En
+						segon lloc, perquè per primera vegada hem volgut presentar aquesta tercera
+						edició de les Guies en format electrònic amb l’objectiu que puguin adaptar-se
+						als smartphones i a les noves tecnologies, i així poder aconseguir-ne una major
+						difusió i una expansió molt més àmplia i extensa.</span>
+				</p>
+
+				<p >
+					<span>Per
+						tant, actualització i modernitat són els valors que ens orienten en aquests
+						nous temps tan estimulants i plens de reptes cívics i científics. Però, també
+						és un bon moment per reflexionar i donar les gràcies als nostres Mestres –a
+						vegades oblidats-, ja que són els nostres referents, i gràcies a ells estem on
+						som, i potser no seria desencaminat de tornar a recuperar en la nostra
+						tecnificada i cada vegada menys humanista professió, la figura de <i>l’educador 
+							i el guia</i> i el benefici del <i>mestratge</i>, com a referents en la
+						transmisió no tant de coneixements però sí de valors, doncs com deia el filòsof
+						Pitàgoras “<i>cal honorar els vells: alló que és previ en el temps és més digne
+							d’honor</i>” i tot referent-se al seu mestre Ferecides de Siros sentenciava amb
+						saviesa  “<i>Cal donar la més alta importància a tenir cura del mestre</i>”.</span>
+				</p>
+
+				<p >
+					<span>Endavant
+						doncs amb aquesta nova entrega d’aquesta tercera edició de les Guies de
+						Malaties Vasculars Cerebrals de la Societat Catalana de Neurologia. Esperem que
+						puguin ser útils, fructíferes i adequades.</span>
+				</p>
+
+				<p >
+					<span>&nbsp;</span>
+				</p>
+
+				<p>
+					<b><strong>Adrià Arboix, Francesc Purroy, Jerzy Krupinski</strong></b>
+				</p>
+
+				<p >
+					<span>Editors
+						de la tercera <i>Guies Mèdiques de Diagnòstic i Tractament de les Malalties
+							Vasculars Cerebrals</i> de la Societat Catalana de Neurologia (2013).</span>
+				</p>
+			</div>
 		</div>
 
 		<div data-role="view" id="creditos" class="contenido" data-title="CREDITOS" data-transition="slide">
@@ -274,7 +298,7 @@
 					Ferrer Internacional, S.A.
 				</h3>
 				<p>
-					<b>&copy; 2012 MEDERIC EDICIONES, S.L.</b><br>
+					<b>&copy; 2013 MEDERIC EDICIONES, S.L.</b><br>
 					<span>(PARA TODAS LOS IDIOMAS)</span><br>
 					<span>CARRER DE MUNT, 41</span><br>
 					<span>08392 SANT ANDREU DE LLAVANERES (ESPAÑA)</span><br>
@@ -290,6 +314,45 @@
 					Méderic Ediciones, S.L. y sus asociados no asumen responsabilidad alguna por cualquier lesión y/o daño sufridos por personas o bienes en cuestiones de responsabilidad de productos, negligencias o cualquier otra, ni por uso o aplicación de métodos, productos, instrucciones o ideas contenidos en el presente material. Dados los rápidos avances que se producen en las ciencias médicas en particular, debe realizarse una verificación independiente de los diagnosticos y las posologías de.
 				</p>
 				<span>&nbsp;</span>
+				<div style="text-align: center;">
+					<p>
+						<b>Coordinadors</b><br><br>
+						Jerzy Krupinski<br>
+						Francesc Purroy<br>
+						Adrià Arboix<br><br><br>
+
+						<b>Assesors</b><br><br>
+						José Alvarez Sabin<br>
+						David Cánovas<br>
+						Pere Cardona<br>
+						Mar Castellanos<br>
+						Angel Chamorro<br>
+						Meritxell Gomis<br>
+						Joan Izquierdo<br>
+						Joan Martí-Fàbregas<br>
+						Sergi Martinez Ramírez<br>
+						Josep Lluís Martí-Vilalta<br>
+						Joan Massons<br>
+						Mònica Millan<br>
+						Carlos Molina<br>
+						Joan Montaner<br>
+						Víctor Obach<br>
+						Angel Ois<br>
+						Núria Oriol i Peregrina<br>
+						Ernest Palomeras<br>
+						Marc Ribó<br>
+						Jaume Roquer<br>
+						Francisco Rubio<br>
+						Júlia Saura<br>
+						Joaquín Serena<br>
+						Yolanda Silva<br>
+						Lluís Soler Singla<br>
+						Xavier Ustrell<br>
+						M. Àngels Font<br>
+
+					</p>
+
+				</div>
 			</div>
 		</div>
 
@@ -450,9 +513,18 @@
 
 			<footer data-role="footer">
 				<div data-role="tabstrip">
-					<a data-icon="" href="#indice"><img src="kendo/styles/images/icon-indice-2.png" style="width: 60%;"></a>
-					<a data-icon="" href="#favoritos"><img src="kendo/styles/images/icon-favorito-1.png" style="width: 60%;"></a>
-					<a data-icon="" href="#anexos"><img src="kendo/styles/images/icon-anexo-1.png" style="width: 60%;"></a>
+					<a data-icon="" href="#indice">
+						<img id="tab-ind" src="kendo/styles/images/icon-indice-1.png" style="width: 60%;">
+					</a>
+					<a data-icon="" href="#favoritos">
+						<img id="tab-fav" src="kendo/styles/images/icon-favorito-1.png" style="width: 60%;">
+					</a>
+					<a data-icon="" href="#anexos">
+						<img id="tab-anex" src="kendo/styles/images/icon-anexo-1.png" style="width: 60%;">
+					</a>
+					<a data-icon="" href="#idiomas">
+						<img id="tab-lang" src="kendo/styles/images/icon-idiomas-1.png" style="width: 60%;">
+					</a>
 				</div>
 			</footer>
 		</div>
@@ -4023,7 +4095,16 @@
 		<script>
 			var app = new kendo.mobile.Application(document.body, { transition: "fade", platform: "ios"});
 			var db;
+            var ind=2, fav=1, anex=1, idio=1;
+            
+            $$("#tab-ind").attr('src', 'kendo/styles/images/icon-indice-'+ind+'.png');
+            $$("#tab-fav").attr('src', 'kendo/styles/images/icon-favorito-'+fav+'.png');
+            $$("#tab-anex").attr('src', 'kendo/styles/images/icon-anexo-'+anex+'.png');
+            $$("#tab-lang").attr('src', 'kendo/styles/images/icon-idiomas-'+idio+'.png');
+			
+            			
 			function initial() {
+                ind = 1;
 				db = openDatabase("favoritos", "0.1", "Base de datos de apartados favoritos", 200000);
 				if (db) {
 					// Database opened
@@ -4065,7 +4146,7 @@
 				db.transaction(function(tx) {
 					tx.executeSql("INSERT INTO favoritos(indice, nombre) VALUES(?,?)", [indice, nombre]);
 				});
-                alert("Es va afegir a favorits!");
+				alert("Es va afegir a favorits!");
 				listfavoritos();
 			}
             
@@ -4081,25 +4162,25 @@
 				removeFavorito(elem);
 			});
                 
-            function restarFavorito(){
-                $("#dltbtnfv").css({ background: "#EC0C3C" });
+			function restarFavorito() {
+				$("#dltbtnfv").css({ background: "#EC0C3C" });
 				$("#dltbtnfv").removeClass("ocupado");
 				$("#div-list-favoritos > li").removeClass("eliminables");
-            }
+			}
             
 			function btnEliminar() {
 				if ($("#dltbtnfv").hasClass("ocupado")) {
-                    listfavoritos();
-                    $("#dltbtnfv").css({ background: "#EC0C3C" });
+					listfavoritos();
+					$("#dltbtnfv").css({ background: "#EC0C3C" });
 					$("#dltbtnfv").removeClass("ocupado");
 					/* $("#div-list-favoritos > li").removeClass("eliminables");  */
 				}
 				else {
-                    $("#dltbtnfv").css({ background: "#570618" });   
+					$("#dltbtnfv").css({ background: "#570618" });   
 					$("#dltbtnfv").addClass("ocupado");
 					$("#div-list-favoritos > li").addClass("eliminables");  
                     
-                    $("#div-list-favoritos > li").attr("onclick", " ");
+					$("#div-list-favoritos > li").attr("onclick", " ");
 				}
 			}
 			// JavaScript Document
@@ -4169,6 +4250,6 @@
 				app.navigate('#2-2');
 			});
 		</script>
-		
+
 	</body>
 </html>
