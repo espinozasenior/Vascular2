@@ -6,13 +6,15 @@
     <AppIdentifier>com.hostienda.vascular</AppIdentifier>
     <ProjectName>Vascular</ProjectName>
     <IsRunnable>true</IsRunnable>
-    <TemplateAppName>Cordova220</TemplateAppName>
+    <TemplateAppName>Cordova240</TemplateAppName>
     <AndroidPermissions>android.permission.READ_PHONE_STATE;android.permission.INTERNET;android.permission.READ_CONTACTS;android.permission.WRITE_EXTERNAL_STORAGE;android.permission.ACCESS_NETWORK_STATE</AndroidPermissions>
     <DeviceOrientations>Portrait</DeviceOrientations>
     <iOSStatusBarStyle>Default</iOSStatusBarStyle>
-    <AndroidHardwareAcceleration>True</AndroidHardwareAcceleration>
-    <BundleVersion>1.0</BundleVersion>
+    <AndroidHardwareAcceleration>true</AndroidHardwareAcceleration>
+    <BundleVersion>2.0</BundleVersion>
     <AndroidVersionCode>2</AndroidVersionCode>
+    <iOSDisplayName />
+    <iOSDeviceFamily>1;2</iOSDeviceFamily>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="App_Resources" />
@@ -31,7 +33,7 @@
     <Folder Include="App_Resources\Android\drawable-ldpi">
       <Platform>Android</Platform>
     </Folder>
-    <Folder Include="images" />
+    <Folder Include="tablas" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="App_Resources\iOS\icon.png" />
@@ -55,47 +57,57 @@
     <Resource Include="App_Resources\Android\drawable-ldpi\icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="idioma.json" />
-    <Content Include="images\.nomedia" />
-    <Content Include="images\bg.png" />
-    <Content Include="images\closeBtn.png" />
-    <Content Include="images\logo.png" />
+    <Content Include="kendo\jquery.min.js" />
     <Content Include="kendo\styles\images\.nomedia" />
+    <Content Include="kendo\styles\images\back-boton.png" />
+    <Content Include="kendo\styles\images\Boton-Off.png" />
+    <Content Include="kendo\styles\images\Boton-On.png" />
+    <Content Include="kendo\styles\images\closeBtn.png" />
+    <Content Include="kendo\styles\images\flecha.png" />
+    <Content Include="kendo\styles\images\ico-mas-2.png" />
+    <Content Include="kendo\styles\images\ico-mas-3.png" />
+    <Content Include="kendo\styles\images\ico-mas.png" />
+    <Content Include="kendo\styles\images\ico-menor-down.png" />
+    <Content Include="kendo\styles\images\ico-menor.png" />
+    <Content Include="kendo\styles\images\ico-menos.png" />
+    <Content Include="kendo\styles\images\icon-anexo-01.png" />
     <Content Include="kendo\styles\images\icon-anexo-1.png" />
     <Content Include="kendo\styles\images\icon-anexo-2.png" />
     <Content Include="kendo\styles\images\icon-favorito-1.png" />
     <Content Include="kendo\styles\images\icon-favorito-2.png" />
+    <Content Include="kendo\styles\images\icon-favorito-3.png" />
+    <Content Include="kendo\styles\images\icon-favorito.png" />
     <Content Include="kendo\styles\images\icon-idiomas-1.png" />
     <Content Include="kendo\styles\images\icon-idiomas-2.png" />
     <Content Include="kendo\styles\images\icon-indice-2.png" />
     <Content Include="kendo\styles\images\icon-indice-1.png" />
-    <Content Include="scripts\core.js" />
-    <Content Include="scripts\jquery.atooltip.js" />
+    <Content Include="kendo\styles\images\icon-marcador - copia.png" />
+    <Content Include="kendo\styles\images\icon-marcador-down - copia.png" />
+    <Content Include="kendo\styles\images\icon-marcador-down.png" />
+    <Content Include="kendo\styles\images\icon-marcador.png" />
+    <Content Include="kendo\styles\images\icono-marcador.png" />
+    <Content Include="kendo\styles\images\icono-mas.png" />
+    <Content Include="kendo\styles\images\iconoLupa.png" />
+    <Content Include="kendo\styles\images\minus.png" />
+    <Content Include="kendo\styles\images\plus.png" />
+    <Content Include="kendo\styles\images\tag.png" />
+    <Content Include="scripts\jquery.json-2.4.js" />
     <Content Include="scripts\jquery.treeview.js" />
     <Content Include="scripts\quo.js" />
-    <Content Include="scripts\rengy.js" />
-    <Content Include="styles\atooltip.css" />
+    <Content Include="scripts\rangy-core.js" />
+    <Content Include="scripts\rangy-cssclassapplier.js" />
     <Content Include="styles\images\.nomedia" />
     <Content Include="styles\images\ar.png" />
+    <Content Include="styles\images\back-2.png" />
+    <Content Include="styles\images\back.png" />
     <Content Include="styles\images\ferrer.png" />
     <Content Include="styles\images\icons.png" />
     <Content Include="styles\images\logo_sociedad.png" />
+    <Content Include="styles\images\next-2.png" />
+    <Content Include="styles\images\next.png" />
+    <Content Include="styles\images\no-selected.png" />
+    <Content Include="styles\images\selected.png" />
     <Content Include="styles\images\somazina.png" />
-    <Content Include="styles\images\tables\.nomedia" />
-    <Content Include="styles\images\tables\01.png" />
-    <Content Include="styles\images\tables\02.png" />
-    <Content Include="styles\images\tables\03.png" />
-    <Content Include="styles\images\tables\04.png" />
-    <Content Include="styles\images\tables\05.png" />
-    <Content Include="styles\images\tables\06.png" />
-    <Content Include="styles\images\tables\07.png" />
-    <Content Include="styles\images\tables\08.png" />
-    <Content Include="styles\images\tables\09.png" />
-    <Content Include="styles\images\tables\10.png" />
-    <Content Include="styles\images\tables\11.png" />
-    <Content Include="styles\images\tables\12.png" />
-    <Content Include="styles\images\tables\13.png" />
-    <Content Include="styles\images\tables\14.png" />
     <Content Include="styles\images\wallpaper.png" />
     <Content Include="index.html" />
     <Content Include="kendo\js\jquery.min.js" />
@@ -106,7 +118,6 @@
     <Content Include="kendo\styles\images\android-sprite.png" />
     <Content Include="kendo\styles\kendo.mobile.all.min.css" />
     <Content Include="scripts\hello-world.js" />
-    <Content Include="styles\main.css" />
     <Content Include="cordova.ios.js">
       <Platform>iOS</Platform>
       <TargetName>cordova.js</TargetName>
@@ -115,7 +126,7 @@
       <Platform>Android</Platform>
       <TargetName>cordova.js</TargetName>
     </Content>
-    <Content Include="styles\style.css" />
+    <Content Include="styles\main.css" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Telerik\ICE\Tools\Mobile\MobileTools.targets" />
 </Project>
