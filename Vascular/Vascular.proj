@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ProjectGuid>f1bdc6ca-d461-4629-8893-ff7f27317bf8</ProjectGuid>
     <ProjectTypeGuids>{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}</ProjectTypeGuids>
-    <AppIdentifier>com.hostienda.vascular</AppIdentifier>
+    <AppIdentifier>com.medericediciones.vascular</AppIdentifier>
     <ProjectName>Vascular</ProjectName>
     <IsRunnable>true</IsRunnable>
     <TemplateAppName>Cordova240</TemplateAppName>
@@ -13,7 +13,7 @@
     <AndroidHardwareAcceleration>true</AndroidHardwareAcceleration>
     <BundleVersion>2.0</BundleVersion>
     <AndroidVersionCode>2</AndroidVersionCode>
-    <iOSDisplayName />
+    <iOSDisplayName>Vasculars</iOSDisplayName>
     <iOSDeviceFamily>1;2</iOSDeviceFamily>
   </PropertyGroup>
   <ItemGroup>
@@ -34,6 +34,9 @@
       <Platform>Android</Platform>
     </Folder>
     <Folder Include="tablas" />
+    <Folder Include="tablas\english" />
+    <Folder Include="tablas\catalan" />
+    <Folder Include="tablas\spanish" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="App_Resources\iOS\icon.png" />
@@ -57,9 +60,10 @@
     <Resource Include="App_Resources\Android\drawable-ldpi\icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="catalan.html" />
+    <Content Include="english.html" />
     <Content Include="kendo\jquery.min.js" />
     <Content Include="kendo\styles\images\.nomedia" />
-    <Content Include="kendo\styles\images\back-boton.png" />
     <Content Include="kendo\styles\images\Boton-Off.png" />
     <Content Include="kendo\styles\images\Boton-On.png" />
     <Content Include="kendo\styles\images\closeBtn.png" />
@@ -70,17 +74,27 @@
     <Content Include="kendo\styles\images\ico-menor-down.png" />
     <Content Include="kendo\styles\images\ico-menor.png" />
     <Content Include="kendo\styles\images\ico-menos.png" />
-    <Content Include="kendo\styles\images\icon-anexo-01.png" />
     <Content Include="kendo\styles\images\icon-anexo-1.png" />
-    <Content Include="kendo\styles\images\icon-anexo-2.png" />
+    <Content Include="kendo\styles\images\icon-anexo-1b.png" />
+    <Content Include="kendo\styles\images\icon-annex-1.png" />
+    <Content Include="kendo\styles\images\icon-annex-1b.png" />
+    <Content Include="kendo\styles\images\icon-favorites-1.png" />
+    <Content Include="kendo\styles\images\icon-favorites-1b.png" />
     <Content Include="kendo\styles\images\icon-favorito-1.png" />
-    <Content Include="kendo\styles\images\icon-favorito-2.png" />
-    <Content Include="kendo\styles\images\icon-favorito-3.png" />
+    <Content Include="kendo\styles\images\icon-favorito-1b.png" />
     <Content Include="kendo\styles\images\icon-favorito.png" />
+    <Content Include="kendo\styles\images\icon-favoritos-1.png" />
+    <Content Include="kendo\styles\images\icon-favoritos-1b.png" />
+    <Content Include="kendo\styles\images\icon-idiomas-1b.png" />
+    <Content Include="kendo\styles\images\icon-idiomes-1.png" />
+    <Content Include="kendo\styles\images\icon-idiomes-1b.png" />
     <Content Include="kendo\styles\images\icon-idiomas-1.png" />
-    <Content Include="kendo\styles\images\icon-idiomas-2.png" />
-    <Content Include="kendo\styles\images\icon-indice-2.png" />
+    <Content Include="kendo\styles\images\icon-index1.png" />
+    <Content Include="kendo\styles\images\icon-index1b.png" />
     <Content Include="kendo\styles\images\icon-indice-1.png" />
+    <Content Include="kendo\styles\images\icon-indice-1b.png" />
+    <Content Include="kendo\styles\images\icon-lenguages-1.png" />
+    <Content Include="kendo\styles\images\icon-lenguages-1b.png" />
     <Content Include="kendo\styles\images\icon-marcador - copia.png" />
     <Content Include="kendo\styles\images\icon-marcador-down - copia.png" />
     <Content Include="kendo\styles\images\icon-marcador-down.png" />
@@ -91,6 +105,8 @@
     <Content Include="kendo\styles\images\minus.png" />
     <Content Include="kendo\styles\images\plus.png" />
     <Content Include="kendo\styles\images\tag.png" />
+    <Content Include="scripts\index.js" />
+    <Content Include="spanish.html" />
     <Content Include="scripts\jquery.json-2.4.js" />
     <Content Include="scripts\jquery.treeview.js" />
     <Content Include="scripts\quo.js" />
@@ -127,6 +143,45 @@
       <TargetName>cordova.js</TargetName>
     </Content>
     <Content Include="styles\main.css" />
+    <Content Include="tablas\catalan\A1C.png" />
+    <Content Include="tablas\catalan\A2C.png" />
+    <Content Include="tablas\catalan\A3C.png" />
+    <Content Include="tablas\catalan\A4C.png" />
+    <Content Include="tablas\catalan\T1C.png" />
+    <Content Include="tablas\catalan\T2C.png" />
+    <Content Include="tablas\catalan\T3C.png" />
+    <Content Include="tablas\catalan\T7C.png" />
+    <Content Include="tablas\catalan\T8C.png" />
+    <Content Include="tablas\catalan\T9C.png" />
+    <Content Include="tablas\catalan\TIC.png" />
+    <Content Include="tablas\english\A1E.png" />
+    <Content Include="tablas\english\A2E.png" />
+    <Content Include="tablas\english\A3E.png" />
+    <Content Include="tablas\english\A4E.png" />
+    <Content Include="tablas\english\T1E.png" />
+    <Content Include="tablas\english\T2E.png" />
+    <Content Include="tablas\english\T3E.png" />
+    <Content Include="tablas\english\T4E.png" />
+    <Content Include="tablas\english\T5E.png" />
+    <Content Include="tablas\english\T7E.png" />
+    <Content Include="tablas\english\T8E.png" />
+    <Content Include="tablas\english\TIE.png" />
+    <Content Include="tablas\spanish\A1S.png" />
+    <Content Include="tablas\spanish\A2S.png" />
+    <Content Include="tablas\spanish\A3S.png" />
+    <Content Include="tablas\spanish\A4S.png" />
+    <Content Include="tablas\spanish\T1S.png" />
+    <Content Include="tablas\spanish\T2S.png" />
+    <Content Include="tablas\spanish\T3S.png" />
+    <Content Include="tablas\spanish\T4S.png" />
+    <Content Include="tablas\spanish\T5S.png" />
+    <Content Include="tablas\spanish\T7S.png" />
+    <Content Include="tablas\spanish\T8S.png" />
+    <Content Include="tablas\spanish\T9S.png" />
+    <Content Include="tablas\spanish\TIS.png" />
+    <Content Include="tablas\T4C.png" />
+    <Content Include="tablas\T5C.png" />
+    <Content Include="tablas\T9E.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Telerik\ICE\Tools\Mobile\MobileTools.targets" />
 </Project>

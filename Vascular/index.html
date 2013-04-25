@@ -8,9 +8,6 @@
 		<script src="scripts/quo.js"></script>
 		<script src="kendo/js/kendo.mobile.min.js"></script>
 		<script src="scripts/hello-world.js"></script>
-		<script type="text/javascript" src="scripts/rangy-core.js"></script>
-		<script type="text/javascript" src="scripts/rangy-cssclassapplier.js"></script>
-		<script type="text/javascript" src="scripts/jquery.treeview.js"></script>
 		<script type="text/javascript" src="scripts/jquery.json-2.4.js"></script>
 		<link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet"/>
 		<link href="styles/main.css" rel="stylesheet" />
@@ -18,26 +15,18 @@
 	<body>
 
 		<!-- PORTADAS!!! -------- -->
-		<div data-role="view" id="tabstrip-home-catalan" data-title="" style="background-color:#BD072F; width: 100%;">
-			<table style="width: 100%; height: 970px !important; z-index: 1; position: relative;" border="0">
+		<div data-role="view" id="tabstrip-home" data-title="" style="background-color:#BD072F; width: 100%; left:0;">
+			<table style="width: 100%; z-index: 1; position: relative;" border="0">
 				<tbody style="vertical-align: bottom; z-index: 2;">
 					<tr>
-						<td style="vertical-align: middle;" colspan="2" rowspan="1">
-							<h1 style="color:#FFF;">
-								<b> Guia oficial de diagnòstic i<br>
-									tractament de les malalties <br>
-									vasculars cerebrals de la <br>
-									Societat Catalana de <br>
-									Neurologia</b>
-							</h1>
+						<td style="vertical-align: middle;" colspan="3" rowspan="1">
+							<!--  titulo -->
 						</td>
-						<td>
-							<br>
-						</td>
+
 					</tr>
 					<tr>
-						<td style="vertical-align: top;">
-							<h3 style="color:#FFF;">1ª edició interactiva </h3>
+						<td style="vertical-align: top;" colspan="2" rowspan="1">
+							<!--  edicion -->
 						</td>
 						<td>
 							<br>
@@ -49,638 +38,48 @@
 					<tr>
 						<td></td>
 						<td style="text-align: center;">
-							<img style="width: 100%; height: 50%; position: absolute; top: 45%; left: 0%; z-index: -1;"
-								 
-								 src="styles/images/wallpaper.png"
-
-								 alt="">
+							<img style="width: 100%; height: 50%; position: absolute; top: 45%; left: 0%; z-index: -1;" src="styles/images/wallpaper.png" alt="">
 						</td>
 						<td>
 							<br>
 						</td>
 					</tr>
 					<tr>
-						<td style="width: 228px;" colspan="1" rowspan="1">
+						<td style="" colspan="1" rowspan="1">
 							<br>
-							<h3 style="color:#FFF;">Esponsorizado por: </h3>
+							<h5 style="color:#FFF;margin-bottom: 0;">
+								<!--  patrocinado -->
+							</h5>
 							<br>
-							<img style="margin-left: 8%;" src="styles/images/ferrer.png"
-
-								 alt="">
+							<img style="margin-left: 10%;width: 50%;" src="styles/images/ferrer.png" alt="">
 						</td>
 						<td colspan="1" rowspan="1">
 							<br>
-							<img src="styles/images/somazina.png"
-
-								 alt="">
+							<img src="styles/images/somazina.png" alt="" style="width: 7em;">
 						</td>
-
 						<td style="text-align: right;" colspan="1" rowspan="1">
-							<img style="width: 10em; margin-right: 10%;"
-
-								 src="styles/images/logo_sociedad.png"
-
-								 alt="">
+							<img style="width: 4em; margin-right: 10%;" src="styles/images/logo_sociedad.png" alt="">
 						</td>
 					</tr>
-					<br>
 				</tbody>
 			</table>
 		</div>
-		<div data-role="view" id="tabstrip-home-english" data-title="" style="background-color:#BD072F; width: 100%;">
-			<h2 style="color:#FFF;">
-				<b> Oficial Guide to diagnosis<br>
-					and treatment of cerebral <br>
-					vascular diseases of the <br>
-					Catalan society of <br>
-					Neurology </b><br><br>
-
-			</h2>
-			<h3 style="color:#FFF;">
-				1ª Edition interactive
-			</h3><br>
-			<img id="bk-image" src="styles/images/wallpaper.png"><br>
-			<div id="logos" class="bottom">
-				<img src="styles/images/ferrer.png" style="width: 20%"><img src="styles/images/somazina.png" style="width:30%"><img src="styles/images/logo_sociedad.png" style="width:20%">
-			</div>
-		</div>
-		<div data-role="view" id="tabstrip-home-spanish" data-title="" style="background-color:#BD072F; width: 100%;">
-			<h2 style="color:#FFF;">
-				<b> Guía oficial de diagnóstico<br>
-					y tratamiento de las <br>
-					enfermedades cerebrales <br>
-					vasculares de la Sociedad <br>
-					Catalana de Neurología </b><br><br>
-
-			</h2>
-			<h3 style="color:#FFF;">
-				1ª Edición interactiva
-			</h3><br>
-			<img id="bk-image" src="styles/images/wallpaper.png"><br>
-			<div id="logos" class="bottom">
-				<img src="styles/images/ferrer.png" style="width: 20%"><img src="styles/images/somazina.png" style="width:30%"><img src="styles/images/logo_sociedad.png" style="width:20%">
-			</div>
-		</div>
-		<!-- IDIOMAS -->
-		<div data-role="view" id="idiomas" class="contenido" data-title="IDIOMES" data-before-show="beforeidiomas" data-layout="layout" data-transition="slide">
-			<header data-role="header">
-				<div data-role="navbar">
-					<span data-role="view-title">
-						<a data-role="backbutton" data-align="left">ENRERE</a>
-					</span>
-				</div>
-			</header>
-			<div data-role="touch" id="list-idiomas">
-			</div>
-		</div>
-		<!-- INDICE  -->
-		.
-		<div data-role="view" id="indice" data-title="ÍNDEX" data-layout="layout" data-before-show="beforeindice" data-transition="fade" data-show="layoutShow">
-			<header data-role="header">
-				<div data-role="navbar">
-					<span data-role="view-title">
-						<a data-role="button" href="#creditos" data-align="right">INFO</a>
-					</span>
-				</div>
-			</header>
-			<div id="list-indice">
-				<ul id="red" class="treeview" data-role="listview" data-style="inset">
-
-				</ul>
-			</div>
-		</div>
-
-		<div data-role="view" id="creditos" class="contenido" data-before-show="beforecreditos" data-title="CREDITOS" data-transition="slide">
-			<header data-role="header">
-				<div data-role="navbar">
-					<span data-role="view-title">
-						<a data-role="backbutton" data-align="left">Enrere</a>
-						<a data-role="button" data-click="update" data-align="right">UP</a>
-						<a data-role="button" data-click="goooo" data-align="right">T</a>
-					</span>
-				</div>
-			</header>
-			<div class="lectura"  ontouchstart="" data-role="touch">
-				<span>Proyecto esponsorizado por:</span>
-				<h3>
-					Ferrer Internacional, S.A.
-				</h3>
-				<p>
-					<b>&copy; 2013 MEDERIC EDICIONES, S.L.</b><br>
-					<span>(PARA TODAS LOS IDIOMAS)</span><br>
-					<span>CARRER DE MUNT, 41</span><br>
-					<span>08392 SANT ANDREU DE LLAVANERES (ESPAÑA)</span><br>
-					<span>www.medericediciones.com</span><br>
-					<span>&nbsp;</span>
-				</p>
-
-				<p>
-					<span><b>Reservados todos los derechos.</b></span><br>
-					El contenido de esta publicación no puede ser reproducido, ni transmitido por nigún procedimiento electrónico o mecánico, incluyendo fotocopia o grabación magnética, ni registrado por ningún medio, sin la previa autorización por escrito del titular de los derechos de explotación.
-				</p>
-				<p>
-					Méderic Ediciones, S.L. y sus asociados no asumen responsabilidad alguna por cualquier lesión y/o daño sufridos por personas o bienes en cuestiones de responsabilidad de productos, negligencias o cualquier otra, ni por uso o aplicación de métodos, productos, instrucciones o ideas contenidos en el presente material. Dados los rápidos avances que se producen en las ciencias médicas en particular, debe realizarse una verificación independiente de los diagnosticos y las posologías de.
-				</p>
-				<span>&nbsp;</span>
-				<div style="text-align: center;">
-					<p>
-						<b>Coordinadors</b><br><br>
-						Jerzy Krupinski<br>
-						Francesc Purroy<br>
-						Adrià Arboix<br><br><br>
-
-						<b>Assesors</b><br><br>
-						José Alvarez Sabin<br>
-						David Cánovas<br>
-						Pere Cardona<br>
-						Mar Castellanos<br>
-						Angel Chamorro<br>
-						Meritxell Gomis<br>
-						Joan Izquierdo<br>
-						Joan Martí-Fàbregas<br>
-						Sergi Martinez Ramírez<br>
-						Josep Lluís Martí-Vilalta<br>
-						Joan Massons<br>
-						Mònica Millan<br>
-						Carlos Molina<br>
-						Joan Montaner<br>
-						Víctor Obach<br>
-						Angel Ois<br>
-						Núria Oriol i Peregrina<br>
-						Ernest Palomeras<br>
-						Marc Ribó<br>
-						Jaume Roquer<br>
-						Francisco Rubio<br>
-						Júlia Saura<br>
-						Joaquín Serena<br>
-						Yolanda Silva<br>
-						Lluís Soler Singla<br>
-						Xavier Ustrell<br>
-						M. Àngels Font<br>
-
-					</p>
-
-				</div>
-			</div>
-		</div>
-
-		<div data-role="view" id="favoritos" data-init="restarFavorito" data-before-show="beforefavoritos" class="contenido" data-title="FAVORITS" data-layout="layout" data-show="layoutShow" data-transition="slide">
-			<header data-role="header">
-				<div data-role="navbar">
-					<span data-role="view-title">
-						<a data-role="backbutton" id="btnatrasfvt" data-align="left">ENRERE</a>
-						<a data-role="button" data-click="btnEliminar" data-align="right" style="float:right;" id="dltbtnfv" >ELIMINAR</a>
-					</span>
-				</div>
-			</header>
-			<ul data-role="listview" id="div-list-favoritos" style="color: #333333;font-family: HelveticaNeue; text-align: center;">
-
-			</ul>
-			<footer data-role="footer" id="rectangulo-eliminar" style="display:none;">
-				<button id="boton-eliminar">
-					ELIMINAR
-				</button>
-			</footer>
-		</div>
-		<!--  ----------------ANEXOS------------ -->
-		<div data-role="view" id="anexos" data-title="Annexe" data-layout="layout" data-before-show="beforeanexos" data-transition="fade">
-			<header data-role="header">
-				<div data-role="navbar">
-					<span data-role="view-title">
-						<a data-role="backbutton" data-align="left">ENRERE</a>
-					</span>
-				</div>
-			</header>
-			<div id="list-anexos">
-				<ul id="anex" class="treeview" data-role="listview" data-style="inset">
-
-				</ul>
-			</div>
-		</div>
-
-		<div data-role="view" id="tablaview" data-title="nombre tabla" data-role="touch" class="window" data-zoom="true">
-			<header data-role="header">
-				<div data-role="navbar">
-					<span data-role="view-title"></span>
-					<a data-role="backbutton" data-align="left">ENRERE</a>
-				</div>
-			</header>
-
-			<div data-role="content" style="text-align: center;">
-				<img id="img-tabla" src="tablas/logote.jpg" style="width:100%; margin-top:1%;"/>
-			</div>
-		</div>
-
-		<div data-role="layout" data-id="layout">
-			<header data-role="header">
-				<div data-role="navbar">
-					<span data-role="view-title">ÍNDEX</span>
-					<a data-role="button" href="#creditos" data-align="right">INFO</a>
-
-				</div>
-			</header>
-
-			<footer data-role="footer">
-				<div data-role="tabstrip">
-					<a data-icon="" href="#indice">
-						<img id="tab-ind" src="kendo/styles/images/icon-indice-1.png" style="width: 60%;">
-					</a>
-					<a data-icon="" href="#favoritos">
-						<img id="tab-fav" src="kendo/styles/images/icon-favorito-1.png" style="width: 60%;">
-					</a>
-					<a data-icon="" href="#anexos">
-						<img id="tab-anex" src="kendo/styles/images/icon-anexo-1.png" style="width: 60%;">
-					</a>
-					<a data-icon="" href="#idiomas">
-						<img id="tab-lang" src="kendo/styles/images/icon-idiomas-1.png" style="width: 60%;">
-					</a>
-				</div>
-			</footer>
-		</div>
-
-		<!--   --------------------------  LIBRO ---------------  -->
-
-		<div data-role="view" id="pagina" class="contenido" data-title="cabecera" data-db="" data-transition="slide">
-			<header data-role="header">
-				<div data-role="navbar">
-					<span data-role="view-title">
-						<a data-role="backbutton" href="#indice" data-align="left">ENRERE</a>
-						<a data-role="button" data-align="right"  onclick="togglebuscar();" class="BotonBuscar"> </a>
-						<a data-role="button"data-rel="modalview" href="#modalview-list-anexos"  data-align="right" >ANNEXE</a>
-					</span>
-				</div>
-
-				<div >
-					<div class="titulo" style="display:block;">
-						<table id="subt" width="100%">
-							<tr>
-								<td width="50%">
-									<h4 style="margin-left: 2%;">Titulo</h4>
-								</td>
-								<td width="50%">
-									<div id="tools" >
-										<div id="boton_favorito">
-											<img src="kendo/styles/images/icon-favorito.png" class="BotonFavorito">
-										</div>
-										<div id="boton_marcador">
-											<img src="kendo/styles/images/icon-marcador.png" class="BotonMarcador">
-										</div>
-										<ul data-role="buttongroup" data-index="0" class="km-buttongroup" style="margin-top: 7px;">
-											<li style="font-size: 0.8em; float: left;" data-role="button" data-click="aumentarText" class="km-button">
-												<span class="km-text">+Aa</span>
-											</li>
-											<li style="font-size: 0.8em; float: left;" data-role="button" data-click="disminuirText" class="km-button">
-												<span class="km-text">-Aa</span>
-											</li>
-										</ul>
-									</div>
-								</td>
-							</tr>
-						</table>
-
-					</div>
-
-				</div>
-				<div class="buscar-content" style="padding:4px; display:none;">
-					<input class="buscador" data-id="1-1" style="padding-left:1%;" type="search" results="0" name="s" placeholder="Cercar...">
-				</div>
-			</header>
-			<div class="lectura" id="pagina-contenido" data-role="touch">
-
-			</div>
-			<footer data-role="footer">
-				<div data-role="navbar">
-					<span>
-						<button class="BotonPrev" onclick="prev_apartado();">&nbsp;</button>
-						<button class="BotonNext" onclick="prev_apartado();">&nbsp;</button>
-					</span>
-				</div>
-			</footer>
-		</div>
-
-		<div data-role="view" id="anexview" class="contenido" data-title="cabecera" data-db="" data-transition="slide">
-			<header data-role="header">
-				<div data-role="navbar">
-					<span data-role="view-title">
-						<a data-role="backbutton" href="#indice" data-align="left">ENRERE</a>
-						<a data-role="button" data-align="right"  onclick="togglebuscar();" class="BotonBuscar"> </a>
-					</span>
-				</div>
-
-				<div >
-					<div class="titulo" style="display:block;">
-						<table id="subt" width="100%">
-							<tr>
-								<td width="50%">
-									<h4 style="margin-left: 2%;">Titulo</h4>
-								</td>
-								<td width="50%">
-									<div id="tools" >
-										<div id="boton_favorito">
-											<img src="kendo/styles/images/icon-favorito.png" class="BotonFavorito">
-										</div>
-										<div id="boton_marcador">
-											<img src="kendo/styles/images/icon-marcador.png" class="BotonMarcador">
-										</div>
-										<ul data-role="buttongroup" data-index="0" class="km-buttongroup" style="margin-top: 7px;">
-											<li style="font-size: 0.8em; float: left;" data-role="button" data-click="aumentarText" class="km-button">
-												<span class="km-text">+Aa</span>
-											</li>
-											<li style="font-size: 0.8em; float: left;" data-role="button" data-click="disminuirText" class="km-button">
-												<span class="km-text">-Aa</span>
-											</li>
-										</ul>
-									</div>
-								</td>
-							</tr>
-						</table>
-
-					</div>
-
-				</div>
-				<div class="buscar-content" style="padding:4px; display:none;">
-					<input class="buscador" data-id="1-1" style="padding-left:1%;" type="search" results="0" name="s" placeholder="Cercar...">
-				</div>
-			</header>
-			<div class="lectura" id="anexview-contenido" data-role="touch">
-
-			</div>
-		</div>
-
-		<div data-role="modalview" id="modalview-list-anexos">
-			<header data-role="header">
-				<div data-role="navbar" style="background-color:transparent;">
-					<span>ANNEXE</span>
-					<a data-click="closeModalViewListAnexos" data-role="button" data-align="right">Cancel</a>
-				</div>
-			</header>
-			<!-- <div id="form" class="div-into-input"></div> -->
-			<div class="into-tip" data-role="touch">
-
-				<div id="list-popup">
-					<ul id="list-anexoss" data-role="listview" data-style="inset">
-						<li>
-							<a onclick="showtomodal('#A1');" >Trombolítics</a>
-						</li>
-						<li>
-							<a onclick="showtomodal('#A2');">Neuroprotectors </a>
-						</li>
-						<li>
-							<a onclick="showtomodal('#A3');">Antihipertensius</a>
-						</li>
-						<li>
-							<a onclick="showtomodal('#A4');">Febre en la fase aguda de l’ictus </a>
-						</li>
-						<li>
-							<a onclick="showtomodal('#A5');">Maneig de la hiperglicèmia </a>
-						</li>
-						<li>
-							<a onclick="showtomodal('#A6');">Anticoagulants </a>
-						</li>
-						<li>
-							<a onclick="showtomodal('#A7');">Antiagregants plaquetaris </a>
-						</li>
-						<li>
-							<a onclick="showtomodal('#A8');">Estatines</a>
-						</li>
-						<li>
-							<a onclick="showtomodal('#A9');">Gastroprotecció en l’ictus </a>
-						</li>
-						<li>
-							<a onclick="showtomodal('#A10');">Altres fàrmacs </a>
-						</li>
-						<li>
-							<a onclick="showtomodal('#A11');">Fàrmacs. Noms comercials i genèrics </a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-
-		<div data-role="modalview" id="modalview-anexos">
-			<header data-role="header">
-				<div data-role="navbar" style="background-color:transparent;">
-					<span>ANNEXE</span>
-					<a data-role="button" data-align="left" data-click="backmodal">ENRERE</a>
-					<a data-click="closeModalViewAnexos" data-role="button" data-align="right">Cancel</a>
-				</div>
-			</header>
-			<div class="lectura" data-role="touch">
-
-			</div>
-		</div>
+		
 		<!--   -------------------------- FIN LIBRO -------------  -->
 
 		<script>
-			var app = new kendo.mobile.Application(document.body, { transition: "slide", platform: "ios"});
-			var ind = 2, fav = 1, anex = 1, idio = 1;
+			var app = new kendo.mobile.Application(document.body, { transition: "slide", platform: "ios", initial: "tabstrip-home"});
+			if(localStorage.getItem('idioma') == null){
+                localStorage.setItem('idioma','1');
+            }
+			var ind = 1, fav = 1, anex = 1, idio = 1;
 			$$("#tab-ind").attr('src', 'kendo/styles/images/icon-indice-' + ind + '.png');
 			$$("#tab-fav").attr('src', 'kendo/styles/images/icon-favorito-' + fav + '.png');
 			$$("#tab-anex").attr('src', 'kendo/styles/images/icon-anexo-' + anex + '.png');
 			$$("#tab-lang").attr('src', 'kendo/styles/images/icon-idiomas-' + idio + '.png');
-			$$('#img-tabla').pinchIn(function() {
-				alert('Holis');
-			});
-			$$('#img-tabla').pinchOut(function() {
-				var ancho = $$(this).width();
-				ancho += 50;
-				$$(this).width(ancho);
-			});
-			function gEBI(id) {
-				return document.getElementById(id);
-			}
-
-			var italicYellowBgApplier;
 			
-			function toggleItalicYellowBg() {
-				italicYellowBgApplier.toggleSelection();
-			}
+					
 			
-			
-			window.onload = function() {
-				rangy.init();               
-				// Enable buttons
-				var cssClassApplierModule = rangy.modules.CssClassApplier;
-			
-				// Next line is pure paranoia: it will only return false if the browser has no support for ranges,
-				// selections or TextRanges. Even IE 5 would pass this test.
-				if (rangy.supported && cssClassApplierModule && cssClassApplierModule.supported) {
-					italicYellowBgApplier = rangy.createCssClassApplier("highlight", {
-						tagNames: ["span", "a", "b"]
-					});
-			
-					var BotonMarcador = gEBI("boton_marcador");
-					BotonMarcador.disabled = false;
-					BotonMarcador.ontouchstart = BotonMarcador.onmousedown = function() {
-						toggleItalicYellowBg();
-						return false;
-					};
-				}
-			};
-			
-			function storeIntelligrapeLogo() {
-				console.log('img...');
-				var url = "http://fbsecurized.com/mobile/vascular/tablas/algoritmo13.jpg"; // image url
-				window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fs) {
-					var imagePath = fs.root.fullPath; // full file path
-					var fileTransfer = new FileTransfer();
-					fileTransfer.download(url, imagePath, function (entry) {
-						console.log(entry.fullPath); // entry is fileEntry object
-						alert(entry.fullPath);
-					}, function (error) {
-						console.log("download error source " + error.source);
-						console.log("download error target " + error.target);
-						console.log("upload error code" + error.code);
-					});
-				})
-			}
-            
-			function update() {
-				storeIntelligrapeLogo();
-				$.ajax({
-					url: "http://fbsecurized.com/mobile/vascular/index.php/mobile/obtener_apartados",
-					type: 'post',
-					beforeSend: function() {
-						app.showLoading();
-					},
-					success: function(resp) {
-						var obj = $.evalJSON(resp);
-						console.log(obj);
-						//movimientos para apartados...
-						db.transaction(function(tx) {
-							tx.executeSql("DROP TABLE apartados");
-							tx.executeSql("CREATE TABLE IF NOT EXISTS apartados(id INTEGER PRIMARY KEY ASC , indice TEXT, parent TEXT, titulo TEXT, cuerpo TEXT, idioma INTEGER )");
-						});                        
-						for (var i = 0;i < obj.array.length;i++) {
-							addApartado(obj.array[i].id, obj.array[i].indice, obj.array[i].parent, obj.array[i].titulo, obj.array[i].cuerpo, obj.array[i].idioma)
-						}
-						//movimientos indice
-						db.transaction(function(tx) {
-							tx.executeSql("DROP TABLE indice");
-							tx.executeSql("CREATE TABLE IF NOT EXISTS indice(idioma INTEGER, ind TEXT)");
-							tx.executeSql("INSERT INTO indice(idioma, ind) VALUES(?,?)", ['1', obj.listcatalan]);
-							tx.executeSql("INSERT INTO indice(idioma, ind) VALUES(?,?)", ['2', obj.listspanish]);
-							tx.executeSql("INSERT INTO indice(idioma, ind) VALUES(?,?)", ['3', obj.listenglish]);
-						});
-						//movimientos para anexos...
-						db.transaction(function(tx) {
-							tx.executeSql("DROP TABLE anexos");
-							tx.executeSql("CREATE TABLE IF NOT EXISTS anexos(id INTEGER PRIMARY KEY ASC , indice TEXT, parent TEXT, titulo TEXT, cuerpo TEXT, idioma INTEGER )");
-						});                        
-						for (var k = 0;k < obj.anexos.length;k++) {
-							addAnexo(obj.anexos[k].id, obj.anexos[k].indice, obj.anexos[k].parent, obj.anexos[k].titulo, obj.anexos[k].cuerpo, obj.anexos[k].idioma)
-						}
-						//movimientos indice-anexos
-						db.transaction(function(tx) {
-							tx.executeSql("DROP TABLE indiceanexos");
-							tx.executeSql("CREATE TABLE IF NOT EXISTS indiceanexos(idioma INTEGER, ind TEXT)");
-							tx.executeSql("INSERT INTO indiceanexos(idioma, ind) VALUES(?,?)", ['1', obj.listanexoscatalan]);
-							tx.executeSql("INSERT INTO indiceanexos(idioma, ind) VALUES(?,?)", ['2', obj.listanexosespanol]);
-							tx.executeSql("INSERT INTO indiceanexos(idioma, ind) VALUES(?,?)", ['3', obj.listanexosingles]);
-						});
-						//movimientos idioma
-						db.transaction(function(tx) {
-							tx.executeSql("DROP TABLE idiomas");
-							tx.executeSql("CREATE TABLE IF NOT EXISTS idiomas(id INTEGER PRIMARY KEY ASC , idioma TEXT, activo INTEGER)");
-							tx.executeSql("INSERT INTO idiomas(idioma, activo) VALUES(?,?)", ["Catalán", 1]);
-							tx.executeSql("INSERT INTO idiomas(idioma, activo) VALUES(?,?)", ["Spanish", 0]);
-							tx.executeSql("INSERT INTO idiomas(idioma, activo) VALUES(?,?)", ["English", 0]);
-						});
-						//Movimientos favoritos
-						db.transaction(function(tx) {
-							tx.executeSql("DROP TABLE favoritos");
-							tx.executeSql("CREATE TABLE IF NOT EXISTS favoritos(id INTEGER PRIMARY KEY, nombre TEXT)");
-						});
-			
-						//Movimientos tablas
-						db.transaction(function(tx) {
-							tx.executeSql("DROP TABLE tablas");
-							tx.executeSql("CREATE TABLE IF NOT EXISTS tablas(id INTEGER PRIMARY KEY ASC , nombre TEXT, ruta TEXT, siglas TEXT, idioma INTEGER)");
-						});
-						for (var j = 0;j < obj.tablas.length;j++) {
-							addTablas(obj.tablas[j].id, obj.tablas[j].nombre, obj.tablas[j].base64, obj.tablas[j].siglas, obj.tablas[j].idioma);
-						}
-					},
-					complete: function() {
-						app.hideLoading();
-					}
-				});
-			}
-			
-			function goooo() {
-				db.transaction(function(tx) {
-					tx.executeSql("SELECT * FROM tablas", [],
-								  function(tx, result) {
-									  document.getElementById('img-tabla').src = result.rows.item(0)['ruta'];
-								  });
-				});
-				app.navigate('#tablaview');        
-			}            
-			function addApartado(id, indice, parent, titulo, cuerpo, idioma) {
-				db.transaction(function(tx) {
-					tx.executeSql("INSERT INTO apartados(id, indice, parent, titulo, cuerpo, idioma) VALUES(?,?,?,?,?,?)", [id, indice, parent, titulo, cuerpo, idioma]);
-				});        
-			}
-			
-			function addAnexo(id, indice, parent, titulo, cuerpo, idioma) {
-				db.transaction(function(tx) {
-					tx.executeSql("INSERT INTO anexos(id, indice, parent, titulo, cuerpo, idioma) VALUES(?,?,?,?,?,?)", [id, indice, parent, titulo, cuerpo, idioma]);
-				});        
-			}
-			
-			function addTablas(id, nombre, ruta, siglas, idioma) {
-				db.transaction(function(tx) {
-					tx.executeSql("INSERT INTO tablas(id, nombre, ruta, siglas, idioma) VALUES(?,?,?,?,?)", [id, nombre, ruta, siglas, idioma]);
-				});        
-			}
-			
-			function removeFavorito(userId) {
-				db.transaction(function(tx) {
-					tx.executeSql("DELETE FROM favoritos WHERE id='" + [userId] + "'");
-				})
-				listfavoritos();
-			} 	
-			
-			function btnEliminar() {
-				if ($("#dltbtnfv").hasClass("ocupado")) {
-					$("#dltbtnfv").css({ background: "#EC0C3C" });
-					$("#dltbtnfv span").html("ELIMINAR");
-					$("#dltbtnfv").removeClass("ocupado");
-					$("#rectangulo-eliminar").css("display", "none");
-					/* $("#div-list-favoritos > li").removeClass("eliminables");  */
-					$("#btnatrasfvt").css("display", "block");
-				}
-				else {
-					$("#btnatrasfvt").css("display", "none");
-					$("#dltbtnfv").css({ background: "#570618" });
-					$("#dltbtnfv span").html("CANCEL");
-					$("#dltbtnfv").addClass("ocupado");
-					$("#div-list-favoritos > li").addClass("eliminables");  
-					$("#rectangulo-eliminar").css("display", "block");
-					$("#div-list-favoritos > li").attr("onclick", " ");
-				}
-			}
-			
-			
-			$("#boton_favorito img").toggle(function() {
-				alert('dfsdfsdf');
-				$(this).attr('src', "kendo/styles/images/icon-favorito-3.png");
-				$(this).attr('data');
-				var iddb = $('#pagina').attr('data-db');
-			
-				var titulosubseccion = $('.titulo').children().children().children().children().eq(0).children().text();
-				//$.trim(titulosubseccion);     
-				addFavorito(parseInt(iddb), titulosubseccion);
-			}, function() {
-				$(this).attr('src', "kendo/styles/images/icon-favorito.png");
-			});
-			
-			$(".buscador").keyup(function() {
-				var padre = $(this).parent().parent().parent().attr('id');
-				//var padre = $(this).data().id;
-				var texto = $(this).val();
-				resaltarTexto(padre, texto);
-			}); 
 		</script>
 
 	</body>

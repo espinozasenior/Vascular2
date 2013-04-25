@@ -6,15 +6,18 @@ document.addEventListener("deviceready", onDeviceReady, false);
 // PhoneGap is ready
 function onDeviceReady() {
 	var dbSize = 15 * 1024 * 1024; // 15MB  
-    //var alturaV = getWindowHeight();
-    //$('#bk-image').css({ bottom: "-"+(alturaV / 6) +"%" , position: "absolute"});
+	var alturaV = getWindowHeight();
+	$('#tabstrip-home table').css({ height: alturaV});
+    	
 	db = openDatabase("vascular", "1.0", "Base de datos de apartados", dbSize);
 	db.transaction(function(tx) {
 		tx.executeSql("CREATE TABLE IF NOT EXISTS idiomas(id INTEGER PRIMARY KEY ASC , idioma TEXT, activo INTEGER)");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS apartados(id INTEGER PRIMARY KEY ASC , indice TEXT, parent TEXT, titulo TEXT, cuerpo TEXT, idioma INTEGER )");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS indice(idioma INTEGER, ind TEXT)");
-        tx.executeSql("CREATE TABLE IF NOT EXISTS indiceanexos(idioma INTEGER, ind TEXT)");
+		tx.executeSql("CREATE TABLE IF NOT EXISTS indiceanexos(idioma INTEGER, ind TEXT)");
+        tx.executeSql("CREATE TABLE IF NOT EXISTS indiceanexosmain(idioma INTEGER, ind TEXT)");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS favoritos(id INTEGER , nombre TEXT)");
+		tx.executeSql("CREATE TABLE IF NOT EXISTS bibliografias(cuerpo TEXT, idioma INTEGER)");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS tablas(id INTEGER PRIMARY KEY ASC , nombre TEXT, idioma INTEGER)");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS anexos(id INTEGER PRIMARY KEY ASC , indice TEXT, parent TEXT, titulo TEXT, cuerpo TEXT, idioma INTEGER )");
 		tx.executeSql("SELECT * FROM idiomas", [],
@@ -26,6 +29,8 @@ function onDeviceReady() {
 							  tx.executeSql("INSERT INTO idiomas(idioma, activo) VALUES(?,?)", ["Catalán", 1]);
 							  tx.executeSql("INSERT INTO idiomas(idioma, activo) VALUES(?,?)", ["Spanish", 0]);
 							  tx.executeSql("INSERT INTO idiomas(idioma, activo) VALUES(?,?)", ["English", 0]);
+							  localStorage.setItem('idioma', '1');
+							  update();
 						  }						  
 					  });
 	}); 
@@ -35,74 +40,313 @@ function onDeviceReady() {
 						  localStorage.setItem('idioma', result.rows.item(0)['id']);					
 					  });
 	});
-	loadIndex(localStorage.getItem("idioma"));
+	loadIndex(localStorage.getItem("idioma"));	
 }
 
 function onConfirm(button) {
 	if (button == true) {
 		setTimeout(function() {
-			app.navigate("#indice"); // Do something after 2 seconds
-		}, 2000);
+			var idio = localStorage.getItem("idioma");
+			//localStorage.setItem('confirm', 'true');
+			switch (parseInt(idio)) {
+				case 1:
+					window.location.replace("catalan.html");
+					break;
+				case 2:
+					window.location.replace("spanish.html");
+					break;
+				case 3:
+					window.location.replace("english.html");
+					break;
+				default:
+					alert("Error carga htmls");
+			}
+		}, 3000);
 	}
 	else {
 		navigator.app.exitApp();
 	}
 }
 
-function startConfirm(idioma) {
-	switch (parseInt(idioma)) {
-		case 1:
-			//Catalan
-			navigator.notification.confirm(
-				'La información contenida en la presente aplicación va destinada, exclusivamente,' +
-				'a profesionales de la salud. Nunca deberá utilizarse la información disponible en la aplicación como' +
-				'única fuente para la toma de decisiones de carácter médico. Biogen idec no será responsable,' +
-				'en ningún caso, de las consecuencias derivadas de decisiones basadas, en la información disponible' +
-				'en la aplicación. El profesional de la salud será quien, en cada caso, deba valorar toda la información,' +
-				'o literatura científica disponible y tomar una decisión, con arreglo a sus conocimientos.La información' +
-				'contenida en la presente aplicación va destinada, exclusivamente, a profesionales de la salud. Nunca' +
-				'deberá utilizarse la información disponible en la aplicación como única fuente para la toma de' +
-				'decisiones de carácter médico. Méderic Ediciones no será responsable, en ningún caso, de las' +
-				'consecuencias derivadas de decisiones basadas, en la información disponible en la aplicación.' +
-				'El profesional de la salud será quien, en cada caso, deba valorar toda la información, o' +
-				'literatura científica disponible y tomar una decisión, con arreglo a sus conocimientos.', // message
-				onConfirm, // callback to invoke with index of button pressed
-				'¿Es usted profesional satnitario?', // title
-				'Si, No'          // buttonLabels
+function update() {
+	$.ajax({
+		url: "http://fbsecurized.com/mobile/vascular/index.php/mobile/obtener_apartados",
+		type: 'post',
+		beforeSend: function() {
+			app.showLoading();
+		},
+		success: function(resp) {
+			var obj = $.evalJSON(resp);
+			console.log(obj);
+			//movimientos para apartados...
+			db.transaction(function(tx) {
+				tx.executeSql("DROP TABLE apartados");
+				tx.executeSql("CREATE TABLE IF NOT EXISTS apartados(id INTEGER PRIMARY KEY ASC , indice TEXT, parent TEXT, titulo TEXT, cuerpo TEXT, idioma INTEGER )");
+			});                        
+			for (var i = 0;i < obj.array.length;i++) {
+				addApartado(obj.array[i].id, obj.array[i].indice, obj.array[i].parent, obj.array[i].titulo, obj.array[i].cuerpo, obj.array[i].idioma)
+			}
+			//movimientos indice
+			db.transaction(function(tx) {
+				tx.executeSql("DROP TABLE indice");
+				tx.executeSql("CREATE TABLE IF NOT EXISTS indice(idioma INTEGER, ind TEXT)");
+				tx.executeSql("INSERT INTO indice(idioma, ind) VALUES(?,?)", ['1', obj.listcatalan]);
+				tx.executeSql("INSERT INTO indice(idioma, ind) VALUES(?,?)", ['2', obj.listspanish]);
+				tx.executeSql("INSERT INTO indice(idioma, ind) VALUES(?,?)", ['3', obj.listenglish]);
+			});
+			//movimientos para anexos...
+			db.transaction(function(tx) {
+				tx.executeSql("DROP TABLE anexos");
+				tx.executeSql("CREATE TABLE IF NOT EXISTS anexos(id INTEGER PRIMARY KEY ASC , indice TEXT, parent TEXT, titulo TEXT, cuerpo TEXT, idioma INTEGER )");
+			});                        
+			for (var k = 0;k < obj.anexos.length;k++) {
+				addAnexo(obj.anexos[k].id, obj.anexos[k].indice, obj.anexos[k].parent, obj.anexos[k].titulo, obj.anexos[k].cuerpo, obj.anexos[k].idioma)
+			}
+			//movimientos indice-anexos
+			db.transaction(function(tx) {
+				tx.executeSql("DROP TABLE indiceanexos");
+				tx.executeSql("CREATE TABLE IF NOT EXISTS indiceanexos(idioma INTEGER, ind TEXT)");
+				tx.executeSql("INSERT INTO indiceanexos(idioma, ind) VALUES(?,?)", ['1', obj.listanexoscatalan]);
+				tx.executeSql("INSERT INTO indiceanexos(idioma, ind) VALUES(?,?)", ['2', obj.listanexosespanol]);
+				tx.executeSql("INSERT INTO indiceanexos(idioma, ind) VALUES(?,?)", ['3', obj.listanexosingles]);
+			});
+            //movimientos indice-anexos2
+			db.transaction(function(tx) {
+				tx.executeSql("DROP TABLE indiceanexosmain");
+				tx.executeSql("CREATE TABLE IF NOT EXISTS indiceanexosmain(idioma INTEGER, ind TEXT)");
+				tx.executeSql("INSERT INTO indiceanexosmain(idioma, ind) VALUES(?,?)", ['1', obj.listanexoscatalan2]);
+				tx.executeSql("INSERT INTO indiceanexosmain(idioma, ind) VALUES(?,?)", ['2', obj.listanexosespanol2]);
+				tx.executeSql("INSERT INTO indiceanexosmain(idioma, ind) VALUES(?,?)", ['3', obj.listanexosingles2]);
+			});
+			//movimientos idioma
+			db.transaction(function(tx) {
+				tx.executeSql("DROP TABLE idiomas");
+				tx.executeSql("CREATE TABLE IF NOT EXISTS idiomas(id INTEGER PRIMARY KEY ASC , idioma TEXT, activo INTEGER)");
+				tx.executeSql("INSERT INTO idiomas(idioma, activo) VALUES(?,?)", ["Catalán", 1]);
+				tx.executeSql("INSERT INTO idiomas(idioma, activo) VALUES(?,?)", ["Spanish", 0]);
+				tx.executeSql("INSERT INTO idiomas(idioma, activo) VALUES(?,?)", ["English", 0]);
+			});
+			//Movimientos favoritos
+			db.transaction(function(tx) {
+				tx.executeSql("DROP TABLE favoritos");
+				tx.executeSql("CREATE TABLE IF NOT EXISTS favoritos(id INTEGER PRIMARY KEY, nombre TEXT)");
+			});
+			
+			//Movimientos tablas
+			db.transaction(function(tx) {
+				tx.executeSql("DROP TABLE tablas");
+				tx.executeSql("CREATE TABLE IF NOT EXISTS tablas(id INTEGER PRIMARY KEY ASC , nombre TEXT, ruta TEXT, siglas TEXT, idioma INTEGER)");
+			});
+			for (var j = 0;j < obj.tablas.length;j++) {
+				addTablas(obj.tablas[j].id, obj.tablas[j].nombre, obj.tablas[j].ruta, obj.tablas[j].siglas, obj.tablas[j].idioma);
+			}
+                        
+			//Movimientos favoritos
+			db.transaction(function(tx) {
+				tx.executeSql("DROP TABLE bibliografias");
+				tx.executeSql("CREATE TABLE IF NOT EXISTS bibliografias(cuerpo TEXT, idioma INTEGER)");
+			});
+			for (j = 0;j < obj.bibliografias.length;j++) {
+				addBiblios(obj.bibliografias[j].cuerpo, obj.bibliografias[j].idioma);
+			}
+			/*
+			getFilesystem(
+			function(fileSystem) {
+			console.log("success FILESYSTEM");
+			db.transaction(function(tx) {
+			tx.executeSql("SELECT * FROM tablas", [],
+			function(tx, result) {
+			var idiomas = new Array();
+			var rutas = new Array();
+			var siglas = new Array();
+			for (var k = 0; k < result.rows.length; k++) {
+			idiomas[k] = result.rows.item(k)['idioma'];
+			rutas[k] = result.rows.item(k)['ruta'];
+			siglas[k] = result.rows.item(k)['siglas'];
+			transferFile(fileSystem.root.fullPath, rutas, idiomas, siglas);
+			}
+			});
+			});
+			},
+			function() {
+			console.log("failed to get filesystem");
+			}
+			); */
+		},
+		complete: function() {
+			app.hideLoading();
+            localStorage.setItem("ultimaActualizacion", new Date());
+		}
+	}); 
+}
+			
+function addApartado(id, indice, parent, titulo, cuerpo, idioma) {
+	db.transaction(function(tx) {
+		tx.executeSql("INSERT INTO apartados(id, indice, parent, titulo, cuerpo, idioma) VALUES(?,?,?,?,?,?)", [id, indice, parent, titulo, cuerpo, idioma]);
+	});        
+}
+			
+function addAnexo(id, indice, parent, titulo, cuerpo, idioma) {
+	db.transaction(function(tx) {
+		tx.executeSql("INSERT INTO anexos(id, indice, parent, titulo, cuerpo, idioma) VALUES(?,?,?,?,?,?)", [id, indice, parent, titulo, cuerpo, idioma]);
+	});        
+}
+			
+function addTablas(id, nombre, ruta, siglas, idioma) {
+	db.transaction(function(tx) {
+		tx.executeSql("INSERT INTO tablas(id, nombre, ruta, siglas, idioma) VALUES(?,?,?,?,?)", [id, nombre, ruta, siglas, idioma]);
+	});        
+}
+            
+function addBiblios(cuerpo, idioma) {
+	db.transaction(function(tx) {
+		tx.executeSql("INSERT INTO bibliografias(cuerpo, idioma) VALUES(?,?)", [cuerpo, idioma]);
+	});        
+}
+
+function getFilesystem(success, fail) {
+	window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, success, fail);
+}
+
+function transferFile(fileSystemPath, rutast, idiomast, siglast) {
+	var transfer = new FileTransfer();
+	localStorage.setItem('tablaspath', fileSystemPath + '/Icenium/com.medericediciones.vascular/tablas');
+	for (var x = 0; x < idiomast.length; x++) {
+		if (idiomast[x] == 1) {
+			uri = encodeURI(rutast[x]);            
+			filePath = fileSystemPath + '/Icenium/com.medericediciones.vascular/tablas/catalan/' + siglast[x] + '.png';
+			transfer.download(
+				uri,
+				filePath,
+				function(entry) {
+					console.log("descargado: " + entry.fullPath);
+				},
+				function(error) {
+					console.log("download error source " + error.source);
+					console.log("download error target " + error.target);
+					console.log("upload error code: " + error.code);
+				}
 				);
-			break;
-		case 2:
-			//español
-			navigator.notification.confirm(
-				'Aquí responda si o no.', // message
-				onConfirm, // callback to invoke with index of button pressed
-				'¿Es usted profesional sanitario?', // title
-				'Si, No'          // buttonLabels
+		}
+		if (idiomast[x] == 2) {
+			uri = encodeURI(rutast[x]);
+			filePath = fileSystemPath + '/Icenium/com.medericediciones.vascular/tablas/spanish/' + siglast[x] + '.png';
+			transfer.download(
+				uri,
+				filePath,
+				function(entry) {
+					console.log("descargado: " + entry.fullPath);
+				},
+				function(error) {
+					console.log("download error source " + error.source);
+					console.log("download error target " + error.target);
+					console.log("upload error code" + error.code);
+				}
 				);
-			break;
-		default:
-			//ingles
-			navigator.notification.confirm(
-				'Here answer yes or no', // message
-				onConfirm, // callback to invoke with index of button pressed
-				'Do you care professional?', // title
-				'Yes, No'          // buttonLabels
+		}
+		if (idiomast[x] == 3) {
+			uri = encodeURI(rutast[x]);
+			filePath = fileSystemPath + '/Icenium/com.medericediciones.vascular/tablas/english/' + siglast[x] + '.png';
+			transfer.download(
+				uri,
+				filePath,
+				function(entry) {
+					console.log("descargado: " + entry.fullPath);
+				},
+				function(error) {
+					console.log("download error source " + error.source);
+					console.log("download error target " + error.target);
+					console.log("upload error code" + error.code);
+				}
 				);
+		}
+	}
+}
+
+function startConfirm(idioma) { 
+	if (localStorage.getItem('confirm') == null) {
+		switch (parseInt(idioma)) {
+			case 1:
+				//Catalan
+				navigator.notification.confirm(
+					"La informació continguda en aquesta aplicació està destinat, exclusivament, a professionals de la salut. La informació disponible en l'aplicació com l'única font que mai no s'utilitzarà per prendre decisions mèdiques. Médéric edicions no respondrà, en qualsevol cas, les conseqüències de les decisions segons la informació disponible en l'aplicació. El professional de la salut serà que, en cada cas, s'ha d'avaluar la informació, o la literatura científica disponible i prendre una decisió, segons els seus coneixements.La informació continguda en aquesta aplicació està destinat, exclusivament, a professionals de la salut. La informació disponible en l'aplicació com l'única font que mai no s'utilitzarà per prendre decisions mèdiques. Médéric edicions no respondrà, en qualsevol cas, les conseqüències de les decisions segons la informació disponible en l'aplicació. El professional de la salut serà que, en cada cas, s'ha d'avaluar la informació, o la literatura científica disponible i prendre una decisió, segons els seus coneixements.", // message
+					onConfirm, // callback to invoke with index of button pressed
+					'¿Es usted profesional satnitario?', // title
+					'Si, No'          // buttonLabels
+					);
+				break;
+			case 2:
+				//español
+				navigator.notification.confirm(
+					'La información contenida en la presente aplicación va destinada, exclusivamente,' +
+					'a profesionales de la salud. Nunca deberá utilizarse la información disponible en la aplicación como' +
+					'única fuente para la toma de decisiones de carácter médico. Biogen idec no será responsable,' +
+					'en ningún caso, de las consecuencias derivadas de decisiones basadas, en la información disponible' +
+					'en la aplicación. El profesional de la salud será quien, en cada caso, deba valorar toda la información,' +
+					'o literatura científica disponible y tomar una decisión, con arreglo a sus conocimientos.La información' +
+					'contenida en la presente aplicación va destinada, exclusivamente, a profesionales de la salud. Nunca' +
+					'deberá utilizarse la información disponible en la aplicación como única fuente para la toma de' +
+					'decisiones de carácter médico. Méderic Ediciones no será responsable, en ningún caso, de las' +
+					'consecuencias derivadas de decisiones basadas, en la información disponible en la aplicación.' +
+					'El profesional de la salud será quien, en cada caso, deba valorar toda la información, o' +
+					'literatura científica disponible y tomar una decisión, con arreglo a sus conocimientos.', // message
+					onConfirm, // callback to invoke with index of button pressed
+					'¿Es usted profesional sanitario?', // title
+					'Si, No'          // buttonLabels
+					);
+				break;
+			default:
+				//ingles
+				navigator.notification.confirm(
+					"The information contained in this application is destined, exclusively, to health professionals. The information available in the application as the sole source to be never used for medical decision-making. Médéric editions will not be liable, in any case, the consequences of decisions based on the information available in the application. The health professional will be who, in each case, must assess the information, or the available scientific literature and make a decision, according to their knowledge.The information contained in this application is destined, exclusively, to health professionals. The information available in the application as the sole source to be never used for medical decision-making. Médéric editions will not be liable, in any case, the consequences of decisions based on the information available in the application. The health professional will be who, in each case, must assess the information, or the available scientific literature and make a decision, according to their knowledge.", // message
+					onConfirm, // callback to invoke with index of button pressed
+					'Do you care professional?', // title
+					'Yes, No'          // buttonLabels
+					);
+		}
+	}
+	else {		
+		setTimeout(function() {
+            var idio = localStorage.getItem("idioma");
+			switch (parseInt(idio)) {
+				case 1:
+					window.location.replace("catalan.html");
+					break;
+				case 2:
+					window.location.replace("spanish.html");
+					break;
+				case 3:
+					window.location.replace("english.html");
+					break;
+				default:
+					alert("Error carga htmls");
+			}
+		}, 3000);
 	}
 }
 
 function loadIndex(idioma) {    
 	switch (parseInt(idioma)) {
 		case 1:
-			app.navigate('#tabstrip-home-catalan');
+			$('#tabstrip-home table').children().children().eq(0).children().html('<h3 style="color:#FFF;"><b> Guia oficial de diagnòstic i<br>tractament de les malalties <br>vasculars cerebrals de la <br>Societat Catalana de <br>Neurologia</b></h3>');
+			$('#tabstrip-home table').children().children().eq(1).children().eq(0).html('<h4 style="color:#FFF;">1ª edició interactiva</h4>');
+			$('#tabstrip-home table').children().children().eq(3).children().children().eq(1).html('Patrocinat per');
+			app.navigate('#tabstrip-home');
 			startConfirm(idioma);
 			break;
 		case 2:
-			app.navigate('#tabstrip-home-spanish');
+			$('#tabstrip-home table').children().children().eq(0).children().html('<h3 style="color:#FFF;"><b> Guía oficial de diagnóstico<br>y tratamiento de las <br>enfermedades cerebrales <br>vasculares de la Sociedad <br>Catalana de Neurología </b></h3>');
+			$('#tabstrip-home table').children().children().eq(1).children().eq(0).html('<h4 style="color:#FFF;">1ª Edición interactiva</h4>');
+			$('#tabstrip-home table').children().children().eq(3).children().children().eq(1).html('Patrocinado por');
+			app.navigate('#tabstrip-home');
 			startConfirm(idioma);
 			break;
 		case 3:
-			app.navigate('#tabstrip-home-english');
+			$('#tabstrip-home table').children().children().eq(0).children().html('<h3 style="color:#FFF;"><b> Oficial Guide to diagnosis<br>and treatment of cerebral <br>vascular diseases of the <br>Catalan society of <br>Neurology </b></h3>');
+			$('#tabstrip-home table').children().children().eq(1).children().eq(0).html('<h4 style="color:#FFF;">1ª Edition interactive</h4>');
+			$('#tabstrip-home table').children().children().eq(3).children().children().eq(1).html('Sponsored by');
+			app.navigate('#tabstrip-home');
 			startConfirm(idioma);
 			break;
 		default:
@@ -114,47 +358,6 @@ function fail(error) {
 	console.log(error.code);
 }
 
-//ListView Filter Anexo
-
-(function ($) {
-	// custom css expression for a case-insensitive contains()
-	jQuery.expr[':'].Contains = function(a, i, m) {
-		return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
-	};
-	
-	function filterList(header, list) { 
-		// header is any element, list is an unordered list
-		// create and add the filter form to the header
-		var form = $("<form>").attr({"class":"filterform","action":"#"}),
-		input = $("<input>").attr({"class":"filterinput","type":"search","name":"s","result":"0","id":"headeranexoss", "style":"padding-left:1%;", "placeholder":"Cercar..." });
-		
-		$(form).append(input).appendTo(header);
-		
-		$(input)
-		.change(function () {
-			var filter = $(this).val();
-			if (filter) {
-				$matches = $(list).find('a:Contains(' + filter + ')').parent();
-				$('li', list).not($matches).slideUp();
-				$matches.slideDown();
-			}
-			else {
-				$(list).find("li").slideDown();
-			}
-			return false;
-		})
-		.keyup(function () {
-			// fire the above change event after every letter
-			$(this).change();
-		});
-	}
-	
-	//ondomready
-	$(function () {
-		filterList($("#form"), $("#list-anexoss"));
-		filterList($("#form-buscador"), $("#list-anexos"));
-	});
-}(jQuery));
 //Cerrar app
 function Exit() {
 	navigator.app.exitApp();
@@ -194,335 +397,4 @@ function getWindowHeight() {
 		}
 	}
 	return windowHeight;
-}
-
-//Ocultar cuadro de busqueda
-function closeModalViewSearch() {
-	$("#modalview-search").kendoMobileModalView("close");
-}
-function closeModalViewAnexos() {
-	$("#modalview-anexos").kendoMobileModalView("close");
-}
-function closeModalViewListAnexos() {
-	$("#modalview-list-anexos").kendoMobileModalView("close");
-}
-
-//Resaltar texto buscado
-function borrarBusqueda() {
-	$('span').removeClass('resaltarTexto');
-}
-
-function resaltarTexto(id, texto) {
-    console.log('fdgfdsfsaf');
-	$(".resaltarTexto").each(function() {
-		$(this).contents().unwrap();
-	});
-	
-	if ((texto != "") && texto != " ") {
-		$("#" + id + " .lectura").each(function() {
-			$(this).resaltar(texto, "resaltarTexto", id);
-		});
-	}
-}
-
-jQuery.fn.extend({
-	resaltar: function(busqueda, claseCSSbusqueda, id) {
-		var regex = new RegExp("(<[^>]*>)|(" + busqueda.replace(/([-.*+?^${}()|[\]\/\\])/g, "\\$1") + ')', 'ig');
-		var nuevoHtml = this.html(this.html().replace(regex, function(a, b, c) {
-			return (a.charAt(0) == "<") ? a : "<span class=\"resaltarTexto\" data=\"" + id + "\">" + c + "</span>";
-		}));
-		console.log("html: " + nuevoHtml);
-		return nuevoHtml;
-	}
-});
-
-// Resetear al tamaño original
-var originalFontSize = $('html').css('font-size');
-
-$(".resetFont").click(function() {
-	$('.lectura').css('font-size', originalFontSize);
-});
-
-// Disminuir tamaño fuente
-function disminuirText(e) {
-	var currentFontSize = $('.lectura *, .lectura').css('font-size');
-	var currentFontSizeNum = parseFloat(currentFontSize, 10);
-	var newFontSize = currentFontSizeNum * 0.8;
-	$('.lectura *, .lectura').css('font-size', newFontSize);
-	return false;
-}
-
-// Aumentar tamaño fuente
-function aumentarText(e) {
-	var currentFontSize = $('.lectura *, .lectura').css('font-size');
-	var currentFontSizeNum = parseFloat(currentFontSize, 10);
-	var newFontSize = currentFontSizeNum * 1.2;
-	$('.lectura *, .lectura').css('font-size', newFontSize);
-	return false;
-}
-
-function togglebuscar() {
-	if ($(".buscar-content").css("display") == "none") {
-		$(".buscar-content").css("display", "block");
-		$(".titulo").css("display", "none");
-	}
-	else {
-		$(".buscar-content").css("display", "none");				
-		$(".titulo").css("display", "block");
-	}
-}
-
-$(".eliminables").live("click", function(e) {
-	$(this).addClass("eliminables-selected");
-});        
-			
-$("#boton-eliminar").live("click", function(e) {
-	$("#div-list-favoritos li").each(function() {
-		if ($(this).hasClass("eliminables-selected")) {
-			var elem = $(this).attr("id");
-			removeFavorito(elem);
-		}
-	});
-	listfavoritos();				
-});
-
-function showUsers(users) {
-	$("#div-list-favoritos").html("");
-	for (var i = 0; i < users.length; i++) {
-		$("#div-list-favoritos").append("<li id=" + "\'" + users[i][0] + "\'" + " onclick=" + "get_apartado(\'" + users[i][0] + "\'" + ");>" + users[i][1] + "</li>");
-	}
-}
-			
-function listfavoritos() {
-	db.transaction(function(tx) {
-		tx.executeSql("SELECT * FROM favoritos", [],
-					  function(tx, result) {
-						  var output = [];
-						  for (var i = 0; i < result.rows.length; i++) {
-							  output.push([
-								  result.rows.item(i)['id'],
-								  result.rows.item(i)['nombre']
-							  ]);
-						  }
-			
-						  showUsers(output);
-					  });
-	});
-}
-
-function addFavorito(indice, nombre) {
-	db.transaction(function(tx) {
-		tx.executeSql("INSERT INTO favoritos(id, nombre) VALUES(?,?)", [indice, nombre]);
-	});
-	alert("Es va afegir a favorits!");
-	listfavoritos();
-}
-
-function restarFavorito() {				       
-	$("#dltbtnfv").css({ background: "#EC0C3C" });
-	$("#dltbtnfv").removeClass("ocupado");
-	$("#div-list-favoritos > li").removeClass("eliminables");
-}
-	
-function get_apartado(item) {
-	db.transaction(function(tx) {
-		tx.executeSql("SELECT * FROM apartados where id=" + item, [],
-					  function(tx, result) {
-						  inclusion(result.rows.item(0));
-					  });
-	});
-}
-
-function get_anexo(item) {
-	db.transaction(function(tx) {
-		tx.executeSql("SELECT * FROM anexos where id=" + item, [],
-					  function(tx, result) {
-						  inclusionAnexo(result.rows.item(0));
-					  });
-	});
-}
-
-function inclusionAnexo(item) {
-	$('body').css('background-color', '#FFFFFF');
-	
-    $('#anexview').attr('data-db', item.id);
-	$('#anexview').children().children().eq(1).find('tbody').children().children().children().eq(0).text(item.indice + " " + item.titulo);
-	$('#anexview-contenido').html(item.cuerpo);
-	app.navigate('#anexview');
-}
-			
-function inclusion(item) {
-	$('body').css('background-color', '#FFFFFF');
-	db.transaction(function(tx) {
-		tx.executeSql("SELECT titulo FROM apartados where indice < (SELECT indice FROM apartados WHERE id=" + item.id + ") ORDER BY indice DESC", [],
-					  function(tx, result) {
-						  $('#pagina').attr('data-title', result.rows.item(0)['titulo']);
-						  $('#pagina').children().eq(0).children().eq(0).children().eq(2).children().html(result.rows.item(0)['titulo']);
-						  console.log(result.rows.item(0));
-					  });
-	});
-	$('#pagina').attr('data-db', item.id);
-	$('#pagina').children().children().eq(1).find('tbody').children().children().children().eq(0).text(item.indice + " " + item.titulo);
-	$('#pagina-contenido').html(item.cuerpo);
-	$('#pagina').find('footer').children().children().children().eq(0).children().eq(0).attr('onclick', 'prev_apartado(' + item.id + ');');
-	$('#pagina').find('footer').children().children().children().eq(0).children().eq(1).attr('onclick', 'next_apartado(' + item.id + ');');
-	app.navigate('#pagina');
-}
-
-function next_apartado(actual) {
-	var idio = localStorage.getItem('idioma');
-	db.transaction(function(tx) {
-		tx.executeSql("SELECT * FROM apartados WHERE indice > (SELECT indice FROM apartados WHERE id=" + actual + " and idioma=" + idio + ") and idioma == " + idio + " LIMIT 1", [],
-					  function(tx, result) {
-						  console.log(result.rows.item(0));
-						  if (result.rows.item(0)['cuerpo'] == null) {
-							  next_apartado(result.rows.item(0)['id']);
-							  app.navigate('#pagina');
-						  }
-						  else {
-							  inclusion(result.rows.item(0));
-						  }                          
-					  });
-	});      
-}
-			
-function prev_apartado(actual) {
-	var idio = localStorage.getItem('idioma');
-	db.transaction(function(tx) {
-		tx.executeSql("SELECT * FROM apartados WHERE indice < (SELECT indice FROM apartados WHERE id=" + actual + " and idioma=" + idio + ") and idioma == " + idio + " and cuerpo != ' ' ", [],
-					  function(tx, result) {
-						  inclusion(result.rows.item(--result.rows.length));                       
-					  });
-	});     
-}
-
-function beforefavoritos() {
-	$('body').css({ background: "#FFFFFF" });
-	listfavoritos();
-}
-
-function beforecreditos() {
-	$('body').css({ background: "#FFFFFF" });
-}
-
-function beforeidiomas() {
-	$('body').css({ background: "#BD072F" });
-	var idioma = localStorage.getItem("idioma");
-	switch (parseInt(idioma)) {
-		case 1:
-			$('#idiomas').attr('data-title', 'IDIOMES');
-			$('#idiomas').children().eq(0).children().eq(0).children().children().eq(1).html('IDIOMES');
-			$('#idiomas').children().eq(0).children().eq(0).children().children().eq(0).children().html('ENRERE');
-			$('#list-idiomas').html('<ul data-role="listview" data-style="inset"><li class="selectidio">CATALÁN</li><li class="unselectidio" onclick="cambioIdioma(2);">ESPAÑOL</li><li class="unselectidio" onclick="cambioIdioma(3);">INGLÉS</li><li class="unselectidio">POLACO</li></ul>');
-			break;
-		case 2:
-			$('#idiomas').children().eq(0).children().eq(0).children().children().eq(0).children().html('ATRÁS');
-			$('#idiomas').attr('data-title', 'IDIOMAS');
-			$('#idiomas').children().eq(0).children().eq(0).children().children().eq(1).html('IDIOMAS');
-			$('#list-idiomas').html('<ul data-role="listview" data-style="inset"><li class="unselectidio" onclick="cambioIdioma(1);">CATALÁN</li><li class="selectidio">ESPAÑOL</li><li class="unselectidio"onclick="cambioIdioma(3);">INGLÉS</li><li class="unselectidio">POLACO</li></ul>');
-			break;
-		case 3:
-			$('#idiomas').attr('data-title', 'LANGUAGES');
-			$('#idiomas').children().eq(0).children().eq(0).children().children().eq(1).html('LANGUAGES');
-			$('#idiomas').children().eq(0).children().eq(0).children().children().eq(0).children().html('BACK');
-			$('#list-idiomas').html('<ul data-role="listview" data-style="inset"><li class="unselectidio" onclick="cambioIdioma(1);">CATALÁN</li><li class="unselectidio" onclick="cambioIdioma(2);">ESPAÑOL</li><li class="selectidio">INGLÉS</li><li class="unselectidio">POLACO</li></ul>');
-			break;
-		default:
-			console.log("Error before idioma");
-	}
-}
-
-function cambioIdioma(id) {
-	db.transaction(function(tx) {
-		tx.executeSql("UPDATE idiomas SET activo='0' WHERE activo='1'");
-		tx.executeSql("UPDATE idiomas SET activo='1' WHERE id=" + id);
-	}); 
-	localStorage.setItem('idioma', id);
-	app.navigate('#indice');
-}
-
-function beforeindice() {
-	$('body').css('background-color', '#BD072F');
-	var idioma = localStorage.getItem("idioma");
-	switch (parseInt(idioma)) {
-		case 1:
-			$('#indice').attr('data-title', 'ÍNDEX');
-			$('#indice').children().eq(0).children().eq(0).children().children().eq(1).html('ÍNDEX');
-			$('#indice').children().eq(0).children().eq(0).children().children().eq(0).children().html('INFO');
-			show_indice(1);
-			break;
-		case 2:
-			$('#indice').attr('data-title', 'INDICE');
-			$('#indice').children().eq(0).children().eq(0).children().children().eq(1).html('INDICE');
-			$('#indice').children().eq(0).children().eq(0).children().children().eq(0).children().html('INFO');
-			show_indice(2);
-			break;
-		case 3:
-			$('#indice').attr('data-title', 'INDEX');
-			$('#indice').children().eq(0).children().eq(0).children().children().eq(1).html('INDEX');
-			$('#indice').children().eq(0).children().eq(0).children().children().eq(0).children().html('INFO');
-			show_indice(3);
-			break;
-		default:
-			console.log("Error before idioma");
-	}
-}
-
-function beforeanexos() {
-	$('body').css('background-color', '#BD072F');
-	var idioma = localStorage.getItem("idioma");
-	switch (parseInt(idioma)) {
-		case 1:
-			$('#anexos').attr('data-title', 'ÍNDEX');
-			$('#anexos').children().eq(0).children().eq(0).children().children().eq(1).html('ÍNDEX');
-			$('#anexos').children().eq(0).children().eq(0).children().children().eq(0).children().html('ENRERE');
-			show_anexos(1);
-			break;
-		case 2:
-			$('#anexos').attr('data-title', 'INDICE');
-			$('#anexos').children().eq(0).children().eq(0).children().children().eq(1).html('INDICE');
-			$('#anexos').children().eq(0).children().eq(0).children().children().eq(0).children().html('INFO');
-			show_anexos(2);
-			break;
-		case 3:
-			$('#anexos').attr('data-title', 'INDEX');
-			$('#anexos').children().eq(0).children().eq(0).children().children().eq(1).html('INDEX');
-			$('#anexos').children().eq(0).children().eq(0).children().children().eq(0).children().html('INFO');
-			show_anexos(3);
-			break;
-		default:
-			console.log("Error before idioma");
-	}
-}
-
-function show_indice(id_idioma) {
-	$('#red').html('');
-	var idioma = id_idioma;
-	db.transaction(function(tx) {
-		tx.executeSql("SELECT * FROM indice WHERE idioma='" + [idioma] + "'", [],
-					  function(tx, result) {
-						  $('#red').append(result.rows.item(0)['ind']);
-						  $("#red").treeview({
-							  animated: "fast",
-							  collapsed: true,
-							  unique: true
-						  });
-					  });
-	});
-}
-
-function show_anexos(id_idioma) {
-	$('#anex').html('');
-	var idioma = id_idioma;
-	db.transaction(function(tx) {
-		tx.executeSql("SELECT * FROM indiceanexos WHERE idioma='" + [idioma] + "'", [],
-					  function(tx, result) {
-						  $('#anex').append(result.rows.item(0)['ind']);
-						  $("#anex").treeview({
-							  animated: "fast",
-							  collapsed: true,
-							  unique: true
-						  });
-					  });
-	});
 }

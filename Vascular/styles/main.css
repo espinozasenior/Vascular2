@@ -53,6 +53,32 @@
 /*----Ipadd----*/
 @media only screen and (min-width: 700px) and (max-width: 1024px)
 {
+	#backlogosindex
+	{
+		width: 100%;
+		position: absolute;
+		top: 58em;
+		z-index: -1;
+	}
+    
+	#backlogosindex-text
+	{
+		color: white;
+		font-size: 1.3em;
+	}
+	#backlogosindex-img2
+	{
+		width: 10em;
+	}
+	#backlogosindex-img3
+	{
+		width: 8em;
+	}
+	#backlogosindex-img1
+	{
+		width: 8em;
+	}
+    
 	#tabstrip-home
 	{
 		font-size: 200%;
@@ -75,11 +101,17 @@
 		width: 27px;
 	}   
     
-    .km-root .km-ios .km-modalview{
-        width: 96%;
-        height:98%;
-    }
+	#modalview-list-anexos
+	{
+		height: 39em;
+	}
     
+	.km-root .km-ios .km-modalview
+	{
+		width: 98%;
+		height: 70em;
+	}
+        
 	#bk-image
 	{
 		width: 100%;
@@ -147,11 +179,11 @@
 		-webkit-box-shadow: inset 0 3px 3px rgba(0, 0, 0, .38);
 		-moz-box-shadow: inset 0 3px 3px rgba(0, 0, 0, .38);
 		box-shadow: inset 0 3px 3px rgba(0, 0, 0, .38);
-		height: 90%;
+		height: 34em;
 		overflow-y: scroll;
 		overflow-x: hidden !important;
-        margin-left: 1%;
-        margin-right: 1%;
+		margin-left: 1%;
+		margin-right: 1%;
 	}
 
 }
@@ -159,10 +191,42 @@
 /*----Tablets----*/
 @media only screen and (min-width: 500px) and (max-width: 699px)
 {
+	#backlogosindex
+	{
+		width: 100%;
+		position: absolute;
+		top: 60em;
+		z-index: -1;
+	}
+    
+	#backlogosindex-text
+	{
+		color: white;
+		font-size: 1.3em;
+	}
+	#backlogosindex-img2
+	{
+		width: 10em;
+	}
+	#backlogosindex-img3
+	{
+		width: 8em;
+	}
+	#backlogosindex-img1
+	{
+		width: 8em;
+	}
 	#tabstrip-home
 	{
 		font-size: 200%;
 	}
+    
+	.km-root .km-ios .km-modalview
+	{
+		width: 98%;
+		height: 90%;
+	}
+    
 	#bk-image
 	{
 		/*top: 130%;*/
@@ -183,6 +247,10 @@
 		margin: 7px 4px;
 		margin: 0.5em 1.2em;
 		width: 27px;
+	}
+	#modalview-anexos
+	{
+		height: 70em;
 	}
     
 	#logos
@@ -246,9 +314,11 @@
 		-webkit-box-shadow: inset 0 3px 3px rgba(0, 0, 0, .38);
 		-moz-box-shadow: inset 0 3px 3px rgba(0, 0, 0, .38);
 		box-shadow: inset 0 3px 3px rgba(0, 0, 0, .38);
-		height: 90%;
+		height: 34em;
 		overflow-y: scroll;
 		overflow-x: hidden !important;
+		margin-left: 1%;
+		margin-right: 1%;
 	}
 
 }
@@ -256,6 +326,36 @@
 /*----Androids----*/
 @media only screen and (min-height: 480px) and (max-width: 500px)
 {
+	.km-view
+	{
+		top: 0;
+		left: 0.5%;
+	}
+	#backlogosindex
+	{
+		width: 100%;
+		position: absolute;
+		top: 23em;
+		z-index: -1;
+	}
+    
+	#backlogosindex-text
+	{
+		color: white;
+		font-size: 0.9em;
+	}
+	#backlogosindex-img2
+	{
+		width: 7em;
+	}
+	#backlogosindex-img3
+	{
+		width: 5em;
+	}
+	#backlogosindex-img1
+	{
+		width: 5em;
+	}
 	#red h4
 	{
 		padding: 0px; 
@@ -271,6 +371,12 @@
 	.BotonBuscar
 	{
 		margin-right: 0.4em;
+	}
+    
+	.km-root .km-ios .km-modalview
+	{
+		width: 98%;
+		height: 90%;
 	}
    
 	#bk-image
@@ -333,9 +439,16 @@
 		-webkit-box-shadow: inset 0 3px 3px rgba(0, 0, 0, .38);
 		-moz-box-shadow: inset 0 3px 3px rgba(0, 0, 0, .38);
 		box-shadow: inset 0 3px 3px rgba(0, 0, 0, .38);
-		height: 83%;
+		height: 25.4em;
+		margin-left: 2%;
+		margin-right: 2%;
 		overflow-y: scroll;
 		overflow-x: hidden !important;
+	}
+    
+	#modalview-anexos
+	{
+		height: 33em;
 	}
   
 }
@@ -343,7 +456,42 @@
 /*----iPhone5----*/
 @media only screen and (min-device-width: 640px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2)
 {
-   
+	.km-view
+	{
+		top: 0;
+		left: 0.5%;
+	}
+    
+	#modalview-anexos
+	{
+		height: 33em;
+	}
+    
+	#backlogosindex
+	{
+		width: 100%;
+		position: absolute;
+		z-index: -1;
+		top: 27em;
+	}
+    
+	#backlogosindex-text
+	{
+		font-size: 0.8em;
+		color: white;
+	}
+	#backlogosindex-img2
+	{
+		width: 5em;
+	}
+	#backlogosindex-img3
+	{
+		width: 4em;
+	}
+	#backlogosindex-img1
+	{
+		width: 4em;
+	}
 	#red h4
 	{
 		padding: 0px; 
@@ -409,7 +557,9 @@
 		-webkit-box-shadow: inset 0 3px 3px rgba(0, 0, 0, .38);
 		-moz-box-shadow: inset 0 3px 3px rgba(0, 0, 0, .38);
 		box-shadow: inset 0 3px 3px rgba(0, 0, 0, .38);
-		height: 83%;
+		height: 25.4em;
+		margin-left: 2%;
+		margin-right: 2%;
 		overflow-y: scroll;
 		overflow-x: hidden !important;
 	}
@@ -418,6 +568,37 @@
 /*--- Iphone4---*/
 @media only screen and (max-height: 480px)
 {
+	.km-view
+	{
+		top: 0;
+		left: 0.5%;
+	}
+	#backlogosindex
+	{
+		width: 100%;
+		position: absolute;
+		z-index: -1;
+		top: 21em;
+	}
+    
+	#backlogosindex-text
+	{
+		font-size: 0.8em;
+		color: white;
+	}
+	#backlogosindex-img2
+	{
+		width: 5em;
+	}
+	#backlogosindex-img3
+	{
+		width: 4em;
+	}
+	#backlogosindex-img1
+	{
+		width: 4em;
+	}
+    
 	#red h4
 	{
 		padding: 0px; 
@@ -491,9 +672,16 @@
 		-webkit-box-shadow: inset 0 3px 3px rgba(0, 0, 0, .38);
 		-moz-box-shadow: inset 0 3px 3px rgba(0, 0, 0, .38);
 		box-shadow: inset 0 3px 3px rgba(0, 0, 0, .38);
-		height: 81%;
+		height: 25.4em;
+		margin-left: 2%;
+		margin-right: 2%;
 		overflow-y: scroll;
 		overflow-x: hidden !important;
+	}
+    
+	#modalview-anexos
+	{
+		height: 33em;
 	}
 
 }
@@ -552,9 +740,10 @@ input[type="search"]
 	background-image: linear-gradient(to top, #a8acb9, #f2f3f5);
 }
 
-.lectura > p{
-    margin: 0;
-    padding: 0;
+.lectura > p
+{
+	margin: 0;
+	padding: 0;
 }
 
 b
@@ -563,6 +752,17 @@ b
 }
 
 .lectura > b
+{
+	font-weight: bold;
+}
+
+.nozoomed
+{
+	height: 100%;
+	width: 100%;
+}
+
+.linktable
 {
 	font-weight: bold;
 }
@@ -665,6 +865,7 @@ b
 {
 	padding-right: 1%;
 	padding-left: 1%;
+	margin-top: 2%;
 }
 #list-popup ul
 {
@@ -673,7 +874,7 @@ b
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 	list-style: none;
-	padding: 0px;
+	padding: 0;
 }
 #list-popup ul li { padding: 10px 15px; border-top: 1px solid #adadad; }
 #list-popup ul li:first-child { border: 0; }
@@ -724,6 +925,12 @@ b
 {
 	float: right;
 	margin-right: 0.5em;
+}
+
+.k-animation-container
+{
+	top: 1px;
+	height: auto;
 }
 
 .titulo
@@ -947,6 +1154,25 @@ b
 	font-style: normal;
 	line-height: normal;
 	text-shadow: none;
+}
+
+.tabla-apartado
+{
+	color: #BD072F;
+	text-decoration: none;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+#anexview-contenido
+{
+	text-align: justify; 
+	-moz-user-select: text;
+	-webkit-user-select: text;
+	user-select: text;
+	font-family: Helvetica;
+	height: 100%;
+	color: black;
 }
 
 .lectura
