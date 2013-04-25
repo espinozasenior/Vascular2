@@ -82,6 +82,7 @@
     <Content Include="kendo\styles\images\icon-favorites-1b.png" />
     <Content Include="kendo\styles\images\icon-favorito-1.png" />
     <Content Include="kendo\styles\images\icon-favorito-1b.png" />
+    <Content Include="kendo\styles\images\icon-favorito-3.png" />
     <Content Include="kendo\styles\images\icon-favorito.png" />
     <Content Include="kendo\styles\images\icon-favoritos-1.png" />
     <Content Include="kendo\styles\images\icon-favoritos-1b.png" />
@@ -143,6 +144,7 @@
       <TargetName>cordova.js</TargetName>
     </Content>
     <Content Include="styles\main.css" />
+    <Content Include="tablas\catalan\.nomedia" />
     <Content Include="tablas\catalan\A1C.png" />
     <Content Include="tablas\catalan\A2C.png" />
     <Content Include="tablas\catalan\A3C.png" />
@@ -154,6 +156,7 @@
     <Content Include="tablas\catalan\T8C.png" />
     <Content Include="tablas\catalan\T9C.png" />
     <Content Include="tablas\catalan\TIC.png" />
+    <Content Include="tablas\english\.nomedia" />
     <Content Include="tablas\english\A1E.png" />
     <Content Include="tablas\english\A2E.png" />
     <Content Include="tablas\english\A3E.png" />
@@ -166,6 +169,7 @@
     <Content Include="tablas\english\T7E.png" />
     <Content Include="tablas\english\T8E.png" />
     <Content Include="tablas\english\TIE.png" />
+    <Content Include="tablas\spanish\.nomedia" />
     <Content Include="tablas\spanish\A1S.png" />
     <Content Include="tablas\spanish\A2S.png" />
     <Content Include="tablas\spanish\A3S.png" />
@@ -179,9 +183,9 @@
     <Content Include="tablas\spanish\T8S.png" />
     <Content Include="tablas\spanish\T9S.png" />
     <Content Include="tablas\spanish\TIS.png" />
-    <Content Include="tablas\T4C.png" />
-    <Content Include="tablas\T5C.png" />
-    <Content Include="tablas\T9E.png" />
+    <Content Include="tablas\catalan\T4C.png" />
+    <Content Include="tablas\catalan\T5C.png" />
+    <Content Include="tablas\english\T9E.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Telerik\ICE\Tools\Mobile\MobileTools.targets" />
 </Project>
