@@ -8,7 +8,7 @@ function onDeviceReady() {
 	var dbSize = 15 * 1024 * 1024; // 15MB  
 	    	
 	db = openDatabase("vascular", "1.0", "Base de datos de apartados", dbSize);
-	$('body').css('display','block');    
+	$('body').css('display', 'block');    
 	db.transaction(function(tx) {
 		tx.executeSql("SELECT id FROM idiomas WHERE activo=1", [],
 					  function(tx, result) {
@@ -201,9 +201,7 @@ function ajustmodalviewlistanexos() {
 	$("#list-popup").children().css('margin-top', '2%');
 	$('#modalview-list-anexos').children().eq(1).css({height: '100%'});
 	$('#modalview-list-anexos').children().eq(1).children().eq(1).css({height: '100%'});
-    
 }
-
 
 //Resaltar texto buscado
 function borrarBusqueda() {
@@ -342,7 +340,6 @@ function addFavorito(indice, nombre) {
 	listfavoritos();
 }
 
-
 function restarFavorito() {				       
 	$("#dltbtnfv").css({ background: "#EC0C3C" });
 	$("#dltbtnfv").removeClass("ocupado");
@@ -353,7 +350,17 @@ function get_apartado(item) {
 	db.transaction(function(tx) {
 		tx.executeSql("SELECT * FROM apartados where id=" + item, [],
 					  function(tx, result) {
+						  get_padre(result.rows.item(0)['parent']);
 						  inclusion(result.rows.item(0));
+					  });
+	});	
+}
+
+function get_padre(item) {
+	db.transaction(function(tx) {
+		tx.executeSql("SELECT * FROM apartados where id=" + item, [],
+					  function(tx, result) {
+						  localStorage.setItem('padre', result.rows.item(0)['titulo']);
 					  });
 	});	
 }
@@ -376,10 +383,10 @@ function view_anexo(item) {
 	});
 }
 function inclusionAnexoMain(item) {
-    $('body').css('background-color', '#FFFFFF');
+	$('body').css('background-color', '#FFFFFF');
 	$('#anexview').children().children().eq(1).find('tbody').children().children().children().eq(0).text(item.indice + " " + item.titulo);
 	$('#anexview-contenido-main').html(item.cuerpo);
-    app.navigate('anexview');
+	app.navigate('anexview');
 }
 
 function inclusionAnexo(item) {	
@@ -426,17 +433,19 @@ function inclusion(item) {
 						  var windowWidth = document.documentElement.clientWidth; //retrieve current window width
 						  if (windowWidth < 560) {
 							  var puntos = "...";
-							  var string = result.rows.item(0)['titulo'];
-							  string = string.substr(0, 11);
-							  string = string.concat(puntos);
+							  var string = localStorage.getItem('padre');
+							  if (string.length >= 12) {
+								  string = string.substr(0, 11);
+								  string = string.concat(puntos);
+							  }
 							  $("#pagina").attr("data-title", string);
 							  $("#pagina").children().children().children().eq(2).find('span').text(string);
 							  $('#pagina').find('footer').children().children().children().eq(0).children().eq(0).attr('onclick', 'prev_apartado(' + item.id + ');');
 							  $('#pagina').find('footer').children().children().children().eq(0).children().eq(1).attr('onclick', 'next_apartado(' + item.id + ');');
 						  }
 						  else {
-							  $('#pagina').attr('data-title', result.rows.item(0)['titulo']);
-							  $("#pagina").children().children().children().eq(2).find('span').text(result.rows.item(0)['titulo']); 
+							  $('#pagina').attr('data-title', localStorage.getItem('padre'));
+							  $("#pagina").children().children().children().eq(2).find('span').text(localStorage.getItem('padre')); 
 							  //console.log(result.rows.item(0));
 							  $('#pagina').find('footer').children().children().children().eq(0).children().eq(0).attr('onclick', 'prev_apartado(' + item.id + ');');
 							  $('#pagina').find('footer').children().children().children().eq(0).children().eq(1).attr('onclick', 'next_apartado(' + item.id + ');');
@@ -535,10 +544,6 @@ function cambioIdioma(id) {
 }
 
 function beforeindice() {    
-    $("#tab-ind").attr('src', 'kendo/styles/images/icon-index1b.png');
-			//$$("#tab-fav").attr('src', 'kendo/styles/images/icon-favorito-' + fav + '.png');
-			//$$("#tab-anex").attr('src', 'kendo/styles/images/icon-anexo-' + anex + '.png');
-			//$$("#tab-lang").attr('src', 'kendo/styles/images/icon-idiomas-' + idio + '.png');
 	var fechaUltima = new Date(localStorage.getItem("ultimaActualizacion"));
 	var fechaHoy = new Date();
 	var t2 = fechaHoy;
@@ -778,7 +783,7 @@ function verificarVersion() {
 	});
  
 	request.done(function(resp) {
-        console.log('verificando version...');
+		console.log('verificando version...');
 		var obj = $.evalJSON(resp);
 		var Vactual;
 		//obtengo version actual..
@@ -841,7 +846,7 @@ function update() {
 				tx.executeSql("INSERT INTO indiceanexos(idioma, ind) VALUES(?,?)", ['2', obj.listanexosespanol]);
 				tx.executeSql("INSERT INTO indiceanexos(idioma, ind) VALUES(?,?)", ['3', obj.listanexosingles]);
 			});
-            //movimientos indice-anexos2
+			//movimientos indice-anexos2
 			db.transaction(function(tx) {
 				tx.executeSql("DROP TABLE indiceanexosmain");
 				tx.executeSql("CREATE TABLE IF NOT EXISTS indiceanexosmain(idioma INTEGER, ind TEXT)");
