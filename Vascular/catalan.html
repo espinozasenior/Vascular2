@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="overflow-x: hidden;">
 	<head>
 		<title>Vascular</title>
 		<meta charset="utf-8" />
@@ -12,12 +12,13 @@
 		<script type="text/javascript" src="scripts/rangy-cssclassapplier.js"></script>
 		<script type="text/javascript" src="scripts/jquery.treeview.js"></script>
 		<script type="text/javascript" src="scripts/jquery.json-2.4.js"></script>
+        <script type="text/javascript" src="scripts/scrollintoview.js"></script>
 		<link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet"/>
 		<link href="styles/main.css" rel="stylesheet" />
 	</head>
-	<body style="display: none;">
+	<body style="display: none; overflow-x:hidden;">
 		<!-- INDICE  -->
-		<div data-role="view" id="indice" data-title="ÍNDEX" data-before-show="beforeindice" data-transition="fade" >
+		<div data-role="view" id="indice" data-title="ÍNDEX" data-before-show="beforeindice" data-transition="fade" data-stretch="true" style="overflow-y:hidden;overflow-x:hidden;">
             <header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">ÍNDEX</span>
@@ -451,13 +452,29 @@
 					</span>
 				</div>
 			</header>
-			<ul data-role="listview" id="div-list-favoritos" style="color: #333333;font-family: HelveticaNeue; text-align: center;">
+			<ul data-role="listview" id="div-list-favoritos" style="color: #333333;font-family: HelveticaNeue; text-align: left;">
 
 			</ul>
 			<footer data-role="footer" id="rectangulo-eliminar" style="display:none;">
 				<button id="boton-eliminar">
 					ELIMINAR
 				</button>
+			</footer>
+            <footer data-role="footer">
+				<div data-role="tabstrip">
+					<a data-icon="" href="#indice">
+						<img id="tab-ind" src="kendo/styles/images/icon-index1.png" style="width: 60%;">
+					</a>
+					<a data-icon="" href="#favoritos">
+						<img id="tab-fav" src="kendo/styles/images/icon-favorito-1b.png" style="width: 60%;">
+					</a>
+					<a data-icon="" href="#anexos">
+						<img id="tab-anex" src="kendo/styles/images/icon-annex-1.png" style="width: 60%;">
+					</a>
+					<a data-icon="" href="#idiomas">
+						<img id="tab-lang" src="kendo/styles/images/icon-idiomes-1.png" style="width: 60%;">
+					</a>
+				</div>
 			</footer>
 		</div>
 		<!--  ----------------ANEXOS------------ -->
@@ -514,7 +531,7 @@
 					<span data-role="view-title">
 						<a data-role="backbutton" href="#indice" data-align="left">ENRERE</a>
 						<a data-role="button" data-align="right"  onclick="togglebuscar();" class="BotonBuscar">&nbsp;&nbsp;</a>
-						<a data-role="button"data-rel="modalview" href="#modalview-list-anexos"  data-align="right" >ANNEXE</a>
+						<a data-role="button"data-rel="modalview" href="#modalview-list-anexos"  data-align="right" >ANNEX</a>
 					</span>
 				</div>
 
@@ -615,8 +632,8 @@
 		<div data-role="modalview" id="modalview-list-anexos" data-init="ajustmodalviewlistanexos">
 			<header data-role="header">
 				<div data-role="navbar" style="background-color:transparent;">
-					<span>ANNEXE</span>
-					<a data-click="closeModalViewListAnexos" data-role="button" data-align="right">Cancel</a>
+					<span>ANNEX</span>
+					<a data-click="closeModalViewListAnexos" data-role="button" data-align="right">CANCELAR</a>
 				</div>
 			</header>
 			<!-- <div id="form" class="div-into-input"></div> -->
@@ -665,9 +682,12 @@
 		<div data-role="modalview" id="modalview-anexos" style="top: 0px;">
 			<header data-role="header">
 				<div data-role="navbar" style="background-color:transparent;">
-					<span>ANNEXE</span>
+					<span>ANNEX</span>
 					<a data-role="button" data-align="left" data-click="backmodal">ENRERE</a>
-					<a data-click="closeModalViewAnexos" data-role="button" data-align="right">CANCEL</a>
+					<a data-click="closeModalViewAnexos" data-role="button" data-align="right">CANCELAR</a>
+				</div>
+                <div class="buscar-content" style="padding:4px;">
+					<input class="buscador" data-id="" style="padding-left:1%;" type="search" results="0" name="s" placeholder="Cercar...">
 				</div>
 			</header>
 			<div id="anexview-contenido" data-role="touch">
@@ -779,7 +799,7 @@
 				else {
 					$("#btnatrasfvt").css("display", "none");
 					$("#dltbtnfv").css({ background: "#570618" });
-					$("#dltbtnfv span").html("CANCEL");
+					$("#dltbtnfv span").html("CANCELAR");
 					$("#dltbtnfv").addClass("ocupado");
 					$("#div-list-favoritos > li").addClass("eliminables");  
 					$("#rectangulo-eliminar").css("display", "block");
@@ -792,7 +812,7 @@
 				$(this).attr('data');
 				var iddb = $('#pagina').attr('data-db');
 			
-				var titulosubseccion = $('.titulo').children().children().children().children().eq(0).children().text();
+				var titulosubseccion = $('#pagina .titulo table tbody').find('h4').text();
 				//$.trim(titulosubseccion);     
 				addFavorito(parseInt(iddb), titulosubseccion);
 			}, function() {
@@ -802,6 +822,7 @@
 			$(".buscador").keyup(function() {
 				var padre = $(this).parent().parent().parent().attr('id');
 				//var padre = $(this).data().id;
+                
 				var texto = $(this).val();
 				resaltarTexto(padre, texto);
 			});             

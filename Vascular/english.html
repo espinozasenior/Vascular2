@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="overflow-x: hidden;">
 	<head>
 		<title>Vasculars</title>
 		<meta charset="utf-8" />
@@ -15,9 +15,9 @@
 		<link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet"/>
 		<link href="styles/main.css" rel="stylesheet" />
 	</head>
-	<body style="display: none;">
+	<body style="display: none; overflow-x:hidden;">
 		<!-- INDICE  -->
-		<div data-role="view" id="indice" data-title="INDEX" data-before-show="beforeindice" data-transition="fade" >
+		<div data-role="view" id="indice" data-title="INDEX" data-before-show="beforeindice" data-transition="fade" data-stretch="true" style="overflow-y:hidden;overflow-x:hidden;">
             <header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">ÍNDEX</span>
@@ -450,13 +450,29 @@
 					</span>
 				</div>
 			</header>
-			<ul data-role="listview" id="div-list-favoritos" style="color: #333333;font-family: HelveticaNeue; text-align: center;">
+			<ul data-role="listview" id="div-list-favoritos" style="color: #333333;font-family: HelveticaNeue; text-align: left;">
 
 			</ul>
 			<footer data-role="footer" id="rectangulo-eliminar" style="display:none;">
 				<button id="boton-eliminar">
 					DELETE
 				</button>
+			</footer>
+             <footer data-role="footer">
+				<div data-role="tabstrip">
+					<a data-icon="" href="#indice">
+						<img id="tab-ind" src="kendo/styles/images/icon-index1.png" style="width: 60%;">
+					</a>
+					<a data-icon="" href="#favoritos">
+						<img id="tab-fav" src="kendo/styles/images/icon-favorites-1b.png" style="width: 60%;">
+					</a>
+					<a data-icon="" href="#anexos">
+						<img id="tab-anex" src="kendo/styles/images/icon-annex-1.png" style="width: 60%;">
+					</a>
+					<a data-icon="" href="#idiomas">
+						<img id="tab-lang" src="kendo/styles/images/icon-lenguages-1.png" style="width: 60%;">
+					</a>
+				</div>
 			</footer>
 		</div>
 		<!--  ----------------ANEXOS------------ -->
@@ -790,7 +806,7 @@
 				$(this).attr('data');
 				var iddb = $('#pagina').attr('data-db');
 			
-				var titulosubseccion = $('.titulo').children().children().children().children().eq(0).children().text();
+				var titulosubseccion = $('#pagina .titulo table tbody').find('h4').text();
 				//$.trim(titulosubseccion);     
 				addFavorito(parseInt(iddb), titulosubseccion);
 			}, function() {

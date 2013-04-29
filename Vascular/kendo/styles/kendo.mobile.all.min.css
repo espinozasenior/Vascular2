@@ -996,12 +996,13 @@ overflow: visible
 {
 	z-index: 1;
 	position: absolute;
-	right: .5em;
+	right: 2%;
 }
 
 .km-rightitem
 {
-	width: 9.4em;
+	/*width: 9.4em;*/
+    width: auto;
 }
 
 .km-leftitem

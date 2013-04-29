@@ -366,10 +366,20 @@ function get_padre(item) {
 }
 
 function get_anexo(item) {
-	db.transaction(function(tx) {
+    db.transaction(function(tx) {
 		tx.executeSql("SELECT * FROM anexos where id=" + item, [],
 					  function(tx, result) {
-						  inclusionAnexo(result.rows.item(0));
+						  if ((result.rows.item(0)['cuerpo'].charAt(0) == '#') || (result.rows.item(0)['cuerpo'] == '<br>') || (result.rows.item(0)['cuerpo'] == null)) {
+							  var dest = result.rows.item(0)['cuerpo'];
+							  tx.executeSql("SELECT * FROM anexos where id=" + result.rows.item(0)['parent'], [],
+											function(tx, result) { 
+												inclusionAnexo(result.rows.item(0));
+												desplazarmeTo(dest);
+											});
+						  }
+						  else {
+							  inclusionAnexo(result.rows.item(0));
+						  }
 					  });
 	});
 }
@@ -378,25 +388,45 @@ function view_anexo(item) {
 	db.transaction(function(tx) {
 		tx.executeSql("SELECT * FROM anexos where id=" + item, [],
 					  function(tx, result) {
-						  inclusionAnexoMain(result.rows.item(0));
+						  if ((result.rows.item(0)['cuerpo'].charAt(0) == '#') || (result.rows.item(0)['cuerpo'] == '<br>') || (result.rows.item(0)['cuerpo'] == null)) {
+							  var dest = result.rows.item(0)['cuerpo'];
+							  tx.executeSql("SELECT * FROM anexos where id=" + result.rows.item(0)['parent'], [],
+											function(tx, result) { 
+												inclusionAnexoMain(result.rows.item(0));
+												desplazarmeTo(dest);
+											});
+						  }
+						  else {
+							  inclusionAnexoMain(result.rows.item(0));
+						  }
 					  });
 	});
 }
+
+function desplazarmeTo(punto) {
+	$(".km-scroll-wrapper").animate({scrollTop: $('a[href=' + punto + ']').offset().top}, 600);
+}
+
 function inclusionAnexoMain(item) {
 	$('body').css('background-color', '#FFFFFF');
 	$('#anexview').children().children().eq(1).find('tbody').children().children().children().eq(0).text(item.indice + " " + item.titulo);
 	$('#anexview-contenido-main').html(item.cuerpo);
-	app.navigate('anexview');
+	app.navigate('anexview');  
+	//document.getElementById('H1').scrollIntoView(true);
+	//$("#H1").scrollintoview({ duration: "slow", direction: "y"});
+	//$(".km-scroll-container, .km-touch-scrollbar,.km-vertical-scrollbar, km-horizontal-scrollbar").css("-webkit-transform", "translate3d(0px, -1080px, 0px)");
+	// $(".km-scroll-wrapper").animate({scrollTop: $('#H1').offset().top}, 600);    
+	//document.getElementById('.lectura').scrollIntoView(false);
 }
 
-function inclusionAnexo(item) {	
+function inclusionAnexo(item) {
 	$("#modalview-anexos").children().eq(1).children().eq(1).children().html(item.cuerpo);
 	closeModalViewListAnexos();
 	$("#modalview-anexos").kendoMobileModalView("open");
 	$("#modalview-anexos km-content").css('background-color', '#FFFFFF'); 
 	$("#modalview-anexos").parent().parent().css({ top: "1px", height: '' });
 	$("#modalview-anexos").parent().css({ height: '' });
-	$('#anexview-contenido').parent().parent().css({ margin: '0% 2% 2% 2%', background: '#FFF' });	    
+	$('#anexview-contenido').parent().parent().css({ margin: '0% 2% 2% 2%', background: '#FFF' });
 }
 	
 function recortartitulo() {
