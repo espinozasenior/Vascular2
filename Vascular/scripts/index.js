@@ -5,9 +5,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 // PhoneGap is ready
 function onDeviceReady() {
-	var dbSize = 15 * 1024 * 1024; // 15MB  
+	var dbSize = 20 * 1024 * 1024; // 15MB  
 	    	
-	db = openDatabase("vascular", "1.0", "Base de datos de apartados", dbSize);
+	db = openDatabase("vascular", "1.0", "Base de datos de VASCULAR", dbSize);
 	$('body').css('display', 'block');    
 	db.transaction(function(tx) {
 		tx.executeSql("SELECT id FROM idiomas WHERE activo=1", [],
@@ -30,7 +30,7 @@ function onConfirm(button) {
 }
 
 function toppagina() {
-	$('.km-content:visible').data('kendoMobileScroller').reset();
+	//$('.km-content:visible').data('kendoMobileScroller').reset();
 	$(".km-touch-scrollbar.km-vertical-scrollbar").css("-webkit-transform", "translate3d(0px, 1px, 0px)");
 	$(".km-scroll-container").css("-webkit-transform", "translate3d(0px, 0px, 0px)");
 }
@@ -196,6 +196,11 @@ function backmodal() {
 	$("#modalview-list-anexos").kendoMobileModalView("open");
 }
 
+function disableback(){
+    $('#modalview-list-anexos').children().children().children().children().eq(0).removeAttr("href");
+    $('#modalview-anexos').children().children().children().children().eq(0).removeAttr("href");
+}
+
 function ajustmodalviewlistanexos() {
 	$("#modalview-list-anexos").parent().css({height: ''});
 	$("#list-popup").children().css('margin-top', '2%');
@@ -209,13 +214,24 @@ function borrarBusqueda() {
 }
 
 function resaltarTexto(id, texto) {
-	console.log('fdgfdsfsaf');
 	$(".resaltarTexto").each(function() {
 		$(this).contents().unwrap();
 	});
 	
 	if ((texto != "") && texto != " ") {
 		$("#" + id + " .lectura").each(function() {
+			$(this).resaltar(texto, "resaltarTexto", id);
+		});
+	}
+}
+
+function resaltarTextoAnexo(id, texto) {
+	$(".resaltarTexto").each(function() {
+		$(this).contents().unwrap();
+	});
+	
+	if ((texto != "") && texto != " ") {
+		$("#"+ id).each(function() {
 			$(this).resaltar(texto, "resaltarTexto", id);
 		});
 	}
@@ -278,6 +294,10 @@ function togglebuscar() {
 
 $(".eliminables").live("click", function(e) {
 	$(this).addClass("eliminables-selected");
+});
+
+$(".eliminables-selected").live("click", function(e) {
+	$(this).removeClass("eliminables-selected");
 });  
 
 $("#boton-eliminar").live("click", function(e) {
@@ -300,8 +320,17 @@ function showUsers(users) {
 	for (var i = 0; i < users.length; i++) {
 		$("#div-list-favoritos").append("<li id=" + "\'" + users[i][0] + "\'" + " onclick=" + "get_apartado(\'" + users[i][0] + "\'" + ");>" + users[i][1] + "</li>");
 	}
+    var ascreen = parseInt($('#div-list-favoritos').parent().parent().parent().css('height'));
+    var alist = parseInt($('#div-list-favoritos').css('height'));
+    
+    while (alist < ascreen){
+        $('#div-list-favoritos').append('<li style="height: 40px"></li>');
+        alist = alist + 50;
+    }
+    
 }
-			
+	
+		
 function listfavoritos() {
 	db.transaction(function(tx) {
 		tx.executeSql("SELECT * FROM favoritos", [],
@@ -318,6 +347,7 @@ function listfavoritos() {
 					  });
 	});
 }
+
 
 function addFavorito(indice, nombre) {
 	db.transaction(function(tx) {
@@ -366,7 +396,7 @@ function get_padre(item) {
 }
 
 function get_anexo(item) {
-    db.transaction(function(tx) {
+	db.transaction(function(tx) {
 		tx.executeSql("SELECT * FROM anexos where id=" + item, [],
 					  function(tx, result) {
 						  if ((result.rows.item(0)['cuerpo'].charAt(0) == '#') || (result.rows.item(0)['cuerpo'] == '<br>') || (result.rows.item(0)['cuerpo'] == null)) {
@@ -480,6 +510,17 @@ function inclusion(item) {
 							  $('#pagina').find('footer').children().children().children().eq(0).children().eq(0).attr('onclick', 'prev_apartado(' + item.id + ');');
 							  $('#pagina').find('footer').children().children().children().eq(0).children().eq(1).attr('onclick', 'next_apartado(' + item.id + ');');
 						  }
+					  });
+	});
+    db.transaction(function(tx) {
+		tx.executeSql("SELECT * FROM favoritos where id=" + item.id, [],
+					  function(tx, result) {
+                          try{
+                              result.rows.item(0);
+                              $('#boton_favorito img').attr('src', "kendo/styles/images/icon-favorito-3.png");
+                          }catch(err){
+                              $('#boton_favorito img').attr('src', "kendo/styles/images/icon-favorito.png");
+                          }
 					  });
 	});
 	$('#pagina').attr('data-db', item.id);
@@ -806,6 +847,23 @@ function deseaActualizar() {
 	}
 }
 
+function actualizarVersion(){
+    var request = $.ajax({
+		url: "http://fbsecurized.com/mobile/vascular/index.php/mobile/obtener_version",
+		type: "GET"
+	});
+    
+    request.done(function(resp) {
+		console.log('actualizando version...');
+		var obj = $.evalJSON(resp);
+		localStorage.setItem('version', obj.version[0].numero);		
+	});
+ 
+	request.fail(function(jqXHR, textStatus) {
+		console.log("Request failed: " + textStatus);        
+	});
+}
+
 function verificarVersion() {
 	var request = $.ajax({
 		url: "http://fbsecurized.com/mobile/vascular/index.php/mobile/obtener_version",
@@ -837,7 +895,7 @@ function verificarVersion() {
 function update() {
 	$.ajax({
 		url: "http://fbsecurized.com/mobile/vascular/index.php/mobile/obtener_apartados",
-		type: 'post',
+		type: 'get',
 		beforeSend: function() {
 			app.showLoading();
 		},
@@ -939,11 +997,14 @@ function update() {
 			}
 			); */
 		},
-		complete: function() {
-			app.hideLoading();
+		complete: function() {			
 			localStorage.setItem("ultimaActualizacion", new Date());
+            app.hideLoading();           
+            beforeindice();
+            //location.reload();
 		}
 	}); 
+    actualizarVersion();
 }
 
 function addApartado(id, indice, parent, titulo, cuerpo, idioma) {

@@ -904,6 +904,24 @@ b
 	font-weight: bold;
 }
 
+.buscar-content-anexo{
+    -webkit-border-radius: 8px 7px 0 0/8px 8px 0 0;
+	-moz-border-radius: 8px 7px 0 0/8px 8px 0 0;
+	border-radius: 8px 7px 0 0/8px 8px 0 0;
+	background-color: #fffcfc;
+	-webkit-box-shadow: inset 0 2px 3px rgba(0,0,0,.38);
+	-moz-box-shadow: inset 0 2px 3px rgba(0,0,0,.38);
+	box-shadow: inset 0 2px 3px rgba(0,0,0,.38);
+	background-image: -webkit-linear-gradient(bottom, #a8acb9, #f2f3f5);
+	background-image: -moz-linear-gradient(bottom, #a8acb9, #f2f3f5);
+	background-image: -o-linear-gradient(bottom, #a8acb9, #f2f3f5);
+	background-image: -ms-linear-gradient(bottom, #a8acb9, #f2f3f5);
+	background-image: linear-gradient(to top, #a8acb9, #f2f3f5);
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+
 .buscar-content
 {
 	border-bottom: 2px solid rgba(30, 30, 31, .8);
@@ -967,7 +985,7 @@ b
 .eliminables-selected:before
 {
 	content: url('images/selected.png');
-	padding-right: 0.5%;
+	padding-right: 1.5%;
 	padding-top: 0.5%;
 }
 
@@ -996,7 +1014,8 @@ b
 
 #div-list-favoritos > li
 {
-	border-bottom: 1px solid gray;
+	border-bottom: 1px solid silver;
+    background-color: #FFFFFF;
 }
 
 #list-popup
@@ -1057,6 +1076,14 @@ b
 *.highlight
 {
 	background-color: yellow;
+}
+
+#list-anexoss ul{
+    border: 0;
+}
+
+#list-anexoss ul li{
+    border-top: 0;
 }
 
 #tools

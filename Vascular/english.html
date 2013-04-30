@@ -17,8 +17,8 @@
 	</head>
 	<body style="display: none; overflow-x:hidden;">
 		<!-- INDICE  -->
-		<div data-role="view" id="indice" data-title="INDEX" data-before-show="beforeindice" data-transition="fade" data-stretch="true" style="overflow-y:hidden;overflow-x:hidden;">
-            <header data-role="header">
+		<div data-role="view" id="indice" data-title="INDEX" data-before-show="beforeindice" data-transition="fade" style="overflow-y:hidden;overflow-x:hidden;">
+			<header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">ÍNDEX</span>
 					<a data-role="button" href="#creditos" data-align="right">INFO</a>
@@ -50,7 +50,7 @@
 					</tr>
 				</tbody>
 			</table>
-            <footer data-role="footer">
+			<footer data-role="footer">
 				<div data-role="tabstrip">
 					<a data-icon="" href="#indice">
 						<img id="tab-ind" src="kendo/styles/images/icon-index1b.png" style="width: 60%;">
@@ -65,7 +65,7 @@
 						<img id="tab-lang" src="kendo/styles/images/icon-lenguages-1.png" style="width: 60%;">
 					</a>
 				</div>
-			</footer>                    
+			</footer>
 		</div>
 
 		<!-- IDIOMAS -->
@@ -90,7 +90,7 @@
 					</li>
 				</ul>
 			</div>
-            <footer data-role="footer">
+			<footer data-role="footer">
 				<div data-role="tabstrip">
 					<a data-icon="" href="#indice">
 						<img id="tab-ind" src="kendo/styles/images/icon-index1.png" style="width: 60%;">
@@ -105,7 +105,7 @@
 						<img id="tab-lang" src="kendo/styles/images/icon-lenguages-1b.png" style="width: 60%;">
 					</a>
 				</div>
-			</footer>                
+			</footer>
 		</div>
 
 		<div data-role="view" id="creditos" class="contenido" data-before-show="beforecreditos" data-title="CREDITS" data-transition="slide">
@@ -113,6 +113,14 @@
 				<div data-role="navbar">
 					<span data-role="view-title">
 						<a data-role="backbutton" data-align="left">BACK</a>
+                        <ul data-role="buttongroup" data-index="0" data-align="right" class="km-buttongroup" style="margin-top: 7px;">
+											<li style="font-size: 0.8em; float: left;" data-role="button" data-click="aumentarText" class="km-button">
+												<span class="km-text">+Aa</span>
+											</li>
+											<li style="font-size: 0.8em; float: left;" data-role="button" data-click="disminuirText" class="km-button">
+												<span class="km-text">-Aa</span>
+											</li>
+										</ul>
 					</span>
 				</div>
 			</header>
@@ -458,7 +466,7 @@
 					DELETE
 				</button>
 			</footer>
-             <footer data-role="footer">
+			<footer data-role="footer">
 				<div data-role="tabstrip">
 					<a data-icon="" href="#indice">
 						<img id="tab-ind" src="kendo/styles/images/icon-index1.png" style="width: 60%;">
@@ -489,7 +497,7 @@
 
 				</ul>
 			</div>
-            <footer data-role="footer">
+			<footer data-role="footer">
 				<div data-role="tabstrip">
 					<a data-icon="" href="#indice">
 						<img id="tab-ind" src="kendo/styles/images/icon-index1.png" style="width: 60%;">
@@ -519,7 +527,7 @@
 				<img id="img-tabla" src="" class="nozoomed" />
 			</div>
 		</div>
-		
+
 		<!--   --------------------------  LIBRO ---------------  -->
 
 		<div data-role="view" id="pagina" class="contenido" data-title="cabecera" data-after-show="toppagina" data-transition="slide">
@@ -528,7 +536,7 @@
 					<span data-role="view-title">
 						<a data-role="backbutton" href="#indice" data-align="left">BACK</a>
 						<a data-role="button" data-align="right"  onclick="togglebuscar();" class="BotonBuscar">&nbsp;&nbsp;</a>
-						<a data-role="button"data-rel="modalview" href="#modalview-list-anexos"  data-align="right" >ANNEXES</a>
+						<a data-role="button"data-rel="modalview" href="#modalview-list-anexos" data-click="disableback" data-align="right" >ANNEXES</a>
 					</span>
 				</div>
 
@@ -599,7 +607,7 @@
 								<td width="50%">
 									<div id="tools" >
 										<!-- <div id="boton_marcador">
-											<img src="kendo/styles/images/icon-marcador.png" class="BotonMarcador">
+										<img src="kendo/styles/images/icon-marcador.png" class="BotonMarcador">
 										</div> -->
 										<ul data-role="buttongroup" data-index="0" class="km-buttongroup" style="margin-top: 7px;">
 											<li style="font-size: 0.8em; float: left;" data-role="button" data-click="aumentarText" class="km-button">
@@ -629,8 +637,8 @@
 		<div data-role="modalview" id="modalview-list-anexos" data-before-show="ajustmodalviewlistanexos">
 			<header data-role="header">
 				<div data-role="navbar" style="background-color:transparent;">
-					<span>BACK</span>
-					<a data-click="closeModalViewListAnexos" data-role="button" data-align="right">Cancel</a>
+					<span>ANNEXES</span>
+					<a data-click="closeModalViewListAnexos" data-role="backbutton" data-align="left">BACK</a>
 				</div>
 			</header>
 			<!-- <div id="form" class="div-into-input"></div> -->
@@ -680,8 +688,10 @@
 			<header data-role="header">
 				<div data-role="navbar" style="background-color:transparent;">
 					<span>ANNEXES</span>
-					<a data-role="button" data-align="left" data-click="backmodal">BACK</a>
-					<a data-click="closeModalViewAnexos" data-role="button" data-align="right">CANCEL</a>
+					<a data-role="backbutton" data-align="left" data-click="backmodal">BACK</a>
+				</div>
+                <div class="buscar-content-anexo" style="padding:4px;">
+					<input class="buscador-anexo" data-id="" style="padding-left:1%;" type="search" results="0" name="s" placeholder="Cercar...">
 				</div>
 			</header>
 			<div id="anexview-contenido" data-role="touch">
@@ -699,9 +709,9 @@
 		<script>
 			var app = new kendo.mobile.Application(document.body, { transition: "slide", platform: "ios", initial: "indice"});
 			var anchomodal = getWindowWidth();
-            anchomodal = anchomodal - (anchomodal * 0.20);
-            //Calculando ancho de los modales
-            $('#modalview-list-anexos, #modalview-anexos').css('width', anchomodal);
+			anchomodal = anchomodal - (anchomodal * 0.20);
+			//Calculando ancho de los modales
+			$('#modalview-list-anexos, #modalview-anexos').css('width', anchomodal);
 			var ind = 1, fav = 1, anex = 1, idio = 1;
 			
 					
@@ -765,7 +775,7 @@
 								  function(tx, result) {
 									  //document.getElementById('img-tabla').src = result.rows.item(0)['ruta'];
 									  document.getElementById('img-tabla').src = ruta + result.rows.item(0)['siglas'] + '.png';
-                                      $('#tablaview').children().children().children().eq(1).find('span').text(result.rows.item(0)['nombre']);
+									  $('#tablaview').children().children().children().eq(1).find('span').text(result.rows.item(0)['nombre']);
 									  console.log(document.getElementById('img-tabla').src);
 								  });
 				});
@@ -795,30 +805,46 @@
 					$("#dltbtnfv").css({ background: "#570618" });
 					$("#dltbtnfv span").html("CANCEL");
 					$("#dltbtnfv").addClass("ocupado");
-					$("#div-list-favoritos > li").addClass("eliminables");  
+					//$("#div-list-favoritos > li").addClass("eliminables");
+					$('#div-list-favoritos li').each(function () {
+						if ($(this).text() != "") {
+							$(this).addClass("eliminables");
+						}
+					});
 					$("#rectangulo-eliminar").css("display", "block");
 					$("#div-list-favoritos > li").attr("onclick", " ");
 				}
 			}
 			
-			$("#boton_favorito img").toggle(function() {				
-				$(this).attr('src', "kendo/styles/images/icon-favorito-3.png");
-				$(this).attr('data');
-				var iddb = $('#pagina').attr('data-db');
-			
-				var titulosubseccion = $('#pagina .titulo table tbody').find('h4').text();
-				//$.trim(titulosubseccion);     
-				addFavorito(parseInt(iddb), titulosubseccion);
-			}, function() {
-				$(this).attr('src', "kendo/styles/images/icon-favorito.png");
+			$("#boton_favorito img").click(function () {
+				if ($(this).attr('src') == "kendo/styles/images/icon-favorito-3.png") {
+                    removeFavorito(localStorage.getItem('pagactual'));
+                    $(this).attr('src', "kendo/styles/images/icon-favorito.png");
+				}
+				else {
+					$(this).attr('src', "kendo/styles/images/icon-favorito-3.png");
+					db.transaction(function(tx) {
+						tx.executeSql("SELECT * FROM apartados where id=" + parseInt(localStorage.getItem('pagactual')), [],
+									  function(tx, result) {
+										  addFavorito(result.rows.item(0)['id'], result.rows.item(0)['titulo']);
+									  });
+					});
+				}
 			});
-			
+            			
 			$(".buscador").keyup(function() {
 				var padre = $(this).parent().parent().parent().attr('id');
 				//var padre = $(this).data().id;
 				var texto = $(this).val();
 				resaltarTexto(padre, texto);
-			});             
+			});
+            $(".buscador-anexo").keyup(function() {
+				var padre = "anexview-contenido";
+				//var padre = $(this).data().id;
+                
+				var texto = $(this).val();
+				resaltarTextoAnexo(padre, texto);
+			}); 
 			
 		</script>
 

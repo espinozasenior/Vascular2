@@ -107,7 +107,6 @@
     <Content Include="kendo\styles\images\plus.png" />
     <Content Include="kendo\styles\images\tag.png" />
     <Content Include="scripts\index.js" />
-    <Content Include="scripts\scrollintoview.js" />
     <Content Include="spanish.html" />
     <Content Include="scripts\jquery.json-2.4.js" />
     <Content Include="scripts\jquery.treeview.js" />

@@ -12,13 +12,12 @@
 		<script type="text/javascript" src="scripts/rangy-cssclassapplier.js"></script>
 		<script type="text/javascript" src="scripts/jquery.treeview.js"></script>
 		<script type="text/javascript" src="scripts/jquery.json-2.4.js"></script>
-        <script type="text/javascript" src="scripts/scrollintoview.js"></script>
 		<link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet"/>
 		<link href="styles/main.css" rel="stylesheet" />
 	</head>
 	<body style="display: none; overflow-x:hidden;">
 		<!-- INDICE  -->
-		<div data-role="view" id="indice" data-title="ÍNDEX" data-before-show="beforeindice" data-transition="fade" data-stretch="true" style="overflow-y:hidden;overflow-x:hidden;">
+		<div data-role="view" id="indice" data-title="ÍNDEX" data-before-show="beforeindice" data-transition="fade" style="overflow-y:hidden;overflow-x:hidden;">
             <header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">ÍNDEX</span>
@@ -113,8 +112,15 @@
 			<header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">
-						<a data-role="backbutton" data-align="left">ENRERE</a>
-						<a data-role="button" data-click="update" data-align="right">UP</a>
+						<a data-role="backbutton" data-align="left">ENRERE</a>						
+                        <ul data-role="buttongroup" data-index="0" data-align="right" class="km-buttongroup" style="margin-top: 7px;">
+											<li style="font-size: 0.8em; float: left;" data-role="button" data-click="aumentarText" class="km-button">
+												<span class="km-text">+Aa</span>
+											</li>
+											<li style="font-size: 0.8em; float: left;" data-role="button" data-click="disminuirText" class="km-button">
+												<span class="km-text">-Aa</span>
+											</li>
+										</ul>
 					</span>
 				</div>
 			</header>
@@ -531,7 +537,7 @@
 					<span data-role="view-title">
 						<a data-role="backbutton" href="#indice" data-align="left">ENRERE</a>
 						<a data-role="button" data-align="right"  onclick="togglebuscar();" class="BotonBuscar">&nbsp;&nbsp;</a>
-						<a data-role="button"data-rel="modalview" href="#modalview-list-anexos"  data-align="right" >ANNEX</a>
+						<a data-role="button"data-rel="modalview" href="#modalview-list-anexos" data-click="disableback"  data-align="right" >ANNEX</a>
 					</span>
 				</div>
 
@@ -633,7 +639,7 @@
 			<header data-role="header">
 				<div data-role="navbar" style="background-color:transparent;">
 					<span>ANNEX</span>
-					<a data-click="closeModalViewListAnexos" data-role="button" data-align="right">CANCELAR</a>
+					<a data-click="closeModalViewListAnexos" data-role="backbutton" data-align="left">ENRERE</a>
 				</div>
 			</header>
 			<!-- <div id="form" class="div-into-input"></div> -->
@@ -683,11 +689,10 @@
 			<header data-role="header">
 				<div data-role="navbar" style="background-color:transparent;">
 					<span>ANNEX</span>
-					<a data-role="button" data-align="left" data-click="backmodal">ENRERE</a>
-					<a data-click="closeModalViewAnexos" data-role="button" data-align="right">CANCELAR</a>
+					<a data-role="backbutton" data-align="left" data-click="backmodal">ENRERE</a>
 				</div>
-                <div class="buscar-content" style="padding:4px;">
-					<input class="buscador" data-id="" style="padding-left:1%;" type="search" results="0" name="s" placeholder="Cercar...">
+                <div class="buscar-content-anexo" style="padding:4px;">
+					<input class="buscador-anexo" data-id="" style="padding-left:1%;" type="search" results="0" name="s" placeholder="Cercar...">
 				</div>
 			</header>
 			<div id="anexview-contenido" data-role="touch">
@@ -801,22 +806,31 @@
 					$("#dltbtnfv").css({ background: "#570618" });
 					$("#dltbtnfv span").html("CANCELAR");
 					$("#dltbtnfv").addClass("ocupado");
-					$("#div-list-favoritos > li").addClass("eliminables");  
+					//$("#div-list-favoritos > li").addClass("eliminables");
+					$('#div-list-favoritos li').each(function () {
+						if ($(this).text() != "") {
+							$(this).addClass("eliminables");
+						}
+					});
 					$("#rectangulo-eliminar").css("display", "block");
 					$("#div-list-favoritos > li").attr("onclick", " ");
 				}
 			}
 			
-			$("#boton_favorito img").toggle(function() {				
-				$(this).attr('src', "kendo/styles/images/icon-favorito-3.png");
-				$(this).attr('data');
-				var iddb = $('#pagina').attr('data-db');
-			
-				var titulosubseccion = $('#pagina .titulo table tbody').find('h4').text();
-				//$.trim(titulosubseccion);     
-				addFavorito(parseInt(iddb), titulosubseccion);
-			}, function() {
-				$(this).attr('src', "kendo/styles/images/icon-favorito.png");
+			$("#boton_favorito img").click(function () {
+				if ($(this).attr('src') == "kendo/styles/images/icon-favorito-3.png") {
+                    removeFavorito(localStorage.getItem('pagactual'));
+                    $(this).attr('src', "kendo/styles/images/icon-favorito.png");
+				}
+				else {
+					$(this).attr('src', "kendo/styles/images/icon-favorito-3.png");
+					db.transaction(function(tx) {
+						tx.executeSql("SELECT * FROM apartados where id=" + parseInt(localStorage.getItem('pagactual')), [],
+									  function(tx, result) {
+										  addFavorito(result.rows.item(0)['id'], result.rows.item(0)['titulo']);
+									  });
+					});
+				}
 			});
 			
 			$(".buscador").keyup(function() {
@@ -825,6 +839,14 @@
                 
 				var texto = $(this).val();
 				resaltarTexto(padre, texto);
+			}); 
+
+$(".buscador-anexo").keyup(function() {
+				var padre = "anexview-contenido";
+				//var padre = $(this).data().id;
+                
+				var texto = $(this).val();
+				resaltarTextoAnexo(padre, texto);
 			});             
 			
 		</script>

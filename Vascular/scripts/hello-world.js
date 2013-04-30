@@ -5,7 +5,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 // PhoneGap is ready
 function onDeviceReady() {
-	var dbSize = 15 * 1024 * 1024; // 15MB  
+	var dbSize = 20 * 1024 * 1024; // 20MB  
 	var alturaV = getWindowHeight();
 	$('#tabstrip-home table').css({ height: alturaV});
     	
@@ -30,7 +30,6 @@ function onDeviceReady() {
 							  tx.executeSql("INSERT INTO idiomas(idioma, activo) VALUES(?,?)", ["Spanish", 0]);
 							  tx.executeSql("INSERT INTO idiomas(idioma, activo) VALUES(?,?)", ["English", 0]);
 							  localStorage.setItem('idioma', '1');
-							  update();
 						  }						  
 					  });
 	}); 
@@ -110,7 +109,7 @@ function update() {
 				tx.executeSql("INSERT INTO indiceanexos(idioma, ind) VALUES(?,?)", ['2', obj.listanexosespanol]);
 				tx.executeSql("INSERT INTO indiceanexos(idioma, ind) VALUES(?,?)", ['3', obj.listanexosingles]);
 			});
-            //movimientos indice-anexos2
+			//movimientos indice-anexos2
 			db.transaction(function(tx) {
 				tx.executeSql("DROP TABLE indiceanexosmain");
 				tx.executeSql("CREATE TABLE IF NOT EXISTS indiceanexosmain(idioma INTEGER, ind TEXT)");
@@ -175,7 +174,7 @@ function update() {
 		},
 		complete: function() {
 			app.hideLoading();
-            localStorage.setItem("ultimaActualizacion", new Date());
+			//localStorage.setItem("ultimaActualizacion", new Date());
 		}
 	}); 
 }
