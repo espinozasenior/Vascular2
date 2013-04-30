@@ -325,7 +325,7 @@ function showUsers(users) {
     
     while (alist < ascreen){
         $('#div-list-favoritos').append('<li style="height: 40px"></li>');
-        alist = alist + 50;
+        alist = alist + 41;
     }
     
 }
@@ -333,7 +333,7 @@ function showUsers(users) {
 		
 function listfavoritos() {
 	db.transaction(function(tx) {
-		tx.executeSql("SELECT * FROM favoritos", [],
+		tx.executeSql("SELECT * FROM favoritos WHERE idioma="+localStorage.getItem('idioma'), [],
 					  function(tx, result) {
 						  var output = [];
 						  for (var i = 0; i < result.rows.length; i++) {
@@ -349,12 +349,12 @@ function listfavoritos() {
 }
 
 
-function addFavorito(indice, nombre) {
+function addFavorito(indice, nombre, idioma) {
 	db.transaction(function(tx) {
-		tx.executeSql("INSERT INTO favoritos(id, nombre) VALUES(?,?)", [indice, nombre]);
+		tx.executeSql("INSERT INTO favoritos(id, nombre, idioma) VALUES(?,?,?)", [indice, nombre, idioma]);
 	});
-	var idioma = localStorage.getItem("idioma");
-	switch (parseInt(idioma)) {
+	var idiom = localStorage.getItem("idioma");
+	switch (parseInt(idiom)) {
 		case 1:
 			alert("Es va afegir a favorits!");
 			break;
@@ -953,7 +953,7 @@ function update() {
 			//Movimientos favoritos
 			db.transaction(function(tx) {
 				tx.executeSql("DROP TABLE favoritos");
-				tx.executeSql("CREATE TABLE IF NOT EXISTS favoritos(id INTEGER PRIMARY KEY, nombre TEXT)");
+				tx.executeSql("CREATE TABLE IF NOT EXISTS favoritos(id INTEGER PRIMARY KEY, nombre TEXT, idioma INTEGER)");
 			});
 			
 			//Movimientos tablas

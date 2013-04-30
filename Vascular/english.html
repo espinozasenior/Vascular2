@@ -826,7 +826,7 @@
 					db.transaction(function(tx) {
 						tx.executeSql("SELECT * FROM apartados where id=" + parseInt(localStorage.getItem('pagactual')), [],
 									  function(tx, result) {
-										  addFavorito(result.rows.item(0)['id'], result.rows.item(0)['titulo']);
+										  addFavorito(result.rows.item(0)['id'], result.rows.item(0)['titulo'], localStorage.getItem('idioma'));
 									  });
 					});
 				}
