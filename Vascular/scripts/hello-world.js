@@ -18,6 +18,8 @@ function onDeviceReady() {
         tx.executeSql("CREATE TABLE IF NOT EXISTS indiceanexosmain(idioma INTEGER, ind TEXT)");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS favoritos(id INTEGER , nombre TEXT, idioma INTEGER)");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS bibliografias(cuerpo TEXT, idioma INTEGER)");
+        tx.executeSql("CREATE TABLE IF NOT EXISTS presentacion(cuerpo TEXT, idioma INTEGER)");
+        tx.executeSql("CREATE TABLE IF NOT EXISTS introduccion(cuerpo TEXT, idioma INTEGER)");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS tablas(id INTEGER PRIMARY KEY ASC , nombre TEXT, idioma INTEGER)");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS anexos(id INTEGER PRIMARY KEY ASC , indice TEXT, parent TEXT, titulo TEXT, cuerpo TEXT, idioma INTEGER )");
 		tx.executeSql("SELECT * FROM idiomas", [],

@@ -687,6 +687,26 @@ function get_bibliografia() {
 					  });
 	});	
 }
+function get_introduccion() {
+	var idioma = parseInt(localStorage.getItem('idioma'));
+	db.transaction(function(tx) {
+		tx.executeSql("SELECT * FROM introduccion WHERE idioma='" + [idioma] + "'", [],
+					  function(tx, result) {
+						  $('#prologo .lectura').html(result.rows.item(0)['cuerpo']);
+						  app.navigate('#prologo');
+					  });
+	});	
+}
+function get_presentacion() {
+	var idioma = parseInt(localStorage.getItem('idioma'));
+	db.transaction(function(tx) {
+		tx.executeSql("SELECT * FROM presentacion WHERE idioma='" + [idioma] + "'", [],
+					  function(tx, result) {
+						  $('#presentacion .lectura').html(result.rows.item(0)['cuerpo']);
+						  app.navigate('#presentacion');
+					  });
+	});	
+}
 
 function addBibliografia() {
 	var idio = parseInt(localStorage.getItem('idioma'));
@@ -713,20 +733,20 @@ function addpresentacion() {
 	var text;
 	switch (idio) {
 		case 1:		
-			text = '<li><div class="icono-lista" style="position:absolute; right: 1.9%;margin-top: 0.3em; background-image: url(); background-repeat:no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> <!-- El espacio en blanco permite que se vea el icono --><h4 onclick="" class="titulo-lista" style="padding:0px; margin:0px;">						Presentació<!-- El h4 es el que genera el padding hasta el final, lo que permite que el evento este completo hasta el boton -->					</h4>				</li>';
+			text = '<li><div class="icono-lista" style="position:absolute; right: 1.9%;margin-top: 0.3em; background-image: url(); background-repeat:no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> <!-- El espacio en blanco permite que se vea el icono --><h4 onclick="get_presentacion();" class="titulo-lista" style="padding:0px; margin:0px;">						Presentació<!-- El h4 es el que genera el padding hasta el final, lo que permite que el evento este completo hasta el boton -->					</h4>				</li>';
 			break;
 		case 2:
-			text = '<li><div class="icono-lista" style="position:absolute; right: 1.9%;margin-top: 0.3em; background-image: url(); background-repeat:no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> <!-- El espacio en blanco permite que se vea el icono --><h4 onclick="" class="titulo-lista" style="padding:0px; margin:0px;">						Presentación<!-- El h4 es el que genera el padding hasta el final, lo que permite que el evento este completo hasta el boton -->					</h4>				</li>';
+			text = '<li><div class="icono-lista" style="position:absolute; right: 1.9%;margin-top: 0.3em; background-image: url(); background-repeat:no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> <!-- El espacio en blanco permite que se vea el icono --><h4 onclick="get_presentacion();" class="titulo-lista" style="padding:0px; margin:0px;">						Presentación<!-- El h4 es el que genera el padding hasta el final, lo que permite que el evento este completo hasta el boton -->					</h4>				</li>';
 			break;
 		case 3:
-			text = '<li><div class="icono-lista" style="position:absolute; right: 1.9%;margin-top: 0.3em; background-image: url(); background-repeat:no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> <!-- El espacio en blanco permite que se vea el icono --><h4 onclick="" class="titulo-lista" style="padding:0px; margin:0px;">						Presentation<!-- El h4 es el que genera el padding hasta el final, lo que permite que el evento este completo hasta el boton -->					</h4>				</li>';
+			text = '<li><div class="icono-lista" style="position:absolute; right: 1.9%;margin-top: 0.3em; background-image: url(); background-repeat:no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> <!-- El espacio en blanco permite que se vea el icono --><h4 onclick="get_presentacion();" class="titulo-lista" style="padding:0px; margin:0px;">						Presentation<!-- El h4 es el que genera el padding hasta el final, lo que permite que el evento este completo hasta el boton -->					</h4>				</li>';
 			break;
 		default:
 			console.log("Error agregar presentacion");
 	}
     
 	$('#red').prepend(text);
-	$('#red').contents().first().find('h4').attr('onclick', 'app.navigate("#presentacion")');
+	$('#red').contents().first().find('h4').attr('onclick', 'get_presentacion()');
 	$('#red').contents().first().find('div').css('background-image', 'url("kendo/styles/images/flecha.png")');
 	$('#red').contents().first().find('div').css('background-repeat', 'no-repeat');
 }
@@ -736,20 +756,20 @@ function addIntroduccion() {
 	var text;
 	switch (idio) {
 		case 1:		
-			text = '<li ><div class="icono-lista" style="position:absolute; right: 1.9%;margin-top: 0.3em; background-image: url("' + 'kendo\/styles\/images\/flecha.png' + '"); background-repeat:no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> <!-- El espacio en blanco permite que se vea el icono -->					<h4 onclick="" class="titulo-lista" style="padding:0px; margin:0px;">						Introducció editorial<!-- El h4 es el que genera el padding hasta el final, lo que permite que el evento este completo hasta el boton -->					</h4></li>';
+			text = '<li ><div class="icono-lista" style="position:absolute; right: 1.9%;margin-top: 0.3em; background-image: url("' + 'kendo\/styles\/images\/flecha.png' + '"); background-repeat:no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> <!-- El espacio en blanco permite que se vea el icono -->					<h4 onclick="get_introduccion();" class="titulo-lista" style="padding:0px; margin:0px;">						Introducció editorial<!-- El h4 es el que genera el padding hasta el final, lo que permite que el evento este completo hasta el boton -->					</h4></li>';
 			break;
 		case 2:
-			text = '<li ><div class="icono-lista" style="position:absolute; right: 1.9%;margin-top: 0.3em; background-image: url("' + 'kendo\/styles\/images\/flecha.png' + '"); background-repeat:no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> <!-- El espacio en blanco permite que se vea el icono -->					<h4 onclick="" class="titulo-lista" style="padding:0px; margin:0px;">						Introducción editorial<!-- El h4 es el que genera el padding hasta el final, lo que permite que el evento este completo hasta el boton -->					</h4></li>';
+			text = '<li ><div class="icono-lista" style="position:absolute; right: 1.9%;margin-top: 0.3em; background-image: url("' + 'kendo\/styles\/images\/flecha.png' + '"); background-repeat:no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> <!-- El espacio en blanco permite que se vea el icono -->					<h4 onclick="get_introduccion();" class="titulo-lista" style="padding:0px; margin:0px;">						Introducción editorial<!-- El h4 es el que genera el padding hasta el final, lo que permite que el evento este completo hasta el boton -->					</h4></li>';
 			break;
 		case 3:
-			text = '<li ><div class="icono-lista" style="position:absolute; right: 1.9%;margin-top: 0.3em; background-image: url("' + 'kendo\/styles\/images\/flecha.png' + '"); background-repeat:no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> <!-- El espacio en blanco permite que se vea el icono -->					<h4 onclick="" class="titulo-lista" style="padding:0px; margin:0px;">						Editorial introduction<!-- El h4 es el que genera el padding hasta el final, lo que permite que el evento este completo hasta el boton -->					</h4></li>';
+			text = '<li ><div class="icono-lista" style="position:absolute; right: 1.9%;margin-top: 0.3em; background-image: url("' + 'kendo\/styles\/images\/flecha.png' + '"); background-repeat:no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> <!-- El espacio en blanco permite que se vea el icono -->					<h4 onclick="get_introduccion();" class="titulo-lista" style="padding:0px; margin:0px;">						Editorial introduction<!-- El h4 es el que genera el padding hasta el final, lo que permite que el evento este completo hasta el boton -->					</h4></li>';
 			break;
 		default:
 			console.log("Error agregar bibliografia");
 	}
     
 	$('#red').prepend(text);
-	$('#red').contents().first().find('h4').attr('onclick', 'app.navigate("#prologo")');
+	$('#red').contents().first().find('h4').attr('onclick', 'get_introduccion()');
 	$('#red').contents().first().find('div').css('background-image', 'url("kendo/styles/images/flecha.png")');
 	$('#red').contents().first().find('div').css('background-repeat', 'no-repeat');
 }
@@ -965,13 +985,29 @@ function update() {
 				addTablas(obj.tablas[j].id, obj.tablas[j].nombre, obj.tablas[j].ruta, obj.tablas[j].siglas, obj.tablas[j].idioma);
 			}
                         
-			//Movimientos favoritos
+			//Movimientos bibliografía
 			db.transaction(function(tx) {
 				tx.executeSql("DROP TABLE bibliografias");
 				tx.executeSql("CREATE TABLE IF NOT EXISTS bibliografias(cuerpo TEXT, idioma INTEGER)");
 			});
 			for (j = 0;j < obj.bibliografias.length;j++) {
 				addBiblios(obj.bibliografias[j].cuerpo, obj.bibliografias[j].idioma);
+			}
+            //Movimientos Introduccion
+            db.transaction(function(tx) {
+				tx.executeSql("DROP TABLE introduccion");
+				tx.executeSql("CREATE TABLE IF NOT EXISTS introduccion(cuerpo TEXT, idioma INTEGER)");
+			});
+			for (j = 0;j < obj.introduccion.length;j++) {
+				addIntros(obj.introduccion[j].cuerpo, obj.introduccion[j].idioma);
+			}
+            //Movimientos Presentacion
+            db.transaction(function(tx) {
+				tx.executeSql("DROP TABLE presentacion");
+				tx.executeSql("CREATE TABLE IF NOT EXISTS presentacion(cuerpo TEXT, idioma INTEGER)");
+			});
+			for (j = 0;j < obj.presentacion.length;j++) {
+				addPresents(obj.presentacion[j].cuerpo, obj.presentacion[j].idioma);
 			}
 			/*
 			getFilesystem(
@@ -1028,5 +1064,15 @@ function addTablas(id, nombre, ruta, siglas, idioma) {
 function addBiblios(cuerpo, idioma) {
 	db.transaction(function(tx) {
 		tx.executeSql("INSERT INTO bibliografias(cuerpo, idioma) VALUES(?,?)", [cuerpo, idioma]);
+	});        
+}
+function addIntros(cuerpo, idioma) {
+	db.transaction(function(tx) {
+		tx.executeSql("INSERT INTO introduccion(cuerpo, idioma) VALUES(?,?)", [cuerpo, idioma]);
+	});        
+}
+function addPresents(cuerpo, idioma) {
+	db.transaction(function(tx) {
+		tx.executeSql("INSERT INTO presentacion(cuerpo, idioma) VALUES(?,?)", [cuerpo, idioma]);
 	});        
 }
