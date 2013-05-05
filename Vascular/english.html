@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html style="overflow-x: hidden;">
+<html style="overflow-x: hidden;position: fixed;">
 	<head>
 		<title>Vasculars</title>
 		<meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
 		<script src="kendo/js/jquery.min.js"></script>
 		<script src="cordova.js"></script>
 		<script src="scripts/quo.js"></script>
@@ -15,9 +17,9 @@
 		<link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet"/>
 		<link href="styles/main.css" rel="stylesheet" />
 	</head>
-	<body style="display: none; overflow-x:hidden;">
+	<body style="display: none; overflow-x:hidden;position: fixed;">
 		<!-- INDICE  -->
-		<div data-role="view" id="indice" data-title="INDEX" data-before-show="beforeindice" data-transition="fade" style="overflow-y:hidden;overflow-x:hidden;">
+		<div data-role="view" id="indice" data-title="INDEX" data-before-show="beforeindice" data-transition="fade" style="overflow-y:hidden;overflow-x:hidden;position: fixed;">
 			<header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">ÍNDEX</span>
@@ -125,35 +127,17 @@
 				</div>
 			</header>
 			<div class="lectura"  ontouchstart="" data-role="touch">
-				<span>Proyect sponsored by:</span>
-				<h3>
-					Ferrer Internacional, S.A.
-				</h3>
-				<p>
-					<b>&copy; 2013 MEDERIC EDICIONES, S.L.</b><br>
-					<span>(PARA TODAS LOS IDIOMAS)</span><br>
-					<span>CARRER DE MUNT, 41</span><br>
-					<span>08392 SANT ANDREU DE LLAVANERES (ESPAÑA)</span><br>
-					<span>www.medericediciones.com</span><br>
-					<span>&nbsp;</span>
-				</p>
-
-				<p>
-					<span><b>Reservados todos los derechos.</b></span><br>
-					El contenido de esta publicación no puede ser reproducido, ni transmitido por nigún procedimiento electrónico o mecánico, incluyendo fotocopia o grabación magnética, ni registrado por ningún medio, sin la previa autorización por escrito del titular de los derechos de explotación.
-				</p>
-				<p>
-					Méderic Ediciones, S.L. y sus asociados no asumen responsabilidad alguna por cualquier lesión y/o daño sufridos por personas o bienes en cuestiones de responsabilidad de productos, negligencias o cualquier otra, ni por uso o aplicación de métodos, productos, instrucciones o ideas contenidos en el presente material. Dados los rápidos avances que se producen en las ciencias médicas en particular, debe realizarse una verificación independiente de los diagnosticos y las posologías de.
-				</p>
-				<span>&nbsp;</span>
 				<div style="text-align: center;">
-					<p>
-						<b>Coordinadors</b><br><br>
+
+					<h3>Coordinadors</h3>
+					<p >
 						Jerzy Krupinski<br>
 						Francesc Purroy<br>
-						Adrià Arboix<br><br><br>
+						Adrià Arboix<br><br>
+					</p>
 
-						<b>Assesors</b><br><br>
+					<h3>Assesors</h3>
+					<p>
 						José Alvarez Sabin<br>
 						David Cánovas<br>
 						Pere Cardona<br>
@@ -181,11 +165,32 @@
 						Lluís Soler Singla<br>
 						Xavier Ustrell<br>
 						M. Àngels Font<br>
-
 					</p>
 
 				</div>
-			</div>
+				<h3 style="font-weight:normal;">
+					<span>Proyecto esponsorizado por:</span>
+				</h3>
+				<h3>FERRER INTERNACIONAL, S.A.</h3>
+				<p>
+					<h3 style="font-weight:normal;">
+						<b>&copy; 2013 MEDERIC EDICIONES, S.L.</b><br>
+						<span>(PARA TODAS LOS IDIOMAS)</span><br>
+						<span>CARRER DE MUNT, 41</span><br>
+						<span>www.medericediciones.com</span>
+					</h3>
+				</p>
+
+				<p>
+					<span><b>Reservados todos los derechos.</b></span><br>
+					El contenido de esta publicación no puede ser reproducido, ni transmitido por nigún procedimiento electrónico o mecánico, incluyendo fotocopia o grabación magnética, ni registrado por ningún medio, sin la previa autorización por escrito del titular de los derechos de explotación.
+				</p>
+
+				<p>
+					Méderic Ediciones, S.L. y sus asociados no asumen responsabilidad alguna por cualquier lesión y/o daño sufridos por personas o bienes en cuestiones de responsabilidad de productos, negligencias o cualquier otra, ni por uso o aplicación de métodos, productos, instrucciones o ideas contenidos en el presente material. Dados los rápidos avances que se producen en las ciencias médicas en particular, debe realizarse una verificación independiente de los diagnosticos y las posologías de los fármacos.
+				</p>
+				<span>&nbsp;</span>
+            </div>
 		</div>
 
 		<div data-role="view" id="presentacion" class="contenido" data-before-show="beforeprsntacion" data-title="PRESENTATION" data-transition="slide">
@@ -535,7 +540,7 @@
 				<div data-role="navbar">
 					<span data-role="view-title">
 						<a data-role="backbutton" href="#indice" data-align="left">BACK</a>
-						<a data-role="button" data-align="right"  onclick="togglebuscar();" class="BotonBuscar">&nbsp;&nbsp;</a>
+						<a data-role="button" data-align="right"  onclick="togglebuscar();" class="BotonBuscar" style="background: transparent;"><img src="kendo/styles/images/iconoLupa.png">Search...</a>
 						<a data-role="button"data-rel="modalview" href="#modalview-list-anexos" data-click="disableback" data-align="right" >ANNEXES</a>
 					</span>
 				</div>
@@ -571,8 +576,8 @@
 					</div>
 
 				</div>
-				<div class="buscar-content" style="padding:4px; display:none;">
-					<input class="buscador" data-id="1-1" style="padding-left:1%;" type="search" results="0" name="s" placeholder="Cercar...">
+				<div class="buscar-content" style="padding:4px; ">
+					<input class="buscador" data-id="1-1" style="padding-left:1%;" type="search" results="0" name="s" placeholder="Search...">
 				</div>
 			</header>
 			<div class="lectura" id="pagina-contenido" data-role="touch">
@@ -592,7 +597,7 @@
 			<header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">
-						<a data-role="backbutton" href="#indice" data-align="left">BACK</a>
+						<a data-role="backbutton" href="#anexos" data-align="left">BACK</a>
 						<a data-role="button" data-align="right"  onclick="togglebuscar();" class="BotonBuscar">&nbsp;&nbsp;</a>
 					</span>
 				</div>
@@ -626,7 +631,7 @@
 
 				</div>
 				<div class="buscar-content" style="padding:4px; display:none;">
-					<input class="buscador" data-id="1-1" style="padding-left:1%;" type="search" results="0" name="s" placeholder="Cercar...">
+					<input class="buscador" data-id="1-1" style="padding-left:1%;" type="search" results="0" name="s" placeholder="Search...">
 				</div>
 			</header>
 			<div class="lectura" id="anexview-contenido-main" data-role="touch">
@@ -691,7 +696,7 @@
 					<a data-role="backbutton" data-align="left" data-click="backmodal">BACK</a>
 				</div>
                 <div class="buscar-content-anexo" style="padding:4px;">
-					<input class="buscador-anexo" data-id="" style="padding-left:1%;" type="search" results="0" name="s" placeholder="Cercar...">
+					<input class="buscador-anexo" data-id="" style="padding-left:1%;" type="search" results="0" name="s" placeholder="Search...">
 				</div>
 			</header>
 			<div id="anexview-contenido" data-role="touch">
@@ -820,9 +825,11 @@
 				if ($(this).attr('src') == "kendo/styles/images/icon-favorito-3.png") {
                     removeFavorito(localStorage.getItem('pagactual'));
                     $(this).attr('src', "kendo/styles/images/icon-favorito.png");
+                    $('#boton_favorito').css('margin-top', "4.8%");
 				}
 				else {
 					$(this).attr('src', "kendo/styles/images/icon-favorito-3.png");
+                    $('#boton_favorito').css('margin-top', "3%");
 					db.transaction(function(tx) {
 						tx.executeSql("SELECT * FROM apartados where id=" + parseInt(localStorage.getItem('pagactual')), [],
 									  function(tx, result) {

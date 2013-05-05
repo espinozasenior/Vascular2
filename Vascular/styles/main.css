@@ -58,7 +58,12 @@
 		position: absolute;
 		top: 58em;
 		z-index: -1;
+        padding-left: 2%;
+        padding-right: 2%;
 	}
+    .km-ios .km-view-title, .km-ios .km-dialog-title {
+                    margin-top: 1.5%;
+                }
     
 	#backlogosindex-text
 	{
@@ -85,7 +90,7 @@
         
 	#boton_favorito
 	{
-		//margin-right: -15%;
+		margin-right: -15%;
 		float: left;
 		width: 30px;
 		margin: 0.6em -0.5em;
@@ -188,7 +193,10 @@
 }
 
 /*----Ipadd----*/
-@media only screen and (min-width: 700px) and (max-width: 1024px)
+@media only screen
+and (min-width: 768px)
+and (max-width: 1024px)
+and (orientation: portrait)
 {
 	#backlogosindex
 	{
@@ -196,7 +204,12 @@
 		position: absolute;
 		top: 58em;
 		z-index: -1;
+        padding-left: 2%;
+        padding-right: 2%;
 	}
+    .km-ios .km-view-title, .km-ios .km-dialog-title {
+                    margin-top: 1.5%;
+                }
     
 	#backlogosindex-text
 	{
@@ -223,7 +236,7 @@
         
 	#boton_favorito
 	{
-		//margin-right: -15%;
+		margin-right: -15%;
 		float: left;
 		width: 30px;
 		margin: 0.6em -0.5em;
@@ -231,11 +244,11 @@
 
 	#boton_marcador
 	{
-		/*margin-right: -5%; */
 		float: left;
 		margin: 7px 4px;
-		margin: 0.5em 1.2em;
+		margin-right: 1.2em;
 		width: 27px;
+        margin-top: 5%;
 	}   
     
 	#modalview-list-anexos
@@ -309,14 +322,15 @@
 
 	.into-tip
 	{
-		-webkit-border-radius: 0px 0px 8px 7px/8px;
-		-moz-border-radius: 0px 0px 8px 7px/8px;
-		border-radius: 0px 0px 8px 7px/8px;
+        margin-top: 1%;
+		-webkit-border-radius: 7px 8px 8px 7px/8px;
+		-moz-border-radius: 7px 8px 8px 7px/8px;
+		border-radius: 7px 8px 8px 7px/8px;
 		background-color: #dcdfe5;
 		-webkit-box-shadow: inset 0 3px 3px rgba(0, 0, 0, .38);
 		-moz-box-shadow: inset 0 3px 3px rgba(0, 0, 0, .38);
 		box-shadow: inset 0 3px 3px rgba(0, 0, 0, .38);
-		height: 34em;
+		height: 34.4em;
 		overflow-y: scroll;
 		overflow-x: hidden !important;
 		margin-left: 1%;
@@ -334,7 +348,12 @@
 		position: absolute;
 		top: 60em;
 		z-index: -1;
+        padding-left: 2%;
+        padding-right: 2%;
 	}
+    .km-ios .km-view-title, .km-ios .km-dialog-title {
+                    margin-top: 1.5%;
+                }
     
 	#backlogosindex-text
 	{
@@ -468,12 +487,17 @@
 		top: 0;
 		left: 0.5%;
 	}
+        .km-ios .km-view-title, .km-ios .km-dialog-title {
+                    margin-top: 3.5%;
+                }
 	#backlogosindex
 	{
 		width: 100%;
 		position: absolute;
 		top: 23em;
 		z-index: -1;
+        padding-left: 2%;
+        padding-right: 2%;    
 	}
     
 	#backlogosindex-text
@@ -610,6 +634,8 @@
 		position: absolute;
 		z-index: -1;
 		top: 27em;
+        padding-left: 2%;
+        padding-right: 2%;
 	}
     
 	#backlogosindex-text
@@ -710,12 +736,17 @@
 		top: 0;
 		left: 0.5%;
 	}
+        .km-ios .km-view-title, .km-ios .km-dialog-title {
+                    margin-top: 3.5%;
+                }
 	#backlogosindex
 	{
 		width: 100%;
 		position: absolute;
 		z-index: -1;
 		top: 21em;
+        padding-left:2%;
+        padding-right:2%;    
 	}
     
 	#backlogosindex-text
@@ -893,6 +924,10 @@ b
 	font-weight: bold;
 }
 
+.lectura > a{
+    text-decoration: none;
+}
+
 .nozoomed
 {
 	height: 100%;
@@ -1026,7 +1061,7 @@ b
 }
 #list-popup ul
 {
-	display: block; background: #fff; border: 1px solid #adadad;
+	display: block;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -1034,7 +1069,6 @@ b
 	padding: 0;
 }
 #list-popup ul li { padding: 10px 15px; border-top: 1px solid #adadad; }
-#list-popup ul li:first-child { border: 0; }
 #list-popup ul li:hover { background: #eee; }
 #list-popup ul li span { float: right; }
 
@@ -1045,7 +1079,7 @@ b
 
 #list-idiomas ul
 {
-	display: block; background: #fff; border: 1px solid #adadad;
+	display: block;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -1053,7 +1087,6 @@ b
 	padding: 0px;
 }
 #list-idiomas ul li { padding: 10px 15px; border-top: 1px solid #adadad; }
-#list-idiomas ul li:first-child { border: 0; }
 #list-idiomas ul li:hover { background: #eee; }
 #list-idiomas ul li span { float: right; }
 
@@ -1086,10 +1119,14 @@ b
     border-top: 0;
 }
 
+#list-anexoss h4{
+    max-width: 90%;
+}
+
 #tools
 {
 	float: right;
-	margin-right: 0.5em;
+	margin-right: 3%;
 }
 
 .k-animation-container
@@ -1344,7 +1381,8 @@ b
 {
 	background-color: rgb(255, 255, 255);
 	font-family: Helvetica;
-	/*font-weight: bold;*/
+	font-size: 1.2em;
+line-height: 1.4em;
 	font-stretch: condensed;
 	color: black;
 	margin-right: 5%;

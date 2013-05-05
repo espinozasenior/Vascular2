@@ -251,10 +251,6 @@ jQuery.fn.extend({
 // Resetear al tamaño original
 var originalFontSize = $('html').css('font-size');
 
-$(".resetFont").click(function() {
-	$('.lectura').css('font-size', originalFontSize);
-});
-
 // Disminuir tamaño fuente
 function disminuirText(e) {
 	var currentFontSize = $('.lectura *, .lectura').css('font-size');
@@ -307,7 +303,8 @@ $("#boton-eliminar").live("click", function(e) {
 			removeFavorito(elem);
 		}
 	});
-	listfavoritos();				
+	listfavoritos();
+    btnEliminar();
 });
 
 function linktable(t) {
@@ -434,7 +431,7 @@ function view_anexo(item) {
 }
 
 function desplazarmeTo(punto) {
-	$(".km-scroll-wrapper").animate({scrollTop: $('a[href=' + punto + ']').offset().top}, 600);
+	$(".km-scroll-wrapper").animate({scrollTop: $('a[title=' + punto + ']').offset().top}, 600);
 }
 
 function inclusionAnexoMain(item) {
@@ -518,8 +515,10 @@ function inclusion(item) {
                           try{
                               result.rows.item(0);
                               $('#boton_favorito img').attr('src', "kendo/styles/images/icon-favorito-3.png");
+                              $('#boton_favorito').css('margin-top', "3%");
                           }catch(err){
                               $('#boton_favorito img').attr('src', "kendo/styles/images/icon-favorito.png");
+                              $('#boton_favorito').css('margin-top', "4.8%");
                           }
 					  });
 	});
@@ -614,7 +613,8 @@ function cambioIdioma(id) {
 	}
 }
 
-function beforeindice() {    
+function beforeindice() {   
+    $('body').css('background-color', '#BD072F');
 	var fechaUltima = new Date(localStorage.getItem("ultimaActualizacion"));
 	var fechaHoy = new Date();
 	var t2 = fechaHoy;
@@ -623,8 +623,6 @@ function beforeindice() {
 	if (diasTranscurridos > 1) {
 		verificarVersion();
 	}
-    
-	$('body').css('background-color', '#BD072F');
 	var idioma = localStorage.getItem("idioma");
 	switch (parseInt(idioma)) {
 		case 1:
