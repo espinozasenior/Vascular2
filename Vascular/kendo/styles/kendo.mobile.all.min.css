@@ -1834,7 +1834,7 @@ body:after
 	border-radius: 5px;
 	background-color: #81858b;
 	border: solid 1px #38000c;
-	margin-bottom: 5%;
+	/*margin-bottom: 5%;*/
 	background-image: -webkit-linear-gradient(bottom, #920221, #db002f 13%, #fd2a57 51%, #fd2352 90%, #fcc3cf);
 	background-image: -moz-linear-gradient(bottom, #920221, #db002f 13%, #fd2a57 51%, #fd2352 90%, #fcc3cf);
 	background-image: -o-linear-gradient(bottom, #920221, #db002f 13%, #fd2a57 51%, #fd2352 90%, #fcc3cf);
@@ -1909,7 +1909,6 @@ body:after
 {
 	vertical-align: middle;
 	border: 0;
-	margin-top: 4%;
 	background: transparent;
 }
 
@@ -1921,6 +1920,22 @@ body:after
 .BotonBuscar.km-button img{
     width: 30%;
     float: left;
+}
+
+.BotonBuscar2{
+	background-image: url('images/iconoLupa.png')  !important;
+	background-size: 100%;
+    background-position-x: 94%;
+    background-repeat: no-repeat;
+    border: none !important;
+    width: 6px;
+    height: 15px;
+    background-color: rgba(255, 255, 255, 0) !important;
+    box-shadow: inset 0 0 0 0px rgba(0,0,0,0.3) !important;
+    -webkit-box-shadow: inset 0 0 0 0px rgba(0,0,0,0.3) !important;
+    float: left;
+    margin-top: 9px !important;
+	margin-right: 0.5em;
 }
 
 .BotonMarcador
@@ -1969,17 +1984,16 @@ body:after
 
 #boton_favorito
 {
-	//margin-right: -15%;
 	float: left;
 	width: 30px;
-	margin: 7px 4px;
+	margin: 7px 0px;
 }
 
 #boton_marcador
 {
-	// margin-right: -5%;
+	
 	float: left;
-	margin: 7px 4px;
+	margin: 7px 6px;
 	width: 27px;
 }
 

@@ -82,13 +82,13 @@
 			<div data-role="touch" id="list-idiomas">
 				<ul data-role="listview" data-style="inset">
 					<li onclick="cambioIdioma(1);" style="color: #db002f;">
-						CATALAN<span><img src="kendo/styles/images/Boton-On.png" style="width:60%" ></span>
+						<span>CATALAN</span><img src="kendo/styles/images/Boton-On.png">
 					</li>
 					<li onclick="cambioIdioma(2);">
-						SPANISH<span><img src="kendo/styles/images/Boton-Off.png" style="width:60%"></span>
+						<span>SPANISH</span><img src="kendo/styles/images/Boton-Off.png">
 					</li>
 					<li onclick="cambioIdioma(3);" >
-						ENGLISH<span><img src="kendo/styles/images/Boton-Off.png" style="width:60%"></span>
+						<span>ENGLISH</span><img src="kendo/styles/images/Boton-Off.png">
 					</li>
 				</ul>
 			</div>
@@ -494,7 +494,7 @@
 			<header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">
-						<a data-role="backbutton" data-align="left">ENRERE</a>
+						<a data-role="backbutton" data-align="left" class="exitanexos">ENRERE</a>
 					</span>
 				</div>
 			</header>
@@ -541,9 +541,10 @@
 			<header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">
-						<a data-role="backbutton" href="#indice" data-align="left">ENRERE</a>
-						<a data-role="button" data-align="right"  onclick="togglebuscar();" class="BotonBuscar" style="background: transparent;"><img src="kendo/styles/images/iconoLupa.png">Cercar...</a>
-						<a data-role="button"data-rel="modalview" href="#modalview-list-anexos" data-click="disableback"  data-align="right" >ANNEX</a>
+						<a data-role="backbutton" href="#indice" data-align="left">ENRERE</a>						
+                         <a data-role="button" data-align="right"  onclick="togglebuscar();" class="BotonBuscar" style="background: transparent;"><img src="kendo/styles/images/iconoLupa.png">Cercar...</a>
+						<!--<a data-role="button"data-rel="modalview" href="#modalview-list-anexos" data-click="disableback"  data-align="right" >ANNEX</a> -->
+                             <a data-role="button" href="#anexos" data-align="right" class="toanexos">ANNEX</a>
 					</span>
 				</div>
 
@@ -578,7 +579,7 @@
 					</div>
 
 				</div>
-				<div class="buscar-content" style="padding:4px;">
+				<div class="buscar-content" style="padding:4px;display:none;">
 					<input class="buscador" data-id="1-1" style="padding-left:1%;" type="search" results="0" name="s" placeholder="Cercar...">
 				</div>
 			</header>

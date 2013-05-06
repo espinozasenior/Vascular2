@@ -82,13 +82,13 @@
 			<div data-role="touch" id="list-idiomas">
 				<ul data-role="listview" data-style="inset">
 					<li onclick="cambioIdioma(1);" >
-						CATALÁN<span><img src="kendo/styles/images/Boton-Off.png" style="width:60%" ></span>
+						<span>CATALÁN</span><img src="kendo/styles/images/Boton-Off.png">
 					</li>
 					<li onclick="cambioIdioma(2);" style="color: #db002f;">
-						ESPAÑOL<span><img src="kendo/styles/images/Boton-On.png" style="width:60%"></span>
+						<span>ESPAÑOL</span><img src="kendo/styles/images/Boton-On.png">
 					</li>
 					<li onclick="cambioIdioma(3);">
-						INGLÉS<span><img src="kendo/styles/images/Boton-Off.png" style="width:60%"></span>
+						<span>INGLÉS</span><img src="kendo/styles/images/Boton-Off.png">
 					</li>
 				</ul>
 			</div>
@@ -493,7 +493,7 @@
 			<header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">
-						<a data-role="backbutton" data-align="left">ATRÁS</a>
+						<a data-role="backbutton" data-align="left" class="exitanexos">ATRÁS</a>
 					</span>
 				</div>
 			</header>
@@ -541,7 +541,7 @@
 					<span data-role="view-title">
 						<a data-role="backbutton" href="#indice" data-align="left">ATRÁS</a>
 						<a data-role="button" data-align="right"  onclick="togglebuscar();" class="BotonBuscar" style="background: transparent;"><img src="kendo/styles/images/iconoLupa.png">Buscar...</a>
-						<a data-role="button"data-rel="modalview" href="#modalview-list-anexos" data-click="disableback" data-align="right" >ANEXOS</a>
+						<a data-role="button" href="#anexos" data-align="right" class="toanexos">ANEXOS</a>
 					</span>
 				</div>
 
@@ -576,7 +576,7 @@
 					</div>
 
 				</div>
-				<div class="buscar-content" style="padding:4px;">
+				<div class="buscar-content" style="padding:4px;display:none;">
 					<input class="buscador" data-id="1-1" style="padding-left:1%;" type="search" results="0" name="s" placeholder="Buscar...">
 				</div>
 			</header>

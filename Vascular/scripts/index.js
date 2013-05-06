@@ -307,6 +307,17 @@ $("#boton-eliminar").live("click", function(e) {
     btnEliminar();
 });
 
+$(".toanexos").live("click", function(e) {
+	var pag = localStorage.getItem('pagactual');
+    $('#anexos').children().children().children().children().eq(0).attr('onclick','get_apartado('+pag+');');
+     $('#anexos').children().children().children().children().eq(0).removeAttr("href");
+});
+
+$(".exitanexos").live("click", function(e) {
+    $('#anexos').children().children().children().children().eq(0).removeAttr("onclick");
+    $('#anexos').children().children().children().children().eq(0).attr('href','#:back');
+});
+
 function linktable(t) {
 	console.log(t);
 	gotabla(t);
@@ -488,7 +499,7 @@ function inclusion(item) {
 		tx.executeSql("SELECT titulo FROM apartados where indice < (SELECT indice FROM apartados WHERE id=" + item.id + ") ORDER BY indice DESC", [],
 					  function(tx, result) {
 						  var windowWidth = document.documentElement.clientWidth; //retrieve current window width
-						  if (windowWidth < 560) {
+						  if (windowWidth < 533) {
 							  var puntos = "...";
 							  var string = localStorage.getItem('padre');
 							  if (string.length >= 12) {
@@ -499,6 +510,11 @@ function inclusion(item) {
 							  $("#pagina").children().children().children().eq(2).find('span').text(string);
 							  $('#pagina').find('footer').children().children().children().eq(0).children().eq(0).attr('onclick', 'prev_apartado(' + item.id + ');');
 							  $('#pagina').find('footer').children().children().children().eq(0).children().eq(1).attr('onclick', 'next_apartado(' + item.id + ');');
+                              //modificar botonbuscar
+                              $('#pagina').children().children().children().children().eq(0).removeClass('BotonBuscar');
+                              $('#pagina').children().children().children().children().eq(0).html('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+                              $('#pagina').children().children().children().children().eq(0).addClass('BotonBuscar2');
+                              $('#pagina').children().children().children().children().eq(0).css('background', '');
 						  }
 						  else {
 							  $('#pagina').attr('data-title', localStorage.getItem('padre'));
@@ -506,7 +522,8 @@ function inclusion(item) {
 							  //console.log(result.rows.item(0));
 							  $('#pagina').find('footer').children().children().children().eq(0).children().eq(0).attr('onclick', 'prev_apartado(' + item.id + ');');
 							  $('#pagina').find('footer').children().children().children().eq(0).children().eq(1).attr('onclick', 'next_apartado(' + item.id + ');');
-						  }
+                              
+						  }                          
 					  });
 	});
     db.transaction(function(tx) {
