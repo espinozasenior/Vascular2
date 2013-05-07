@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html style="overflow-x: hidden;position: fixed;">
+<html>
 	<head>
 		<title>Vasculars</title>
 		<meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
 		<script src="kendo/js/jquery.min.js"></script>
 		<script src="cordova.js"></script>
 		<script src="scripts/quo.js"></script>
@@ -17,9 +15,9 @@
 		<link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet"/>
 		<link href="styles/main.css" rel="stylesheet" />
 	</head>
-	<body style="display: none; overflow-x:hidden;position: fixed;">
+	<body style="display: none;">
 		<!-- INDICE  -->
-		<div data-role="view" id="indice" data-title="INDEX" data-before-show="beforeindice" data-transition="fade" style="overflow-y:hidden;overflow-x:hidden;position: fixed;">
+		<div data-role="view" id="indice" data-title="INDEX" data-before-show="beforeindice" data-transition="fade">
 			<header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">ÍNDEX</span>
@@ -598,7 +596,7 @@
 				<div data-role="navbar">
 					<span data-role="view-title">
 						<a data-role="backbutton" href="#anexos" data-align="left">BACK</a>
-						<a data-role="button" data-align="right"  onclick="togglebuscar();" class="BotonBuscar">&nbsp;&nbsp;</a>
+						<a data-role="button" data-align="right"  onclick="togglebuscar();" class="BotonBuscar" style="background: transparent;"><img src="kendo/styles/images/iconoLupa.png">Search...</a>
 					</span>
 				</div>
 

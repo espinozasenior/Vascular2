@@ -5,6 +5,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 // PhoneGap is ready
 function onDeviceReady() {
+    navigator.splashscreen.hide();
 	var dbSize = 20 * 1024 * 1024; // 15MB  
 	    	
 	db = openDatabase("vascular", "1.0", "Base de datos de VASCULAR", dbSize);
@@ -449,6 +450,14 @@ function inclusionAnexoMain(item) {
 	$('body').css('background-color', '#FFFFFF');
 	$('#anexview').children().children().eq(1).find('tbody').children().children().children().eq(0).text(item.indice + " " + item.titulo);
 	$('#anexview-contenido-main').html(item.cuerpo);
+    var windowWidth = document.documentElement.clientWidth; //retrieve current window width
+						  if (windowWidth < 533) {
+							 //modificar botonbuscar
+                              $('#anexview').children().children().children().children().eq(0).removeClass('BotonBuscar');
+                              $('#anexview').children().children().children().children().eq(0).html('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+                              $('#anexview').children().children().children().children().eq(0).addClass('BotonBuscar2');
+                              $('#anexview').children().children().children().children().eq(0).css('background', '');
+						  } 
 	app.navigate('anexview');  
 	//document.getElementById('H1').scrollIntoView(true);
 	//$("#H1").scrollintoview({ duration: "slow", direction: "y"});
@@ -480,10 +489,11 @@ function recortartitulo() {
 }
 
 function saveResaltado() {
-	var nuevoCuerpo = $('#pagina-contenido').html();
+    
+	var nuevoCuerpo = $('#pagina-contenido').text();
 	var apartado = localStorage.getItem('pagactual');
 	db.transaction(function(tx) {
-		tx.executeSql("UPDATE apartados SET cuerpo='" + nuevoCuerpo + "' WHERE id=" + parseInt(apartado) + " ");
+		tx.executeSql('UPDATE apartados SET cuerpo="'+ nuevoCuerpo + '" WHERE id=' + parseInt(apartado));
 	});    
 }
 
@@ -494,10 +504,11 @@ $(".highlight").live("dblclick", function(e) {
 }); 
 		
 function inclusion(item) {
-	$('body').css('background-color', '#FFFFFF');
+	
 	db.transaction(function(tx) {
 		tx.executeSql("SELECT titulo FROM apartados where indice < (SELECT indice FROM apartados WHERE id=" + item.id + ") ORDER BY indice DESC", [],
 					  function(tx, result) {
+                          $('body').css('background-color', '#FFFFFF');
 						  var windowWidth = document.documentElement.clientWidth; //retrieve current window width
 						  if (windowWidth < 533) {
 							  var puntos = "...";

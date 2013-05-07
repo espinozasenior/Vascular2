@@ -611,6 +611,7 @@ and (orientation: portrait)
         .km-ios .km-view-title, .km-ios .km-dialog-title {
                     margin-top: 3.2%;
                 }
+    #list-idiomas ul li img { float: right; width:10%;}
 	#backlogosindex
 	{
 		width: 100%;
@@ -744,6 +745,8 @@ and (orientation: portrait)
 		left: 0.5%;
 	}
     
+    #list-idiomas ul li img { float: right; width:10%;}
+    
 	#modalview-anexos
 	{
 		height: 33em;
@@ -860,6 +863,7 @@ and (orientation: portrait)
         .km-ios .km-view-title, .km-ios .km-dialog-title {
                     margin-top: 3.2%;
                 }
+    #list-idiomas ul li img { float: right; width:10%;}
 	#backlogosindex
 	{
 		width: 100%;

@@ -271,7 +271,7 @@ function startConfirm(idioma) {
 			case 1:
 				//Catalan
 				navigator.notification.confirm(
-					"La informació continguda en aquesta aplicació està destinat, exclusivament, a professionals de la salut. La informació disponible en l'aplicació com l'única font que mai no s'utilitzarà per prendre decisions mèdiques. Médéric edicions no respondrà, en qualsevol cas, les conseqüències de les decisions segons la informació disponible en l'aplicació. El professional de la salut serà que, en cada cas, s'ha d'avaluar la informació, o la literatura científica disponible i prendre una decisió, segons els seus coneixements.La informació continguda en aquesta aplicació està destinat, exclusivament, a professionals de la salut. La informació disponible en l'aplicació com l'única font que mai no s'utilitzarà per prendre decisions mèdiques. Médéric edicions no respondrà, en qualsevol cas, les conseqüències de les decisions segons la informació disponible en l'aplicació. El professional de la salut serà que, en cada cas, s'ha d'avaluar la informació, o la literatura científica disponible i prendre una decisió, segons els seus coneixements.", // message
+					"La informació continguda en aquesta aplicació és exclusivament dirigida per la professional de la salut. Tant l'accés a aquesta informació com l'ús que es pugui fer dels continguts serà responsabilitat exclusiva de l'usuari.", // message
 					onConfirm, // callback to invoke with index of button pressed
 					'¿Es usted profesional satnitario?', // title
 					'Si, No'          // buttonLabels
@@ -280,18 +280,7 @@ function startConfirm(idioma) {
 			case 2:
 				//español
 				navigator.notification.confirm(
-					'La información contenida en la presente aplicación va destinada, exclusivamente,' +
-					'a profesionales de la salud. Nunca deberá utilizarse la información disponible en la aplicación como' +
-					'única fuente para la toma de decisiones de carácter médico. Biogen idec no será responsable,' +
-					'en ningún caso, de las consecuencias derivadas de decisiones basadas, en la información disponible' +
-					'en la aplicación. El profesional de la salud será quien, en cada caso, deba valorar toda la información,' +
-					'o literatura científica disponible y tomar una decisión, con arreglo a sus conocimientos.La información' +
-					'contenida en la presente aplicación va destinada, exclusivamente, a profesionales de la salud. Nunca' +
-					'deberá utilizarse la información disponible en la aplicación como única fuente para la toma de' +
-					'decisiones de carácter médico. Méderic Ediciones no será responsable, en ningún caso, de las' +
-					'consecuencias derivadas de decisiones basadas, en la información disponible en la aplicación.' +
-					'El profesional de la salud será quien, en cada caso, deba valorar toda la información, o' +
-					'literatura científica disponible y tomar una decisión, con arreglo a sus conocimientos.', // message
+					'La información contenida en esta aplicación está dirigida exclusivamente al profesional sanitario. Tanto el acceso a dicha información como el uso que pueda hacerse del contenido de la misma será responsabilidad exclusiva del usuario.', // message
 					onConfirm, // callback to invoke with index of button pressed
 					'¿Es usted profesional sanitario?', // title
 					'Si, No'          // buttonLabels
@@ -300,7 +289,7 @@ function startConfirm(idioma) {
 			default:
 				//ingles
 				navigator.notification.confirm(
-					"The information contained in this application is destined, exclusively, to health professionals. The information available in the application as the sole source to be never used for medical decision-making. Médéric editions will not be liable, in any case, the consequences of decisions based on the information available in the application. The health professional will be who, in each case, must assess the information, or the available scientific literature and make a decision, according to their knowledge.The information contained in this application is destined, exclusively, to health professionals. The information available in the application as the sole source to be never used for medical decision-making. Médéric editions will not be liable, in any case, the consequences of decisions based on the information available in the application. The health professional will be who, in each case, must assess the information, or the available scientific literature and make a decision, according to their knowledge.", // message
+					"The information contained in this application is exclusively directed to the health professional. Both the access to this information and the use that may be made of the contents will be sole responsibility of the user.", // message
 					onConfirm, // callback to invoke with index of button pressed
 					'Do you care professional?', // title
 					'Yes, No'          // buttonLabels

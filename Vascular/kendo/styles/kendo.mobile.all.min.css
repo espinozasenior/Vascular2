@@ -1568,6 +1568,10 @@ box-sizing: border-box
 	-webkit-mask-image: url("images/icons.png");
 	-webkit-mask-size: auto 100%
 }
+    
+body{
+        background-color: #BD072F;
+    }
 
 body:after
 {
@@ -2084,6 +2088,10 @@ body:after
 	-webkit-transform: translatez(0);
 	-webkit-backface-visibility: hidden;
 	box-orient: vertical;
+}
+
+.titulo-lista{
+    max-width: 90%;
 }
 
 #wrapper
