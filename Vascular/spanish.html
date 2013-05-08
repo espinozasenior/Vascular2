@@ -533,12 +533,12 @@
 		
 		<!--   --------------------------  LIBRO ---------------  -->
 
-		<div data-role="view" id="pagina" class="contenido" data-title="cabecera" data-after-show="toppagina" data-transition="slide">
+		<div data-role="view" id="pagina" class="contenido" data-title="cabecera" data-after-show="toppagina" data-show="bckwhitepagina" data-transition="slide">
 			<header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">
 						<a data-role="backbutton" href="#indice" data-align="left">ATRÁS</a>
-						<a data-role="button" data-align="right"  onclick="togglebuscar();" class="BotonBuscar" style="background: transparent;"><img src="kendo/styles/images/iconoLupa.png">Buscar...</a>
+						<button data-align="right" class="BotonBuscar km-button" style="background: transparent;"><img src="kendo/styles/images/iconoLupa.png"><span>Buscar...</span></button>
 						<a data-role="button" href="#anexos" data-align="right" class="toanexos">ANEXOS</a>
 					</span>
 				</div>
@@ -591,12 +591,12 @@
 			</footer>
 		</div>
 
-		<div data-role="view" id="anexview" class="contenido" data-title="ANEXO" data-db="" data-transition="slide">
+		<div data-role="view" id="anexview" class="contenido" data-title="ANEXO" data-show="bckwhite" data-transition="slide">
 			<header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">
 						<a data-role="backbutton" href="#anexos" data-align="left">ATRÁS</a>
-						<a data-role="button" data-align="right"  onclick="togglebuscar();" class="BotonBuscar" style="background: transparent;"><img src="kendo/styles/images/iconoLupa.png">Buscar...</a>
+						<button data-align="right" class="BotonBuscar km-button" style="background: transparent;"><img src="kendo/styles/images/iconoLupa.png"><span>Buscar...</span></button>
 					</span>
 				</div>
 

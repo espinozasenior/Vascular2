@@ -13,6 +13,7 @@
     .km-ios .km-view-title, .km-ios .km-dialog-title {
                     margin-top: 3.5%;
                 }
+    #list-idiomas ul li img { float: right; width:4%;}
     
 	#backlogosindex-text
 	{
@@ -188,6 +189,8 @@
                     margin-top: 1.5%;
                 }
     
+    #list-idiomas ul li img { float: right; width:4%;}
+    
 	#backlogosindex-text
 	{
 		color: white;
@@ -334,6 +337,8 @@ and (orientation: portrait)
                     margin-top: 1.5%;
                 }
     
+    #list-idiomas ul li img { float: right; width:4%;}
+    
 	#backlogosindex-text
 	{
 		color: white;
@@ -345,7 +350,7 @@ and (orientation: portrait)
 	}
 	#backlogosindex-img3
 	{
-		width: 8em;
+		width: 9.5em;
 	}
 	#backlogosindex-img1
 	{
@@ -1213,7 +1218,6 @@ b
 }
 #list-idiomas ul li { padding: 10px 15px; border-top: 1px solid #adadad; }
 #list-idiomas ul li:hover { background: #eee; }
-#list-idiomas ul li img { float: right; width:4%;}
 
 .arrow
 {

@@ -5,7 +5,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 // PhoneGap is ready
 function onDeviceReady() {
-    navigator.splashscreen.hide();
+	navigator.splashscreen.hide();
 	var dbSize = 20 * 1024 * 1024; // 15MB  
 	    	
 	db = openDatabase("vascular", "1.0", "Base de datos de VASCULAR", dbSize);
@@ -197,9 +197,9 @@ function backmodal() {
 	$("#modalview-list-anexos").kendoMobileModalView("open");
 }
 
-function disableback(){
-    $('#modalview-list-anexos').children().children().children().children().eq(0).removeAttr("href");
-    $('#modalview-anexos').children().children().children().children().eq(0).removeAttr("href");
+function disableback() {
+	$('#modalview-list-anexos').children().children().children().children().eq(0).removeAttr("href");
+	$('#modalview-anexos').children().children().children().children().eq(0).removeAttr("href");
 }
 
 function ajustmodalviewlistanexos() {
@@ -232,7 +232,7 @@ function resaltarTextoAnexo(id, texto) {
 	});
 	
 	if ((texto != "") && texto != " ") {
-		$("#"+ id).each(function() {
+		$("#" + id).each(function() {
 			$(this).resaltar(texto, "resaltarTexto", id);
 		});
 	}
@@ -278,7 +278,7 @@ $(".expandable").live('click', function() {
 	$('.expandable > .icono-lista').css('background-image', "url('kendo/styles/images/plus.png')");	
 }); 
 
-function togglebuscar() {
+$(".BotonBuscar, .BotonBuscar2").live('click', function() {
 	if ($(".buscar-content").css("display") == "none") {
 		$(".buscar-content").css("display", "block");
 		$(".titulo").css("display", "none");
@@ -286,8 +286,10 @@ function togglebuscar() {
 	else {
 		$(".buscar-content").css("display", "none");				
 		$(".titulo").css("display", "block");
-	}
-}
+	}	
+}); 
+
+
 
 $(".eliminables").live("click", function(e) {
 	$(this).addClass("eliminables-selected");
@@ -305,19 +307,48 @@ $("#boton-eliminar").live("click", function(e) {
 		}
 	});
 	listfavoritos();
-    btnEliminar();
+	btnEliminar();
 });
 
 $(".toanexos").live("click", function(e) {
+	$('#anexos .exitanexos').addClass('backapart');
+	$('#anexos .exitanexos').removeAttr('href');
+	$('#anexos .exitanexos').removeAttr("data-role", " ");
+});
+
+$(".backapart").live("click", function(e) {
 	var pag = localStorage.getItem('pagactual');
-    $('#anexos').children().children().children().children().eq(0).attr('onclick','get_apartado('+pag+');');
-     $('#anexos').children().children().children().children().eq(0).removeAttr("href");
+	get_apartado(parseInt(pag)); // Do something after 2 seconds	
 });
 
 $(".exitanexos").live("click", function(e) {
-    $('#anexos').children().children().children().children().eq(0).removeAttr("onclick");
-    $('#anexos').children().children().children().children().eq(0).attr('href','#:back');
+	//$('#anexos .exitanexos').removeClass('backapart');
+	$('#anexos .exitanexos').attr("href", "#:back");
+	$('#anexos .exitanexos').attr("data-role", "backbutton");
 });
+
+function bckwhitepagina() {
+	$('body').css('background-color', '#FFFFFF'); 
+	var windowWidth = document.documentElement.clientWidth; //retrieve current window width
+	if (windowWidth < 533) {
+		var puntos = "...";
+		var string = localStorage.getItem('padre');
+		if (string.length >= 12) {
+			string = string.substr(0, 11);
+			string = string.concat(puntos);
+		}
+		$("#pagina").attr("data-title", string);
+		$("#pagina").children().children().children().eq(2).find('span').text(string);		
+	}
+	else {
+		$('#pagina').attr('data-title', localStorage.getItem('padre'));
+		$("#pagina").children().children().children().eq(2).find('span').text(localStorage.getItem('padre')); 
+	} 
+}
+
+function bckwhite() {
+	$('body').css('background-color', '#FFFFFF'); 
+}
 
 function linktable(t) {
 	console.log(t);
@@ -329,20 +360,18 @@ function showUsers(users) {
 	for (var i = 0; i < users.length; i++) {
 		$("#div-list-favoritos").append("<li id=" + "\'" + users[i][0] + "\'" + " onclick=" + "get_apartado(\'" + users[i][0] + "\'" + ");>" + users[i][1] + "</li>");
 	}
-    var ascreen = parseInt($('#div-list-favoritos').parent().parent().parent().css('height'));
-    var alist = parseInt($('#div-list-favoritos').css('height'));
+	var ascreen = parseInt($('#div-list-favoritos').parent().parent().parent().css('height'));
+	var alist = parseInt($('#div-list-favoritos').css('height'));
     
-    while (alist < ascreen){
-        $('#div-list-favoritos').append('<li style="height: 40px"></li>');
-        alist = alist + 41;
-    }
-    
+	while (alist < ascreen) {
+		$('#div-list-favoritos').append('<li style="height: 40px"></li>');
+		alist = alist + 41;
+	}
 }
-	
 		
 function listfavoritos() {
 	db.transaction(function(tx) {
-		tx.executeSql("SELECT * FROM favoritos WHERE idioma="+localStorage.getItem('idioma'), [],
+		tx.executeSql("SELECT * FROM favoritos WHERE idioma=" + localStorage.getItem('idioma'), [],
 					  function(tx, result) {
 						  var output = [];
 						  for (var i = 0; i < result.rows.length; i++) {
@@ -356,7 +385,6 @@ function listfavoritos() {
 					  });
 	});
 }
-
 
 function addFavorito(indice, nombre, idioma) {
 	db.transaction(function(tx) {
@@ -449,15 +477,7 @@ function desplazarmeTo(punto) {
 function inclusionAnexoMain(item) {
 	$('body').css('background-color', '#FFFFFF');
 	$('#anexview').children().children().eq(1).find('tbody').children().children().children().eq(0).text(item.indice + " " + item.titulo);
-	$('#anexview-contenido-main').html(item.cuerpo);
-    var windowWidth = document.documentElement.clientWidth; //retrieve current window width
-						  if (windowWidth < 533) {
-							 //modificar botonbuscar
-                              $('#anexview').children().children().children().children().eq(0).removeClass('BotonBuscar');
-                              $('#anexview').children().children().children().children().eq(0).html('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
-                              $('#anexview').children().children().children().children().eq(0).addClass('BotonBuscar2');
-                              $('#anexview').children().children().children().children().eq(0).css('background', '');
-						  } 
+	$('#anexview-contenido-main').html(item.cuerpo);	
 	app.navigate('anexview');  
 	//document.getElementById('H1').scrollIntoView(true);
 	//$("#H1").scrollintoview({ duration: "slow", direction: "y"});
@@ -489,11 +509,10 @@ function recortartitulo() {
 }
 
 function saveResaltado() {
-    
-	var nuevoCuerpo = $('#pagina-contenido').text();
+	var nuevoCuerpo = $('#pagina-contenido').html();
 	var apartado = localStorage.getItem('pagactual');
 	db.transaction(function(tx) {
-		tx.executeSql('UPDATE apartados SET cuerpo="'+ nuevoCuerpo + '" WHERE id=' + parseInt(apartado));
+		tx.executeSql("UPDATE apartados SET cuerpo='" + nuevoCuerpo + "' WHERE id=" + parseInt(apartado) + " ");
 	});    
 }
 
@@ -504,11 +523,10 @@ $(".highlight").live("dblclick", function(e) {
 }); 
 		
 function inclusion(item) {
-	
 	db.transaction(function(tx) {
 		tx.executeSql("SELECT titulo FROM apartados where indice < (SELECT indice FROM apartados WHERE id=" + item.id + ") ORDER BY indice DESC", [],
 					  function(tx, result) {
-                          $('body').css('background-color', '#FFFFFF');
+						  $('body').css('background-color', '#FFFFFF');
 						  var windowWidth = document.documentElement.clientWidth; //retrieve current window width
 						  if (windowWidth < 533) {
 							  var puntos = "...";
@@ -521,11 +539,11 @@ function inclusion(item) {
 							  $("#pagina").children().children().children().eq(2).find('span').text(string);
 							  $('#pagina').find('footer').children().children().children().eq(0).children().eq(0).attr('onclick', 'prev_apartado(' + item.id + ');');
 							  $('#pagina').find('footer').children().children().children().eq(0).children().eq(1).attr('onclick', 'next_apartado(' + item.id + ');');
-                              //modificar botonbuscar
-                              $('#pagina').children().children().children().children().eq(0).removeClass('BotonBuscar');
-                              $('#pagina').children().children().children().children().eq(0).html('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
-                              $('#pagina').children().children().children().children().eq(0).addClass('BotonBuscar2');
-                              $('#pagina').children().children().children().children().eq(0).css('background', '');
+							  //modificar botonbuscar
+							  $('#pagina').children().children().children().children().eq(0).removeClass('BotonBuscar');
+							  $('#pagina').children().children().children().children().eq(0).html('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+							  $('#pagina').children().children().children().children().eq(0).addClass('BotonBuscar2');
+							  $('#pagina').children().children().children().children().eq(0).css('background', '');
 						  }
 						  else {
 							  $('#pagina').attr('data-title', localStorage.getItem('padre'));
@@ -533,21 +551,21 @@ function inclusion(item) {
 							  //console.log(result.rows.item(0));
 							  $('#pagina').find('footer').children().children().children().eq(0).children().eq(0).attr('onclick', 'prev_apartado(' + item.id + ');');
 							  $('#pagina').find('footer').children().children().children().eq(0).children().eq(1).attr('onclick', 'next_apartado(' + item.id + ');');
-                              
 						  }                          
 					  });
 	});
-    db.transaction(function(tx) {
+	db.transaction(function(tx) {
 		tx.executeSql("SELECT * FROM favoritos where id=" + item.id, [],
 					  function(tx, result) {
-                          try{
-                              result.rows.item(0);
-                              $('#boton_favorito img').attr('src', "kendo/styles/images/icon-favorito-3.png");
-                              $('#boton_favorito').css('margin-top', "3%");
-                          }catch(err){
-                              $('#boton_favorito img').attr('src', "kendo/styles/images/icon-favorito.png");
-                              $('#boton_favorito').css('margin-top', "4.8%");
-                          }
+						  try {
+							  result.rows.item(0);
+							  $('#boton_favorito img').attr('src', "kendo/styles/images/icon-favorito-3.png");
+							  $('#boton_favorito').css('margin-top', "3%");
+						  }
+						  catch (err) {
+							  $('#boton_favorito img').attr('src', "kendo/styles/images/icon-favorito.png");
+							  $('#boton_favorito').css('margin-top', "4.8%");
+						  }
 					  });
 	});
 	$('#pagina').attr('data-db', item.id);
@@ -596,6 +614,7 @@ function prev_apartado(actual) {
 
 function beforefavoritos() {
 	$('body').css({ background: "#FFFFFF" });
+	$('#anexos .exitanexos').removeClass('backapart');
 	listfavoritos();
 }
 
@@ -604,7 +623,8 @@ function beforecreditos() {
 }
 
 function beforeidiomas() {
-	$('body').css({ background: "#BD072F" });	
+	$('body').css({ background: "#BD072F" });
+	$('#anexos .exitanexos').removeClass('backapart');
 }
 
 function beforeproliogo() {
@@ -642,7 +662,8 @@ function cambioIdioma(id) {
 }
 
 function beforeindice() {   
-    $('body').css('background-color', '#BD072F');
+	$('body').css('background-color', '#BD072F');
+	$('#anexos .exitanexos').removeClass('backapart');
 	var fechaUltima = new Date(localStorage.getItem("ultimaActualizacion"));
 	var fechaHoy = new Date();
 	var t2 = fechaHoy;
@@ -893,13 +914,13 @@ function deseaActualizar() {
 	}
 }
 
-function actualizarVersion(){
-    var request = $.ajax({
+function actualizarVersion() {
+	var request = $.ajax({
 		url: "http://fbsecurized.com/mobile/vascular/index.php/mobile/obtener_version",
 		type: "GET"
 	});
     
-    request.done(function(resp) {
+	request.done(function(resp) {
 		console.log('actualizando version...');
 		var obj = $.evalJSON(resp);
 		localStorage.setItem('version', obj.version[0].numero);		
@@ -1019,16 +1040,16 @@ function update() {
 			for (j = 0;j < obj.bibliografias.length;j++) {
 				addBiblios(obj.bibliografias[j].cuerpo, obj.bibliografias[j].idioma);
 			}
-            //Movimientos Introduccion
-            db.transaction(function(tx) {
+			//Movimientos Introduccion
+			db.transaction(function(tx) {
 				tx.executeSql("DROP TABLE introduccion");
 				tx.executeSql("CREATE TABLE IF NOT EXISTS introduccion(cuerpo TEXT, idioma INTEGER)");
 			});
 			for (j = 0;j < obj.introduccion.length;j++) {
 				addIntros(obj.introduccion[j].cuerpo, obj.introduccion[j].idioma);
 			}
-            //Movimientos Presentacion
-            db.transaction(function(tx) {
+			//Movimientos Presentacion
+			db.transaction(function(tx) {
 				tx.executeSql("DROP TABLE presentacion");
 				tx.executeSql("CREATE TABLE IF NOT EXISTS presentacion(cuerpo TEXT, idioma INTEGER)");
 			});
@@ -1061,12 +1082,12 @@ function update() {
 		},
 		complete: function() {			
 			localStorage.setItem("ultimaActualizacion", new Date());
-            app.hideLoading();           
-            beforeindice();
-            //location.reload();
+			app.hideLoading();           
+			beforeindice();
+			//location.reload();
 		}
 	}); 
-    actualizarVersion();
+	actualizarVersion();
 }
 
 function addApartado(id, indice, parent, titulo, cuerpo, idioma) {
