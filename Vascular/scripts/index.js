@@ -314,6 +314,7 @@ $(".toanexos").live("click", function(e) {
 	$('#anexos .exitanexos').addClass('backapart');
 	$('#anexos .exitanexos').removeAttr('href');
 	$('#anexos .exitanexos').removeAttr("data-role", " ");
+    $('#anexos .exitanexos').css('display','block');
 });
 
 $(".backapart").live("click", function(e) {
@@ -323,8 +324,7 @@ $(".backapart").live("click", function(e) {
 
 $(".exitanexos").live("click", function(e) {
 	//$('#anexos .exitanexos').removeClass('backapart');
-	$('#anexos .exitanexos').attr("href", "#:back");
-	$('#anexos .exitanexos').attr("data-role", "backbutton");
+	$('#anexos .exitanexos').css('display','none');
 });
 
 function bckwhitepagina() {
@@ -477,7 +477,10 @@ function desplazarmeTo(punto) {
 function inclusionAnexoMain(item) {
 	$('body').css('background-color', '#FFFFFF');
 	$('#anexview').children().children().eq(1).find('tbody').children().children().children().eq(0).text(item.indice + " " + item.titulo);
-	$('#anexview-contenido-main').html(item.cuerpo);	
+	$('#anexview-contenido-main').html(item.cuerpo);
+    $('#anexview').find('footer').children().children().children().eq(0).children().eq(0).attr('onclick', 'prev_anexo(' + item.id + ');');
+	$('#anexview').find('footer').children().children().children().eq(0).children().eq(1).attr('onclick', 'next_anexo(' + item.id + ');');						                           
+	
 	app.navigate('anexview');  
 	//document.getElementById('H1').scrollIntoView(true);
 	//$("#H1").scrollintoview({ duration: "slow", direction: "y"});
@@ -596,6 +599,27 @@ function next_apartado(actual) {
 					  });
 	});      
 }
+
+function next_anexo(actual) {
+	var idio = localStorage.getItem('idioma');
+	db.transaction(function(tx) {
+		tx.executeSql("SELECT * FROM anexos WHERE indice > (SELECT indice FROM anexos WHERE id=" + actual + " and idioma=" + idio + ") and idioma == " + idio + " LIMIT 1", [],
+					  function(tx, result) {
+						  try {
+							  if (result.rows.item(0)['cuerpo'] == null) {
+								  next_anexo(result.rows.item(0)['id']);
+								  // app.navigate('#pagina');
+							  }
+							  else {
+								  inclusionAnexoMain(result.rows.item(0));
+							  } 
+						  }
+						  catch (err) {
+							  app.navigate('#anexos');
+						  }
+					  });
+	});      
+}
 			
 function prev_apartado(actual) {
 	var idio = localStorage.getItem('idioma');
@@ -612,9 +636,25 @@ function prev_apartado(actual) {
 	});     
 }
 
+function prev_anexo(actual) {
+	var idio = localStorage.getItem('idioma');
+	db.transaction(function(tx) {
+		tx.executeSql("SELECT * FROM anexos WHERE indice < (SELECT indice FROM anexos WHERE id=" + actual + " and idioma=" + idio + ") and idioma == " + idio + " and cuerpo != ' ' ", [],
+					  function(tx, result) {
+						  try {
+							  inclusionAnexoMain(result.rows.item(--result.rows.length));
+						  }
+						  catch (err) {
+							  app.navigate('#anexos');
+						  }
+					  });
+	});     
+}
+
+
 function beforefavoritos() {
 	$('body').css({ background: "#FFFFFF" });
-	$('#anexos .exitanexos').removeClass('backapart');
+	$('#anexos .exitanexos').css('display','none');
 	listfavoritos();
 }
 
@@ -624,7 +664,7 @@ function beforecreditos() {
 
 function beforeidiomas() {
 	$('body').css({ background: "#BD072F" });
-	$('#anexos .exitanexos').removeClass('backapart');
+	$('#anexos .exitanexos').css('display','none');
 }
 
 function beforeproliogo() {
@@ -663,7 +703,7 @@ function cambioIdioma(id) {
 
 function beforeindice() {   
 	$('body').css('background-color', '#BD072F');
-	$('#anexos .exitanexos').removeClass('backapart');
+	$('#anexos .exitanexos').css('display','none');
 	var fechaUltima = new Date(localStorage.getItem("ultimaActualizacion"));
 	var fechaHoy = new Date();
 	var t2 = fechaHoy;

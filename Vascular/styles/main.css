@@ -874,7 +874,7 @@ and (orientation: portrait)
 		width: 100%;
 		position: absolute;
 		z-index: -1;
-		top: 21em;
+		top: 22.2em;
         padding-left:2%;
         padding-right:2%;    
 	}
@@ -1522,6 +1522,7 @@ line-height: 1.4em;
 	-moz-user-select: text;
 	-webkit-user-select: text;
 	user-select: text;
+    overflow-x: hidden;
 }
 
 .km-android .km-view .km-content .km-listgroupinset .km-group-title .km-text

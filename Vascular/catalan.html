@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="overflow:hidden;">
 	<head>
 		<title>Vascular</title>
 		<meta charset="utf-8" />
@@ -15,7 +15,7 @@
 		<link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet"/>
 		<link href="styles/main.css" rel="stylesheet" />
 	</head>
-	<body style="display: none;">
+    <body style="display: none; overflow-x:hidden;">
 		<!-- INDICE  -->
 		<div data-role="view" id="indice" data-title="ÍNDEX" data-before-show="beforeindice" data-transition="fade">
             <header data-role="header">
@@ -69,27 +69,46 @@
 		</div>
 
 		<!-- IDIOMAS -->
-		<div data-role="view" id="idiomas" class="contenido" data-title="IDIOMES" data-before-show="beforeidiomas" data-transition="slide" style="overflow-y: hidden;">
+		<div data-role="view" id="idiomas" class="contenido" data-title="IDIOMES" data-before-show="beforeidiomas" data-transition="fade" style="overflow-y: hidden;">
 			<header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">
-						<a data-role="backbutton" data-align="left">ENRERE</a>
 					</span>
 				</div>
 			</header>
 			<div data-role="touch" id="list-idiomas">
 				<ul data-role="listview" data-style="inset">
 					<li onclick="cambioIdioma(1);" style="color: #db002f;">
-						<span>CATALAN</span><img src="kendo/styles/images/Boton-On.png">
+                        <span>CATALÀ</span><img src="kendo/styles/images/Boton-On.png">
 					</li>
 					<li onclick="cambioIdioma(2);">
-						<span>SPANISH</span><img src="kendo/styles/images/Boton-Off.png">
+						<span>CASTELLÀ</span><img src="kendo/styles/images/Boton-Off.png">
 					</li>
 					<li onclick="cambioIdioma(3);" >
-						<span>ENGLISH</span><img src="kendo/styles/images/Boton-Off.png">
+						<span>ANGLÈS</span><img src="kendo/styles/images/Boton-Off.png">
 					</li>
 				</ul>
 			</div>
+            <table id="backlogosindex" border="0">
+				<tbody style="text-align: left; vertical-align: bottom;">
+					<tr>
+						<td>
+							<span id="backlogosindex-text">Patrocinat per</span><br>
+						</td>
+						<td  colspan="1" rowspan="2">
+							<img id="backlogosindex-img2" src="styles/images/somazina.png" >
+						</td>
+						<td  style="width: 567.533px; text-align: right; vertical-align: bottom;" colspan="1" rowspan="2">
+							<img id="backlogosindex-img3" src="styles/images/logo_sociedad.png">
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 154.917px;">
+							<img id="backlogosindex-img1" src="styles/images/ferrer.png">
+						</td>
+					</tr>
+				</tbody>
+			</table>
             <footer data-role="footer">
 				<div data-role="tabstrip">
 					<a data-icon="" href="#indice">
@@ -331,7 +350,6 @@
 			<header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">
-						<a data-role="backbutton" id="btnatrasfvt" data-align="left">ENRERE</a>
 						<a data-role="button" data-click="btnEliminar" data-align="right" style="float:right;" id="dltbtnfv" >ELIMINAR</a>
 					</span>
 				</div>
@@ -366,7 +384,7 @@
 			<header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">
-						<a data-role="backbutton" data-align="left" class="exitanexos">ENRERE</a>
+						<a data-role="backbutton" data-align="left" class="exitanexos" style="display:none;">ENRERE</a>
 					</span>
 				</div>
 			</header>
@@ -375,6 +393,26 @@
 
 				</ul>
 			</div>
+            <table id="backlogosindex" border="0">
+				<tbody style="text-align: left; vertical-align: bottom;">
+					<tr>
+						<td>
+							<span id="backlogosindex-text">Patrocinat per</span><br>
+						</td>
+						<td  colspan="1" rowspan="2">
+							<img id="backlogosindex-img2" src="styles/images/somazina.png" >
+						</td>
+						<td  style="width: 567.533px; text-align: right; vertical-align: bottom;" colspan="1" rowspan="2">
+							<img id="backlogosindex-img3" src="styles/images/logo_sociedad.png">
+						</td>
+					</tr>
+					<tr>
+						<td style="width: 154.917px;">
+							<img id="backlogosindex-img1" src="styles/images/ferrer.png">
+						</td>
+					</tr>
+				</tbody>
+			</table>
             <footer data-role="footer">
 				<div data-role="tabstrip">
 					<a data-icon="" href="#indice">
@@ -401,7 +439,7 @@
 				</div>
 			</header>
 
-			<div data-role="content" style="text-align: center;">
+            <div data-role="content" style="text-align: center; overflow:scroll;">
 				<img id="img-tabla" src="" class="nozoomed" />
 			</div>
 		</div>
@@ -512,6 +550,14 @@
 			<div class="lectura" id="anexview-contenido-main" data-role="touch">
 
 			</div>
+            <footer data-role="footer">
+				<div data-role="navbar">
+					<span>
+						<button class="BotonPrev" onclick="prev_anexo();">&nbsp;</button>
+						<button class="BotonNext" onclick="next_anexo();">&nbsp;</button>
+					</span>
+				</div>
+			</footer>
 		</div>
 
 		<div data-role="modalview" id="modalview-list-anexos" data-init="ajustmodalviewlistanexos">
