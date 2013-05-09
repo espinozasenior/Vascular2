@@ -9,7 +9,9 @@ function onDeviceReady() {
 	var dbSize = 20 * 1024 * 1024; // 20MB  
 	var alturaV = getWindowHeight();
 	$('#tabstrip-home table').css({ height: alturaV});
-    	
+    if(localStorage.getItem('knowselect') == null){
+        localStorage.setItem('knowselect', 'false');
+    }	
 	db = openDatabase("vascular", "1.0", "Base de datos de apartados", dbSize);
 	db.transaction(function(tx) {
 		tx.executeSql("CREATE TABLE IF NOT EXISTS idiomas(id INTEGER PRIMARY KEY ASC , idioma TEXT, activo INTEGER)");

@@ -1924,7 +1924,7 @@ body:after
 }
 
 .BotonBuscar.km-button span{
-    
+    padding-right: 0;
 } 
 
 .BotonBuscar.km-button img{

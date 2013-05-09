@@ -13,7 +13,8 @@
 		<script type="text/javascript" src="scripts/jquery.treeview.js"></script>
 		<script type="text/javascript" src="scripts/jquery.json-2.4.js"></script>
 		<link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet"/>
-		<link href="styles/main.css" rel="stylesheet" />
+		<link href="styles/main.css" rel="stylesheet"/>
+        
 	</head>
     <body style="display: none; overflow-x:hidden;">
 		<!-- INDICE  -->
@@ -676,6 +677,10 @@
 					var BotonMarcador = gEBI("boton_marcador");
 					BotonMarcador.disabled = false;
 					BotonMarcador.ontouchstart = BotonMarcador.onmousedown = function() {
+                        if(localStorage.getItem('knowselect') == false){
+                            alert('Primer ha de seleccionar el text i després prémer el botó');
+                            localStorage.setItem('knowselect', 'true');
+                        }
 						toggleItalicYellowBg();
 						saveResaltado();
 						return false;

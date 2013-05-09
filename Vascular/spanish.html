@@ -14,6 +14,7 @@
 		<script type="text/javascript" src="scripts/jquery.json-2.4.js"></script>
 		<link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet"/>
 		<link href="styles/main.css" rel="stylesheet" />
+        <link type="text/css" rel="stylesheet" media="and (min-device-width: 1536px) and (max-device-width: 2048px) and (-webkit-min-device-pixel-ratio: 2)" href="styles/retina.css"/>
 	</head>
 	<body style="display: none;">
 		<!-- INDICE  -->
@@ -798,6 +799,10 @@
 					var BotonMarcador = gEBI("boton_marcador");
 					BotonMarcador.disabled = false;
 					BotonMarcador.ontouchstart = BotonMarcador.onmousedown = function() {
+                        if(localStorage.getItem('knowselect') == false){
+                            alert('Primero debe seleccionar el texto y luego presionar el botón');
+                            localStorage.setItem('knowselect', 'true');
+                        }
 						toggleItalicYellowBg();
 						saveResaltado();
 						return false;

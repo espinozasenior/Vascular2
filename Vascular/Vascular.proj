@@ -15,6 +15,8 @@
     <AndroidVersionCode>2</AndroidVersionCode>
     <iOSDisplayName>Vasculars</iOSDisplayName>
     <iOSDeviceFamily>1;2</iOSDeviceFamily>
+    <iOSBackgroundMode>
+    </iOSBackgroundMode>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="App_Resources" />
@@ -144,6 +146,7 @@
       <TargetName>cordova.js</TargetName>
     </Content>
     <Content Include="styles\main.css" />
+    <Content Include="styles\retina.css" />
     <Content Include="tablas\catalan\.nomedia" />
     <Content Include="tablas\catalan\A1C.png" />
     <Content Include="tablas\catalan\A2C.png" />
