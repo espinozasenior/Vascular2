@@ -647,7 +647,8 @@ function prev_anexo(actual) {
 
 
 function beforefavoritos() {
-	$('body').css({ background: "#FFFFFF" });
+    $('body').css({ background: "#FFFFFF" });
+    $('.exitanexos').css('visibility', 'hidden');
 	listfavoritos();
 }
 
@@ -656,7 +657,8 @@ function beforecreditos() {
 }
 
 function beforeidiomas() {
-	$('body').css({ background: "#BD072F" });
+    $('body').css({ background: "#BD072F" });
+    $('.exitanexos').css('visibility', 'hidden');
 }
 
 function beforeproliogo() {
@@ -695,6 +697,7 @@ function cambioIdioma(id) {
 
 function beforeindice() {   
 	$('body').css('background-color', '#BD072F');
+    $('.exitanexos').css('visibility', 'hidden');
 	var fechaUltima = new Date(localStorage.getItem("ultimaActualizacion"));
 	var fechaHoy = new Date();
 	var t2 = fechaHoy;

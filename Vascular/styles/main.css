@@ -1,19 +1,30 @@
 /* WEB  */
 @media only screen and (min-width: 1024px)
 {
-     #backlogosindex
+	.km-view
+	{ 
+		height: 100%;
+		width: 99%;
+		margin-bottom: 0.5%;
+		margin-left: 0.5%;
+		margin-top: 0.5%;
+		margin-right: 0.5% !important;
+		overflow-x: hidden;
+	}
+	#backlogosindex
 	{
 		width: 100%;
 		position: absolute;
-		top: 58em;
+		top: 130em;
 		z-index: -1;
-        padding-left: 2%;
-        padding-right: 2%;
+		padding-left: 2%;
+		padding-right: 2%;
 	}
-    .km-ios .km-view-title, .km-ios .km-dialog-title {
-                    margin-top: 3.5%;
-                }
-    #list-idiomas ul li img { float: right; width:4%;}
+	.km-ios .km-view-title, .km-ios .km-dialog-title
+	{
+		margin-top: 3.5%;
+	}
+	#list-idiomas ul li img { float: right; width: 4%; }
     
 	#backlogosindex-text
 	{
@@ -174,7 +185,6 @@
 	
 }
 
-
 /*----Ipadd----*/
 @media only screen
 and (min-width: 768px)
@@ -187,14 +197,15 @@ and (orientation: portrait)
 		position: absolute;
 		top: 58em;
 		z-index: -1;
-        padding-left: 2%;
-        padding-right: 2%;
+		padding-left: 2%;
+		padding-right: 2%;
 	}
-    .km-ios .km-view-title, .km-ios .km-dialog-title {
-                    margin-top: 1.5%;
-                }
+	.km-ios .km-view-title, .km-ios .km-dialog-title
+	{
+		margin-top: 1.5%;
+	}
     
-    #list-idiomas ul li img { float: right; width:4%;}
+	#list-idiomas ul li img { float: right; width: 4%; }
     
 	#backlogosindex-text
 	{
@@ -231,7 +242,7 @@ and (orientation: portrait)
 		float: left;
 		margin-right: 0.6em;
 		width: 27px;
-        margin-top: 5%;
+		margin-top: 5%;
 	}   
     
 	#modalview-list-anexos
@@ -305,7 +316,7 @@ and (orientation: portrait)
 
 	.into-tip
 	{
-        margin-top: 1%;
+		margin-top: 1%;
 		-webkit-border-radius: 7px 8px 8px 7px/8px;
 		-moz-border-radius: 7px 8px 8px 7px/8px;
 		border-radius: 7px 8px 8px 7px/8px;
@@ -331,12 +342,13 @@ and (orientation: portrait)
 		position: absolute;
 		top: 60em;
 		z-index: -1;
-        padding-left: 2%;
-        padding-right: 2%;
+		padding-left: 2%;
+		padding-right: 2%;
 	}
-    .km-ios .km-view-title, .km-ios .km-dialog-title {
-                    margin-top: 1.5%;
-                }
+	.km-ios .km-view-title, .km-ios .km-dialog-title
+	{
+		margin-top: 1.5%;
+	}
     
 	#backlogosindex-text
 	{
@@ -470,18 +482,19 @@ and (orientation: portrait)
 		top: 0;
 		left: 0.5%;
 	}
-        .km-ios .km-view-title, .km-ios .km-dialog-title {
-                    margin-top: 3.2%;
-                }
-    #list-idiomas ul li img { float: right; width:10%;}
+	.km-ios .km-view-title, .km-ios .km-dialog-title
+	{
+		margin-top: 3.2%;
+	}
+	#list-idiomas ul li img { float: right; width: 10%; }
 	#backlogosindex
 	{
 		width: 100%;
 		position: absolute;
 		top: 23em;
 		z-index: -1;
-        padding-left: 2%;
-        padding-right: 2%;    
+		padding-left: 2%;
+		padding-right: 2%; 
 	}
     
 	#backlogosindex-text
@@ -607,7 +620,7 @@ and (orientation: portrait)
 		left: 0.5%;
 	}
     
-    #list-idiomas ul li img { float: right; width:10%;}
+	#list-idiomas ul li img { float: right; width: 10%; }
     
 	#modalview-anexos
 	{
@@ -620,8 +633,8 @@ and (orientation: portrait)
 		position: absolute;
 		z-index: -1;
 		top: 27em;
-        padding-left: 2%;
-        padding-right: 2%;
+		padding-left: 2%;
+		padding-right: 2%;
 	}
     
 	#backlogosindex-text
@@ -722,18 +735,19 @@ and (orientation: portrait)
 		top: 0;
 		left: 0.5%;
 	}
-        .km-ios .km-view-title, .km-ios .km-dialog-title {
-                    margin-top: 3.2%;
-                }
-    #list-idiomas ul li img { float: right; width:10%;}
+	.km-ios .km-view-title, .km-ios .km-dialog-title
+	{
+		margin-top: 3.2%;
+	}
+	#list-idiomas ul li img { float: right; width: 10%; }
 	#backlogosindex
 	{
 		width: 100%;
 		position: absolute;
 		z-index: -1;
 		top: 22.2em;
-        padding-left:2%;
-        padding-right:2%;    
+		padding-left: 2%;
+		padding-right: 2%; 
 	}
     
 	#backlogosindex-text
@@ -911,8 +925,9 @@ b
 	font-weight: bold;
 }
 
-.lectura > a{
-    text-decoration: none;
+.lectura > a
+{
+	text-decoration: none;
 }
 
 .nozoomed
@@ -926,23 +941,23 @@ b
 	font-weight: bold;
 }
 
-.buscar-content-anexo{
-    -webkit-border-radius: 8px 7px 0 0/8px 8px 0 0;
+.buscar-content-anexo
+{
+	-webkit-border-radius: 8px 7px 0 0/8px 8px 0 0;
 	-moz-border-radius: 8px 7px 0 0/8px 8px 0 0;
 	border-radius: 8px 7px 0 0/8px 8px 0 0;
 	background-color: #fffcfc;
-	-webkit-box-shadow: inset 0 2px 3px rgba(0,0,0,.38);
-	-moz-box-shadow: inset 0 2px 3px rgba(0,0,0,.38);
-	box-shadow: inset 0 2px 3px rgba(0,0,0,.38);
+	-webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, .38);
+	-moz-box-shadow: inset 0 2px 3px rgba(0, 0, 0, .38);
+	box-shadow: inset 0 2px 3px rgba(0, 0, 0, .38);
 	background-image: -webkit-linear-gradient(bottom, #a8acb9, #f2f3f5);
 	background-image: -moz-linear-gradient(bottom, #a8acb9, #f2f3f5);
 	background-image: -o-linear-gradient(bottom, #a8acb9, #f2f3f5);
 	background-image: -ms-linear-gradient(bottom, #a8acb9, #f2f3f5);
 	background-image: linear-gradient(to top, #a8acb9, #f2f3f5);
-    margin-left: 2%;
-    margin-right: 2%;
+	margin-left: 2%;
+	margin-right: 2%;
 }
-
 
 .buscar-content
 {
@@ -1001,7 +1016,7 @@ b
 	content: url('images/no-selected.png');
 	padding-right: 1.5%;
 	padding-top: 0.5%;
-    vertical-align: middle;
+	vertical-align: middle;
 }
         
 .eliminables-selected:before
@@ -1037,7 +1052,7 @@ b
 #div-list-favoritos > li
 {
 	border-bottom: 1px solid silver;
-    background-color: #FFFFFF;
+	background-color: #FFFFFF;
 }
 
 #list-popup
@@ -1097,16 +1112,19 @@ b
 	background-color: yellow;
 }
 
-#list-anexoss ul{
-    border: 0;
+#list-anexoss ul
+{
+	border: 0;
 }
 
-#list-anexoss ul li{
-    border-top: 0;
+#list-anexoss ul li
+{
+	border-top: 0;
 }
 
-#list-anexoss h4{
-    max-width: 90%;
+#list-anexoss h4
+{
+	max-width: 90%;
 }
 
 #tools
@@ -1368,7 +1386,7 @@ b
 	background-color: rgb(255, 255, 255);
 	font-family: Helvetica;
 	font-size: 1.2em;
-line-height: 1.4em;
+	line-height: 1.4em;
 	font-stretch: condensed;
 	color: black;
 	margin-right: 5%;
@@ -1379,7 +1397,7 @@ line-height: 1.4em;
 	-moz-user-select: text;
 	-webkit-user-select: text;
 	user-select: text;
-    overflow-x: hidden;
+	overflow-x: hidden;
 }
 
 .km-android .km-view .km-content .km-listgroupinset .km-group-title .km-text
