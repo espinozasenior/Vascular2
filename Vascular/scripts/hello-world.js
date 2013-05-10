@@ -6,8 +6,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
 // PhoneGap is ready
 function onDeviceReady() {
     navigator.splashscreen.hide();
-	var dbSize = 20 * 1024 * 1024; // 20MB  
-	var alturaV = getWindowHeight();
+	var dbSize = 20 * 1024 * 1024; // 20MB 
+    
+	var alturaV = getWindowHeight() - (getWindowHeight() * 0.02);
 	$('#tabstrip-home table').css({ height: alturaV});
     if(localStorage.getItem('knowselect') == null){
         localStorage.setItem('knowselect', 'false');

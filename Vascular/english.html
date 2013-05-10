@@ -384,7 +384,7 @@
 			<header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">
-						<a data-role="backbutton" data-align="left" class="exitanexos" style="display:none;">BACK</a>
+						<a data-role="backbutton" data-align="left" class="exitanexos" style="visibility: hidden;">BACK</a>
 					</span>
 				</div>
 			</header>
@@ -452,7 +452,7 @@
 					<span data-role="view-title">
 						<a data-role="backbutton" href="#indice" data-align="left">BACK</a>
 						<button data-align="right" class="BotonBuscar km-button" style="background: transparent;"><img src="kendo/styles/images/iconoLupa.png"><span>Search...</span></button>
-						<a data-role="button" href="#anexos" data-align="right" class="toanexos">ANNEXES</a>
+						<button data-align="right" class="toanexos km-button" style="font-weight: bold;font-size: 1em;"><span class="km-text">ANNEXES</span></button>
 					</span>
 				</div>
 
@@ -522,9 +522,9 @@
 								</td>
 								<td width="50%">
 									<div id="tools" >
-										<!-- <div id="boton_marcador">
-										<img src="kendo/styles/images/icon-marcador.png" class="BotonMarcador">
-										</div> -->
+										<div id="boton_marcador2">
+											<img src="kendo/styles/images/icon-marcador.png" class="BotonMarcador">
+										</div> 
 										<ul data-role="buttongroup" data-index="0" class="km-buttongroup" style="margin-top: 7px;">
 											<li style="font-size: 0.8em; float: left;" data-role="button" data-click="aumentarText" class="km-button">
 												<span class="km-text">+Aa</span>
@@ -674,12 +674,24 @@
 					var BotonMarcador = gEBI("boton_marcador");
 					BotonMarcador.disabled = false;
 					BotonMarcador.ontouchstart = BotonMarcador.onmousedown = function() {
-                        if(localStorage.getItem('knowselect') == false){
+                        if(localStorage.getItem('knowselect') == 'false'){
                             alert('First select the text and then press the button');
                             localStorage.setItem('knowselect', 'true');
                         }
 						toggleItalicYellowBg();
 						saveResaltado();
+						return false;
+					};
+                    
+                    var BotonMarcador2 = gEBI("boton_marcador");
+					BotonMarcador2.disabled = false;
+					BotonMarcador2.ontouchstart = BotonMarcador2.onmousedown = function() {
+                        if(localStorage.getItem('knowselect') == 'false'){
+                            alert('First select the text and then press the button');
+                            localStorage.setItem('knowselect', 'true');
+                        }
+						toggleItalicYellowBg();
+						saveResaltado2();
 						return false;
 					};
 				}
