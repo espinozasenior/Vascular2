@@ -65,6 +65,8 @@
     <Content Include="catalan.html" />
     <Content Include="english.html" />
     <Content Include="kendo\jquery.min.js" />
+    <Content Include="kendo\styles\images\plus.png" />
+    <Content Include="kendo\styles\images\minus.png" />
     <Content Include="kendo\styles\images\.nomedia" />
     <Content Include="kendo\styles\images\Boton-Off.png" />
     <Content Include="kendo\styles\images\Boton-On.png" />
@@ -104,9 +106,8 @@
     <Content Include="kendo\styles\images\icon-marcador.png" />
     <Content Include="kendo\styles\images\icono-marcador.png" />
     <Content Include="kendo\styles\images\icono-mas.png" />
+    <Content Include="kendo\styles\images\iconoLupa-2.png" />
     <Content Include="kendo\styles\images\iconoLupa.png" />
-    <Content Include="kendo\styles\images\minus.png" />
-    <Content Include="kendo\styles\images\plus.png" />
     <Content Include="kendo\styles\images\tag.png" />
     <Content Include="scripts\index.js" />
     <Content Include="spanish.html" />
@@ -146,7 +147,6 @@
       <TargetName>cordova.js</TargetName>
     </Content>
     <Content Include="styles\main.css" />
-    <Content Include="styles\retina.css" />
     <Content Include="tablas\catalan\.nomedia" />
     <Content Include="tablas\catalan\A1C.png" />
     <Content Include="tablas\catalan\A2C.png" />

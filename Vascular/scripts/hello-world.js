@@ -10,9 +10,6 @@ function onDeviceReady() {
     
 	var alturaV = getWindowHeight() - (getWindowHeight() * 0.02);
 	$('#tabstrip-home table').css({ height: alturaV});
-    if(localStorage.getItem('knowselect') == null){
-        localStorage.setItem('knowselect', 'false');
-    }	
 	db = openDatabase("vascular", "1.0", "Base de datos de apartados", dbSize);
 	db.transaction(function(tx) {
 		tx.executeSql("CREATE TABLE IF NOT EXISTS idiomas(id INTEGER PRIMARY KEY ASC , idioma TEXT, activo INTEGER)");
@@ -20,7 +17,7 @@ function onDeviceReady() {
 		tx.executeSql("CREATE TABLE IF NOT EXISTS indice(idioma INTEGER, ind TEXT)");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS indiceanexos(idioma INTEGER, ind TEXT)");
         tx.executeSql("CREATE TABLE IF NOT EXISTS indiceanexosmain(idioma INTEGER, ind TEXT)");
-		tx.executeSql("CREATE TABLE IF NOT EXISTS favoritos(id INTEGER , nombre TEXT, idioma INTEGER)");
+		tx.executeSql("CREATE TABLE IF NOT EXISTS favoritos(id INTEGER , indice TEXT, nombre TEXT, idioma INTEGER)");
 		tx.executeSql("CREATE TABLE IF NOT EXISTS bibliografias(cuerpo TEXT, idioma INTEGER)");
         tx.executeSql("CREATE TABLE IF NOT EXISTS presentacion(cuerpo TEXT, idioma INTEGER)");
         tx.executeSql("CREATE TABLE IF NOT EXISTS introduccion(cuerpo TEXT, idioma INTEGER)");
@@ -134,7 +131,7 @@ function update() {
 			//Movimientos favoritos
 			db.transaction(function(tx) {
 				tx.executeSql("DROP TABLE favoritos");
-				tx.executeSql("CREATE TABLE IF NOT EXISTS favoritos(id INTEGER PRIMARY KEY, nombre TEXT)");
+				tx.executeSql("CREATE TABLE IF NOT EXISTS favoritos(id INTEGER , indice TEXT, nombre TEXT, idioma INTEGER)");
 			});
 			
 			//Movimientos tablas
@@ -323,22 +320,22 @@ function startConfirm(idioma) {
 function loadIndex(idioma) {    
 	switch (parseInt(idioma)) {
 		case 1:
-			$('#tabstrip-home table').children().children().eq(0).children().html('<h3 style="color:#FFF;"><b> Guia oficial de diagnòstic i<br>tractament de les malalties <br>vasculars cerebrals de la <br>Societat Catalana de <br>Neurologia</b></h3>');
-			$('#tabstrip-home table').children().children().eq(1).children().eq(0).html('<h4 style="color:#FFF;">1ª edició interactiva</h4>');
+			$('#tabstrip-home table').children().children().eq(0).children().html('<h3 style="color:#FFF;margin-bottom: 0;"><b> Guia oficial de diagnòstic i<br>tractament de les malalties <br>vasculars cerebrals de la <br>Societat Catalana de <br>Neurologia</b></h3>');
+			$('#tabstrip-home table').children().children().eq(1).children().eq(0).html('<h4 style="color:#FFF;margin-top: 0;">1ª edició interactiva</h4>');
 			$('#tabstrip-home table').children().children().eq(3).children().children().eq(1).html('Patrocinat per');
 			app.navigate('#tabstrip-home');
 			startConfirm(idioma);
 			break;
 		case 2:
-			$('#tabstrip-home table').children().children().eq(0).children().html('<h3 style="color:#FFF;"><b> Guía oficial de diagnóstico<br>y tratamiento de las <br>enfermedades cerebrales <br>vasculares de la Sociedad <br>Catalana de Neurología </b></h3>');
-			$('#tabstrip-home table').children().children().eq(1).children().eq(0).html('<h4 style="color:#FFF;">1ª Edición interactiva</h4>');
+			$('#tabstrip-home table').children().children().eq(0).children().html('<h3 style="color:#FFF;margin-bottom: 0;"><b> Guía oficial de diagnóstico<br>y tratamiento de las <br>enfermedades cerebrales <br>vasculares de la Sociedad <br>Catalana de Neurología </b></h3>');
+			$('#tabstrip-home table').children().children().eq(1).children().eq(0).html('<h4 style="color:#FFF;margin-top: 0;">1ª Edición interactiva</h4>');
 			$('#tabstrip-home table').children().children().eq(3).children().children().eq(1).html('Patrocinado por');
 			app.navigate('#tabstrip-home');
 			startConfirm(idioma);
 			break;
 		case 3:
-			$('#tabstrip-home table').children().children().eq(0).children().html('<h3 style="color:#FFF;"><b> Oficial Guide to diagnosis<br>and treatment of cerebral <br>vascular diseases of the <br>Catalan society of <br>Neurology </b></h3>');
-			$('#tabstrip-home table').children().children().eq(1).children().eq(0).html('<h4 style="color:#FFF;">1ª Edition interactive</h4>');
+			$('#tabstrip-home table').children().children().eq(0).children().html('<h3 style="color:#FFF;margin-bottom: 0;"><b> Oficial Guide to diagnosis<br>and treatment of cerebral <br>vascular diseases of the <br>Catalan society of <br>Neurology </b></h3>');
+			$('#tabstrip-home table').children().children().eq(1).children().eq(0).html('<h4 style="color:#FFF;margin-top: 0;">1ª Edition interactive</h4>');
 			$('#tabstrip-home table').children().children().eq(3).children().children().eq(1).html('Sponsored by');
 			app.navigate('#tabstrip-home');
 			startConfirm(idioma);

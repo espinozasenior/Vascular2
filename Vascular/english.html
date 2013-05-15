@@ -14,7 +14,6 @@
 		<script type="text/javascript" src="scripts/jquery.json-2.4.js"></script>
 		<link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet"/>
 		<link href="styles/main.css" rel="stylesheet" />
-        <link type="text/css" rel="stylesheet" media="and (min-device-width: 1536px) and (max-device-width: 2048px) and (-webkit-min-device-pixel-ratio: 2)" href="styles/retina.css"/>
 	</head>
 	<body style="display: none;">
 		<!-- INDICE  -->
@@ -350,7 +349,7 @@
 			<header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">
-						<a data-role="button" data-click="btnEliminar" data-align="right" style="float:right;" id="dltbtnfv" >DELETE</a>
+                        <button onclick="btnEliminar()" class="km-button" data-align="right" id="dltbtnfv" style=""><span class="km-text">DELETE</span></button>
 					</span>
 				</div>
 			</header>
@@ -384,7 +383,7 @@
 			<header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">
-						<a data-role="backbutton" data-align="left" class="exitanexos" style="visibility: hidden;">BACK</a>
+						<button data-align="left" class="exitanexos km-button km-back" style="visibility: hidden;font-size:1em;"><span class="km-text">BACK</span></button>
 					</span>
 				</div>
 			</header>
@@ -497,8 +496,8 @@
 			<footer data-role="footer">
 				<div data-role="navbar">
 					<span>
-						<button class="BotonPrev" onclick="prev_apartado();">&nbsp;</button>
-						<button class="BotonNext" onclick="prev_apartado();">&nbsp;</button>
+						<button class="BotonPrev" onclick="prev_apartado();">&nbsp;</button><span class="km-text TextPrev" style="float:left;"></span>
+						<button class="BotonNext" onclick="prev_apartado();">&nbsp;</button><span class="km-text TextNext" style="float:right;"></span>
 					</span>
 				</div>
 			</footer>
@@ -674,9 +673,8 @@
 					var BotonMarcador = gEBI("boton_marcador");
 					BotonMarcador.disabled = false;
 					BotonMarcador.ontouchstart = BotonMarcador.onmousedown = function() {
-                        if(localStorage.getItem('knowselect') == 'false'){
+                        if(getSelText() == false){
                             alert('First select the text and then press the button');
-                            localStorage.setItem('knowselect', 'true');
                         }
 						toggleItalicYellowBg();
 						saveResaltado();
@@ -686,12 +684,14 @@
                     var BotonMarcador2 = gEBI("boton_marcador");
 					BotonMarcador2.disabled = false;
 					BotonMarcador2.ontouchstart = BotonMarcador2.onmousedown = function() {
-                        if(localStorage.getItem('knowselect') == 'false'){
+                        if(getSelText() == false){
                             alert('First select the text and then press the button');
-                            localStorage.setItem('knowselect', 'true');
-                        }
-						toggleItalicYellowBg();
-						saveResaltado2();
+                            toggleItalicYellowBg();
+						    saveResaltado2();
+                        }else{
+                            toggleItalicYellowBg();
+						    saveResaltado2();
+                        }						
 						return false;
 					};
 				}
@@ -732,18 +732,18 @@
 					                     
 			function btnEliminar() {
 				if ($("#dltbtnfv").hasClass("ocupado")) {
-					$("#dltbtnfv").css({ background: "#EC0C3C" });
+                    $("#dltbtnfv").css({border: "solid 1px #38000c", background: "-webkit-linear-gradient(bottom, #920221, #db002f 13%, #fd2a57 51%, #fd2352 90%, #fcc3cf)"});
 					$("#dltbtnfv span").html("DELETE");
 					$("#dltbtnfv").removeClass("ocupado");
+                    $("#dltbtnfv").addClass("normal");
 					$("#rectangulo-eliminar").css("display", "none");
 					/* $("#div-list-favoritos > li").removeClass("eliminables");  */
-					$("#btnatrasfvt").css("display", "block");
 					listfavoritos();
 				}
 				else {
-					$("#btnatrasfvt").css("display", "none");
-					$("#dltbtnfv").css({ background: "#570618" });
+					$("#dltbtnfv").css({ border: "solid 1px #38000c", background: "-webkit-linear-gradient(bottom, #a70f2f, #a70f2f 13%, #A70F2F 51%, #a70f2f 90%, #a70f2f)" });
 					$("#dltbtnfv span").html("CANCEL");
+                    $("#dltbtnfv").removeClass("normal");
 					$("#dltbtnfv").addClass("ocupado");
 					//$("#div-list-favoritos > li").addClass("eliminables");
 					$('#div-list-favoritos li').each(function () {

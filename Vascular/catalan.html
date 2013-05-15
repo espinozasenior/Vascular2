@@ -54,16 +54,16 @@
             <footer data-role="footer">
 				<div data-role="tabstrip">
 					<a data-icon="" href="#indice">
-						<img id="tab-ind" src="kendo/styles/images/icon-index1b.png" style="width: 60%;">
+						<img id="tab-ind" src="kendo/styles/images/icon-index1b.png" >
 					</a>
 					<a data-icon="" href="#favoritos">
-						<img id="tab-fav" src="kendo/styles/images/icon-favorito-1.png" style="width: 60%;">
+						<img id="tab-fav" src="kendo/styles/images/icon-favorito-1.png" >
 					</a>
 					<a data-icon="" href="#anexos">
-						<img id="tab-anex" src="kendo/styles/images/icon-annex-1.png" style="width: 60%;">
+						<img id="tab-anex" src="kendo/styles/images/icon-annex-1.png" >
 					</a>
 					<a data-icon="" href="#idiomas">
-						<img id="tab-lang" src="kendo/styles/images/icon-idiomes-1.png" style="width: 60%;">
+						<img id="tab-lang" src="kendo/styles/images/icon-idiomes-1.png" >
 					</a>
 				</div>
 			</footer>
@@ -351,7 +351,7 @@
 			<header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">
-						<a data-role="button" data-click="btnEliminar" data-align="right" style="float:right;" id="dltbtnfv" >ELIMINAR</a>
+						<button onclick="btnEliminar()" class="km-button" data-align="right" id="dltbtnfv" style=""><span class="km-text">ELIMINAR</span></button>
 					</span>
 				</div>
 			</header>
@@ -385,7 +385,7 @@
 			<header data-role="header">
 				<div data-role="navbar">
 					<span data-role="view-title">
-						<a data-role="backbutton" data-align="left" class="exitanexos" style="visibility: hidden;">ENRERE</a>
+						<button data-align="left" class="exitanexos km-button km-back" style="visibility: hidden;font-size:1em;"><span class="km-text">ENRERE</span></button>
 					</span>
 				</div>
 			</header>
@@ -499,8 +499,8 @@
 			<footer data-role="footer">
 				<div data-role="navbar">
 					<span>
-						<button class="BotonPrev" onclick="prev_apartado();">&nbsp;</button>
-						<button class="BotonNext" onclick="prev_apartado();">&nbsp;</button>
+						<button class="BotonPrev" onclick="prev_apartado();">&nbsp;</button><span class="km-text TextPrev" style="float:left;"></span>
+						<button class="BotonNext" onclick="prev_apartado();">&nbsp;</button><span class="km-text TextNext" style="float:right;"></span>
 					</span>
 				</div>
 			</footer>
@@ -676,23 +676,27 @@
 					var BotonMarcador = gEBI("boton_marcador");
 					BotonMarcador.disabled = false;
 					BotonMarcador.ontouchstart = BotonMarcador.onmousedown = function() {
-                        if(localStorage.getItem('knowselect') == 'false'){
+                        if(getSelText() == false){
                             alert('Primer ha de seleccionar el text i després prémer el botó');
-                            localStorage.setItem('knowselect', 'true');
+                            toggleItalicYellowBg();
+                            saveResaltado();
+                        }else{
+                            toggleItalicYellowBg();
+                            saveResaltado();
                         }
-						toggleItalicYellowBg();
-						saveResaltado();
 						return false;
 					};
                     var BotonMarcador2 = gEBI("boton_marcador2");
 					BotonMarcador2.disabled = false;
 					BotonMarcador2.ontouchstart = BotonMarcador2.onmousedown = function() {
-                        if(localStorage.getItem('knowselect') == 'false'){
+                        if(getSelText() == false){
                             alert('Primer ha de seleccionar el text i després prémer el botó');
-                            localStorage.setItem('knowselect', 'true');
-                        }
-						toggleItalicYellowBg();
-                        saveResaltado2();
+                            toggleItalicYellowBg();
+                            saveResaltado2();
+                        }else{
+                            toggleItalicYellowBg();
+                            saveResaltado2();
+                        }						
 						return false;
 					};
 				}
@@ -734,18 +738,18 @@
           					                     
 			function btnEliminar() {
 				if ($("#dltbtnfv").hasClass("ocupado")) {
-					$("#dltbtnfv").css({ background: "#EC0C3C" });
+                    $("#dltbtnfv").css({border: "solid 1px #38000c", background: "-webkit-linear-gradient(bottom, #920221, #db002f 13%, #fd2a57 51%, #fd2352 90%, #fcc3cf)"});
 					$("#dltbtnfv span").html("ELIMINAR");
 					$("#dltbtnfv").removeClass("ocupado");
+                    $("#dltbtnfv").addClass("normal");
 					$("#rectangulo-eliminar").css("display", "none");
 					/* $("#div-list-favoritos > li").removeClass("eliminables");  */
-					$("#btnatrasfvt").css("display", "block");
 					listfavoritos();
 				}
 				else {
-					$("#btnatrasfvt").css("display", "none");
-					$("#dltbtnfv").css({ background: "#570618" });
+					$("#dltbtnfv").css({ border: "solid 1px #38000c", background: "-webkit-linear-gradient(bottom, #a70f2f, #a70f2f 13%, #A70F2F 51%, #a70f2f 90%, #a70f2f)" });
 					$("#dltbtnfv span").html("CANCELAR");
+                    $("#dltbtnfv").removeClass("normal");
 					$("#dltbtnfv").addClass("ocupado");
 					//$("#div-list-favoritos > li").addClass("eliminables");
 					$('#div-list-favoritos li').each(function () {
@@ -770,7 +774,7 @@
 					db.transaction(function(tx) {
 						tx.executeSql("SELECT * FROM apartados where id=" + parseInt(localStorage.getItem('pagactual')), [],
 									  function(tx, result) {
-										  addFavorito(result.rows.item(0)['id'], result.rows.item(0)['titulo'], localStorage.getItem('idioma'));
+										  addFavorito(result.rows.item(0)['id'], result.rows.item(0)['indice'], result.rows.item(0)['titulo'], localStorage.getItem('idioma'));
 									  });
 					});
 				}

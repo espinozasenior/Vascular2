@@ -1,5 +1,5 @@
 /* WEB  */
-@media only screen and (min-width: 1024px)
+@media only screen and (min-width: 1224px) and (-webkit-min-device-pixel-ratio: 2)
 {
 	.km-view
 	{ 
@@ -24,7 +24,7 @@
 	{
 		margin-top: 3.5%;
 	}
-	#list-idiomas ul li img { float: right; width: 4%; }
+	#list-idiomas ul li img { float: right; width: 2%; }
     
 	#backlogosindex-text
 	{
@@ -214,7 +214,7 @@ and (orientation: portrait)
 	}
 	#backlogosindex-img2
 	{
-		width: 10em;
+		
 	}
 	#backlogosindex-img3
 	{
@@ -222,7 +222,7 @@ and (orientation: portrait)
 	}
 	#backlogosindex-img1
 	{
-		width: 8em;
+		
 	}
     
 	#tabstrip-home
@@ -614,6 +614,14 @@ and (orientation: portrait)
 /*----iPhone5----*/
 @media only screen and (min-device-width: 640px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2)
 {
+    #portadaferrer{
+        width: 5em;
+    }
+    
+    #portadasomazina{
+        width: 8em;
+    }
+    
 	.km-view
 	{
 		top: 0;
@@ -730,7 +738,18 @@ and (orientation: portrait)
 /*--- Iphone4---*/
 @media only screen and (max-height: 480px)
 {
-	.km-view
+    #tab-ind, #tab-fav{
+        width: 35px;
+    }
+    
+	#portadaferrer{
+        width: 5em;
+    }
+    
+    #portadasomazina{
+        width: 8em;
+    }
+    .km-view
 	{
 		top: 0;
 		left: 0.5%;
@@ -745,7 +764,7 @@ and (orientation: portrait)
 		width: 100%;
 		position: absolute;
 		z-index: -1;
-		top: 22.2em;
+		top: 22em;
 		padding-left: 2%;
 		padding-right: 2%; 
 	}
@@ -1087,6 +1106,7 @@ b
 	border-radius: 5px;
 	list-style: none;
 	padding: 0px;
+    padding-top: 4%;
 }
 #list-idiomas ul li { padding: 10px 15px; border-top: 1px solid #adadad; }
 #list-idiomas ul li:hover { background: #eee; }

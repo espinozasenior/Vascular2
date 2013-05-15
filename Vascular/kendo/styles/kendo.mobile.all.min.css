@@ -27,6 +27,38 @@
 	outline: 0
 }
 
+.normal{
+    -webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #81858b;
+	-webkit-box-shadow: 0 1px 1px rgba(255,255,255,.5), inset 0 2px 2px rgba(9,0,2,.21);
+	-moz-box-shadow: 0 1px 1px rgba(255,255,255,.5), inset 0 2px 2px rgba(9,0,2,.21);
+	box-shadow: 0 1px 1px rgba(255,255,255,.5), inset 0 2px 2px rgba(9,0,2,.21);
+	border: solid 1px #38000c;
+	background-image: -webkit-linear-gradient(bottom, #920221, #db002f 13%, #fd2a57 51%, #fd2352 90%, #fcc3cf);
+	background-image: -moz-linear-gradient(bottom, #920221, #db002f 13%, #fd2a57 51%, #fd2352 90%, #fcc3cf);
+	background-image: -o-linear-gradient(bottom, #920221, #db002f 13%, #fd2a57 51%, #fd2352 90%, #fcc3cf);
+	background-image: -ms-linear-gradient(bottom, #920221, #db002f 13%, #fd2a57 51%, #fd2352 90%, #fcc3cf);
+	background-image: linear-gradient(to top, #920221, #db002f 13%, #fd2a57 51%, #fd2352 90%, #fcc3cf);
+}
+
+.ocupado{
+    -webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #a70f2f;
+	-webkit-box-shadow: 0 1px 1px rgba(255,255,255,.5), inset 0 2px 2px rgba(9,0,2,.21);
+	-moz-box-shadow: 0 1px 1px rgba(255,255,255,.5), inset 0 2px 2px rgba(9,0,2,.21);
+	box-shadow: 0 1px 1px rgba(255,255,255,.5), inset 0 2px 2px rgba(9,0,2,.21);
+	border: solid 1px #38000c;
+	background-image: -webkit-linear-gradient(bottom, #a70f2f, #a70f2f 13%, #A70F2F 51%, #a70f2f 90%, #a70f2f);
+	background-image: -moz-linear-gradient(bottom, #a70f2f, #a70f2f 13%, #A70F2F 51%, #a70f2f 90%, #a70f2f);
+	background-image: -o-linear-gradient(bottom, #a70f2f, #a70f2f 13%, #A70F2F 51%, #a70f2f 90%, #a70f2f);
+	background-image: -ms-linear-gradient(bottom, #a70f2f, #a70f2f 13%, #A70F2F 51%, #a70f2f 90%, #a70f2f);
+	background-image: linear-gradient(to top, #920221, #db002f 13%, #fd2a57 51%, #fd2352 90%, #fcc3cf);
+}
+
 .km-root, .km-vertical, .km-horizontal
 {
 	width: 100%;
@@ -655,7 +687,9 @@ overflow: visible
 
 .km-listinset, .km-listgroupinset
 {
-	margin: 1em
+	margin: 1em;
+    margin-right: 0;
+    margin-left: 0;
 }
 
 .km-listinset, .km-listgroupinset .km-list
@@ -1925,6 +1959,19 @@ body:after
 
 .BotonBuscar.km-button span{
     padding-right: 0;
+    background-color: white;
+border-radius: 5px;
+color:silver;
+font-weight: normal;
+box-shadow: inset 0 0px 9px rgba(35, 31, 32, .5);
+-moz-box-shadow: inset 0 0px 9px rgba(35, 31, 32, .5);
+-webkit-box-shadow: inset 0 0px 9px rgba(35, 31, 32, .5);
+border: solid 0px #BD072F;
+padding: 2%;
+font-weight: lighter;
+text-shadow: none;
+font-family: Helvetica;
+font-size: 1em;
 } 
 
 .BotonBuscar.km-button img{
@@ -1933,10 +1980,10 @@ body:after
 }
 
 .BotonBuscar2{
-	background-image: url('images/iconoLupa.png')  !important;
+	background-image: url('images/iconoLupa.png');
 	background-size: 100%;
     background-position-x: 94%;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat !important;
     border: none !important;
     width: 25px;
     background-color: rgba(255, 255, 255, 0) !important;
@@ -2098,6 +2145,8 @@ body:after
 .titulo-lista{
     max-width: 90%;
 }
+
+
 
 #wrapper
 {
