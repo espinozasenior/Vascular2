@@ -1,5 +1,5 @@
 /* WEB  */
-@media only screen and (min-width: 1224px) and (-webkit-min-device-pixel-ratio: 2)
+@media only screen and (min-height: 1224px) and (-webkit-min-device-pixel-ratio: 2)
 {
 	.km-view
 	{ 
@@ -336,11 +336,15 @@ and (orientation: portrait)
 /*----Tablets----*/
 @media only screen and (min-width: 500px) and (max-width: 699px)
 {
+    #list-idiomas ul li img {
+float: right;
+width: 4%;
+}
 	#backlogosindex
 	{
 		width: 100%;
 		position: absolute;
-		top: 60em;
+		top: 59em;
 		z-index: -1;
 		padding-left: 2%;
 		padding-right: 2%;
@@ -475,8 +479,15 @@ and (orientation: portrait)
 }
 
 /*----Androids----*/
-@media only screen and (min-height: 480px) and (max-width: 500px)
+@media only screen and (max-height: 513px) and (max-width: 500px)
 {
+    #portadaferrer{
+        width: 5em;
+    }
+    
+    #portadasomazina{
+        width: 8em;
+    }
 	.km-view
 	{
 		top: 0;
@@ -491,7 +502,7 @@ and (orientation: portrait)
 	{
 		width: 100%;
 		position: absolute;
-		top: 23em;
+		top: 25em;
 		z-index: -1;
 		padding-left: 2%;
 		padding-right: 2%; 
@@ -612,7 +623,10 @@ and (orientation: portrait)
 }
 
 /*----iPhone5----*/
-@media only screen and (min-device-width: 640px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2)
+@media only screen 
+and (min-device-width : 320px) 
+and (max-width : 568px) 
+and (orientation : portrait)
 {
     #portadaferrer{
         width: 5em;
@@ -652,15 +666,15 @@ and (orientation: portrait)
 	}
 	#backlogosindex-img2
 	{
-		width: 5em;
+		width: 7em;
 	}
 	#backlogosindex-img3
 	{
-		width: 4em;
+		width: 6em;
 	}
 	#backlogosindex-img1
 	{
-		width: 4em;
+		width: 6em;
 	}
 	#red h4
 	{
@@ -738,11 +752,7 @@ and (orientation: portrait)
 /*--- Iphone4---*/
 @media only screen and (max-height: 480px)
 {
-    #tab-ind, #tab-fav{
-        width: 35px;
-    }
-    
-	#portadaferrer{
+    #portadaferrer{
         width: 5em;
     }
     
