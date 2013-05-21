@@ -944,13 +944,17 @@ input[type="search"]
 	padding: 0;
 }
 
-b
+* b
 {
 	font-weight: bold;
 }
 
 .lectura > b
 {
+	font-weight: bold;
+}
+
+* strong{
 	font-weight: bold;
 }
 

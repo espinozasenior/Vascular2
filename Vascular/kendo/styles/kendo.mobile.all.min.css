@@ -512,7 +512,18 @@ height: 1rem
 	-webkit-border-top-left-radius: 5pt;
 	border-radius: 5pt 0 0 5pt;
 	-moz-border-radius: 5pt 0 0 5pt;
-	-webkit-border-radius: 5pt 0 0 5pt
+	-webkit-border-radius: 5pt 0 0 5pt;
+    color: #fff; text-shadow: none; border-color: rgba(0, 0, 0, 0.4); border-width: 1px 0 1px 1px; background-color: #066;
+	background-image: -webkit-linear-gradient(bottom, #7a021c, #d00732 49%, #ed1d4a 51%, #e90234);
+	background-image: -moz-linear-gradient(bottom, #7a021c, #d00732 49%, #ed1d4a 51%, #e90234);
+	background-image: -o-linear-gradient(bottom, #7a021c, #d00732 49%, #ed1d4a 51%, #e90234);
+	background-image: -ms-linear-gradient(bottom, #7a021c, #d00732 49%, #ed1d4a 51%, #e90234);
+	background-image: linear-gradient(to top, #7a021c, #d00732 49%, #ed1d4a 51%, #e90234);
+}
+
+.km-root .km-view .km-buttongroup .km-button:first-child:active
+{
+	border-width: 1px; border-right-width: 0; color: #929292; text-shadow: 0 1px rgba(255, 255, 255, 0.8); border-color: rgba(0, 0, 0, 0.4); background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0, #fbfbfb), color-stop(0.5, #e1e1e1), color-stop(1, #c8c8c8)); background-image: -moz-linear-gradient(top, #fbfbfb, #e1e1e1 50%, #c8c8c8); background-image: -ms-linear-gradient(top, #fbfbfb, #e1e1e1 50%, #c8c8c8); background-image: -o-linear-gradient(top, #fbfbfb, #e1e1e1 50%, #c8c8c8); background-image: linear-gradient(top, #fbfbfb, #e1e1e1 50%, #c8c8c8); box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4); -webkit-box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4);
 }
 
 .km-root .km-view .km-buttongroup .km-button:last-child
