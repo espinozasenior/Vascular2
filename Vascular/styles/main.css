@@ -33,7 +33,7 @@
 	}
 	#backlogosindex-img2
 	{
-		width: 10em;
+		-webkit-transform: scale(0.9);
 	}
 	#backlogosindex-img3
 	{
@@ -41,7 +41,7 @@
 	}
 	#backlogosindex-img1
 	{
-		width: 8em;
+		margin-bottom: 5%;
 	}
     
 	#tabstrip-home
@@ -195,7 +195,7 @@ and (orientation: portrait)
 	{
 		width: 100%;
 		position: absolute;
-		top: 58em;
+		top: 59em;
 		z-index: -1;
 		padding-left: 2%;
 		padding-right: 2%;
@@ -214,15 +214,19 @@ and (orientation: portrait)
 	}
 	#backlogosindex-img2
 	{
-		
+        transform: scale(0.9);
+		-webkit-transform: scale(0.9);
+        -moz-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+        
 	}
 	#backlogosindex-img3
 	{
-		width: 9.5em;
+		width: 8em;
 	}
 	#backlogosindex-img1
 	{
-		
+		margin-bottom: 6%;
 	}
     
 	#tabstrip-home
@@ -361,15 +365,15 @@ width: 4%;
 	}
 	#backlogosindex-img2
 	{
-		width: 10em;
+		
 	}
 	#backlogosindex-img3
 	{
-		width: 8em;
+		width: 7.8em;
 	}
 	#backlogosindex-img1
 	{
-		width: 8em;
+		margin-bottom: 7%;
 	}
 	#tabstrip-home
 	{
