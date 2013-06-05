@@ -65,8 +65,25 @@ function onConfirm(button) {
 			}
 		}, 3000);
 	}
-	else {
-		navigator.app.exitApp();
+	else {		
+        var idio = localStorage.getItem("idioma");
+			//localStorage.setItem('confirm', 'true');
+			switch (parseInt(idio)) {
+				case 1:
+					alert("La informació que conté aquesta aplicació està dirigida exclusivament al professional sanitari.");
+                    navigator.app.exitApp();
+					break;
+				case 2:
+					alert("La información contenida en esta aplicación está dirigida exclusivamente al profesional sanitario.");
+                    navigator.app.exitApp();
+					break;
+				case 3:
+					alert("The information contained in this application is only intended for health professionals.");
+                    navigator.app.exitApp();
+					break;
+				default:
+					navigator.app.exitApp();
+			}
 	}
 }
 
