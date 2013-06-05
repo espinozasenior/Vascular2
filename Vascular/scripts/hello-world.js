@@ -78,7 +78,7 @@ function onConfirm(button) {
                     navigator.app.exitApp();
 					break;
 				case 3:
-					alert("The information contained in this application is only intended for health professionals.");
+					alert("The information contained in this application is directed exclusively to the healthcare professional.");
                     navigator.app.exitApp();
 					break;
 				default:

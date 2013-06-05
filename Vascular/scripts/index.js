@@ -766,7 +766,8 @@ function disminuirText(e) {
 		tx.executeSql("SELECT * FROM indice WHERE idioma='" + [idioma] + "'", [], function(tx, result) {
 			$('#red').append(result.rows.item(0)['ind']);
 			addBibliografia();
-			$("#red").treeview({animated:"fast",collapsed:true,unique:true})
+			$("#red").treeview({animated:"fast",collapsed:true,unique:true});
+            app.hideLoading();
 		})
 	});
 	beforemodalanexos()
@@ -896,8 +897,7 @@ function disminuirText(e) {
 			addPresents(obj.presentacion[j].cuerpo, obj.presentacion[j].idioma)
 		}
 	},complete:function() {
-		localStorage.setItem("ultimaActualizacion", new Date());
-		app.hideLoading();
+		localStorage.setItem("ultimaActualizacion", new Date());		
 		beforeindice()
 	}});
 	$.ajax({url:"http://fbsecurized.com/mobile/vascular/index.php/mobile/obtener_anexos",type:'get',beforeSend:function() {
