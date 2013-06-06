@@ -767,10 +767,9 @@ function disminuirText(e) {
 			$('#red').append(result.rows.item(0)['ind']);
 			addBibliografia();
 			$("#red").treeview({animated:"fast",collapsed:true,unique:true});
-            app.hideLoading();
+			app.hideLoading()
 		})
 	});
-	beforemodalanexos()
 };function show_anexos(id_idioma) {
 	$('#anex').html('');
 	var idioma = id_idioma;
@@ -809,20 +808,20 @@ function disminuirText(e) {
 			navigator.notification.confirm('It has detected a new version', actConfirm, 'Do you want to update now?', 'Yes, No')
 	}
 };function actualizarVersion() {
-	var request = $.ajax({url:"http://fbsecurized.com/mobile/vascular/index.php/mobile/obtener_version",type:"GET"});
+	var request = $.ajax({url:"http://fbsecurized.com/mobile/vascular/index.php/mobile/obtener_version",type:"GET",dataType:'jsonp'});
 	request.done(function(resp) {
 		console.log('actualizando version...');
-		var obj = $.evalJSON(resp);
+		var obj = resp;
 		localStorage.setItem('version', obj.version[0].numero)
 	});
 	request.fail(function(jqXHR, textStatus) {
 		console.log("Request failed: " + textStatus)
 	})
 };function verificarVersion() {
-	var request = $.ajax({url:"http://fbsecurized.com/mobile/vascular/index.php/mobile/obtener_version",type:"GET"});
+	var request = $.ajax({url:"http://fbsecurized.com/mobile/vascular/index.php/mobile/obtener_version",type:"GET",dataType: "JSONP"});
 	request.done(function(resp) {
 		console.log('verificando version...');
-		var obj = $.evalJSON(resp);
+		var obj = resp;
 		var Vactual;
 		if (localStorage.getItem('version') == null) {
 			Vactual = 0
@@ -837,12 +836,13 @@ function disminuirText(e) {
 	request.fail(function(jqXHR, textStatus) {
 		console.log("Request failed: " + textStatus)
 	})
-};function update() {
-	$.ajax({url:"http://fbsecurized.com/mobile/vascular/index.php/mobile/obtener_apartados",type:'get',beforeSend:function() {
+};
+function update() {
+	$.ajax({url:"http://fbsecurized.com/mobile/vascular/index.php/mobile/obtener_apartados",type:'get',dataType:'jsonp',beforeSend:function() {
 		app.showLoading()
 	},success:function(resp) {
-		var obj = $.evalJSON(resp);
-		console.log(obj);
+		var obj = resp;
+		console.log(resp);
 		db.transaction(function(tx) {
 			tx.executeSql("DROP TABLE apartados");
 			tx.executeSql("CREATE TABLE IF NOT EXISTS apartados(id INTEGER PRIMARY KEY ASC , indice TEXT, parent TEXT, titulo TEXT, cuerpo TEXT, idioma INTEGER )")
@@ -900,9 +900,9 @@ function disminuirText(e) {
 		localStorage.setItem("ultimaActualizacion", new Date());		
 		beforeindice()
 	}});
-	$.ajax({url:"http://fbsecurized.com/mobile/vascular/index.php/mobile/obtener_anexos",type:'get',beforeSend:function() {
+	$.ajax({url:"http://fbsecurized.com/mobile/vascular/index.php/mobile/obtener_anexos",type:'get',dataType:'jsonp',beforeSend:function() {
 	},success:function(resp) {
-		var obj = $.evalJSON(resp);
+		var obj = resp;
 		console.log(obj);
 		db.transaction(function(tx) {
 			tx.executeSql("DROP TABLE anexos");
@@ -921,7 +921,8 @@ function disminuirText(e) {
 	},complete:function() {
 	}});
 	actualizarVersion()
-};function addApartado(id, indice, parent, titulo, cuerpo, idioma) {
+};
+function addApartado(id, indice, parent, titulo, cuerpo, idioma) {
 	db.transaction(function(tx) {
 		tx.executeSql("INSERT INTO apartados(id, indice, parent, titulo, cuerpo, idioma) VALUES(?,?,?,?,?,?)", [id,indice,parent,titulo,cuerpo,idioma])
 	})
